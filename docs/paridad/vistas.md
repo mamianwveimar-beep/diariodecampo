@@ -1,6 +1,6 @@
 # Paridad de las consultas SELECT
 
-Generado: 2026-08-19T20:01:17.191Z
+Generado: 2026-08-19T21:07:06.644Z
 Tolerancia numerica: 0.000001 relativa.
 Access ejecutado con fecha 2026-08-19 y fechaInicial 1900-01-01.
 

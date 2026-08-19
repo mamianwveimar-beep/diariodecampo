@@ -33,8 +33,8 @@ const INFORMES: InformeDef[] = [
     columnas: [
       { campo: 'codigosistema', titulo: 'Cultivo', num: true },
       { campo: 'fechasiembra', titulo: 'Siembra' },
-      { campo: 'lote', titulo: 'Lote', num: true },
-      { campo: 'cama', titulo: 'Cama', num: true },
+      { campo: 'lote', titulo: 'Lote' },
+      { campo: 'cama', titulo: 'Cama' },
       { campo: 'ciclo', titulo: 'Ciclo', num: true },
       { campo: 'numeroPlantasSembradas', titulo: 'Sembradas', num: true, suma: true },
       { campo: 'SumaDenumeroPlantasCosechadas', titulo: 'Cosechadas', num: true, suma: true },

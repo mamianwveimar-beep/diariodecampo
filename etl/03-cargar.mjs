@@ -60,6 +60,14 @@ function fechaDesdeTexto(v) {
  */
 const idTexto = (v) => (v === null || v === undefined || v === 0 ? null : String(v));
 
+/**
+ * lote/cama: en Access eran Double, pero son codigos de identificacion, no
+ * cantidades. A diferencia de idTexto(), aqui 0 se conserva como "0" en vez
+ * de convertirse en null: en programacionCultivos y actividades, 0 es un
+ * valor de lote/cama real y registrado, no un "vacio" de formulario.
+ */
+const comoTexto = (v) => (v === null || v === undefined ? null : String(v));
+
 const MIME = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', pdf: 'application/pdf' };
 
 // ------------------------------------------------------- 1. base limpia
@@ -159,7 +167,9 @@ insertar('infoSemilla', infoSemilla, [
 const idsSemilla = new Set(infoSemilla.map((s) => s.Id));
 
 // -- programacionCultivos -------------------------------------------------
-const cultivos = tabla('programacionCultivos').map((p) => ({ ...p, activo: bool(p.activo) }));
+const cultivos = tabla('programacionCultivos').map((p) => ({
+  ...p, activo: bool(p.activo), lote: comoTexto(p.lote), cama: comoTexto(p.cama),
+}));
 insertar('programacionCultivos', cultivos, [
   'codigosistema', 'codSemilla', 'areaCultivada', 'fechasiembra', 'factura',
   'fechaRealCosecha', 'fechafinal', 'numeroPlantasSembradas', 'numeroPlantasCosechadas',
@@ -169,7 +179,9 @@ insertar('programacionCultivos', cultivos, [
 const idsCultivo = new Set(cultivos.map((p) => p.codigosistema));
 
 // -- actividades ----------------------------------------------------------
-const actividades = tabla('actividades');
+const actividades = tabla('actividades').map((a) => ({
+  ...a, lote: comoTexto(a.lote), cama: comoTexto(a.cama),
+}));
 insertar('actividades', actividades, [
   'id', 'codigoSistema', 'codsemilla', 'fechaSiembra', 'semanaAbono', 'Actividad',
   'cantidadAbono', 'lote', 'cama', 'numeroPlantas', 'detalle', 'responsable',

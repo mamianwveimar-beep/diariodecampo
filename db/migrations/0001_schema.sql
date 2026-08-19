@@ -136,8 +136,11 @@ CREATE TABLE programacionCultivos (
   fechafinal              TEXT    CHECK (fechafinal IS NULL OR fechafinal GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),
   numeroPlantasSembradas  INTEGER DEFAULT 0,
   numeroPlantasCosechadas INTEGER DEFAULT 0,
-  lote                    REAL    DEFAULT 0,
-  cama                    REAL    DEFAULT 0,
+  -- CORREGIDO: lote y cama pasan a texto. En la practica son codigos de
+  -- identificacion del terreno, no cantidades, y pueden llevar letras
+  -- (p. ej. "A1"); un REAL los obligaba a ser siempre un numero.
+  lote                    TEXT    CHECK (lote IS NULL OR length(lote) <= 20),
+  cama                    TEXT    CHECK (cama IS NULL OR length(cama) <= 20),
   tipoAbono               TEXT    CHECK (tipoAbono IS NULL OR length(tipoAbono) <= 100),
   cantidadAbono0          REAL    DEFAULT 0,
   codigoSemillero         TEXT    CHECK (codigoSemillero IS NULL OR length(codigoSemillero) <= 50),
@@ -162,8 +165,9 @@ CREATE TABLE actividades (
   semanaAbono   INTEGER NOT NULL DEFAULT 0,
   Actividad     TEXT    NOT NULL CHECK (length(Actividad) <= 50),
   cantidadAbono REAL    DEFAULT 0,
-  lote          REAL    DEFAULT 0,
-  cama          REAL    DEFAULT 0,
+  -- lote y cama son texto, igual que en programacionCultivos
+  lote          TEXT    CHECK (lote IS NULL OR length(lote) <= 20),
+  cama          TEXT    CHECK (cama IS NULL OR length(cama) <= 20),
   numeroPlantas INTEGER DEFAULT 0,
   -- calculada en Access: [cantidadAbono]*[numeroPlantas]
   total         REAL    GENERATED ALWAYS AS (cantidadAbono * numeroPlantas) STORED,

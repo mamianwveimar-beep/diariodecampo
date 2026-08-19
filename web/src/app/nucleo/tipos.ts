@@ -108,8 +108,9 @@ export interface Cultivo {
   fechafinal: string | null;
   numeroPlantasSembradas: number | null;
   numeroPlantasCosechadas: number | null;
-  lote: number | null;
-  cama: number | null;
+  /** Codigo de identificacion, no cantidad: puede llevar letras (p. ej. "A1"). */
+  lote: string | null;
+  cama: string | null;
   tipoAbono: string | null;
   cantidadAbono0: number | null;
   codigoSemillero: string | null;
@@ -126,8 +127,8 @@ export interface Actividad {
   semanaAbono: number;
   Actividad: string;
   cantidadAbono: number | null;
-  lote: number | null;
-  cama: number | null;
+  lote: string | null;
+  cama: string | null;
   numeroPlantas: number | null;
   /** Columna generada: cantidadAbono * numeroPlantas. No se escribe. */
   total: number | null;
@@ -247,8 +248,8 @@ export interface InventarioCampo {
   codigosistema: number;
   codSemilla: number;
   fechasiembra: string;
-  lote: number | null;
-  cama: number | null;
+  lote: string | null;
+  cama: string | null;
   InicioCosecha: string | null;
   FinalCosecha: string | null;
   numeroPlantasSembradas: number | null;
@@ -282,8 +283,8 @@ export interface Trazabilidad {
   factura: string | null;
   fechasiembra: string;
   numeroPlantasSembradas: number | null;
-  lote: number | null;
-  cama: number | null;
+  lote: string | null;
+  cama: string | null;
   '#dias': number | null;
   Abono25Mar: string | null;
   abonoPrimera: number | null;

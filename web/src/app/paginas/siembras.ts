@@ -55,7 +55,7 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
         <thead>
           <tr>
             <th>Codigo</th><th>Semilla</th><th>Siembra</th><th>Factura</th>
-            <th class="num">Plantas</th><th class="num">Lote</th><th class="num">Cama</th>
+            <th class="num">Plantas</th><th>Lote</th><th>Cama</th>
             <th class="num">Kilos</th><th>Activo</th><th></th>
           </tr>
         </thead>
@@ -67,8 +67,8 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
               <td>{{ c.fechasiembra }}</td>
               <td>{{ c.factura ?? '—' }}</td>
               <td class="num">{{ c.numeroPlantasSembradas }}</td>
-              <td class="num">{{ c.lote }}</td>
-              <td class="num">{{ c.cama }}</td>
+              <td>{{ c.lote ?? '—' }}</td>
+              <td>{{ c.cama ?? '—' }}</td>
               <td class="num">{{ c.kilosCosechados }}</td>
               <td><span class="etiqueta" [class.si]="c.activo === 1" [class.no]="c.activo !== 1">
                 {{ c.activo === 1 ? 'Si' : 'No' }}</span></td>
@@ -109,10 +109,12 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
                      (ngModelChange)="cambiar('numeroPlantasSembradas', $event)" name="plantas" required />
             </label>
             <label>Lote
-              <input type="number" step="0.01" [ngModel]="f.lote" (ngModelChange)="cambiar('lote', $event)" name="lote" />
+              <input [ngModel]="f.lote" (ngModelChange)="cambiar('lote', $event)"
+                     name="lote" maxlength="20" placeholder="p. ej. 7 o A1" />
             </label>
             <label>Cama
-              <input type="number" step="0.01" [ngModel]="f.cama" (ngModelChange)="cambiar('cama', $event)" name="cama" />
+              <input [ngModel]="f.cama" (ngModelChange)="cambiar('cama', $event)"
+                     name="cama" maxlength="20" placeholder="p. ej. 1 o B2" />
             </label>
             <label>Factura
               <input [ngModel]="f.factura" (ngModelChange)="cambiar('factura', $event)" name="factura" maxlength="30" />
@@ -285,7 +287,7 @@ export class Siembras implements OnInit {
     this.errorForm.set(null);
     this.editando.set({
       codSemilla: null, fechasiembra: '', numeroPlantasSembradas: null,
-      lote: 0, cama: 0, factura: null, areaCultivada: 0,
+      lote: null, cama: null, factura: null, areaCultivada: 0,
       codigoSemillero: null, observaciones: null, activo: 1,
     });
   }

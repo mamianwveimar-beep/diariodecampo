@@ -187,6 +187,13 @@ Detalles que conviene conocer:
   cuántas filas se omitieron.
 - **Nada se descarta en silencio en la carga:** lo que no pasa una validación
   queda en `_cuarentena` con la regla incumplida y el valor original.
+- **`lote` y `cama` son texto, no número**, en `programacionCultivos` y en
+  `actividades`. En Access eran `Double`, pero en la práctica son códigos de
+  identificación del terreno, no cantidades, y pueden llevar letras (`A1`,
+  `L-09`). La cama se sigue autoincrementando sola al añadir una línea en
+  **Registrar siembra**, pero solo cuando el valor anterior es un número puro;
+  si trae letras, se copia tal cual porque no hay una forma automática de
+  saber cuál es «la siguiente».
 
 ## Evidencia de paridad
 

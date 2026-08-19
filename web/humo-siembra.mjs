@@ -107,6 +107,8 @@ await pagina.getByRole('button', { name: 'Añadir línea' }).click();
 await elegirSemilla(2, 'lechuga');
 await escribir(2, COL.plantas, 60);
 await escribir(2, COL.semillero, 'SEM-C3');
+// lote y cama son texto libre: un codigo alfanumerico debe guardarse tal cual
+await escribir(2, COL.lote, 'L-09');
 
 await pagina.screenshot({ path: `${CAPTURAS}siembra-lote.png` });
 
@@ -134,14 +136,19 @@ comprobar(nuevos.every((c) => c.fechasiembra === FECHA), 'los 3 comparten la fec
 comprobar(nuevos.every((c) => c.activo === 1), 'los 3 entran activos');
 
 const cebolla = nuevos.find((c) => c.numeroPlantasSembradas === 250);
-comprobar(!!cebolla && cebolla.areaCultivada === 30 && cebolla.lote === 7
-  && cebolla.cama === 1 && cebolla.codigoSemillero === 'SEM-A1',
+// lote y cama son texto: la API los devuelve como cadena, no como numero
+comprobar(!!cebolla && cebolla.areaCultivada === 30 && cebolla.lote === '7'
+  && cebolla.cama === '1' && cebolla.codigoSemillero === 'SEM-A1',
   `la línea de cebolla llega completa: ${JSON.stringify(cebolla && {
     plantas: cebolla.numeroPlantasSembradas, area: cebolla.areaCultivada,
     lote: cebolla.lote, cama: cebolla.cama, semillero: cebolla.codigoSemillero })}`);
 
 const brocoli = nuevos.find((c) => c.numeroPlantasSembradas === 100);
 comprobar(!!brocoli && brocoli.areaCultivada === 16, `el área del brócoli se guarda: ${brocoli?.areaCultivada}`);
+
+const lechuga = nuevos.find((c) => c.numeroPlantasSembradas === 60);
+comprobar(!!lechuga && lechuga.lote === 'L-09',
+  `un código de lote alfanumérico se guarda tal cual: ${lechuga?.lote}`);
 
 // limpiar lo que ha creado la prueba
 for (const c of nuevos) {

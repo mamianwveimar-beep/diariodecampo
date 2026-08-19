@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node etl/03-cargar.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(npx tsc *)",
+      "Bash(npx ng *)",
+      "Bash(npx wrangler *)",
+      "Bash(node ../etl/04-subir-adjuntos.mjs)",
+      "Bash(node humo-siembra.mjs)",
+      "Bash(node humo.mjs)",
+      "Bash(curl -s \"http://localhost:4200/api/tablas/programacionCultivos?limite=2000\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='node.exe' OR Name='workerd.exe'\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='node.exe' OR Name='workerd.exe'\" | Where-Object { $_.CommandLine -match 'diariodecampo' } | Select-Object ProcessId,CreationDate,@{n='cmd';e={$_.CommandLine.Substring\\(0,[Math]::Min\\(90,$_.CommandLine.Length\\)\\)}} | Format-Table -AutoSize)",
+      "Bash(curl -s -f \"http://localhost:4200/api/salud\")",
+      "Bash(curl -s \"http://localhost:4200/api/salud\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>console.log\\('cultivos:',JSON.parse\\(d\\).length\\)\\)\")",
+      "Bash(npm test *)",
+      "Bash(npm run *)",
+      "Bash(node etl/06-comparar-paridad.mjs)",
+      "Bash(node etl/07-respaldo.mjs ensayo)",
+      "Bash(node \"C:/Users/ADMINI~1/AppData/Local/Temp/claude/c--Users-Administrador-Documents-diariodecampo/dec4e7cf-b1c6-4862-b833-1a12b7986e07/scratchpad/diag.mjs\")",
+      "Bash(rm -rf .wrangler/state)",
+      "Bash(node etl/04-subir-adjuntos.mjs)",
+      "Bash(curl -s \"http://localhost:4200/api/tablas/costosInsumos?limite=2000\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>console.log\\('costosInsumos:',JSON.parse\\(d\\).length\\)\\)\")",
+      "Bash(git add *)"
+    ]
+  }
+}

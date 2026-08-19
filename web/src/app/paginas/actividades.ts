@@ -315,7 +315,7 @@ export class Actividades implements OnInit {
     this.errorForm.set(null);
     this.editando.set({
       codigoSistema: null, codsemilla: null, fechaSiembra: '', semanaAbono: null,
-      Actividad: '', cantidadAbono: null, lote: 0, cama: 0, numeroPlantas: null,
+      Actividad: '', cantidadAbono: null, lote: null, cama: null, numeroPlantas: null,
       detalle: null, responsable: null, costo: null, unidad: null,
     });
   }
@@ -333,7 +333,7 @@ export class Actividades implements OnInit {
       ...f!, codigoSistema: codigo,
       codsemilla: c?.codSemilla ?? null,
       fechaSiembra: c?.fechasiembra ?? '',
-      lote: c?.lote ?? 0, cama: c?.cama ?? 0,
+      lote: c?.lote ?? null, cama: c?.cama ?? null,
       numeroPlantas: f!.numeroPlantas ?? c?.numeroPlantasSembradas ?? null,
     }));
   }

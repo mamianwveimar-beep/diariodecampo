@@ -11,8 +11,9 @@ interface Linea {
   clave: number;
   codSemilla: number | null;
   numeroPlantasSembradas: number | null;
-  lote: number | null;
-  cama: number | null;
+  /** Codigo de identificacion, no cantidad: puede llevar letras (p. ej. "A1"). */
+  lote: string | null;
+  cama: string | null;
   areaCultivada: number | null;
   /** El usuario toco el area a mano: deja de recalcularse sola. */
   areaManual: boolean;
@@ -90,8 +91,8 @@ interface Linea {
           <tr>
             <th style="min-width:230px">Semilla *</th>
             <th class="num" style="min-width:110px">Plantas *</th>
-            <th class="num" style="min-width:90px">Lote</th>
-            <th class="num" style="min-width:90px">Cama</th>
+            <th style="min-width:90px">Lote</th>
+            <th style="min-width:90px">Cama</th>
             <th class="num" style="min-width:130px">Área (m²)</th>
             <th style="min-width:150px">Cód. semillero</th>
             <th style="min-width:180px">Observaciones</th>
@@ -115,13 +116,15 @@ interface Linea {
                        [disabled]="l.estado === 'guardada'" />
               </td>
               <td>
-                <input type="number" step="0.01" class="dcha" [ngModel]="l.lote"
+                <input type="text" [ngModel]="l.lote"
                        (ngModelChange)="cambiar(l, 'lote', $event)"
+                       maxlength="20" placeholder="p. ej. 7 o A1"
                        [disabled]="l.estado === 'guardada'" />
               </td>
               <td>
-                <input type="number" step="0.01" class="dcha" [ngModel]="l.cama"
+                <input type="text" [ngModel]="l.cama"
                        (ngModelChange)="cambiar(l, 'cama', $event)"
+                       maxlength="20" placeholder="p. ej. 1 o B2"
                        [disabled]="l.estado === 'guardada'" />
               </td>
               <td>
@@ -291,14 +294,24 @@ export class SiembraLote implements OnInit {
       codSemilla: null,
       numeroPlantasSembradas: null,
       // el lote suele repetirse en la misma jornada; la cama avanza
-      lote: ultima?.lote ?? 0,
-      cama: ultima?.cama != null ? Number(ultima.cama) + 1 : 0,
+      lote: ultima?.lote ?? null,
+      cama: this.incrementarCama(ultima?.cama ?? null),
       areaCultivada: null,
       areaManual: false,
       codigoSemillero: null,
       observaciones: null,
       estado: 'pendiente',
     }]);
+  }
+
+  /**
+   * La cama es texto libre (puede llevar letras), asi que solo se puede
+   * avanzar sola cuando es un numero puro. Si trae letras, se repite tal
+   * cual: no hay forma automatica de saber cual es "la siguiente".
+   */
+  private incrementarCama(valor: string | null): string | null {
+    if (valor == null || valor === '') return null;
+    return /^\d+$/.test(valor) ? String(Number(valor) + 1) : valor;
   }
 
   quitar(l: Linea) {
@@ -390,8 +403,8 @@ export class SiembraLote implements OnInit {
             fechasiembra: this.fecha(),
             factura: this.factura() || null,
             numeroPlantasSembradas: l.numeroPlantasSembradas!,
-            lote: l.lote ?? 0,
-            cama: l.cama ?? 0,
+            lote: l.lote,
+            cama: l.cama,
             areaCultivada: l.areaCultivada ?? 0,
             codigoSemillero: l.codigoSemillero || null,
             observaciones: l.observaciones || null,
