@@ -1,0 +1,6 @@
+node_modules/
+db/local/
+api/.wrangler/
+etl/salida/adjuntos/*.jpg
+etl/salida/adjuntos/*.png
+etl/salida/adjuntos/*.pdf
