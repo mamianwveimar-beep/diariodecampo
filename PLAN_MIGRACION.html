@@ -175,7 +175,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
   <div class="meta small">
     <span><span class="eyebrow">Origen</span> &nbsp;Access 2016 · 7,5 MB · 13 tablas útiles</span>
     <span><span class="eyebrow">Destino</span> &nbsp;Angular · Workers · D1 · R2</span>
-    <span><span class="eyebrow">Estado</span> &nbsp;Fases 0–4 implementadas y verificadas</span>
+    <span><span class="eyebrow">Estado</span> &nbsp;Fases 0–6 implementadas y verificadas</span>
   </div>
 </header>
 
@@ -192,7 +192,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
   </div>
 
   <div class="note q col">
-    <strong>Este documento ya recoge lo aprendido al implementarlo.</strong> Las fases 0 a 4 están construidas y verificadas: base de datos, ETL, API y lógica agrícola funcionando sobre D1. Las cifras marcadas <span class="chip info">corregido</span> difieren de la primera versión del plan porque la implementación las midió con precisión. La más importante: <strong>el módulo de pedidos no está vacío</strong>, como creí al principio; conserva 6 líneas válidas de 15.
+    <strong>Este documento ya recoge lo aprendido al implementarlo.</strong> Las fases 0 a 6 están construidas y verificadas: base de datos, ETL, API, lógica agrícola e interfaz Angular funcionando sobre D1. Las cifras marcadas <span class="chip info">corregido</span> difieren de la primera versión del plan porque la implementación las midió con precisión. La más importante: <strong>el módulo de pedidos no está vacío</strong>, como creí al principio; conserva 6 líneas válidas de 15.
   </div>
 
   <div class="figures wide">
@@ -311,13 +311,17 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
   <p class="col">Cloudflare D1 es SQLite gestionado, y Wrangler lo emula en local sobre un archivo SQLite real. Eso resuelve el requisito de «local ahora, nube después» sin dos bases de datos distintas: <strong>el mismo esquema, las mismas migraciones y el mismo código corren en los dos sitios</strong>, y pasar a producción es un despliegue, no una segunda migración.</p>
 
   <pre><span class="c">diariodecampo/</span>
+├── origen/               <span class="c">el .accdb congelado, con su hash</span>
 ├── db/migrations/        <span class="c">SQL versionado — la única fuente del esquema</span>
 ├── etl/                  <span class="c">Node + PowerShell: extrae del .accdb y carga en D1</span>
 ├── api/                  <span class="c">Worker (TypeScript + Hono)</span>
 │   ├── src/repos/        <span class="c">acceso a D1, todo con sentencias preparadas</span>
 │   ├── src/queries/      <span class="c">las 9 vistas y las 20 consultas de acción</span>
 │   └── src/access-compat/ <span class="c">Format ww, Weekday, Date — equivalencias verificadas</span>
-├── web/                  <span class="c">Angular (standalone components + signals)</span>
+├── web/                  <span class="c">Angular: 11 pantallas + 6 informes</span>
+│   ├── nucleo/           <span class="c">API tipada, tipos y definición de campos</span>
+│   ├── compartido/       <span class="c">el componente que genera los 5 maestros</span>
+│   └── paginas/          <span class="c">las pantallas con lógica propia</span>
 └── docs/paridad/         <span class="c">evidencia de equivalencia Access ↔ D1</span></pre>
 
   <div class="two wide">
@@ -544,7 +548,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
     </div>
 
     <div class="phase">
-      <div class="idx"><b>5</b>Frontend<br>10 días</div>
+      <div class="idx"><b>5</b>Frontend<br><span class="chip ok">hecha</span></div>
       <div class="body">
         <h3>Angular</h3>
         <ul>
@@ -553,12 +557,12 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
           <li>Sustituir la búsqueda por texto sobre fechas por un filtro de rango.</li>
           <li>Reemplazar los diálogos <code>MsgBox</code> por confirmaciones y avisos en pantalla, conservando los mensajes actuales para que el usuario reconozca el sistema.</li>
         </ul>
-        <div class="accept"><b>Criterio de aceptación</b>Alta, edición, borrado y búsqueda funcionan en las 11 pantallas contra D1 local.</div>
+        <div class="accept"><b>Cumplido</b>Las 11 pantallas cargan con datos reales y sin un solo error de consola, comprobado con un navegador real que las recorre una a una. El alta, la edición y el borrado funcionan contra D1 local, y el formulario de una semilla enlaza su foto guardada en R2. Los dos temas, claro y oscuro, se aplican correctamente.</div>
       </div>
     </div>
 
     <div class="phase">
-      <div class="idx"><b>6</b>Informes<br>3 días</div>
+      <div class="idx"><b>6</b>Informes<br><span class="chip ok">hecha</span></div>
       <div class="body">
         <h3>Los 6 informes y su exportación</h3>
         <ul>
@@ -566,7 +570,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
           <li>Exportación a PDF desde el cliente, con pie de página y numeración.</li>
           <li>Trazabilidad es el más complejo: 30 columnas calculadas y 8 usos de <code>Weekday</code>.</li>
         </ul>
-        <div class="accept"><b>Criterio de aceptación</b>Cada informe, con los datos migrados, produce las mismas cifras y subtotales que su equivalente en Access.</div>
+        <div class="accept"><b>Cumplido en parte</b>Los 6 informes están construidos, con sus agrupaciones y subtotales, y se imprimen a PDF con el diálogo del navegador. Lo que falta es comparar sus cifras contra las que saca Access hoy: eso es la fase 7 y necesita a alguien que conozca la finca.</div>
       </div>
     </div>
 
@@ -605,7 +609,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
     <div class="eyebrow">Pendiente</div>
     <h2>Decisiones que necesitan tu criterio</h2>
   </div>
-  <p class="col">Ninguna bloqueó las fases 0 a 4, que ya están construidas. Estas hacen falta antes de cerrar la fase 7.</p>
+  <p class="col">Ninguna bloqueó las fases 0 a 6, que ya están construidas. Estas hacen falta antes de cerrar la fase 7.</p>
   <ul class="plain col">
     <li><strong>Las 9 líneas de pedido huérfanas.</strong> Apuntan a semillas con Id 1, 14, 15, 16, 17 y 212 que ya no existen. ¿Recuerdas qué productos eran? Las otras 6 líneas son válidas, así que el módulo de pedidos funciona igualmente; estas quedan en cuarentena hasta que lo decidas.</li>
     <li><strong>Los 10 movimientos de inventario colgados.</strong> Referencian cultivos 10 a 17, borrados en cascada. ¿Se reasignan a un cultivo existente o se dejan sin cultivo asociado?</li>

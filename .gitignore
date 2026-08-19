@@ -4,3 +4,7 @@ api/.wrangler/
 etl/salida/adjuntos/*.jpg
 etl/salida/adjuntos/*.png
 etl/salida/adjuntos/*.pdf
+web/node_modules/
+web/dist/
+web/.angular/
+web/capturas/

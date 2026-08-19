@@ -14,20 +14,21 @@ El plan completo está en [PLAN_MIGRACION.html](PLAN_MIGRACION.html).
 | 2 | Esquema de D1 | Hecha |
 | 3 | ETL, cuarentena y reconciliación | Hecha |
 | 4 | Worker, API y lógica agrícola | Hecha |
-| 5 | Frontend Angular | Pendiente |
-| 6 | Los 6 informes y su PDF | Pendiente |
+| 5 | Frontend Angular | Hecha |
+| 6 | Los 6 informes y su PDF | Hecha |
 | 7 | Aceptación con el usuario | Pendiente |
 | 8 | Despliegue en Cloudflare | Pendiente |
 
 ## Estructura
 
 ```
-origen/          el .accdb congelado, con su hash SHA-256
-db/migrations/   esquema versionado: la única fuente de verdad
-db/local/        base SQLite generada por el ETL (no se versiona)
-etl/             extracción del .accdb y carga en D1
-api/             Worker: Hono + D1 + R2
-docs/paridad/    evidencia de equivalencia Access ↔ D1
+origen/            el .accdb congelado, con su hash SHA-256
+db/migrations/     esquema versionado: la única fuente de verdad
+db/local/          base SQLite generada por el ETL (no se versiona)
+etl/               extracción del .accdb y carga en D1
+api/               Worker: Hono + D1 + R2
+web/               aplicación Angular
+docs/paridad/      evidencia de equivalencia Access ↔ D1
 extracted_source/  extracción antigua, defectuosa. Solo referencia histórica
 ```
 
@@ -51,18 +52,30 @@ npm run migrar:local
 npm run sembrar:local
 node ../etl/04-subir-adjuntos.mjs    # las 8 fotos al R2 local
 npm run dev                          # http://127.0.0.1:8787
+
+# 4. Levantar la interfaz, en otra terminal
+cd web
+npm install
+npm start                            # http://localhost:4200
 ```
+
+`web/proxy.conf.json` redirige `/api` al Worker, así que en desarrollo basta
+con tener los dos procesos en marcha.
 
 ## Comprobaciones
 
 ```bash
 cd api
-npm test        # equivalencias de fecha de Access sobre SQLite
-npm run paridad # las 20 consultas de acción frente a un oráculo independiente
+npm test         # equivalencias de fecha de Access sobre SQLite
+npm run paridad  # las 20 consultas de acción frente a un oráculo independiente
+
+cd ../web
+npm run humo     # recorre las 11 pantallas con un navegador real
 ```
 
-Ambas se apoyan en `db/local/diariodecampo.db`, así que hay que ejecutar antes
-`node etl/03-cargar.mjs`.
+Las dos primeras se apoyan en `db/local/diariodecampo.db`, así que hay que
+ejecutar antes `node etl/03-cargar.mjs`. La prueba de humo necesita el Worker
+y `ng serve` en marcha, y deja capturas en `web/capturas/`.
 
 ## La API
 
@@ -81,6 +94,35 @@ Ambas se apoyan en `db/local/diariodecampo.db`, así que hay que ejecutar antes
 | `GET /api/adjuntos/:tabla/:registroId` | Adjuntos de un registro |
 | `GET /api/adjuntos/:id/contenido` | Descarga el archivo desde R2 |
 | `GET /api/cuarentena` | Las 74 filas que no pasaron una validación |
+
+## La interfaz
+
+Los 14 formularios de Access se consolidan en 11 pantallas, más una nueva de
+cuarentena que Access no tenía. Los tres subformularios dejan de ser objetos
+aparte y viven dentro de su pantalla contenedora.
+
+| Pantalla | Sustituye a |
+|---|---|
+| Inicio | `InicioDiarioCampo` |
+| Siembras y cosechas | `Frm_Siembra`, `SubFrm_Siembra`, `Frm_Datos`, `Frm_DatosCosecha` |
+| Actividades y costos | `Frm_Costos`, `SubFrm_Costos`, `Frm_DatosCostos`, `Macro3` |
+| Semillas | `frmInfoSemilla` |
+| Movimientos | `frmInventarioProductos` |
+| Productos | `frmProductos` |
+| Clientes | `frmClientes` |
+| Pedidos | `pedido`, `detallePedido Subformulario` |
+| Empleados | — (Access no tenía formulario) |
+| Informes | los 6 informes |
+| Cuarentena | — (nueva) |
+
+Cinco de esas pantallas (semillas, productos, clientes, empleados y almacén)
+comparten forma, así que las genera un único componente a partir de las
+definiciones de `web/src/app/nucleo/campos.ts`, en vez de repetir cinco
+formularios casi iguales.
+
+Los informes se imprimen con el diálogo del navegador, que en la práctica es
+el que genera el PDF. `styles.css` lleva reglas `@media print` que ocultan la
+navegación y los filtros.
 
 ## Decisiones que conviene conocer
 
