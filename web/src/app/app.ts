@@ -17,7 +17,8 @@ import { Api } from './nucleo/api';
           <a routerLink="/inicio" routerLinkActive="activo">Inicio</a>
 
           <div class="nav-grupo eyebrow">Produccion</div>
-          <a routerLink="/siembras" routerLinkActive="activo">Siembras y cosechas</a>
+          <a routerLink="/siembras" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Siembras y cosechas</a>
+          <a routerLink="/siembras/nueva" routerLinkActive="activo">Registrar siembra</a>
           <a routerLink="/actividades" routerLinkActive="activo">Actividades y costos</a>
           <a routerLink="/semillas" routerLinkActive="activo">Semillas</a>
 

@@ -1,5 +1,6 @@
 import { Component, computed, inject, input, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { Api } from '../nucleo/api';
 import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
 
@@ -13,7 +14,7 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
  */
 @Component({
   selector: 'dc-siembras',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   template: `
     <div class="cabecera">
       <div class="fila">
@@ -22,7 +23,7 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
           <h1>Siembras</h1>
           <p class="small">Cada cultivo programado, con sus cosechas.</p>
         </div>
-        <button class="primario" (click)="abrirNuevo()">Nueva siembra</button>
+        <a class="boton primario" routerLink="/siembras/nueva">Registrar siembra</a>
       </div>
     </div>
 

@@ -70,7 +70,8 @@ npm test         # equivalencias de fecha de Access sobre SQLite
 npm run paridad  # las 20 consultas de acción frente a un oráculo independiente
 
 cd ../web
-npm run humo     # recorre las 11 pantallas con un navegador real
+npm run humo          # recorre las 12 pantallas con un navegador real
+npm run humo:siembra  # rellena y guarda un alta de siembra por lotes
 ```
 
 Las dos primeras se apoyan en `db/local/diariodecampo.db`, así que hay que
@@ -106,13 +107,14 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 
 ## La interfaz
 
-Los 14 formularios de Access se consolidan en 11 pantallas, más una nueva de
-cuarentena que Access no tenía. Los tres subformularios dejan de ser objetos
-aparte y viven dentro de su pantalla contenedora.
+Los 14 formularios de Access se consolidan en 11 pantallas, más dos nuevas:
+el alta de siembra por lotes y la cuarentena. Los tres subformularios dejan de
+ser objetos aparte y viven dentro de su pantalla contenedora.
 
 | Pantalla | Sustituye a |
 |---|---|
 | Inicio | `InicioDiarioCampo` |
+| Registrar siembra | — (nueva: alta por lotes) |
 | Siembras y cosechas | `Frm_Siembra`, `SubFrm_Siembra`, `Frm_Datos`, `Frm_DatosCosecha` |
 | Actividades y costos | `Frm_Costos`, `SubFrm_Costos`, `Frm_DatosCostos`, `Macro3` |
 | Semillas | `frmInfoSemilla` |
@@ -132,6 +134,31 @@ formularios casi iguales.
 Los informes se imprimen con el diálogo del navegador, que en la práctica es
 el que genera el PDF. `styles.css` lleva reglas `@media print` que ocultan la
 navegación y los filtros.
+
+### Alta de siembra por lotes
+
+En Access, sembrar cinco variedades el mismo día obligaba a abrir `Frm_Datos`
+cinco veces y reescribir la fecha y la factura en cada una. La pantalla
+**Registrar siembra** tiene una cabecera —fecha y factura— y una línea por
+variedad, lote y cama; cada línea se guarda como un cultivo de
+`programacionCultivos`. No hace falta ningún cambio de esquema: es la misma
+tabla, capturada como se siembra de verdad.
+
+Detalles que conviene conocer:
+
+- La semilla se elige con un **buscador**, no con una lista larga: se escribe
+  y se filtra, con teclado o ratón.
+- El **área se calcula sola**: plantas × marco de siembra, donde el marco es
+  `infoSemilla.area` o, si falta, `entrePlanta × entreSurcos`. Para la cebolla
+  son 0,12 m² por planta, así que 250 plantas dan 30 m².
+- Ese cálculo **se puede sobrescribir**. Al hacerlo, el campo se desengancha,
+  aparece un aviso con lo que habría dado el cálculo, y un botón devuelve al
+  valor calculado.
+- El **lote se hereda** de la línea anterior y la **cama se autoincrementa**,
+  que es como se rellena una jornada de siembra.
+- **Todos los cultivos entran activos.**
+- Si una línea falla al guardar, las demás se guardan igual y la fallida se
+  queda en pantalla con el motivo.
 
 ## Decisiones que conviene conocer
 
