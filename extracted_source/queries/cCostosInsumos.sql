@@ -1,0 +1,4 @@
+﻿SELECT costosInsumos.Id, costosInsumos.concepto, costosInsumos.detalle, costosInsumos.fecha, costosInsumos.unidad, costosInsumos.cantidad, costosInsumos.valorUnitario, costosInsumos.programacionCultivoCodCultivo, costosInsumos.valorTotal, costosInsumos.observaciones, programacionCultivos.codSemilla
+FROM programacionCultivos INNER JOIN costosInsumos ON programacionCultivos.codigosistema = costosInsumos.programacionCultivoCodCultivo
+GROUP BY costosInsumos.Id, costosInsumos.concepto, costosInsumos.detalle, costosInsumos.fecha, costosInsumos.unidad, costosInsumos.cantidad, costosInsumos.valorUnitario, costosInsumos.programacionCultivoCodCultivo, costosInsumos.valorTotal, costosInsumos.observaciones, programacionCultivos.codSemilla;
+

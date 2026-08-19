@@ -1,0 +1,58 @@
+﻿[
+    {
+        "Name":  "Frm_Datos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "frmInfoSemilla",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "Frm_Siembra",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "SubFrm_Siembra",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "frmInventarioProductos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "frmProductos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "Frm_DatosCostos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "SubFrm_Costos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "Frm_Costos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "pedido",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "InicioDiarioCampo",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "frmClientes",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "Frm_DatosCosecha",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "detallePedido Subformulario",
+        "Status":  "Exported"
+    }
+]

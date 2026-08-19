@@ -1,0 +1,362 @@
+[
+    {
+        "TABLE_NAME":  "empleados",
+        "INDEX_NAME":  "archivo_A644B8C363304ECBB4B3B2C7A1C4D1F3",
+        "COLUMN_NAME":  "archivo",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "INDEX_NAME":  "Archivo_D1B66BC99B4646348E411952C791EBFE",
+        "COLUMN_NAME":  "Archivo",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "INDEX_NAME":  "archivo_FFCF1F35E4FB47799B115558BB70E48B",
+        "COLUMN_NAME":  "archivo",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "INDEX_NAME":  "Carpeta_644DE5F56E9544728BA33D63ED90D731",
+        "COLUMN_NAME":  "Carpeta",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "codigoSistema",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "ciudad",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "codigoCiudad",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "NitCedula",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "Id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "concepto",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "concepto",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "Id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "Id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "Id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "Id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "id",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "codigosistema",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "ID",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "codsemilla",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  2
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "detalle",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  2
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "detalle",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  2
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "fechaSiembra",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  3
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  3
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  3
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "semanaAbono",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  4
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "PrimaryKey",
+        "COLUMN_NAME":  "Actividad",
+        "UNIQUE":  true,
+        "PRIMARY_KEY":  true,
+        "ORDINAL_POSITION":  5
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "INDEX_NAME":  "ciudadclientes",
+        "COLUMN_NAME":  "CiudadCliente",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "INDEX_NAME":  "ciudadclientes1",
+        "COLUMN_NAME":  "CiudadCliente",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "INDEX_NAME":  "clientesinventarioProductos",
+        "COLUMN_NAME":  "cliente",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "INDEX_NAME":  "cosechacodigosistema",
+        "COLUMN_NAME":  "codigosistema",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "INDEX_NAME":  "empleadosinventarioProductos",
+        "COLUMN_NAME":  "empleado",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "id",
+        "COLUMN_NAME":  "id",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "INDEX_NAME":  "id",
+        "COLUMN_NAME":  "id",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "INDEX_NAME":  "id",
+        "COLUMN_NAME":  "id",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "INDEX_NAME":  "IdPedido",
+        "COLUMN_NAME":  "IdPedido",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "INDEX_NAME":  "infoSemillaprogramacionCultivos",
+        "COLUMN_NAME":  "codSemilla",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "INDEX_NAME":  "infoSemillasemilla",
+        "COLUMN_NAME":  "semilla",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "INDEX_NAME":  "pedidodetallePedido",
+        "COLUMN_NAME":  "IdPedido",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "INDEX_NAME":  "productosinventarioProductos",
+        "COLUMN_NAME":  "producto",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "INDEX_NAME":  "productosinventarioProductos1",
+        "COLUMN_NAME":  "producto",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "INDEX_NAME":  "programacionCultivosAbonamientoSolido",
+        "COLUMN_NAME":  "codigoSistema",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "INDEX_NAME":  "programacionCultivoscosecha",
+        "COLUMN_NAME":  "codigosistema",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "INDEX_NAME":  "programacionCultivoscostos",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "INDEX_NAME":  "programacionCultivoscostos",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "INDEX_NAME":  "programacionCultivoscostos1",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "UNIQUE":  false,
+        "PRIMARY_KEY":  false,
+        "ORDINAL_POSITION":  1
+    }
+]

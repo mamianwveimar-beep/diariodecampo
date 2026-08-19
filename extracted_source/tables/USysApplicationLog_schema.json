@@ -1,0 +1,92 @@
+﻿[
+    {
+        "Name":  "ID",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "SourceObject",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Data Macro Instance ID",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Error Number",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Category",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Object Type",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Description",
+        "Type":  "Memo (Long Text)",
+        "Size":  0,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Context",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Created",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

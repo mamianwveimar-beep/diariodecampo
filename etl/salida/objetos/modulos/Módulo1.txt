@@ -1,0 +1,21 @@
+Option Compare Database
+
+Sub DeshabilitarBotones()
+With Form_frmSubSiembra
+    .cmdInicio.Enabled = False
+    .cmdSiguiente.Enabled = False
+    .cmdAnterior.Enabled = False
+    .cmdFinal.Enabled = False
+    .cmdNuevo.Enabled = False
+End With
+End Sub
+
+Sub HabilitarBotones()
+With Form_frmSubSiembra
+     .cmdInicio.Enabled = True
+    .cmdSiguiente.Enabled = True
+    .cmdAnterior.Enabled = True
+    .cmdFinal.Enabled = True
+    .cmdNuevo.Enabled = True
+    End With
+End Sub

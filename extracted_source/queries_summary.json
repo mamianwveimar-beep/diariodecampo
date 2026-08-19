@@ -1,0 +1,118 @@
+﻿[
+    {
+        "Name":  "ActualizarAbonamiento",
+        "Type":  0
+    },
+    {
+        "Name":  "actualizarCostosAbonamiento",
+        "Type":  64
+    },
+    {
+        "Name":  "actualizarCostosAbonamientoLiquido",
+        "Type":  64
+    },
+    {
+        "Name":  "cCostosActividades",
+        "Type":  0
+    },
+    {
+        "Name":  "cCostosInsumos",
+        "Type":  0
+    },
+    {
+        "Name":  "cInventarioCampo",
+        "Type":  0
+    },
+    {
+        "Name":  "cInventarioProductos",
+        "Type":  0
+    },
+    {
+        "Name":  "cosecha Consulta",
+        "Type":  0
+    },
+    {
+        "Name":  "cProgramacionCultivo",
+        "Type":  0
+    },
+    {
+        "Name":  "cProgramacionCultivosAbonamiento",
+        "Type":  0
+    },
+    {
+        "Name":  "cProgramacionSiembra",
+        "Type":  0
+    },
+    {
+        "Name":  "IngresoAbonoLiquido1Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoAbonoLiquido2Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoAbonoLiquido3Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoAbonoLiquido4Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoAbonoSolido1Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoAbonoSolido2Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoAbonoSolido3Aplicacion",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoCostosCobertura",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoCostosDeshierbe",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoCostosPreparacionTerreno",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoCostosSiembra",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoPreparacionTerreno",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoPrimerDeshierbe",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoProtecionBasilus",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoProtecionBasilus2",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoSegundoDeshierbe",
+        "Type":  64
+    },
+    {
+        "Name":  "IngresoSiembra",
+        "Type":  64
+    },
+    {
+        "Name":  "salidaAbono",
+        "Type":  64
+    }
+]

@@ -1,0 +1,62 @@
+﻿[
+    {
+        "Id":  1,
+        "NitCedula":  "7090044",
+        "fechaPedido":  "2021-11-16 00:00:00",
+        "Transporte":  0,
+        "TotalPedido":  800,
+        "FechaEntrega":  null,
+        "Responsable":  null,
+        "Cancelado":  false,
+        "Observacion":  "No",
+        "Activo":  false
+    },
+    {
+        "Id":  2,
+        "NitCedula":  "773773",
+        "fechaPedido":  "2021-09-09 00:00:00",
+        "Transporte":  0,
+        "TotalPedido":  4000,
+        "FechaEntrega":  "2021-09-17 00:00:00",
+        "Responsable":  null,
+        "Cancelado":  false,
+        "Observacion":  null,
+        "Activo":  true
+    },
+    {
+        "Id":  3,
+        "NitCedula":  "773773",
+        "fechaPedido":  "2021-09-15 00:00:00",
+        "Transporte":  0,
+        "TotalPedido":  0,
+        "FechaEntrega":  "2021-09-23 00:00:00",
+        "Responsable":  "Wveimar",
+        "Cancelado":  false,
+        "Observacion":  null,
+        "Activo":  true
+    },
+    {
+        "Id":  4,
+        "NitCedula":  "773773",
+        "fechaPedido":  "2021-10-04 00:00:00",
+        "Transporte":  0,
+        "TotalPedido":  0,
+        "FechaEntrega":  "2021-10-12 00:00:00",
+        "Responsable":  null,
+        "Cancelado":  false,
+        "Observacion":  null,
+        "Activo":  true
+    },
+    {
+        "Id":  11,
+        "NitCedula":  "7090044",
+        "fechaPedido":  "2021-11-16 00:00:00",
+        "Transporte":  0,
+        "TotalPedido":  0,
+        "FechaEntrega":  "2021-11-24 00:00:00",
+        "Responsable":  null,
+        "Cancelado":  false,
+        "Observacion":  null,
+        "Activo":  true
+    }
+]

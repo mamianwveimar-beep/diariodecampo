@@ -1,0 +1,22 @@
+[
+    {
+        "codigoCiudad":  1,
+        "nombreCiudad":  "Marinilla"
+    },
+    {
+        "codigoCiudad":  2,
+        "nombreCiudad":  "Rionegro"
+    },
+    {
+        "codigoCiudad":  3,
+        "nombreCiudad":  "Santuario"
+    },
+    {
+        "codigoCiudad":  4,
+        "nombreCiudad":  "El Carmen"
+    },
+    {
+        "codigoCiudad":  5,
+        "nombreCiudad":  "Medellin"
+    }
+]

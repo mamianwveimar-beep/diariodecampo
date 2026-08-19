@@ -1,0 +1,25 @@
+{
+  "name": "diariodecampo-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "deploy": "wrangler deploy",
+    "migrar:local": "wrangler d1 migrations apply diariodecampo --local",
+    "migrar:nube": "wrangler d1 migrations apply diariodecampo --remote",
+    "sembrar:local": "wrangler d1 execute diariodecampo --local --file=../etl/salida/seed.sql",
+    "sembrar:nube": "wrangler d1 execute diariodecampo --remote --file=../etl/salida/seed.sql",
+    "test": "node --test test/fechas.test.mjs",
+    "paridad": "node test/paridad-consultas.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.6.14"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "typescript": "^5.7.2",
+    "wrangler": "^3.99.0"
+  }
+}

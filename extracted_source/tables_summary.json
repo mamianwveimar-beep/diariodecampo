@@ -1,0 +1,72 @@
+﻿[
+    {
+        "Name":  "actividades",
+        "RecordCount":  157,
+        "FieldsCount":  15
+    },
+    {
+        "Name":  "ciudad",
+        "RecordCount":  5,
+        "FieldsCount":  2
+    },
+    {
+        "Name":  "clientes",
+        "RecordCount":  2,
+        "FieldsCount":  16
+    },
+    {
+        "Name":  "cosecha",
+        "RecordCount":  7,
+        "FieldsCount":  9
+    },
+    {
+        "Name":  "costosInsumos",
+        "RecordCount":  76,
+        "FieldsCount":  11
+    },
+    {
+        "Name":  "costosMO",
+        "RecordCount":  0,
+        "FieldsCount":  11
+    },
+    {
+        "Name":  "detallePedido",
+        "RecordCount":  15,
+        "FieldsCount":  6
+    },
+    {
+        "Name":  "empleados",
+        "RecordCount":  2,
+        "FieldsCount":  24
+    },
+    {
+        "Name":  "infoSemilla",
+        "RecordCount":  4,
+        "FieldsCount":  28
+    },
+    {
+        "Name":  "inventarioProductos",
+        "RecordCount":  10,
+        "FieldsCount":  11
+    },
+    {
+        "Name":  "pedido",
+        "RecordCount":  5,
+        "FieldsCount":  10
+    },
+    {
+        "Name":  "productos",
+        "RecordCount":  6,
+        "FieldsCount":  13
+    },
+    {
+        "Name":  "programacionCultivos",
+        "RecordCount":  15,
+        "FieldsCount":  17
+    },
+    {
+        "Name":  "USysApplicationLog",
+        "RecordCount":  54,
+        "FieldsCount":  9
+    }
+]

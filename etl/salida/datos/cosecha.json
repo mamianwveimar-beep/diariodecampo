@@ -1,0 +1,79 @@
+[
+    {
+        "Id":  3,
+        "codigosistema":  46,
+        "fechaCosecha":  "2021-11-11",
+        "peso":  2,
+        "pesoPromedio":  2,
+        "numeroPlantasCosechadas":  2,
+        "remision":  "2",
+        "factura":  "2",
+        "observacion":  "2"
+    },
+    {
+        "Id":  5,
+        "codigosistema":  45,
+        "fechaCosecha":  "2021-11-14",
+        "peso":  4,
+        "pesoPromedio":  4,
+        "numeroPlantasCosechadas":  10,
+        "remision":  "4",
+        "factura":  "4",
+        "observacion":  "4"
+    },
+    {
+        "Id":  6,
+        "codigosistema":  45,
+        "fechaCosecha":  "2021-11-16",
+        "peso":  2,
+        "pesoPromedio":  0.3,
+        "numeroPlantasCosechadas":  12,
+        "remision":  "1",
+        "factura":  "1",
+        "observacion":  "1"
+    },
+    {
+        "Id":  7,
+        "codigosistema":  45,
+        "fechaCosecha":  "2021-11-16",
+        "peso":  1,
+        "pesoPromedio":  0.2,
+        "numeroPlantasCosechadas":  1,
+        "remision":  "1",
+        "factura":  "1",
+        "observacion":  "1"
+    },
+    {
+        "Id":  8,
+        "codigosistema":  45,
+        "fechaCosecha":  "2021-11-16",
+        "peso":  1,
+        "pesoPromedio":  1,
+        "numeroPlantasCosechadas":  1,
+        "remision":  "1",
+        "factura":  "1",
+        "observacion":  "1"
+    },
+    {
+        "Id":  9,
+        "codigosistema":  45,
+        "fechaCosecha":  "2021-11-16",
+        "peso":  1,
+        "pesoPromedio":  1,
+        "numeroPlantasCosechadas":  1,
+        "remision":  "1",
+        "factura":  "1",
+        "observacion":  "1"
+    },
+    {
+        "Id":  10,
+        "codigosistema":  45,
+        "fechaCosecha":  "2021-11-16",
+        "peso":  1,
+        "pesoPromedio":  1,
+        "numeroPlantasCosechadas":  1,
+        "remision":  "1",
+        "factura":  "1",
+        "observacion":  "1"
+    }
+]

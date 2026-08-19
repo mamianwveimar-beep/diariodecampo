@@ -1,0 +1,242 @@
+﻿[
+    {
+        "Name":  "id",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "documento",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "tipoDocumento",
+        "Type":  "Text",
+        "Size":  20,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "\"cc\"",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "nombre",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "apellido",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "direccion",
+        "Type":  "Text",
+        "Size":  100,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "telefono",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "telefono2",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fechaNacimiento",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "estadoCivil",
+        "Type":  "Text",
+        "Size":  20,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "\"union libre\"",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "correo",
+        "Type":  "Text",
+        "Size":  100,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "sexo",
+        "Type":  "Text",
+        "Size":  10,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "\"M\"",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "archivo",
+        "Type":  "Unknown (101)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "arl",
+        "Type":  "Text",
+        "Size":  100,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "salario",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "auxilioTransporte",
+        "Type":  "Boolean",
+        "Size":  1,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "No",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "pension",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "cajaCompensacion",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "eps",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "numeroCuenta",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fechaIngreso",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "=Date()",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "estudios",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "comentario",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "activo",
+        "Type":  "Boolean",
+        "Size":  1,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "No",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

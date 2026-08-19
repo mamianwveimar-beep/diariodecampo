@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Name":  "infInventarioProductos",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "infCostosActividadesXSemana",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "infProgramacionSiembra",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "infInventarioCampo",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "infoCostosActividadesXCultivo",
+        "Status":  "Exported"
+    },
+    {
+        "Name":  "infTrazabilidad",
+        "Status":  "Exported"
+    }
+]

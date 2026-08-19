@@ -1,0 +1,5 @@
+﻿SELECT programacionCultivos.codigosistema, programacionCultivos.codSemilla, programacionCultivos.fechasiembra, programacionCultivos.lote, programacionCultivos.cama, Min(cosecha.fechaCosecha) AS InicioCosecha, Max(cosecha.fechaCosecha) AS FinalCosecha, programacionCultivos.numeroPlantasSembradas, Sum(cosecha.numeroPlantasCosechadas) AS SumaDenumeroPlantasCosechadas, Sum(cosecha.peso) AS kilosCosechados, infoSemilla.cantidadPeriodoSiembra AS Pedido, programacionCultivos.activo, infoSemilla.ciclo
+FROM (infoSemilla INNER JOIN programacionCultivos ON infoSemilla.Id = programacionCultivos.codSemilla) LEFT JOIN cosecha ON programacionCultivos.codigosistema = cosecha.codigosistema
+GROUP BY programacionCultivos.codigosistema, programacionCultivos.codSemilla, programacionCultivos.fechasiembra, programacionCultivos.lote, programacionCultivos.cama, programacionCultivos.numeroPlantasSembradas, infoSemilla.cantidadPeriodoSiembra, programacionCultivos.activo, infoSemilla.ciclo
+HAVING (((programacionCultivos.activo)=True));
+

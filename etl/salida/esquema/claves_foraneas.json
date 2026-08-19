@@ -1,0 +1,74 @@
+[
+    {
+        "PK_TABLE_NAME":  "ciudad",
+        "PK_COLUMN_NAME":  "codigoCiudad",
+        "FK_TABLE_NAME":  "clientes",
+        "FK_COLUMN_NAME":  "CiudadCliente",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "clientes",
+        "PK_COLUMN_NAME":  "NitCedula",
+        "FK_TABLE_NAME":  "inventarioProductos",
+        "FK_COLUMN_NAME":  "cliente",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "empleados",
+        "PK_COLUMN_NAME":  "id",
+        "FK_TABLE_NAME":  "inventarioProductos",
+        "FK_COLUMN_NAME":  "empleado",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "infoSemilla",
+        "PK_COLUMN_NAME":  "Id",
+        "FK_TABLE_NAME":  "programacionCultivos",
+        "FK_COLUMN_NAME":  "codSemilla",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "pedido",
+        "PK_COLUMN_NAME":  "Id",
+        "FK_TABLE_NAME":  "detallePedido",
+        "FK_COLUMN_NAME":  "IdPedido",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "productos",
+        "PK_COLUMN_NAME":  "id",
+        "FK_TABLE_NAME":  "inventarioProductos",
+        "FK_COLUMN_NAME":  "producto",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "programacionCultivos",
+        "PK_COLUMN_NAME":  "codigosistema",
+        "FK_TABLE_NAME":  "actividades",
+        "FK_COLUMN_NAME":  "codigoSistema",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "programacionCultivos",
+        "PK_COLUMN_NAME":  "codigosistema",
+        "FK_TABLE_NAME":  "cosecha",
+        "FK_COLUMN_NAME":  "codigosistema",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    },
+    {
+        "PK_TABLE_NAME":  "programacionCultivos",
+        "PK_COLUMN_NAME":  "codigosistema",
+        "FK_TABLE_NAME":  "costosInsumos",
+        "FK_COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "UPDATE_RULE":  "CASCADE",
+        "DELETE_RULE":  "CASCADE"
+    }
+]

@@ -1,0 +1,2732 @@
+[
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "Actividad",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "cama",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "cantidadAbono",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "codigoSistema",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "codsemilla",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "costo",
+        "ORDINAL_POSITION":  14,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "fechaSiembra",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "lote",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "numeroPlantas",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "responsable",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "semanaAbono",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "total",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "unidad",
+        "ORDINAL_POSITION":  15,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "abonoPrimera",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "cama",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "codSemilla",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "fechasiembra",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "lote",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "numeroPlantasSembradas",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ActualizarAbonamiento",
+        "COLUMN_NAME":  "semana1",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "Actividad",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "cama",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "cantidadAbono",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "codigoSistema",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "codsemilla",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "costo",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL_POSITION":  14,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "fechaSiembra",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "GTotal",
+        "ORDINAL_POSITION":  16,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "lote",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "numeroPlantas",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "responsable",
+        "ORDINAL_POSITION":  15,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "semanaAbono",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "total",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosActividades",
+        "COLUMN_NAME":  "unidad",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "cantidad",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "codSemilla",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "fecha",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "observaciones",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "unidad",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "valorTotal",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cCostosInsumos",
+        "COLUMN_NAME":  "valorUnitario",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "activo",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "cama",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "ciclo",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "codSemilla",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "fechasiembra",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "FinalCosecha",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "InicioCosecha",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "kilosCosechados",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "lote",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "numeroPlantasSembradas",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "Pedido",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioCampo",
+        "COLUMN_NAME":  "SumaDenumeroPlantasCosechadas",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "cliente",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  70
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "descripcion",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "empleado",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "fecha",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  42
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "ingreso",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "producto",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "saldo",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cInventarioProductos",
+        "COLUMN_NAME":  "salida",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ciudad",
+        "COLUMN_NAME":  "codigoCiudad",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "ciudad",
+        "COLUMN_NAME":  "nombreCiudad",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "ApellidoCliente",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  30
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "Arcchivos",
+        "ORDINAL_POSITION":  16,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "No",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "barrioCliente",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "Carpeta",
+        "ORDINAL_POSITION":  15,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "CelularCliente",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "CiudadCliente",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "5",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "CorreoCliente",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "DireccionCliente",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "FechaAfiliacion",
+        "ORDINAL_POSITION":  14,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "=Date()",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "fechaNacimiento",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "NitCedula",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "NombreCliente",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  30
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "PuntosCliente",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "SexoCliente",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  10
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "TelefonoFijoCliente",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "TipoDocumento",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "\"CC\"",
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "factura",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "fechaCosecha",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "numeroPlantasCosechadas",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "observacion",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "peso",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "pesoPromedio",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "remision",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "factura",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "fechaCosecha",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "numeroPlantasCosechadas",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "observacion",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "peso",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "pesoPromedio",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cosecha Consulta",
+        "COLUMN_NAME":  "remision",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "cantidad",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "fecha",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "observaciones",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "producto",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "unidad",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "valorTotal",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "valorUnitario",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "cantidad",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "fecha",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "observaciones",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "producto",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "unidad",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "valorTotal",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "valorUnitario",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "#dias",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "abonoPrimera",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "abonoSegunda",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "abonoTercera",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "codSemilla",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "fechasiembra",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "numeroPlantasSembradas",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "semana1",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "semana2",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "semana3",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cProgramacionCultivosAbonamiento",
+        "COLUMN_NAME":  "semanaActual",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "areaLote",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "cantidadPeriodoSiembra",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "cantidakgTiempoCosecha",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "FrecuanciaSiembra",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "metrosLinealesLote",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "numeroLote",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "numeroPlantasLote",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "Pedido",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "semilla",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "TotalArea",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "TotalMetrosLineales",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "cProgramacionSiembra",
+        "COLUMN_NAME":  "variedad",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "Cantidad",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "IdPedido",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "IdSemilla",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "SubTotal",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  6,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "ValorUnitario",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "activo",
+        "ORDINAL_POSITION":  24,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "No",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "apellido",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "archivo",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "arl",
+        "ORDINAL_POSITION":  14,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "auxilioTransporte",
+        "ORDINAL_POSITION":  16,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "No",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "cajaCompensacion",
+        "ORDINAL_POSITION":  18,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "comentario",
+        "ORDINAL_POSITION":  23,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "correo",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "direccion",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "documento",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "eps",
+        "ORDINAL_POSITION":  19,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "estadoCivil",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "\"union libre\"",
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "estudios",
+        "ORDINAL_POSITION":  22,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "fechaIngreso",
+        "ORDINAL_POSITION":  21,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "=Date()",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "fechaNacimiento",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "nombre",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "numeroCuenta",
+        "ORDINAL_POSITION":  20,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "pension",
+        "ORDINAL_POSITION":  17,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "salario",
+        "ORDINAL_POSITION":  15,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "sexo",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "\"M\"",
+        "CHARACTER_MAXIMUM_LENGTH":  10
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "telefono",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "telefono2",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "tipoDocumento",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "\"cc\"",
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "abonoLiquido",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "abonoPrimera",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "abonoSegunda",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "abonoSiembra",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "abonoTercera",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Activo",
+        "ORDINAL_POSITION":  27,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "No",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "anchoPromedioHera",
+        "ORDINAL_POSITION":  19,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Aplicacion1",
+        "ORDINAL_POSITION":  14,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Aplicacion2",
+        "ORDINAL_POSITION":  15,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Aplicacion3",
+        "ORDINAL_POSITION":  16,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Archivo",
+        "ORDINAL_POSITION":  26,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "area",
+        "ORDINAL_POSITION":  23,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "calDolomita",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "cantidadPeriodoSiembra",
+        "ORDINAL_POSITION":  25,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "ciclo",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "entrePlanta",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "entreSurcos",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Perdida",
+        "ORDINAL_POSITION":  28,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "periodoSiembra",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Poda1",
+        "ORDINAL_POSITION":  17,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Poda2",
+        "ORDINAL_POSITION":  18,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "porcentajePerdida",
+        "ORDINAL_POSITION":  21,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "rendimiento",
+        "ORDINAL_POSITION":  22,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "semilla",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "tiempoCosecha",
+        "ORDINAL_POSITION":  24,
+        "DATA_TYPE":  4,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Valor",
+        "ORDINAL_POSITION":  20,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "variedad",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "cliente",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "codigoSistemaProgramacion",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  70
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "descripcion",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "empleado",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "fecha",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "=Date()",
+        "CHARACTER_MAXIMUM_LENGTH":  42
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "ingreso",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "producto",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "saldo",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "salida",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Activo",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "1",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Cancelado",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "No",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "FechaEntrega",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "=Date()+8",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "fechaPedido",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "=Date()",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "NitCedula",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Observacion",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Responsable",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "TotalPedido",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Transporte",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "archivo",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "cantidad",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "cantidadMax",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "CantidadMin",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "codigoProducto",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "id",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "marca",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "nombreProducto",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "observacion",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "prevedor",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  60
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "registro",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "unidad",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  20
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "valorUnidad",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "activo",
+        "ORDINAL_POSITION":  17,
+        "DATA_TYPE":  11,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "1",
+        "CHARACTER_MAXIMUM_LENGTH":  2
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "areaCultivada",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "cama",
+        "ORDINAL_POSITION":  11,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "cantidadAbono0",
+        "ORDINAL_POSITION":  13,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "codigoSemillero",
+        "ORDINAL_POSITION":  14,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  50
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "codSemilla",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "factura",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  30
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "fechafinal",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "fechaRealCosecha",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "fechasiembra",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "=Date()",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "kilosCosechados",
+        "ORDINAL_POSITION":  16,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "lote",
+        "ORDINAL_POSITION":  10,
+        "DATA_TYPE":  5,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "numeroPlantasCosechadas",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "numeroPlantasSembradas",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  2,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  true,
+        "COLUMN_DEFAULT":  "0",
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "observaciones",
+        "ORDINAL_POSITION":  15,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "tipoAbono",
+        "ORDINAL_POSITION":  12,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  100
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Category",
+        "ORDINAL_POSITION":  5,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Context",
+        "ORDINAL_POSITION":  8,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Created",
+        "ORDINAL_POSITION":  9,
+        "DATA_TYPE":  7,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Data Macro Instance ID",
+        "ORDINAL_POSITION":  3,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Description",
+        "ORDINAL_POSITION":  7,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  0
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Error Number",
+        "ORDINAL_POSITION":  4,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "ID",
+        "ORDINAL_POSITION":  1,
+        "DATA_TYPE":  3,
+        "IS_NULLABLE":  false,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  null
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "Object Type",
+        "ORDINAL_POSITION":  6,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "SourceObject",
+        "ORDINAL_POSITION":  2,
+        "DATA_TYPE":  130,
+        "IS_NULLABLE":  true,
+        "COLUMN_HASDEFAULT":  false,
+        "COLUMN_DEFAULT":  null,
+        "CHARACTER_MAXIMUM_LENGTH":  255
+    }
+]

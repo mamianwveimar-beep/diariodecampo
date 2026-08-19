@@ -1,0 +1,616 @@
+<title>Migración diarioDeCampo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#F5F6F2; --surface:#FFFFFF; --surface-2:#EDEFE9;
+  --ink:#171E1A; --ink-2:#4A554E; --ink-3:#79837B;
+  --rule:#D9DED4; --rule-strong:#B7C0B2;
+  --accent:#10627C; --accent-soft:#E1EEF4;
+  --ochre:#A8701A; --ochre-soft:#F6EDDC;
+  --oxide:#9C3823; --oxide-soft:#F7E6E2;
+  --moss:#3D7350; --moss-soft:#E2EEE5;
+  --measure:70ch; --wide:1180px;
+  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#131714; --surface:#1A201B; --surface-2:#232A24;
+    --ink:#E7EBE3; --ink-2:#A9B2A9; --ink-3:#7D867E;
+    --rule:#2C332D; --rule-strong:#414940;
+    --accent:#5FB8D6; --accent-soft:#12313C;
+    --ochre:#DCA555; --ochre-soft:#382C17;
+    --oxide:#DD8069; --oxide-soft:#39211B;
+    --moss:#74B588; --moss-soft:#1B3324;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#131714; --surface:#1A201B; --surface-2:#232A24;
+  --ink:#E7EBE3; --ink-2:#A9B2A9; --ink-3:#7D867E;
+  --rule:#2C332D; --rule-strong:#414940;
+  --accent:#5FB8D6; --accent-soft:#12313C;
+  --ochre:#DCA555; --ochre-soft:#382C17;
+  --oxide:#DD8069; --oxide-soft:#39211B;
+  --moss:#74B588; --moss-soft:#1B3324;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--f-body); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:var(--wide); margin:0 auto; padding:0 28px 120px}
+.col{max-width:var(--measure)}
+.wide{max-width:100%}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--f-display); font-weight:600; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.5rem,6vw,4rem); line-height:1.02; letter-spacing:-.022em}
+h2{font-size:clamp(1.6rem,3.2vw,2.1rem); line-height:1.12; letter-spacing:-.014em}
+h3{font-size:1.19rem; line-height:1.25; letter-spacing:-.008em}
+h4{font-size:1rem; font-family:var(--f-body); font-weight:600; letter-spacing:-.002em}
+p{margin:0}
+a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+strong{font-weight:600}
+code,.mono{font-family:var(--f-mono); font-size:.87em; font-variant-ligatures:none}
+code{background:var(--surface-2); padding:.1em .34em; border-radius:3px; color:var(--ink)}
+.eyebrow{
+  font-family:var(--f-mono); font-size:.72rem; font-weight:500;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);
+}
+.lede{font-family:var(--f-display); font-size:1.28rem; line-height:1.5; color:var(--ink-2)}
+.small{font-size:.88rem; color:var(--ink-2)}
+
+/* ---------- structure ---------- */
+header.masthead{
+  padding:80px 0 44px; border-bottom:2px solid var(--rule-strong);
+  display:flex; flex-direction:column; gap:22px;
+}
+.masthead .meta{display:flex; flex-wrap:wrap; gap:10px 26px}
+section{padding:56px 0; border-bottom:1px solid var(--rule); display:flex; flex-direction:column; gap:26px}
+section:last-of-type{border-bottom:none}
+.sec-head{display:flex; flex-direction:column; gap:9px}
+.stack{display:flex; flex-direction:column; gap:16px}
+.stack-lg{display:flex; flex-direction:column; gap:32px}
+
+/* ---------- verdict ---------- */
+.verdict{
+  background:var(--surface); border:1px solid var(--rule);
+  border-left:4px solid var(--accent); border-radius:3px;
+  padding:26px 30px; display:flex; flex-direction:column; gap:14px;
+}
+.verdict h3{color:var(--accent)}
+
+/* ---------- key figures ---------- */
+.figures{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+  gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden;
+}
+.fig{background:var(--surface); padding:18px 20px; display:flex; flex-direction:column; gap:5px}
+.fig .n{font-family:var(--f-display); font-size:2rem; line-height:1; font-variant-numeric:tabular-nums}
+.fig .l{font-size:.79rem; color:var(--ink-2); line-height:1.35}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:3px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.895rem; min-width:600px}
+th,td{text-align:left; padding:11px 15px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:var(--f-mono); font-size:.71rem; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); background:var(--surface-2);
+  border-bottom:1px solid var(--rule-strong); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums; font-family:var(--f-mono); font-size:.82rem}
+td .mono,td code{white-space:nowrap}
+caption{caption-side:bottom; padding:10px 15px; font-size:.8rem; color:var(--ink-3); text-align:left}
+
+/* ---------- chips ---------- */
+.chip{
+  display:inline-block; font-family:var(--f-mono); font-size:.68rem; font-weight:500;
+  letter-spacing:.07em; text-transform:uppercase; padding:2px 7px; border-radius:2px; white-space:nowrap;
+}
+.chip.rompe{background:var(--oxide-soft); color:var(--oxide)}
+.chip.degrada{background:var(--ochre-soft); color:var(--ochre)}
+.chip.muerto{background:var(--surface-2); color:var(--ink-3)}
+.chip.ok{background:var(--moss-soft); color:var(--moss)}
+.chip.info{background:var(--accent-soft); color:var(--accent)}
+
+/* ---------- phases ---------- */
+.phases{display:flex; flex-direction:column}
+.phase{
+  display:grid; grid-template-columns:74px 1fr; gap:0 26px;
+  padding:26px 0; border-top:1px solid var(--rule);
+}
+.phase:last-child{border-bottom:1px solid var(--rule)}
+.phase .idx{
+  font-family:var(--f-mono); font-size:.76rem; font-weight:500; color:var(--ink-3);
+  letter-spacing:.06em; padding-top:5px; border-right:1px solid var(--rule);
+}
+.phase .idx b{display:block; font-family:var(--f-display); font-size:1.85rem; font-weight:600; color:var(--accent); line-height:1}
+.phase .body{display:flex; flex-direction:column; gap:11px; padding-right:8px}
+.phase ul{margin:0; padding-left:1.15em; display:flex; flex-direction:column; gap:6px}
+.phase li{padding-left:.15em}
+.accept{
+  font-size:.85rem; color:var(--ink-2); background:var(--surface); border:1px solid var(--rule);
+  border-radius:3px; padding:10px 14px;
+}
+.accept b{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:3px}
+
+/* ---------- code block ---------- */
+pre{
+  margin:0; overflow-x:auto; background:var(--surface); border:1px solid var(--rule);
+  border-radius:3px; padding:16px 18px; font-family:var(--f-mono);
+  font-size:.82rem; line-height:1.62; color:var(--ink);
+}
+pre .c{color:var(--ink-3)}
+pre .k{color:var(--accent)}
+
+/* ---------- misc ---------- */
+ul.plain{margin:0; padding-left:1.15em; display:flex; flex-direction:column; gap:8px}
+.note{border-left:3px solid var(--ochre); background:var(--ochre-soft); padding:14px 18px; border-radius:0 3px 3px 0; font-size:.92rem}
+.note.q{border-color:var(--accent); background:var(--accent-soft)}
+.two{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px}
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:3px; padding:20px 22px; display:flex; flex-direction:column; gap:10px}
+footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px solid var(--rule-strong); margin-top:56px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+@media (max-width:640px){
+  .page{padding:0 18px 80px}
+  .phase{grid-template-columns:1fr; gap:12px}
+  .phase .idx{border-right:none; border-bottom:1px solid var(--rule); padding-bottom:8px; display:flex; align-items:baseline; gap:10px}
+}
+</style>
+
+<div class="page">
+
+<header class="masthead">
+  <div class="eyebrow">Plan definitivo de implementación</div>
+  <h1>Migración de<br>diarioDeCampo.accdb</h1>
+  <p class="lede col">De Microsoft Access a una aplicación web con Angular y Cloudflare Workers + D1, conservando la lógica agrícola tal como opera hoy y aislando los datos que están rotos en origen.</p>
+  <div class="meta small">
+    <span><span class="eyebrow">Origen</span> &nbsp;Access 2016 · 7,5 MB · 13 tablas útiles</span>
+    <span><span class="eyebrow">Destino</span> &nbsp;Angular · Workers · D1 · R2</span>
+    <span><span class="eyebrow">Esfuerzo</span> &nbsp;≈26 días hábiles, 1 desarrollador</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Veredicto</div>
+    <h2>Es viable, y el destino elegido encaja mejor de lo habitual</h2>
+  </div>
+  <div class="verdict col">
+    <h3>Viable, con una condición previa</h3>
+    <p>El volumen de datos es de <strong>354 filas en total</strong>. Eso hace que el riesgo real de esta migración no esté en los datos ni en la escala, sino en dos sitios: la <strong>lógica agrícola incrustada en 20 consultas de acción</strong> de Access, y la <strong>calidad del material de partida</strong>.</p>
+    <p>La condición previa es que <strong>la carpeta <code>extracted_source/</code> no sirve como fuente de verdad</strong> y hay que regenerarla. Está doblemente mal codificada, el código VBA sale truncado, no contiene ninguna clave primaria, foránea ni índice, y perdió los 8 archivos adjuntos. Migrar desde ahí produciría un esquema plano y equivocado.</p>
+    <p>La buena noticia: <strong>Access 2016 y el proveedor ACE OLEDB 16 están instalados en esta máquina</strong>, así que todo lo que falta se puede volver a extraer del <code>.accdb</code> de forma programática y verificable. Ya lo hice para elaborar este plan.</p>
+  </div>
+
+  <div class="figures wide">
+    <div class="fig"><span class="n">354</span><span class="l">filas útiles a migrar</span></div>
+    <div class="fig"><span class="n">13</span><span class="l">tablas (de 14; una se descarta)</span></div>
+    <div class="fig"><span class="n">29</span><span class="l">consultas: 9 vistas + 20 de acción</span></div>
+    <div class="fig"><span class="n">14</span><span class="l">formularios a rehacer</span></div>
+    <div class="fig"><span class="n">6</span><span class="l">informes a rehacer</span></div>
+    <div class="fig"><span class="n">75</span><span class="l">filas en cuarentena</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Punto de partida</div>
+    <h2>Qué hay hoy y en qué estado está</h2>
+  </div>
+  <p class="col">El archivo <code>plan.txt</code> está vacío: no existía ningún plan previo, así que este documento no revisa uno anterior sino que lo establece. Y la extracción existente tiene cuatro problemas que la inhabilitan como base.</p>
+
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Problema en <code>extracted_source/</code></th><th>Alcance</th><th>Consecuencia si se migra desde ahí</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Codificación doble</strong><br><span class="small">UTF-8 sobre UTF-16 mal convertido</span></td><td><code>forms/</code>, <code>reports/</code>, <code>macros/</code>, <code>modules/</code></td><td>Los 23 archivos son ilegibles sin decodificar. Nadie puede leer la lógica de los formularios.</td></tr>
+        <tr><td><strong>VBA truncado</strong></td><td>4 módulos</td><td>Terminan cortados a media palabra: <code>End Su</code>, <code>End Functio</code>. Se pierde el final de cada módulo.</td></tr>
+        <tr><td><strong>Sin metadatos de esquema</strong></td><td>Todas las tablas</td><td>Ninguna clave primaria, foránea ni índice. Se reconstruiría un modelo sin integridad referencial, y con las claves primarias equivocadas.</td></tr>
+        <tr><td><strong>Adjuntos perdidos</strong></td><td>8 archivos, 713 KB</td><td>Los campos <em>Attachment</em> se exportaron como <code>{}</code>. Se perderían las fotos de semillas, clientes, empleado y producto.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small col">Los cuatro se resuelven en la Fase 1 con un único script de re-extracción. No hay que rehacer nada a mano.</p>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Auditoría del .accdb</div>
+    <h2>Defectos reales del sistema actual</h2>
+  </div>
+  <p class="col">Todo lo siguiente sale de consultar el <code>.accdb</code> directamente, no de la extracción. Determina qué se corrige y qué se replica tal cual.</p>
+
+  <h3 class="col">Las claves primarias no son las que parecen</h3>
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Tabla</th><th>Clave primaria real en Access</th><th class="num">Filas</th><th>Efecto</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>actividades</code></td>
+          <td class="small">Compuesta: <span class="mono">codigoSistema, codsemilla, fechaSiembra, semanaAbono, Actividad</span>. El campo <code>id</code> es autonumérico pero su índice <strong>no es único</strong>.</td>
+          <td class="num">157</td>
+          <td><span class="chip rompe">rompe</span> El VBA borra con <code>DELETE … WHERE id = X</code>. Sobre un índice no único, un borrado puede llevarse varias filas.</td>
+        </tr>
+        <tr>
+          <td><code>costosInsumos</code></td>
+          <td class="small">Compuesta: <span class="mono">concepto, detalle, programacionCultivoCodCultivo</span>. <code>Id</code> es autonumérico, no es clave.</td>
+          <td class="num">76</td>
+          <td><span class="chip degrada">degrada</span> Impide más de un costo del mismo concepto por cultivo. Las consultas <code>Ingreso*</code> descartan filas en silencio al reejecutarse.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="col">Integridad referencial: 8 relaciones declaradas, 3 ausentes</h3>
+  <p class="col">Las 8 relaciones que existen están todas en cascada. Las tres que faltan son precisamente donde hay datos huérfanos.</p>
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Referencia sin relación declarada</th><th class="num">Huérfanas</th><th>Diagnóstico</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>costosInsumos.producto</code> → <code>productos.id</code></td>
+          <td class="num">50 / 76</td>
+          <td><span class="chip info">reparable</span> Todas valen <code>999</code>: un centinela inventado para «mano de obra» que nunca se creó como producto. Se crea la fila y la referencia queda válida.</td>
+        </tr>
+        <tr>
+          <td><code>inventarioProductos.codigoSistemaProgramacion</code> → <code>programacionCultivos.codigosistema</code></td>
+          <td class="num">10 / 10</td>
+          <td><span class="chip degrada">cuarentena</span> Valores <code>0</code> (sin cultivo) y <code>10–17</code> (cultivos borrados en cascada). Los movimientos de inventario quedaron colgando.</td>
+        </tr>
+        <tr>
+          <td><code>detallePedido.IdSemilla</code> → <code>infoSemilla.Id</code></td>
+          <td class="num">15 / 15</td>
+          <td><span class="chip rompe">rompe</span> <code>infoSemilla</code> solo tiene los Id 8, 9, 10 y 11. Las líneas apuntan a 1, 14, 15, 16, 17 y 212. <strong>El módulo de pedidos no tiene ni una línea de detalle válida.</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="col">Tipos de dato y objetos muertos</h3>
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Hallazgo</th><th>Severidad</th><th>Decisión</th></tr></thead>
+      <tbody>
+        <tr><td><code>empleados.telefono</code>, <code>telefono2</code>, <code>numeroCuenta</code>, <code>documento</code> son <em>Long Integer</em></td><td><span class="chip rompe">rompe</span></td><td>Un móvil colombiano (10 dígitos, empieza por 3) supera el máximo de un entero de 32 bits. Los datos actuales ya están mutilados: <code>2110</code>, <code>321000</code>. Pasan a <strong>TEXT</strong>.</td></tr>
+        <tr><td><code>inventarioProductos.fecha</code> es <em>Texto(42)</em> con <code>"26/10/2021"</code></td><td><span class="chip rompe">rompe</span></td><td>No se puede ordenar ni filtrar por rango. Pasa a <strong>DATE ISO</strong>. Solo hay 2 valores distintos; conversión trivial.</td></tr>
+        <tr><td><code>detallePedido.SubTotal</code> es <em>Currency</em></td><td><span class="chip degrada">degrada</span></td><td>SQLite no tiene decimal exacto. Pasa a <strong>INTEGER en pesos</strong> (el negocio no usa centavos).</td></tr>
+        <tr><td><code>costosMO</code>: copia exacta de <code>costosInsumos</code>, 0 filas</td><td><span class="chip muerto">muerto</span></td><td>No se crea.</td></tr>
+        <tr><td><code>USysApplicationLog</code>, 54 filas</td><td><span class="chip muerto">muerto</span></td><td>Tabla interna de Access. No se migra.</td></tr>
+        <tr><td><code>Macro1</code> invoca <code>actualizarCostosPreparacionTerreno</code> y <code>actualizarCostosSiembra</code></td><td><span class="chip muerto">muerto</span></td><td>Ninguna de las dos consultas existe en la base. La macro está rota desde hace tiempo. No se migra.</td></tr>
+        <tr><td><code>Módulo1</code> referencia <code>Form_frmSubSiembra</code></td><td><span class="chip muerto">muerto</span></td><td>Ese formulario no existe. Código inalcanzable. No se migra.</td></tr>
+        <tr><td><code>Macro2</code> está vacía</td><td><span class="chip muerto">muerto</span></td><td>No se migra.</td></tr>
+        <tr><td><code>productos.cantidad = -1787,58</code></td><td><span class="chip degrada">degrada</span></td><td>Stock negativo. El saldo se guarda calculado en vez de derivarse de los movimientos. Se conserva el valor y se expone el saldo derivado en paralelo para comparar.</td></tr>
+        <tr><td>Búsqueda de siembras: <code>fechasiembra LIKE '*texto*'</code></td><td><span class="chip degrada">degrada</span></td><td>Comparación de texto sobre un campo de fecha. En el frontend se sustituye por filtro de rango de fechas.</td></tr>
+        <tr><td>Todo el VBA concatena SQL con valores del formulario</td><td><span class="chip rompe">rompe</span></td><td>Inyección SQL. En Workers, <strong>todo con sentencias preparadas</strong>, sin excepción.</td></tr>
+        <tr><td><code>cProgramacionCultivo</code> usa <code>Weekday([bordeles70])</code> antes de definir <code>bordeles70</code>, y calcula <code>abonoTercera/abonoTercera</code></td><td><span class="chip degrada">degrada</span></td><td>El primero depende del orden de evaluación de Access; el segundo da error si <code>abonoTercera</code> es 0. Se replica el resultado observado y se documenta en el código.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Arquitectura</div>
+    <h2>Cómo queda montado</h2>
+  </div>
+  <p class="col">Cloudflare D1 es SQLite gestionado, y Wrangler lo emula en local sobre un archivo SQLite real. Eso resuelve el requisito de «local ahora, nube después» sin dos bases de datos distintas: <strong>el mismo esquema, las mismas migraciones y el mismo código corren en los dos sitios</strong>, y pasar a producción es un despliegue, no una segunda migración.</p>
+
+  <pre><span class="c">diariodecampo/</span>
+├── db/migrations/        <span class="c">SQL versionado — la única fuente del esquema</span>
+├── etl/                  <span class="c">Node + PowerShell: extrae del .accdb y carga en D1</span>
+├── api/                  <span class="c">Worker (TypeScript + Hono)</span>
+│   ├── src/repos/        <span class="c">acceso a D1, todo con sentencias preparadas</span>
+│   ├── src/queries/      <span class="c">las 9 vistas y las 20 consultas de acción</span>
+│   └── src/access-compat/ <span class="c">Format ww, Weekday, Date — equivalencias verificadas</span>
+├── web/                  <span class="c">Angular (standalone components + signals)</span>
+└── docs/paridad/         <span class="c">evidencia de equivalencia Access ↔ D1</span></pre>
+
+  <div class="two wide">
+    <div class="card">
+      <h4>Almacenamiento de los 8 adjuntos</h4>
+      <p class="small">713 KB en total, el mayor de 153 KB. Van a <strong>R2</strong>, con una tabla <code>adjuntos</code> en D1 que guarda nombre original, tipo, tamaño y clave de objeto. Wrangler también emula R2 en local, así que funciona sin conexión desde el primer día.</p>
+    </div>
+    <div class="card">
+      <h4>Nomenclatura del esquema</h4>
+      <p class="small">Se <strong>conservan los nombres exactos de Access</strong>, incluidas las incoherencias (<code>codigosistema</code> frente a <code>codigoSistema</code>) y el error tipográfico <code>clientes.Arcchivos</code>. SQLite no distingue mayúsculas en identificadores, así que no cuesta nada, y hace que la comparación fila a fila contra Access sea directa. La normalización a camelCase ocurre solo en los DTO de la API.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Riesgo técnico principal, ya resuelto</div>
+    <h2>Las tres funciones de Access de las que depende toda la lógica</h2>
+  </div>
+  <p class="col">Las 20 consultas de acción y el informe de trazabilidad calculan fechas y semanas con funciones de Access que SQLite no tiene. Si la equivalencia no es exacta, todo el calendario de abonos se desplaza. Verifiqué las tres contra los datos reales antes de escribir este plan.</p>
+
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Access</th><th>Equivalente en D1 / SQLite</th><th>Verificación</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>Format$(d,"ww",0,0)</code><br><span class="small">semana del año</span></td>
+          <td><code>CAST(strftime('%U',d) AS INTEGER) + 1</code></td>
+          <td><span class="chip ok">verificado</span> Contrastado contra las 157 filas de <code>actividades</code>: <strong>156 coinciden</strong> con los desfases documentados (0, 8, 15, 25, 50, 65, 75 días). La única excluida es la fila manual <code>Actividad = 'otros'</code>.</td>
+        </tr>
+        <tr>
+          <td><code>Weekday(d)</code><br><span class="small">1 = domingo … 7 = sábado</span></td>
+          <td><code>CAST(strftime('%w',d) AS INTEGER) + 1</code></td>
+          <td><span class="chip info">a validar</span> Correspondencia directa. Se valida en Fase 7 contra <code>infTrazabilidad</code>, que la usa 8 veces para alinear labores a lunes, miércoles y jueves.</td>
+        </tr>
+        <tr>
+          <td><code>Date()</code><br><span class="small">fecha de hoy</span></td>
+          <td><strong>No usar <code>date('now')</code></strong></td>
+          <td><span class="chip rompe">trampa</span> Los Workers corren siempre en UTC. En Colombia (UTC−5), entre las 19:00 y la medianoche <code>date('now')</code> devolvería el día siguiente. La fecha de hoy se calcula en la capa de aplicación con zona <code>America/Bogota</code> y se pasa como parámetro enlazado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note col">
+    <strong>Cómo se replica el comportamiento silencioso de Access.</strong> Hoy, al reejecutar una consulta <code>Ingreso*</code>, Access descarta las filas que violan la clave compuesta sin avisar. Para mantener el comportamiento 1:1 sin heredar el fallo, en D1 se conserva esa combinación como índice <code>UNIQUE</code> y los <em>insert</em> usan <code>ON CONFLICT DO NOTHING</code> devolviendo el número de filas omitidas. Resultado idéntico, pero visible y registrado.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Esquema destino</div>
+    <h2>Tabla por tabla</h2>
+  </div>
+  <p class="col">Tipos de Access a SQLite: <em>Date/Time</em> → <code>TEXT</code> ISO-8601 · <em>Yes/No</em> → <code>INTEGER</code> 0/1 con <code>CHECK</code> · <em>Double</em>, <em>Single</em> → <code>REAL</code> · <em>Long</em>, <em>Integer</em> → <code>INTEGER</code> · <em>Text(n)</em> → <code>TEXT</code> con <code>CHECK(length(x) &lt;= n)</code> · <em>Memo</em> → <code>TEXT</code> · <em>Autonumérico</em> → <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> · <em>Attachment</em> → tabla <code>adjuntos</code> + R2.</p>
+
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Tabla</th><th class="num">Filas</th><th>Clave primaria en D1</th><th>Cambios respecto a Access</th></tr></thead>
+      <tbody>
+        <tr><td><code>infoSemilla</code></td><td class="num">4</td><td><code>Id</code></td><td>Adjunto (4 fotos) sale a <code>adjuntos</code>. Sin más cambios.</td></tr>
+        <tr><td><code>programacionCultivos</code></td><td class="num">15</td><td><code>codigosistema</code></td><td>FK a <code>infoSemilla</code> en cascada, igual que hoy.</td></tr>
+        <tr><td><code>actividades</code></td><td class="num">157</td><td><strong><code>id</code></strong></td><td><span class="chip rompe">corregido</span> <code>id</code> pasa a ser clave primaria real. La compuesta original se conserva como índice <code>UNIQUE</code>.</td></tr>
+        <tr><td><code>cosecha</code></td><td class="num">7</td><td><code>Id</code></td><td>Sin cambios.</td></tr>
+        <tr><td><code>costosInsumos</code></td><td class="num">76</td><td><strong><code>Id</code></strong></td><td><span class="chip rompe">corregido</span> <code>Id</code> pasa a clave primaria. La compuesta se conserva como <code>UNIQUE</code>. Se activa la FK a <code>productos</code>.</td></tr>
+        <tr><td><code>productos</code></td><td class="num">6 + 1</td><td><code>id</code></td><td><span class="chip info">añadido</span> Fila <code>id = 999</code> «Mano de obra», unidad <code>hora</code>, valor 8.807. Da validez a 50 filas de costos.</td></tr>
+        <tr><td><code>inventarioProductos</code></td><td class="num">10</td><td><code>Id</code></td><td><span class="chip rompe">corregido</span> <code>fecha</code> pasa a DATE. <code>codigoSistemaProgramacion</code> huérfano pasa a <code>NULL</code> y se registra en cuarentena.</td></tr>
+        <tr><td><code>clientes</code></td><td class="num">2</td><td><code>NitCedula</code></td><td>Adjunto (2 fotos) sale a <code>adjuntos</code>.</td></tr>
+        <tr><td><code>ciudad</code></td><td class="num">5</td><td><code>codigoCiudad</code></td><td>Sin cambios.</td></tr>
+        <tr><td><code>empleados</code></td><td class="num">2</td><td><code>id</code></td><td><span class="chip rompe">corregido</span> Teléfonos, cuenta y documento pasan a TEXT. Adjunto (1 foto) sale a <code>adjuntos</code>.</td></tr>
+        <tr><td><code>pedido</code></td><td class="num">5</td><td><code>Id</code></td><td>Sin cambios.</td></tr>
+        <tr><td><code>detallePedido</code></td><td class="num">15</td><td><code>Id</code></td><td><span class="chip degrada">cuarentena</span> <code>SubTotal</code> a INTEGER. <code>IdSemilla</code> se carga <strong>sin FK</strong>; las 15 filas quedan además registradas en cuarentena.</td></tr>
+        <tr><td><code>adjuntos</code></td><td class="num">8</td><td><code>id</code></td><td><span class="chip info">nueva</span> <code>tabla</code>, <code>registro_id</code>, <code>nombre_archivo</code>, <code>mime</code>, <code>bytes</code>, <code>r2_key</code>.</td></tr>
+        <tr><td><code>_cuarentena</code></td><td class="num">75</td><td><code>id</code></td><td><span class="chip info">nueva</span> <code>tabla_origen</code>, <code>pk_origen</code>, <code>regla</code>, <code>valor</code>, <code>detalle_json</code>. Nada se descarta en silencio.</td></tr>
+        <tr><td><code>costosMO</code></td><td class="num">0</td><td>—</td><td><span class="chip muerto">no se crea</span></td></tr>
+        <tr><td><code>USysApplicationLog</code></td><td class="num">54</td><td>—</td><td><span class="chip muerto">no se migra</span></td></tr>
+      </tbody>
+    </table>
+    <caption>Las 75 filas en cuarentena son 50 de <code>costosInsumos</code> (reparadas, se registran para trazabilidad), 10 de <code>inventarioProductos</code> y 15 de <code>detallePedido</code>.</caption>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Lógica de negocio</div>
+    <h2>Las 29 consultas de Access</h2>
+  </div>
+
+  <div class="two wide">
+    <div class="card">
+      <h4>9 consultas SELECT → 9 vistas SQL</h4>
+      <p class="small"><code>cCostosActividades</code>, <code>cCostosInsumos</code>, <code>cInventarioCampo</code>, <code>cInventarioProductos</code>, <code>cProgramacionCultivosAbonamiento</code>, <code>cProgramacionSiembra</code>, <code>cosecha Consulta</code>, <code>ActualizarAbonamiento</code> se traducen a vistas de D1.</p>
+      <p class="small"><code>cProgramacionCultivo</code> es la excepción: lleva un parámetro <code>[fechaInicial]</code> que Access pide al usuario, y 30 columnas calculadas. Pasa a una <strong>función parametrizada</strong>, no a una vista.</p>
+    </div>
+    <div class="card">
+      <h4>20 consultas de acción → 20 funciones TypeScript</h4>
+      <p class="small">Traducción 1:1, un módulo por consulta, con el SQL original de Access en un comentario de cabecera para poder auditarlas. Cada una devuelve <code>{ insertadas, omitidas }</code>.</p>
+      <p class="small">Los valores incrustados (producto 2, 3, 4 y 5; jornal 8.807; costo 1,46; desfases de 8, 15, 25, 50, 65 y 75 días) <strong>se mantienen incrustados</strong>, tal como decidiste, pero agrupados en un único archivo de constantes con su origen documentado, para que sacarlos a una tabla de parámetros más adelante sea un cambio localizado.</p>
+    </div>
+  </div>
+
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Grupo</th><th class="num">Consultas</th><th>Destino</th><th>Qué escribe</th></tr></thead>
+      <tbody>
+        <tr><td>Abono líquido, 4 aplicaciones</td><td class="num">4</td><td><code>IngresoAbonoLiquido{1..4}Aplicacion</code></td><td><code>actividades</code>, desfases 8, 15, 50 y 65 días</td></tr>
+        <tr><td>Abono sólido, 3 aplicaciones</td><td class="num">3</td><td><code>IngresoAbonoSolido{1..3}Aplicacion</code></td><td><code>actividades</code>, desfases 25, 50 y 75 días</td></tr>
+        <tr><td>Labores de campo</td><td class="num">6</td><td>Preparación, siembra, deshierbes, protección Basilus ×2</td><td><code>actividades</code></td></tr>
+        <tr><td>Costos de mano de obra</td><td class="num">4</td><td><code>IngresoCostos{Cobertura, Deshierbe, PreparacionTerreno, Siembra}</code></td><td><code>costosInsumos</code>, producto 999</td></tr>
+        <tr><td>Costos de abonamiento</td><td class="num">2</td><td><code>actualizarCostosAbonamiento{, Liquido}</code></td><td><code>costosInsumos</code>, productos 3 y 4</td></tr>
+        <tr><td>Salida de inventario</td><td class="num">1</td><td><code>salidaAbono</code></td><td><code>inventarioProductos</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Interfaz</div>
+    <h2>11 pantallas y 6 informes</h2>
+  </div>
+  <p class="col">Los 14 formularios de Access se consolidan en 11 pantallas: los tres subformularios (<code>SubFrm_Siembra</code>, <code>SubFrm_Costos</code>, <code>detallePedido Subformulario</code>) dejan de ser objetos aparte y pasan a ser tablas y secciones dentro de su pantalla contenedora, que es lo que ya son conceptualmente.</p>
+
+  <div class="tw wide">
+    <table>
+      <thead><tr><th>Pantalla Angular</th><th>Sustituye a</th><th>Contenido</th></tr></thead>
+      <tbody>
+        <tr><td>Inicio</td><td><code>InicioDiarioCampo</code></td><td>Menú de 6 accesos: siembra, actividades, semillas, almacén, clientes, pedidos.</td></tr>
+        <tr><td>Siembras</td><td><code>Frm_Siembra</code> + <code>SubFrm_Siembra</code></td><td>Listado de cultivos con filtro por rango de fechas, alta, edición y borrado.</td></tr>
+        <tr><td>Detalle de siembra</td><td><code>Frm_Datos</code></td><td>Formulario de programación de cultivo.</td></tr>
+        <tr><td>Cosecha</td><td><code>Frm_DatosCosecha</code></td><td>Registro de cosechas por cultivo.</td></tr>
+        <tr><td>Actividades y costos</td><td><code>Frm_Costos</code> + <code>SubFrm_Costos</code></td><td>Listado por código de sistema, más los botones que disparan las consultas de acción.</td></tr>
+        <tr><td>Detalle de actividad</td><td><code>Frm_DatosCostos</code></td><td>Alta y edición de actividad.</td></tr>
+        <tr><td>Semillas</td><td><code>frmInfoSemilla</code></td><td>Maestro con 28 campos y foto.</td></tr>
+        <tr><td>Productos</td><td><code>frmProductos</code></td><td>Maestro con foto.</td></tr>
+        <tr><td>Almacén</td><td><code>frmInventarioProductos</code></td><td>Movimientos de entrada y salida.</td></tr>
+        <tr><td>Clientes</td><td><code>frmClientes</code></td><td>Maestro con ciudad y foto.</td></tr>
+        <tr><td>Pedidos</td><td><code>pedido</code> + subformulario</td><td>Cabecera y líneas con total calculado.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="col">Los 6 informes (<code>infTrazabilidad</code>, <code>infInventarioCampo</code>, <code>infInventarioProductos</code>, <code>infProgramacionSiembra</code>, <code>infCostosActividadesXSemana</code>, <code>infoCostosActividadesXCultivo</code>) se rehacen como vistas con agrupación y subtotales, más exportación a PDF generada en el cliente. Los dos de costos comparten origen (<code>cCostosActividades</code>) y solo difieren en el criterio de agrupación: semana frente a cultivo.</p>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Ejecución</div>
+    <h2>Nueve fases</h2>
+  </div>
+  <p class="col">Las fases van numeradas porque cada una depende de la anterior: sin re-extracción no hay esquema fiable, sin esquema no hay ETL, sin ETL no hay nada que probar contra Access.</p>
+
+  <div class="phases wide">
+
+    <div class="phase">
+      <div class="idx"><b>0</b>Congelar<br>½ día</div>
+      <div class="body">
+        <h3>Congelar el origen</h3>
+        <ul>
+          <li>Copia de <code>diarioDeCampo.accdb</code> a <code>origen/</code> con su hash SHA-256 registrado. A partir de aquí, ese archivo es inmutable.</li>
+          <li><code>git init</code> en la carpeta — hoy no hay control de versiones.</li>
+          <li>Acordar la fecha de corte: qué se hace con lo que se capture en Access mientras dura la migración.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>El hash del <code>.accdb</code> coincide antes y después de cada extracción posterior.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>1</b>Re-extraer<br>1 día</div>
+      <div class="body">
+        <h3>Regenerar la extracción, esta vez completa</h3>
+        <ul>
+          <li>Script PowerShell + ACE OLEDB que vuelca datos a JSON <strong>UTF-8 real</strong>, con fechas ISO.</li>
+          <li>Volcado de claves primarias, foráneas e índices desde los esquemas OLE DB — lo que hoy falta por completo.</li>
+          <li>Extracción de los 8 adjuntos a archivos en disco, con su nombre original.</li>
+          <li>Re-exportación de formularios, informes, macros y módulos con codificación correcta y sin truncar.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>Los recuentos por tabla coinciden con Access; los 8 adjuntos abren correctamente; el VBA termina en <code>End Sub</code>.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>2</b>Esquema<br>1½ días</div>
+      <div class="body">
+        <h3>Migraciones de D1</h3>
+        <ul>
+          <li><code>0001_schema.sql</code> con las 13 tablas, claves, <code>CHECK</code> de longitud y booleanos, y las 11 relaciones (8 existentes + 3 recuperadas).</li>
+          <li><code>0002_views.sql</code> con las 8 vistas.</li>
+          <li><code>0003_seed_ref.sql</code>: producto 999 «Mano de obra».</li>
+          <li>Activar <code>PRAGMA foreign_keys = ON</code> — Access las tenía, D1 no las aplica por defecto.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b><code>wrangler d1 migrations apply --local</code> corre limpio y las vistas devuelven 0 filas sin error.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>3</b>ETL<br>2 días</div>
+      <div class="body">
+        <h3>Carga, cuarentena y reconciliación</h3>
+        <ul>
+          <li>Carga en orden de dependencia: <code>ciudad</code> → <code>clientes</code>, <code>empleados</code>, <code>productos</code>, <code>infoSemilla</code> → <code>programacionCultivos</code> → resto.</li>
+          <li>Conversiones: fecha de inventario, teléfonos a texto, booleanos, subtotales a enteros.</li>
+          <li>Toda fila que falle una validación se registra en <code>_cuarentena</code> con la regla incumplida. <strong>Nada se descarta en silencio.</strong></li>
+          <li>Subida de los 8 adjuntos a R2 y alta en la tabla <code>adjuntos</code>.</li>
+          <li>Informe de reconciliación: recuento y suma de columnas numéricas clave, Access frente a D1.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>354 filas cargadas, 75 en cuarentena con motivo, y sumas de <code>valorTotal</code>, <code>peso</code> y <code>total</code> idénticas a Access.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>4</b>Backend<br>5 días</div>
+      <div class="body">
+        <h3>Worker, API y lógica agrícola</h3>
+        <ul>
+          <li>Worker con Hono: CRUD de las 13 tablas, todo con sentencias preparadas.</li>
+          <li>Módulo <code>access-compat</code> con <code>semanaAccess()</code>, <code>diaSemanaAccess()</code> y <code>hoyBogota()</code>, cada una con sus pruebas unitarias.</li>
+          <li>Las 20 consultas de acción como funciones, agrupadas por lote igual que las macros de Access.</li>
+          <li><code>cProgramacionCultivo</code> parametrizada, que alimenta el informe de trazabilidad.</li>
+          <li>Endpoints de adjuntos contra R2.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>Ejecutar las 20 acciones sobre la base recién cargada reproduce exactamente las 157 filas de <code>actividades</code> y las 76 de <code>costosInsumos</code> que hoy existen en Access.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>5</b>Frontend<br>10 días</div>
+      <div class="body">
+        <h3>Angular</h3>
+        <ul>
+          <li>Proyecto Angular con componentes standalone y signals; servicios HTTP tipados contra los DTO de la API.</li>
+          <li>Las 11 pantallas, con validación en formularios equivalente a las reglas de Access (campos obligatorios, longitudes, valores por defecto).</li>
+          <li>Sustituir la búsqueda por texto sobre fechas por un filtro de rango.</li>
+          <li>Reemplazar los diálogos <code>MsgBox</code> por confirmaciones y avisos en pantalla, conservando los mensajes actuales para que el usuario reconozca el sistema.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>Alta, edición, borrado y búsqueda funcionan en las 11 pantallas contra D1 local.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>6</b>Informes<br>3 días</div>
+      <div class="body">
+        <h3>Los 6 informes y su exportación</h3>
+        <ul>
+          <li>Agrupaciones y subtotales equivalentes a los de Access (por <code>semanaAbono</code>, por <code>codigoSistema</code>, por <code>semilla</code>).</li>
+          <li>Exportación a PDF desde el cliente, con pie de página y numeración.</li>
+          <li>Trazabilidad es el más complejo: 30 columnas calculadas y 8 usos de <code>Weekday</code>.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>Cada informe, con los datos migrados, produce las mismas cifras y subtotales que su equivalente en Access.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>7</b>Paridad<br>2 días</div>
+      <div class="body">
+        <h3>Aceptación contra el sistema actual</h3>
+        <ul>
+          <li>Comparación automatizada: para cada una de las 8 vistas, volcar el resultado desde Access y desde D1 y comparar fila a fila.</li>
+          <li>Validar la tolerancia en decimales: <code>actividades.total</code> viene de un <em>Single</em> de Access y arrastra ruido de coma flotante (<code>30,000001907…</code>). El comparador usa tolerancia relativa de 1e−6.</li>
+          <li>Revisión de las 75 filas en cuarentena con quien conoce la finca: decidir qué se recupera, qué se corrige a mano y qué se descarta.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>Informe de paridad firmado, con las diferencias residuales explicadas una por una.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="idx"><b>8</b>Nube<br>1 día</div>
+      <div class="body">
+        <h3>De local a Cloudflare</h3>
+        <ul>
+          <li>Crear la base D1 y el bucket R2 remotos; aplicar las mismas migraciones con <code>--remote</code>.</li>
+          <li><code>wrangler deploy</code> del Worker; Angular a Cloudflare Pages.</li>
+          <li>Autenticación: hoy no hay ninguna. En la nube <strong>es obligatoria</strong> — Cloudflare Access es lo más rápido para una finca con pocos usuarios.</li>
+          <li>Copias de seguridad programadas de D1 y ensayo de restauración.</li>
+        </ul>
+        <div class="accept"><b>Criterio de aceptación</b>La aplicación responde en su dominio, con autenticación activa y una restauración de copia probada de principio a fin.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head col">
+    <div class="eyebrow">Pendiente</div>
+    <h2>Decisiones que necesitan tu criterio</h2>
+  </div>
+  <p class="col">Ninguna bloquea el arranque: las fases 0 a 4 pueden empezar hoy. Estas hacen falta antes de cerrar la fase 7.</p>
+  <ul class="plain col">
+    <li><strong>Las 15 líneas de pedido huérfanas.</strong> Apuntan a semillas con Id 1, 14, 15, 16, 17 y 212 que ya no existen. ¿Recuerdas qué productos eran? Si no, el módulo de pedidos arranca vacío y el histórico se conserva solo en cuarentena.</li>
+    <li><strong>Los 10 movimientos de inventario colgados.</strong> Referencian cultivos 10 a 17, borrados en cascada. ¿Se reasignan a un cultivo existente o se dejan sin cultivo asociado?</li>
+    <li><strong>El jornal de 8.807 pesos y el costo de 1,46.</strong> Están incrustados desde 2021. ¿Siguen vigentes? Se mantienen tal cual según lo decidido, pero conviene saber si están desfasados.</li>
+    <li><strong>Fecha de corte.</strong> ¿Se sigue usando Access durante la migración? Si es así, la fase 3 se repite al final con los datos frescos, lo cual está previsto y cuesta poco.</li>
+    <li><strong>Usuarios.</strong> Access no tiene autenticación. Para la fase 8 hace falta saber cuántas personas entran y si necesitan permisos distintos.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Elaborado a partir del análisis directo de <code>diarioDeCampo.accdb</code> mediante Microsoft ACE OLEDB 16, y de la revisión de los 76 archivos de <code>extracted_source/</code>. Las cifras de filas, huérfanos y equivalencias de funciones están verificadas contra los datos reales, no estimadas.</p>
+</footer>
+
+</div>

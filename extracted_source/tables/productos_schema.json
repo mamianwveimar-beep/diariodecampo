@@ -1,0 +1,132 @@
+﻿[
+    {
+        "Name":  "id",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "codigoProducto",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  true,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "nombreProducto",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "cantidadMax",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "CantidadMin",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "prevedor",
+        "Type":  "Text",
+        "Size":  60,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "registro",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "marca",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "valorUnidad",
+        "Type":  "Integer (16-bit)",
+        "Size":  2,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "unidad",
+        "Type":  "Text",
+        "Size":  20,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "cantidad",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "observacion",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "archivo",
+        "Type":  "Unknown (101)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

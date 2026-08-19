@@ -1,0 +1,172 @@
+﻿[
+    {
+        "Name":  "codigosistema",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "codSemilla",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "areaCultivada",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fechasiembra",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "=Date()",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "factura",
+        "Type":  "Text",
+        "Size":  30,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fechaRealCosecha",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fechafinal",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "numeroPlantasSembradas",
+        "Type":  "Integer (16-bit)",
+        "Size":  2,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "numeroPlantasCosechadas",
+        "Type":  "Integer (16-bit)",
+        "Size":  2,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "lote",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "cama",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "tipoAbono",
+        "Type":  "Text",
+        "Size":  100,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "cantidadAbono0",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "codigoSemillero",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "observaciones",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "kilosCosechados",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "activo",
+        "Type":  "Boolean",
+        "Size":  1,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "1",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

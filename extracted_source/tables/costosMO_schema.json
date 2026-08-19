@@ -1,0 +1,112 @@
+﻿[
+    {
+        "Name":  "Id",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "concepto",
+        "Type":  "Text",
+        "Size":  100,
+        "Required":  true,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "detalle",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  true,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fecha",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "unidad",
+        "Type":  "Text",
+        "Size":  20,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "cantidad",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "producto",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "valorUnitario",
+        "Type":  "Integer (16-bit)",
+        "Size":  2,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "valorTotal",
+        "Type":  "Double",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "observaciones",
+        "Type":  "Memo (Long Text)",
+        "Size":  0,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "programacionCultivoCodCultivo",
+        "Type":  "Long Integer (32-bit)",
+        "Size":  4,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "0",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

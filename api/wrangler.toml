@@ -1,0 +1,21 @@
+name = "diariodecampo-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+# --- base de datos ---------------------------------------------------------
+# En local, wrangler emula D1 sobre un SQLite real en .wrangler/state, asi que
+# el mismo esquema y el mismo codigo valen para local y para la nube.
+[[d1_databases]]
+binding = "DB"
+database_name = "diariodecampo"
+database_id = "PENDIENTE-crear-con-wrangler-d1-create-diariodecampo"
+migrations_dir = "../db/migrations"
+
+# --- adjuntos --------------------------------------------------------------
+# Las 8 fotos que Access guardaba en campos Attachment (1,4 MB en total).
+[[r2_buckets]]
+binding = "ADJUNTOS"
+bucket_name = "diariodecampo-adjuntos"
+
+[observability]
+enabled = true

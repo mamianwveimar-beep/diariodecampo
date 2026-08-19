@@ -1,0 +1,6 @@
+El plan definitivo de migracion esta en PLAN_MIGRACION.html (misma carpeta).
+Publicado tambien en: https://claude.ai/code/artifact/d2d7647f-db8d-488d-bac1-de39db741819
+
+Resumen: migracion de diarioDeCampo.accdb a Angular (frontend) +
+Cloudflare Workers/D1/R2 (backend), en 9 fases, ~26 dias habiles.
+Requisito previo: regenerar extracted_source/, que no sirve como fuente de verdad.

@@ -1,0 +1,67 @@
+[
+    {
+        "tabla":  "actividades",
+        "filas":  157,
+        "columnas":  15
+    },
+    {
+        "tabla":  "ciudad",
+        "filas":  5,
+        "columnas":  2
+    },
+    {
+        "tabla":  "clientes",
+        "filas":  2,
+        "columnas":  15
+    },
+    {
+        "tabla":  "cosecha",
+        "filas":  7,
+        "columnas":  9
+    },
+    {
+        "tabla":  "costosInsumos",
+        "filas":  76,
+        "columnas":  11
+    },
+    {
+        "tabla":  "costosMO",
+        "filas":  0,
+        "columnas":  11
+    },
+    {
+        "tabla":  "detallePedido",
+        "filas":  15,
+        "columnas":  6
+    },
+    {
+        "tabla":  "empleados",
+        "filas":  2,
+        "columnas":  23
+    },
+    {
+        "tabla":  "infoSemilla",
+        "filas":  4,
+        "columnas":  27
+    },
+    {
+        "tabla":  "inventarioProductos",
+        "filas":  10,
+        "columnas":  11
+    },
+    {
+        "tabla":  "pedido",
+        "filas":  5,
+        "columnas":  10
+    },
+    {
+        "tabla":  "productos",
+        "filas":  6,
+        "columnas":  12
+    },
+    {
+        "tabla":  "programacionCultivos",
+        "filas":  15,
+        "columnas":  17
+    }
+]

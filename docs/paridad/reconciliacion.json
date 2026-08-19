@@ -1,0 +1,192 @@
+{
+  "generado": "2026-08-19T18:58:55.992Z",
+  "tablas": [
+    {
+      "tabla": "actividades",
+      "filas_origen": 157,
+      "filas_destino": 157,
+      "coincide": true,
+      "suma_control": 18808.88
+    },
+    {
+      "tabla": "costosInsumos",
+      "filas_origen": 76,
+      "filas_destino": 76,
+      "coincide": true,
+      "suma_control": 7197099.0583
+    },
+    {
+      "tabla": "cosecha",
+      "filas_origen": 7,
+      "filas_destino": 7,
+      "coincide": true,
+      "suma_control": 12
+    },
+    {
+      "tabla": "programacionCultivos",
+      "filas_origen": 15,
+      "filas_destino": 15,
+      "coincide": true,
+      "suma_control": 3686
+    },
+    {
+      "tabla": "inventarioProductos",
+      "filas_origen": 10,
+      "filas_destino": 10,
+      "coincide": true,
+      "suma_control": 598.72
+    },
+    {
+      "tabla": "detallePedido",
+      "filas_origen": 15,
+      "filas_destino": 15,
+      "coincide": true,
+      "suma_control": 94280
+    },
+    {
+      "tabla": "pedido",
+      "filas_origen": 5,
+      "filas_destino": 5,
+      "coincide": true,
+      "suma_control": 4800
+    },
+    {
+      "tabla": "clientes",
+      "filas_origen": 2,
+      "filas_destino": 2,
+      "coincide": true,
+      "suma_control": null
+    },
+    {
+      "tabla": "empleados",
+      "filas_origen": 2,
+      "filas_destino": 2,
+      "coincide": true,
+      "suma_control": 2500000
+    },
+    {
+      "tabla": "infoSemilla",
+      "filas_origen": 4,
+      "filas_destino": 4,
+      "coincide": true,
+      "suma_control": 289
+    },
+    {
+      "tabla": "productos",
+      "filas_origen": 7,
+      "filas_destino": 7,
+      "coincide": true,
+      "suma_control": 26807
+    },
+    {
+      "tabla": "ciudad",
+      "filas_origen": 5,
+      "filas_destino": 5,
+      "coincide": true,
+      "suma_control": null
+    },
+    {
+      "tabla": "adjuntos",
+      "filas_origen": 8,
+      "filas_destino": 8,
+      "coincide": true,
+      "suma_control": 1426352
+    }
+  ],
+  "vistas": [
+    {
+      "vista": "ActualizarAbonamiento",
+      "filas": 15
+    },
+    {
+      "vista": "cCostosActividades",
+      "filas": 157
+    },
+    {
+      "vista": "cCostosInsumos",
+      "filas": 76
+    },
+    {
+      "vista": "cInventarioCampo",
+      "filas": 15
+    },
+    {
+      "vista": "cInventarioProductos",
+      "filas": 10
+    },
+    {
+      "vista": "cosecha Consulta",
+      "filas": 7
+    },
+    {
+      "vista": "cProgramacionSiembra",
+      "filas": 4
+    }
+  ],
+  "cuarentena": [
+    {
+      "tabla": "empleados",
+      "regla": "entero_a_texto",
+      "accion": "convertida",
+      "filas": 5
+    },
+    {
+      "tabla": "costosInsumos",
+      "regla": "fk_producto_centinela",
+      "accion": "reparada",
+      "filas": 50
+    },
+    {
+      "tabla": "inventarioProductos",
+      "regla": "fk_cultivo_cero",
+      "accion": "a_null",
+      "filas": 2
+    },
+    {
+      "tabla": "inventarioProductos",
+      "regla": "fk_cultivo_inexistente",
+      "accion": "a_null",
+      "filas": 8
+    },
+    {
+      "tabla": "detallePedido",
+      "regla": "fk_semilla_inexistente",
+      "accion": "conservada_sin_fk",
+      "filas": 9
+    }
+  ],
+  "columnas_generadas": [
+    {
+      "tabla": "actividades",
+      "columna": "total",
+      "filas": 157,
+      "distintas": 105,
+      "max_absoluta": 0.000030517578125,
+      "max_relativa": 9.164437044041284e-8
+    },
+    {
+      "tabla": "costosInsumos",
+      "columna": "valorTotal",
+      "filas": 76,
+      "distintas": 0,
+      "max_absoluta": 0,
+      "max_relativa": 0
+    },
+    {
+      "tabla": "inventarioProductos",
+      "columna": "saldo",
+      "filas": 10,
+      "distintas": 0,
+      "max_absoluta": 0,
+      "max_relativa": 0
+    },
+    {
+      "tabla": "detallePedido",
+      "columna": "SubTotal",
+      "filas": 15,
+      "distintas": 0,
+      "max_absoluta": 0,
+      "max_relativa": 0
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+Option Compare Database
+
+Option Explicit
+
+Sub conecta_actual()
+
+
+Dim miconexion As New Connection 'creamos la conexion utilizando objet
+Set miconexion = CurrentProject.Connection ' establecemos conexion con BD actual
+Dim SQL As String ' declaramos variable tipo texto para la informacion SQL
+    SQL = "SELECT * FROM programacionCultivo" ' almacenamos en la variable la instruccion sql
+Dim mirecordset As New Recordset ' creacion del objeto recordset (tabla virtual)'abrir el recordset utilizando la conexion activa e
+    mirecordset.OpenRecordset SQL, miconexion 'abrir el recordset utilizando la conexion activa e insertar la informacion SQL
+Do Until mirecordset.EOF 'recorre el recordset hasta qie llege al final EOF End Of File
+ Debug.Print mirecordset!codsemilla ' imprime en la ventana
+ mirecordset.MoveNext 'Avanza un registro
+Loop
+mirecordset.Close ' cierra el recordset
+Set mirecordset = Nothing 'libera memoria de los recursos
+miconexion.Close ' cierra la conexion
+Set miconexion = Nothing ' libera memoria de los recursos utilizados por la conexion
+End Sub
+
+Sub comprueba_usuario()
+Dim cnx As New ADODB.Connection
+Dim rs As DAO.Recordset
+Dim SQL As String
+
+Set cnx = CurrentProject.Connection
+
+
+SQL = "select semilla from infoSemilla "
+rs.OpenRecordset SQL, cnx
+End Sub

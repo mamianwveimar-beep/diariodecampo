@@ -1,0 +1,112 @@
+[
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "codsemilla",
+        "ORDINAL":  2
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "fechaSiembra",
+        "ORDINAL":  3
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "semanaAbono",
+        "ORDINAL":  4
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "Actividad",
+        "ORDINAL":  5
+    },
+    {
+        "TABLE_NAME":  "actividades",
+        "COLUMN_NAME":  "codigoSistema",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "ciudad",
+        "COLUMN_NAME":  "codigoCiudad",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "clientes",
+        "COLUMN_NAME":  "NitCedula",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "cosecha",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL":  2
+    },
+    {
+        "TABLE_NAME":  "costosInsumos",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "ORDINAL":  3
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "programacionCultivoCodCultivo",
+        "ORDINAL":  3
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "concepto",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "costosMO",
+        "COLUMN_NAME":  "detalle",
+        "ORDINAL":  2
+    },
+    {
+        "TABLE_NAME":  "detallePedido",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "empleados",
+        "COLUMN_NAME":  "id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "infoSemilla",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "inventarioProductos",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "pedido",
+        "COLUMN_NAME":  "Id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "productos",
+        "COLUMN_NAME":  "id",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "programacionCultivos",
+        "COLUMN_NAME":  "codigosistema",
+        "ORDINAL":  1
+    },
+    {
+        "TABLE_NAME":  "USysApplicationLog",
+        "COLUMN_NAME":  "ID",
+        "ORDINAL":  1
+    }
+]

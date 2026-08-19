@@ -1,0 +1,20 @@
+Option Compare Database
+
+'------------------------------------------------------------
+' Macro3
+'
+'------------------------------------------------------------
+Function Macro3()
+On Error GoTo Macro3_Err
+
+    DoCmd.OpenQuery "IngresoAbonoLiquido1Aplicacion", acViewNormal, acAdd
+
+
+Macro3_Exit:
+    Exit Function
+
+Macro3_Err:
+    MsgBox Error$
+    Resume Macro3_Exit
+
+End Function

@@ -1,0 +1,122 @@
+[
+    {
+        "Id":  5,
+        "IdPedido":  2,
+        "IdSemilla":  212,
+        "Cantidad":  1,
+        "ValorUnitario":  2000,
+        "SubTotal":  2000
+    },
+    {
+        "Id":  8,
+        "IdPedido":  2,
+        "IdSemilla":  17,
+        "Cantidad":  4,
+        "ValorUnitario":  220,
+        "SubTotal":  880
+    },
+    {
+        "Id":  13,
+        "IdPedido":  2,
+        "IdSemilla":  17,
+        "Cantidad":  2,
+        "ValorUnitario":  3000,
+        "SubTotal":  6000
+    },
+    {
+        "Id":  16,
+        "IdPedido":  3,
+        "IdSemilla":  1,
+        "Cantidad":  1,
+        "ValorUnitario":  200,
+        "SubTotal":  200
+    },
+    {
+        "Id":  17,
+        "IdPedido":  3,
+        "IdSemilla":  16,
+        "Cantidad":  2,
+        "ValorUnitario":  300,
+        "SubTotal":  600
+    },
+    {
+        "Id":  18,
+        "IdPedido":  3,
+        "IdSemilla":  14,
+        "Cantidad":  4,
+        "ValorUnitario":  200,
+        "SubTotal":  800
+    },
+    {
+        "Id":  19,
+        "IdPedido":  4,
+        "IdSemilla":  16,
+        "Cantidad":  1,
+        "ValorUnitario":  3000,
+        "SubTotal":  3000
+    },
+    {
+        "Id":  20,
+        "IdPedido":  4,
+        "IdSemilla":  15,
+        "Cantidad":  5,
+        "ValorUnitario":  5000,
+        "SubTotal":  25000
+    },
+    {
+        "Id":  21,
+        "IdPedido":  4,
+        "IdSemilla":  1,
+        "Cantidad":  1,
+        "ValorUnitario":  5000,
+        "SubTotal":  5000
+    },
+    {
+        "Id":  22,
+        "IdPedido":  11,
+        "IdSemilla":  8,
+        "Cantidad":  1,
+        "ValorUnitario":  0,
+        "SubTotal":  0.0000
+    },
+    {
+        "Id":  23,
+        "IdPedido":  11,
+        "IdSemilla":  9,
+        "Cantidad":  2,
+        "ValorUnitario":  0,
+        "SubTotal":  0.0000
+    },
+    {
+        "Id":  24,
+        "IdPedido":  1,
+        "IdSemilla":  8,
+        "Cantidad":  3,
+        "ValorUnitario":  200,
+        "SubTotal":  600
+    },
+    {
+        "Id":  25,
+        "IdPedido":  1,
+        "IdSemilla":  10,
+        "Cantidad":  2,
+        "ValorUnitario":  100,
+        "SubTotal":  200
+    },
+    {
+        "Id":  26,
+        "IdPedido":  2,
+        "IdSemilla":  8,
+        "Cantidad":  10,
+        "ValorUnitario":  4000,
+        "SubTotal":  40000
+    },
+    {
+        "Id":  27,
+        "IdPedido":  2,
+        "IdSemilla":  9,
+        "Cantidad":  5,
+        "ValorUnitario":  2000,
+        "SubTotal":  10000
+    }
+]

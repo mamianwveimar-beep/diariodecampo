@@ -1,0 +1,66 @@
+[
+    {
+        "tabla":  "infoSemilla",
+        "registro_id":  "8",
+        "nombre_archivo":  "CEBOLLA-PUERRO.jpg",
+        "bytes":  225147,
+        "archivo_local":  "infoSemilla_8_CEBOLLA-PUERRO.jpg",
+        "sha256":  "e8925c515115868771ad0b572c49ac0d6d90e8333aae78f672421bd5eba36196"
+    },
+    {
+        "tabla":  "infoSemilla",
+        "registro_id":  "9",
+        "nombre_archivo":  "Brocoli.jpg",
+        "bytes":  224669,
+        "archivo_local":  "infoSemilla_9_Brocoli.jpg",
+        "sha256":  "400c3c8afb7138d4a77f59460c4e89d950016a13069c25837e300d650473731c"
+    },
+    {
+        "tabla":  "infoSemilla",
+        "registro_id":  "10",
+        "nombre_archivo":  "lechugaCrespa.jpg",
+        "bytes":  113799,
+        "archivo_local":  "infoSemilla_10_lechugaCrespa.jpg",
+        "sha256":  "354207ca216e92b97e7ffb28a883b3b38478c716be74a8487482727827d1f6fe"
+    },
+    {
+        "tabla":  "infoSemilla",
+        "registro_id":  "11",
+        "nombre_archivo":  "frijolRochela.jpg",
+        "bytes":  113135,
+        "archivo_local":  "infoSemilla_11_frijolRochela.jpg",
+        "sha256":  "757f00a16906f0164ba10d7b837c4f62e5414b1d1e64f83fcd9f304dbb6e2421"
+    },
+    {
+        "tabla":  "clientes",
+        "registro_id":  "7090044",
+        "nombre_archivo":  "persona.png",
+        "bytes":  212457,
+        "archivo_local":  "clientes_7090044_persona.png",
+        "sha256":  "8d0a9b378f301d184dca4899b3ca3c761c4382d0d44ce6e5b0aa80de9484279e"
+    },
+    {
+        "tabla":  "clientes",
+        "registro_id":  "773773",
+        "nombre_archivo":  "Facial.jpg",
+        "bytes":  44551,
+        "archivo_local":  "clientes_773773_Facial.jpg",
+        "sha256":  "91011e54f33e2fa329a7be95275708d116644b601df16668ca65a04df1448cfa"
+    },
+    {
+        "tabla":  "productos",
+        "registro_id":  "2",
+        "nombre_archivo":  "multimineral.png",
+        "bytes":  186253,
+        "archivo_local":  "productos_2_multimineral.png",
+        "sha256":  "d0364fa88007d99ff6d910adab1de8e315e55d62e27e1d73313979ab8915a2f1"
+    },
+    {
+        "tabla":  "empleados",
+        "registro_id":  "1",
+        "nombre_archivo":  "Trabajador.jpg",
+        "bytes":  306341,
+        "archivo_local":  "empleados_1_Trabajador.jpg",
+        "sha256":  "436e77d8b67b6d942a17c167e8d0d0b5f9dd3bcb920634a8ffe366a310253cdc"
+    }
+]

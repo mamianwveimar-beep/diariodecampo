@@ -1,0 +1,22 @@
+﻿[
+    {
+        "Name":  "codigoCiudad",
+        "Type":  "Integer (16-bit)",
+        "Size":  2,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "nombreCiudad",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

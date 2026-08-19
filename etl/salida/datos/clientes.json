@@ -1,0 +1,36 @@
+[
+    {
+        "TipoDocumento":  "CC",
+        "NitCedula":  "7090044",
+        "NombreCliente":  "Juana Maria",
+        "ApellidoCliente":  "Gonzales",
+        "fechaNacimiento":  "1986-09-07",
+        "SexoCliente":  "M",
+        "CiudadCliente":  1,
+        "DireccionCliente":  "car 42 num 30",
+        "barrioCliente":  "ifihfdisdfh",
+        "CelularCliente":  "322554444",
+        "TelefonoFijoCliente":  "222111",
+        "CorreoCliente":  "crys@hh.com",
+        "PuntosCliente":  "0",
+        "FechaAfiliacion":  "2021-09-07",
+        "Arcchivos":  false
+    },
+    {
+        "TipoDocumento":  "CC",
+        "NitCedula":  "773773",
+        "NombreCliente":  "Maria",
+        "ApellidoCliente":  "Ramirez",
+        "fechaNacimiento":  "1999-09-07",
+        "SexoCliente":  "M",
+        "CiudadCliente":  1,
+        "DireccionCliente":  "cra 34 num 330",
+        "barrioCliente":  "cii",
+        "CelularCliente":  "555525",
+        "TelefonoFijoCliente":  "551111",
+        "CorreoCliente":  "54444",
+        "PuntosCliente":  "44444",
+        "FechaAfiliacion":  "2021-09-07",
+        "Arcchivos":  true
+    }
+]

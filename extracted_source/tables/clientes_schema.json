@@ -1,0 +1,162 @@
+﻿[
+    {
+        "Name":  "TipoDocumento",
+        "Type":  "Text",
+        "Size":  20,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "\"CC\"",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "NitCedula",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  true,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "NombreCliente",
+        "Type":  "Text",
+        "Size":  30,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "ApellidoCliente",
+        "Type":  "Text",
+        "Size":  30,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "fechaNacimiento",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "SexoCliente",
+        "Type":  "Text",
+        "Size":  10,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "CiudadCliente",
+        "Type":  "Integer (16-bit)",
+        "Size":  2,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "5",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "DireccionCliente",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "barrioCliente",
+        "Type":  "Text",
+        "Size":  255,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "CelularCliente",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "TelefonoFijoCliente",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "CorreoCliente",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "PuntosCliente",
+        "Type":  "Text",
+        "Size":  50,
+        "Required":  false,
+        "AllowZeroLength":  true,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "FechaAfiliacion",
+        "Type":  "Date/Time",
+        "Size":  8,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "=Date()",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Carpeta",
+        "Type":  "Unknown (101)",
+        "Size":  4,
+        "Required":  false,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    },
+    {
+        "Name":  "Arcchivos",
+        "Type":  "Boolean",
+        "Size":  1,
+        "Required":  true,
+        "AllowZeroLength":  false,
+        "DefaultValue":  "No",
+        "ValidationRule":  "",
+        "ValidationText":  ""
+    }
+]

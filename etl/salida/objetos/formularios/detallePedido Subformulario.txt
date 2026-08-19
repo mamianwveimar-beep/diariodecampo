@@ -1,0 +1,522 @@
+Version =21
+VersionRequired =20
+PublishOption =1
+Checksum =945378595
+Begin Form
+    DividingLines = NotDefault
+    AllowDesignChanges = NotDefault
+    DefaultView =2
+    TabularCharSet =177
+    TabularFamily =0
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridY =10
+    Width =8107
+    DatasheetFontHeight =11
+    ItemSuffix =11
+    Left =510
+    Top =5220
+    Right =10455
+    Bottom =8070
+    DatasheetGridlinesColor =15132391
+    RecSrcDt = Begin
+        0x12d63cc31db4e540
+    End
+    GUID = Begin
+        0xb17d5cab94888f4abde4231f9f0411fb
+    End
+    NameMap = Begin
+        0x0acc0e5500000000ffa3d23fbb5cad4dadc4612e501f4c990000000060a22c1f ,
+        0x31bce540000000000000000069006e0066006f00530065006d0069006c006c00 ,
+        0x61000000000000000eb8ac5d37a0ee40bd7f0bc4eb58ce9f00000000eefde533 ,
+        0x91bce540000000000000000064006500740061006c006c006500500065006400 ,
+        0x690064006f000000000000006f5f55451441b2449863f2e7d21ce32607000000 ,
+        0xffa3d23fbb5cad4dadc4612e501f4c9949006400000000000000e667d3eb8a09 ,
+        0x0144abe6ebc8817534af070000000eb8ac5d37a0ee40bd7f0bc4eb58ce9f4900 ,
+        0x6400530065006d0069006c006c00610000000000000013bc0f48785c924981e6 ,
+        0xfbd3ef43b11b07000000ffa3d23fbb5cad4dadc4612e501f4c99730065006d00 ,
+        0x69006c006c00610000000000000031da0c68d8965d42b2bf1c3ab07cd3180700 ,
+        0x0000ffa3d23fbb5cad4dadc4612e501f4c995600610072006900650064006100 ,
+        0x6400000000000000b5bc22448d3594459e197a74e88581a7070000000eb8ac5d ,
+        0x37a0ee40bd7f0bc4eb58ce9f430061006e007400690064006100640000000000 ,
+        0x0000a2120f356397d44b8c6eb5a469323df2070000000eb8ac5d37a0ee40bd7f ,
+        0x0bc4eb58ce9f560061006c006f00720055006e00690074006100720069006f00 ,
+        0x000000000000369d476c62b1d04e9c3377486f6381a4070000000eb8ac5d37a0 ,
+        0xee40bd7f0bc4eb58ce9f53007500620054006f00740061006c00000000000000 ,
+        0x7b65070303be59469312ed161001eed106000000b17d5cab94888f4abde4231f ,
+        0x9f0411fb53007500620054006f00740061006c0000000000000004aabf3fb611 ,
+        0x85499f8848d3513d04d407000000ffa3d23fbb5cad4dadc4612e501f4c995600 ,
+        0x61006c006f007200000000000000000000000000000000000000000000000c00 ,
+        0x0000050000000000000000000000000000000000
+    End
+    RecordSource ="SELECT detallePedido.*, infoSemilla.Valor FROM infoSemilla INNER JOIN detallePed"
+        "ido ON infoSemilla.Id = detallePedido.IdSemilla; "
+    Caption ="detallePedido Subformulario"
+    DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x0000000000000000000000000000000000000000ab1f0000ef08000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    FilterOnLoad =0
+    ShowPageMargins =0
+    DisplayOnSharePointSite =1
+    DatasheetAlternateBackColor =15921906
+    DatasheetGridlinesColor12 =0
+    FitToScreen =1
+    DatasheetBackThemeColorIndex =1
+    BorderThemeColorIndex =3
+    ThemeFontIndex =1
+    ForeThemeColorIndex =0
+    AlternateBackThemeColorIndex =1
+    AlternateBackShade =95.0
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            FontSize =11
+            FontName ="Calibri"
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =0
+            BorderTint =50.0
+            ForeThemeColorIndex =0
+            ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            Width =1701
+            LabelX =-1701
+            FontSize =11
+            FontName ="Calibri"
+            AsianLineBreak =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ComboBox
+            AddColon = NotDefault
+            BorderLineStyle =0
+            Width =1701
+            LabelX =-1701
+            FontSize =11
+            FontName ="Calibri"
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin FormHeader
+            Height =0
+            BackColor =15064278
+            Name ="EncabezadoDelFormulario"
+            GUID = Begin
+                0xd081499d8fb32440a9b14620c32993eb
+            End
+            AutoHeight =1
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =2
+            BackTint =20.0
+        End
+        Begin Section
+            Height =2287
+            BackColor =14282978
+            Name ="Detalle"
+            GUID = Begin
+                0x375025f800280f4c9c39d997b595ecee
+            End
+            AlternateBackColor =15921906
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =9
+            BackTint =20.0
+            Begin
+                Begin ComboBox
+                    LimitToList = NotDefault
+                    OverlapFlags =85
+                    TextFontCharSet =177
+                    TextFontFamily =0
+                    IMESentenceMode =3
+                    ColumnCount =2
+                    Left =2319
+                    Top =113
+                    Width =4260
+                    Height =360
+                    ColumnWidth =3000
+                    BackColor =11854021
+                    BorderColor =10921638
+                    ForeColor =3484194
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"0\""
+                    GUID = Begin
+                        0xb6bc892cdc860f45bd748158a1974b6d
+                    End
+                    Name ="IdSemilla"
+                    ControlSource ="IdSemilla"
+                    RowSourceType ="Table/Query"
+                    RowSource ="SELECT infoSemilla.Id, [semilla] & \"-\" & [Variedad] & \"-\" & [Valor] AS Expr1"
+                        " FROM infoSemilla; "
+                    ColumnWidths ="0"
+                    AfterUpdate ="[Event Procedure]"
+                    OnLostFocus ="[Event Procedure]"
+                    BaseInfo ="\"SELECT infoSemilla.Id, [semilla] & \"\"-\"\" & [Variedad] & \"\"-\"\" & [Valor"
+                        "] AS Expr1 FROM infoSemilla; \";\"infoSemilla\";\"\";\"Id\";\"semilla] & \"\"-\""
+                        "\" & [Variedad] & \"\"-\"\" & [Valor\";\"PrimaryKey\""
+                    GridlineColor =10921638
+                    AllowValueListEdits =0
+
+                    LayoutCachedLeft =2319
+                    LayoutCachedTop =113
+                    LayoutCachedWidth =6579
+                    LayoutCachedHeight =473
+                    BackThemeColorIndex =9
+                    BackTint =40.0
+                    Begin
+                        Begin Label
+                            BackStyle =1
+                            OverlapFlags =85
+                            TextFontCharSet =177
+                            TextAlign =2
+                            TextFontFamily =0
+                            Top =120
+                            Width =1470
+                            Height =360
+                            BackColor =9359785
+                            BorderColor =8355711
+                            ForeColor =16777215
+                            Name ="IdSemilla_Etiqueta"
+                            Caption ="Producto"
+                            GUID = Begin
+                                0x717d533db064bc44bc81664aa3c8ea8e
+                            End
+                            GridlineColor =10921638
+                            LayoutCachedTop =120
+                            LayoutCachedWidth =1470
+                            LayoutCachedHeight =480
+                            BackThemeColorIndex =9
+                            BackTint =60.0
+                            ForeThemeColorIndex =1
+                            ForeTint =100.0
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    TextFontCharSet =177
+                    TextFontFamily =0
+                    IMESentenceMode =3
+                    Left =2319
+                    Top =566
+                    Width =1425
+                    Height =360
+                    ColumnWidth =1425
+                    TabIndex =1
+                    BackColor =11854021
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="Cantidad"
+                    ControlSource ="Cantidad"
+                    Format ="General Number"
+                    GUID = Begin
+                        0x2d044dde29f36d449e33b38fecac27a5
+                    End
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2319
+                    LayoutCachedTop =566
+                    LayoutCachedWidth =3744
+                    LayoutCachedHeight =926
+                    BackThemeColorIndex =9
+                    BackTint =40.0
+                    Begin
+                        Begin Label
+                            BackStyle =1
+                            OverlapFlags =85
+                            TextFontCharSet =177
+                            TextAlign =2
+                            TextFontFamily =0
+                            Top =570
+                            Width =1470
+                            Height =360
+                            BackColor =9359785
+                            BorderColor =8355711
+                            ForeColor =16777215
+                            Name ="Cantidad_Etiqueta"
+                            Caption ="Cantidad"
+                            GUID = Begin
+                                0xf17a24b4da62204796f0ddb9e5b4c82c
+                            End
+                            GridlineColor =10921638
+                            LayoutCachedTop =570
+                            LayoutCachedWidth =1470
+                            LayoutCachedHeight =930
+                            BackThemeColorIndex =9
+                            BackTint =60.0
+                            ForeThemeColorIndex =1
+                            ForeTint =100.0
+                        End
+                    End
+                End
+                Begin TextBox
+                    DecimalPlaces =0
+                    OverlapFlags =85
+                    TextFontCharSet =177
+                    TextFontFamily =0
+                    IMESentenceMode =3
+                    Left =2319
+                    Top =1020
+                    Width =1425
+                    Height =360
+                    ColumnWidth =1425
+                    TabIndex =2
+                    BackColor =11854021
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="ValorUnitario"
+                    ControlSource ="ValorUnitario"
+                    Format ="$ #,##0.00;-$ #,##0.00"
+                    GUID = Begin
+                        0x4de4a3df9b8e2e4bb6e90e362d650652
+                    End
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2319
+                    LayoutCachedTop =1020
+                    LayoutCachedWidth =3744
+                    LayoutCachedHeight =1380
+                    BackThemeColorIndex =9
+                    BackTint =40.0
+                    CurrencySymbol ="$"
+                    Begin
+                        Begin Label
+                            BackStyle =1
+                            OverlapFlags =85
+                            TextFontCharSet =177
+                            TextAlign =2
+                            TextFontFamily =0
+                            Top =1031
+                            Width =1470
+                            Height =360
+                            BackColor =9359785
+                            BorderColor =8355711
+                            ForeColor =16777215
+                            Name ="ValorUnitario_Etiqueta"
+                            Caption ="ValorUnitario"
+                            GUID = Begin
+                                0xfaac1a2e166e3440ac508fd2366c2c54
+                            End
+                            GridlineColor =10921638
+                            LayoutCachedTop =1031
+                            LayoutCachedWidth =1470
+                            LayoutCachedHeight =1391
+                            BackThemeColorIndex =9
+                            BackTint =60.0
+                            ForeThemeColorIndex =1
+                            ForeTint =100.0
+                        End
+                    End
+                End
+                Begin TextBox
+                    DecimalPlaces =0
+                    OverlapFlags =85
+                    TextFontCharSet =177
+                    TextFontFamily =0
+                    IMESentenceMode =3
+                    Left =2319
+                    Top =1492
+                    Width =3210
+                    Height =360
+                    ColumnWidth =1950
+                    TabIndex =3
+                    BackColor =11854021
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="SubTotal"
+                    ControlSource ="SubTotal"
+                    Format ="$ #,##0.00;-$ #,##0.00"
+                    GUID = Begin
+                        0x7b65070303be59469312ed161001eed1
+                    End
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2319
+                    LayoutCachedTop =1492
+                    LayoutCachedWidth =5529
+                    LayoutCachedHeight =1852
+                    BackThemeColorIndex =9
+                    BackTint =40.0
+                    CurrencySymbol ="$"
+                    ColLCID =9226
+                    Begin
+                        Begin Label
+                            BackStyle =1
+                            OverlapFlags =85
+                            TextFontCharSet =177
+                            TextAlign =2
+                            TextFontFamily =0
+                            Top =1485
+                            Width =1470
+                            Height =360
+                            BackColor =9359785
+                            BorderColor =8355711
+                            ForeColor =16777215
+                            Name ="SubTotal_Etiqueta"
+                            Caption ="SubTotal"
+                            GUID = Begin
+                                0x3c0d0a382050794c9690e46eb2a2146e
+                            End
+                            GridlineColor =10921638
+                            LayoutCachedTop =1485
+                            LayoutCachedWidth =1470
+                            LayoutCachedHeight =1845
+                            BackThemeColorIndex =9
+                            BackTint =60.0
+                            ForeThemeColorIndex =1
+                            ForeTint =100.0
+                        End
+                    End
+                End
+            End
+        End
+        Begin FormFooter
+            Height =453
+            Name ="PieDelFormulario"
+            GUID = Begin
+                0x71ad1332eab43a4987c2dd79d17d1e78
+            End
+            AlternateBackThemeColorIndex =1
+            AlternateBackShade =95.0
+            BackThemeColorIndex =1
+            Begin
+                Begin TextBox
+                    OverlapFlags =93
+                    TextFontCharSet =177
+                    TextFontFamily =0
+                    IMESentenceMode =3
+                    Left =3344
+                    Width =2541
+                    Height =345
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="Texto9"
+                    ControlSource ="=Sum([SubTotal])"
+                    GUID = Begin
+                        0x00c60ae4699cbb45b3f97375196bd7b3
+                    End
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =3344
+                    LayoutCachedWidth =5885
+                    LayoutCachedHeight =345
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            TextFontCharSet =177
+                            TextFontFamily =0
+                            Left =1303
+                            Width =705
+                            Height =315
+                            BorderColor =8355711
+                            ForeColor =8355711
+                            Name ="Etiqueta10"
+                            Caption ="Texto9"
+                            GUID = Begin
+                                0x4333e4db0daca94b8a5dc494fc7ac895
+                            End
+                            GridlineColor =10921638
+                            LayoutCachedLeft =1303
+                            LayoutCachedWidth =2008
+                            LayoutCachedHeight =315
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =247
+                    TextFontCharSet =177
+                    TextFontFamily =0
+                    IMESentenceMode =3
+                    Left =3855
+                    Top =56
+                    Height =360
+                    TabIndex =1
+                    BackColor =11854021
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="Valor"
+                    ControlSource ="Valor"
+                    Format ="$ #,##0.00;-$ #,##0.00"
+                    GUID = Begin
+                        0xc7a651cae91d254fbdeb511844d60ace
+                    End
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =3855
+                    LayoutCachedTop =56
+                    LayoutCachedWidth =5556
+                    LayoutCachedHeight =416
+                    BackThemeColorIndex =9
+                    BackTint =40.0
+                    CurrencySymbol ="$"
+                    Begin
+                        Begin Label
+                            BackStyle =1
+                            OverlapFlags =85
+                            TextFontCharSet =177
+                            TextAlign =2
+                            TextFontFamily =0
+                            Left =5896
+                            Top =56
+                            Width =1470
+                            Height =360
+                            BackColor =9359785
+                            BorderColor =8355711
+                            ForeColor =16777215
+                            Name ="Etiqueta8"
+                            Caption ="Precio Actual"
+                            GUID = Begin
+                                0xc4d1369f8121d24abd9995f41703b642
+                            End
+                            GridlineColor =10921638
+                            LayoutCachedLeft =5896
+                            LayoutCachedTop =56
+                            LayoutCachedWidth =7366
+                            LayoutCachedHeight =416
+                            BackThemeColorIndex =9
+                            BackTint =60.0
+                            ForeThemeColorIndex =1
+                            ForeTint =100.0
+                        End
+                    End
+                End
+            End
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub IdSemilla_AfterUpdate()
+    Me.Valor = Me.ValorUnitario
+End Sub
+
+Private Sub IdSemilla_LostFocus()
+Forms!pedido.Totalpedido = Me.Texto9
+End Sub

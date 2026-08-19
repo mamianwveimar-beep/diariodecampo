@@ -1,0 +1,4 @@
+﻿SELECT infoSemilla.semilla, infoSemilla.variedad, infoSemilla.cantidadPeriodoSiembra AS Pedido, [infoSemilla]![cantidadPeriodoSiembra]*([infoSemilla]![tiempoCosecha]/7) AS cantidakgTiempoCosecha, infoSemilla.periodoSiembra AS FrecuanciaSiembra, [ciclo]/[tiempoCosecha] AS numeroLote, (([infoSemilla]![tiempoCosecha]/7)*[cantidadPeriodoSiembra])/[infoSemilla]![Perdida] AS areaLote, [areaLote]/[infoSemilla]![area] AS numeroPlantasLote, [areaLote]*[numeroLote] AS TotalArea, [areaLote]/[infoSemilla]![anchoPromedioHera] AS metrosLinealesLote, [metrosLinealesLote]*[numeroLote] AS TotalMetrosLineales, infoSemilla.cantidadPeriodoSiembra
+FROM infoSemilla
+WHERE (((infoSemilla.cantidadPeriodoSiembra)<>0));
+

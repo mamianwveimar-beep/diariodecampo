@@ -1,0 +1,322 @@
+{
+  "generado": "2026-08-19T19:05:21.071Z",
+  "ejecucion": [
+    {
+      "consulta": "IngresoAbonoLiquido1Aplicacion",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoLiquido2Aplicacion",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoLiquido3Aplicacion",
+      "destino": "actividades",
+      "insertadas": 13,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoLiquido4Aplicacion",
+      "destino": "actividades",
+      "insertadas": 13,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoSolido1Aplicacion",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoSolido2Aplicacion",
+      "destino": "actividades",
+      "insertadas": 13,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoSolido3Aplicacion",
+      "destino": "actividades",
+      "insertadas": 12,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoPreparacionTerreno",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoSiembra",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoPrimerDeshierbe",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoSegundoDeshierbe",
+      "destino": "actividades",
+      "insertadas": 13,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoProtecionBasilus",
+      "destino": "actividades",
+      "insertadas": 8,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoProtecionBasilus2",
+      "destino": "actividades",
+      "insertadas": 9,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoCostosPreparacionTerreno",
+      "destino": "costosInsumos",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoCostosSiembra",
+      "destino": "costosInsumos",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoCostosDeshierbe",
+      "destino": "costosInsumos",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoCostosCobertura",
+      "destino": "costosInsumos",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "actualizarCostosAbonamiento",
+      "destino": "costosInsumos",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "actualizarCostosAbonamientoLiquido",
+      "destino": "costosInsumos",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "salidaAbono",
+      "destino": "inventarioProductos",
+      "insertadas": 15,
+      "omitidas": -15
+    }
+  ],
+  "formula": [
+    {
+      "tabla": "actividades",
+      "esperadas": 171,
+      "reales": 171,
+      "fallos": []
+    },
+    {
+      "tabla": "costosInsumos",
+      "esperadas": 90,
+      "reales": 90,
+      "fallos": []
+    }
+  ],
+  "idempotencia": [
+    {
+      "consulta": "IngresoAbonoLiquido1Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoLiquido2Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoLiquido3Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoLiquido4Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoSolido1Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoSolido2Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoSolido3Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoPreparacionTerreno",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoSiembra",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoPrimerDeshierbe",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoSegundoDeshierbe",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoProtecionBasilus",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoProtecionBasilus2",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoCostosPreparacionTerreno",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoCostosSiembra",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoCostosDeshierbe",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoCostosCobertura",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "actualizarCostosAbonamiento",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "actualizarCostosAbonamientoLiquido",
+      "insertadas_2a_vez": 0
+    }
+  ],
+  "deriva": [
+    {
+      "tabla": "actividades",
+      "en_access": 157,
+      "regeneradas": 171,
+      "coincidentes": 145,
+      "solo_en_access": [
+        "46|8|2021-10-30|48|AbonoSolido",
+        "46|8|2021-10-30|52|AbonoSolido",
+        "46|8|2021-10-30|3|AbonoSolido",
+        "46|8|2021-10-30|46|AbonoLiquido",
+        "46|8|2021-10-30|47|AbonoLiquido",
+        "46|8|2021-10-30|52|AbonoLiquido",
+        "46|8|2021-10-30|2|AbonoLiquido",
+        "46|8|2021-10-30|48|Deshierbe",
+        "46|8|2021-10-30|52|Deshierbe",
+        "46|8|2021-10-30|44|PreparacionTerreno",
+        "46|8|2021-10-30|44|Siembra",
+        "45|9|2021-11-15|44|otros"
+      ],
+      "solo_regeneradas": [
+        "46|8|2021-10-01|42|AbonoLiquido",
+        "62|10|2021-11-01|47|AbonoLiquido",
+        "63|11|2021-11-09|48|AbonoLiquido",
+        "65|10|2021-11-15|49|AbonoLiquido",
+        "46|8|2021-10-01|47|AbonoLiquido",
+        "63|11|2021-11-09|53|AbonoLiquido",
+        "46|8|2021-10-01|50|AbonoLiquido",
+        "63|11|2021-11-09|3|AbonoLiquido",
+        "46|8|2021-10-01|44|AbonoSolido",
+        "63|11|2021-11-09|49|AbonoSolido",
+        "65|10|2021-11-15|50|AbonoSolido",
+        "46|8|2021-10-01|47|AbonoSolido",
+        "63|11|2021-11-09|53|AbonoSolido",
+        "45|9|2021-10-25|2|AbonoSolido",
+        "46|8|2021-10-01|51|AbonoSolido",
+        "46|8|2021-10-01|40|PreparacionTerreno",
+        "63|11|2021-11-09|46|PreparacionTerreno",
+        "65|10|2021-11-15|47|PreparacionTerreno",
+        "46|8|2021-10-01|40|Siembra",
+        "63|11|2021-11-09|46|Siembra",
+        "65|10|2021-11-15|47|Siembra",
+        "46|8|2021-10-01|44|Deshierbe",
+        "63|11|2021-11-09|49|Deshierbe",
+        "65|10|2021-11-15|50|Deshierbe",
+        "46|8|2021-10-01|47|Deshierbe",
+        "63|11|2021-11-09|53|Deshierbe"
+      ]
+    },
+    {
+      "tabla": "costosInsumos",
+      "en_access": 76,
+      "regeneradas": 90,
+      "coincidentes": 62,
+      "solo_en_access": [
+        "Abonamiento|abonoliquido|45",
+        "Abonamiento|abonoliquido|46",
+        "Abonamiento|abonoliquido|47",
+        "Abonamiento|abonoliquido|51",
+        "Abonamiento|abonoliquido|52",
+        "Abonamiento|abonoliquido|53",
+        "Abonamiento|abonoliquido|54",
+        "Abonamiento|abonoliquido|56",
+        "Abonamiento|abonoliquido|57",
+        "Abonamiento|abonoliquido|59",
+        "Abonamiento|abonoliquido|60",
+        "Abonamiento|abonoliquido|61",
+        "Preparacion Terreno|Resiembra|45",
+        "Siembra|Resiembra|46"
+      ],
+      "solo_regeneradas": [
+        "Preparacion Terreno|Preparacion Terreno|62",
+        "Preparacion Terreno|Preparacion Terreno|63",
+        "Preparacion Terreno|Preparacion Terreno|65",
+        "Siembra|Siembra|62",
+        "Siembra|Siembra|63",
+        "Siembra|Siembra|65",
+        "Deshierbe|Deshierbe|62",
+        "Deshierbe|Deshierbe|63",
+        "Deshierbe|Deshierbe|65",
+        "Cobertura|Cobertura|62",
+        "Cobertura|Cobertura|63",
+        "Cobertura|Cobertura|65",
+        "Abonamiento|abono solido 1|65",
+        "Abonamiento|multimineral 2|45",
+        "Abonamiento|multimineral 2|46",
+        "Abonamiento|multimineral 2|47",
+        "Abonamiento|multimineral 2|51",
+        "Abonamiento|multimineral 2|52",
+        "Abonamiento|multimineral 2|53",
+        "Abonamiento|multimineral 2|54",
+        "Abonamiento|multimineral 2|56",
+        "Abonamiento|multimineral 2|57",
+        "Abonamiento|multimineral 2|59",
+        "Abonamiento|multimineral 2|60",
+        "Abonamiento|multimineral 2|61",
+        "Abonamiento|multimineral 2|62",
+        "Abonamiento|multimineral 2|63",
+        "Abonamiento|multimineral 2|65"
+      ]
+    }
+  ],
+  "causas_deriva": {
+    "cultivos_editados_tras_generar": []
+  }
+}
