@@ -7,10 +7,24 @@
 -- entre las 19:00 y medianoche hora de Colombia. Van como funciones
 -- parametrizadas en api/src/queries/, no como vistas.
 --
--- Equivalencias verificadas contra los datos reales:
---   Format$(d,"ww",0,0)  ->  CAST(strftime('%U', d) AS INTEGER) + 1
---   Weekday(d)           ->  CAST(strftime('%w', d) AS INTEGER) + 1
---   [fecha] + n          ->  date(fecha, '+n day')
+-- Equivalencias verificadas contra el propio motor de Access:
+--
+--   Weekday(d)  ->  CAST(strftime('%w', d) AS INTEGER) + 1
+--                   (1 = domingo ... 7 = sabado)
+--
+--   Format$(d,"ww",0,0)  ->  la expresion de mas abajo.
+--   Los argumentos 0,0 NO significan "domingo y semana del 1 de enero", sino
+--   "usa la configuracion regional de Windows". Es decir, el sistema anterior
+--   numeraba las semanas distinto segun el equipo: comprobado cambiando
+--   iFirstDayOfWeek en el registro, la fecha 2021-11-14 devuelve 47 con
+--   domingo y 46 con lunes.
+--   Aqui queda fijado en DOMINGO, que es la regla con la que se generaron las
+--   157 actividades existentes (156/156 encajan; con lunes solo 142/156).
+--   Tampoco vale strftime('%U') + 1: se desvia en los anios que empiezan en
+--   domingo, como 2023. Sobre 785 fechas acierta 665/785; esta expresion,
+--   785/785. Ver api/src/access-compat/fechas.mjs
+--
+--   [fecha] + n  ->  date(fecha, '+n day')
 -- =====================================================================
 
 -- ------------------------------------------------- ActualizarAbonamiento
@@ -18,7 +32,9 @@ CREATE VIEW ActualizarAbonamiento AS
 SELECT pc.codigosistema,
        pc.codSemilla,
        pc.fechasiembra,
-       CAST(strftime('%U', date(pc.fechasiembra, '+25 day')) AS INTEGER) + 1 AS semana1,
+       (CAST(strftime('%j', date(pc.fechasiembra, '+25 day')) AS INTEGER) - 1
+         + ((CAST(strftime('%w', date(date(pc.fechasiembra, '+25 day'), 'start of year')) AS INTEGER) - 0 + 7) % 7)
+       ) / 7 + 1 AS semana1,
        s.abonoPrimera,
        pc.numeroPlantasSembradas,
        pc.lote,

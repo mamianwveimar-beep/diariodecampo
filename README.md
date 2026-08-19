@@ -16,8 +16,8 @@ El plan completo está en [PLAN_MIGRACION.html](PLAN_MIGRACION.html).
 | 4 | Worker, API y lógica agrícola | Hecha |
 | 5 | Frontend Angular | Hecha |
 | 6 | Los 6 informes y su PDF | Hecha |
-| 7 | Aceptación con el usuario | Pendiente |
-| 8 | Despliegue en Cloudflare | Pendiente |
+| 7 | Aceptación | Hecha la parte automática; falta tu revisión |
+| 8 | Despliegue en Cloudflare | Preparado; falta la cuenta y la autenticación |
 
 ## Estructura
 
@@ -77,6 +77,15 @@ Las dos primeras se apoyan en `db/local/diariodecampo.db`, así que hay que
 ejecutar antes `node etl/03-cargar.mjs`. La prueba de humo necesita el Worker
 y `ng serve` en marcha, y deja capturas en `web/capturas/`.
 
+Y la comparación contra el propio motor de Access, que es el núcleo de la
+fase 7:
+
+```bash
+powershell -File etl/05-volcar-consultas-access.ps1   # ejecuta las 9 consultas en Access
+node etl/06-comparar-paridad.mjs                      # compara fila a fila con D1
+node etl/07-respaldo.mjs ensayo                       # respalda, restaura y compara
+```
+
 ## La API
 
 | Ruta | Qué hace |
@@ -133,8 +142,16 @@ navegación y los filtros.
 - **`Date()` nunca se traduce como `date('now')`.** Los Workers corren en UTC y
   entre las 19:00 y la medianoche hora de Colombia devolverían el día
   siguiente. La fecha se calcula con `hoyBogota()` y se pasa como parámetro.
-- **`Format$(fecha,"ww",0,0)` es `strftime('%U') + 1`**, verificado contra las
-  156 filas de `actividades` que tienen semana calculada.
+- **La numeración de semanas de Access dependía del equipo.** `Format$(d,"ww",0,0)`
+  no significa «domingo», sino «usa la configuración regional de Windows».
+  Comprobado cambiando `iFirstDayOfWeek` en el registro: la misma fecha,
+  2021-11-14, devuelve **47** con domingo y **46** con lunes. La migración lo
+  fija de una vez en domingo (`PRIMER_DIA_SEMANA` en `access-compat/fechas.mjs`),
+  que es la regla con la que se generaron las 157 actividades existentes:
+  156/156 encajan, mientras que con lunes solo 142/156.
+- **Tampoco vale `strftime('%U') + 1`.** Acierta casi siempre, pero se desvía
+  una unidad en los años que empiezan en domingo, como 2023. Sobre el fixture
+  de 785 fechas acierta 665/785; la expresión que usamos, 785/785.
 - **Cuatro columnas son `GENERATED`** porque en Access eran campos calculados:
   `actividades.total`, `costosInsumos.valorTotal`, `inventarioProductos.saldo`
   y `detallePedido.SubTotal`. Se leen pero no se escriben.
@@ -144,9 +161,23 @@ navegación y los filtros.
 - **Nada se descarta en silencio en la carga:** lo que no pasa una validación
   queda en `_cuarentena` con la regla incumplida y el valor original.
 
+## Evidencia de paridad
+
+`docs/paridad/` recoge lo que se ha comparado y con qué resultado:
+
+| Archivo | Qué demuestra |
+|---|---|
+| `reconciliacion.md` | Filas y sumas de control, Access frente a D1, tabla por tabla |
+| `vistas.md` | Las 9 consultas SELECT ejecutadas en el motor de Access y comparadas fila a fila. 58 columnas en trazabilidad, 0 diferencias |
+| `consultas-accion.json` | Las 20 consultas de acción frente a una reimplementación independiente |
+
+Las divergencias que quedan son **deliberadas y verificadas una a una**: la
+fecha del almacén (texto en Access, fecha real aquí) y la numeración de semana
+que Access dejaba a merced del equipo.
+
 ## Pendiente de decidir
 
-Está detallado al final del plan. Lo que bloquea la fase 7:
+Está detallado al final del plan.
 
 1. Las **9 líneas de pedido** que apuntan a semillas borradas (Id 1, 14, 15,
    16, 17 y 212). Las otras 6 líneas son válidas.
@@ -155,5 +186,8 @@ Está detallado al final del plan. Lo que bloquea la fase 7:
    cero, así que su coste de abonamiento sale nulo. Access hacía lo mismo.
 4. Si siguen vigentes el **jornal de 8.807 pesos** y el **costo de 1,46** por
    minuto, incrustados desde 2021.
-5. **Usuarios y permisos** para el despliegue en la nube. Hoy no hay ninguna
-   autenticación.
+5. **Con qué día empieza la semana.** Está fijado en domingo para no partir el
+   histórico, pero si la finca cuenta las semanas de lunes a domingo, se
+   cambia `PRIMER_DIA_SEMANA` a 1 y se regeneran las actividades.
+6. **Usuarios y permisos** para el despliegue en la nube. Hoy no hay ninguna
+   autenticación: ver [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md).

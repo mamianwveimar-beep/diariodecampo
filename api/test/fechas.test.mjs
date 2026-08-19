@@ -5,25 +5,56 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
+import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { semanaAccess, diaSemanaAccess, sumarDias, hoyBogota } from '../src/access-compat/fechas.mjs';
+import { semanaAccess, diaSemanaAccess, sumarDias, hoyBogota, SQL_SEMANA } from '../src/access-compat/fechas.mjs';
 import { SQL_PROGRAMACION_ABONAMIENTO, SQL_PROGRAMACION_CULTIVO } from '../src/queries/vistas-parametrizadas.mjs';
 
 const RAIZ = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const abrir = () => new DatabaseSync(join(RAIZ, 'db', 'local', 'diariodecampo.db'), { readOnly: true });
 
-test('semanaAccess coincide con strftime(%U)+1 de SQLite en todo 2021 y 2024', () => {
+/**
+ * Fixture generado con el propio motor de Access sobre el .accdb congelado
+ * (etl/05-volcar-consultas-access.ps1 usa la misma tecnica). Cada entrada
+ * lleva lo que devuelve Format$(d,"ww",...) con las cuatro combinaciones de
+ * argumentos, para poder demostrar cual es la que aplica.
+ */
+const SEMANAS = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'semanas-access.json'), 'utf8')
+);
+
+test('semanaAccess reproduce Format$(d,"ww",1,1) de Access en las 785 fechas del fixture', () => {
+  assert.ok(SEMANAS.length >= 785, `el fixture deberia tener 785 fechas, tiene ${SEMANAS.length}`);
+  const malas = SEMANAS.filter((f) => semanaAccess(f.d) !== f.dom_ene1);
+  assert.equal(malas.length, 0, `fechas que no coinciden: ${JSON.stringify(malas.slice(0, 5))}`);
+});
+
+test('la expresion SQL de la semana da lo mismo que la de JavaScript', () => {
   const db = abrir();
-  const st = db.prepare("SELECT CAST(strftime('%U', ?) AS INTEGER) + 1 AS w");
-  for (const anio of [2021, 2024]) {                 // 2024 es bisiesto
-    for (let d = 0; d < 366; d++) {
-      const iso = sumarDias(`${anio}-01-01`, d);
-      if (!iso.startsWith(String(anio))) break;
-      assert.equal(semanaAccess(iso), st.get(iso).w, `semana de ${iso}`);
-    }
-  }
+  // ?1 numerado a proposito: SQL_SEMANA repite la expresion dos veces
+  const st = db.prepare(`SELECT ${SQL_SEMANA('?1')} AS w`);
+  for (const f of SEMANAS) assert.equal(st.get(f.d).w, semanaAccess(f.d), `semana de ${f.d}`);
   db.close();
+});
+
+test('strftime(%U)+1 NO sirve: falla en los anios que empiezan en domingo', () => {
+  // Documenta por que la expresion es mas larga de lo que parece necesario.
+  const db = abrir();
+  const st = db.prepare("SELECT CAST(strftime('%U', ?1) AS INTEGER) + 1 AS w");
+  const fallos = SEMANAS.filter((f) => st.get(f.d).w !== semanaAccess(f.d));
+  assert.ok(fallos.length > 0, 'si %U+1 acertara siempre, la expresion larga sobraria');
+  assert.ok(fallos.every((f) => f.d.startsWith('2023')),
+    `los fallos deberian estar en 2023, que empieza en domingo: ${JSON.stringify(fallos.slice(0, 3))}`);
+  db.close();
+});
+
+test('Access numeraba las semanas segun la configuracion del equipo', () => {
+  // La razon de que PRIMER_DIA_SEMANA exista y este fijado. Sobre las mismas
+  // fechas, las dos reglas de Access no coinciden entre si.
+  const coinciden = SEMANAS.filter((f) => f.dom_ene1 === f.lun_ene1).length;
+  assert.ok(coinciden < SEMANAS.length,
+    'domingo y lunes deberian diferir en algunas fechas; si no, no habria nada que fijar');
 });
 
 test('diaSemanaAccess coincide con strftime(%w)+1 y usa 1=domingo', () => {

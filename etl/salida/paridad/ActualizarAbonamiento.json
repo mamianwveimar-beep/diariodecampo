@@ -1,0 +1,152 @@
+[
+    {
+        "codigosistema":  45,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-10-25",
+        "semana1":  "47",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  150,
+        "lote":  2,
+        "cama":  2
+    },
+    {
+        "codigosistema":  46,
+        "codSemilla":  8,
+        "fechasiembra":  "2021-10-01",
+        "semana1":  "44",
+        "abonoPrimera":  0.05,
+        "numeroPlantasSembradas":  300,
+        "lote":  3,
+        "cama":  3
+    },
+    {
+        "codigosistema":  47,
+        "codSemilla":  8,
+        "fechasiembra":  "2021-10-31",
+        "semana1":  "48",
+        "abonoPrimera":  0.05,
+        "numeroPlantasSembradas":  400,
+        "lote":  4,
+        "cama":  4
+    },
+    {
+        "codigosistema":  51,
+        "codSemilla":  8,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.05,
+        "numeroPlantasSembradas":  400,
+        "lote":  0,
+        "cama":  0
+    },
+    {
+        "codigosistema":  52,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  411,
+        "lote":  0,
+        "cama":  0
+    },
+    {
+        "codigosistema":  53,
+        "codSemilla":  8,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.05,
+        "numeroPlantasSembradas":  111,
+        "lote":  1,
+        "cama":  0
+    },
+    {
+        "codigosistema":  54,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  111,
+        "lote":  11,
+        "cama":  11
+    },
+    {
+        "codigosistema":  56,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  511,
+        "lote":  1,
+        "cama":  1
+    },
+    {
+        "codigosistema":  57,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  214,
+        "lote":  2,
+        "cama":  2
+    },
+    {
+        "codigosistema":  59,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  124,
+        "lote":  3,
+        "cama":  3
+    },
+    {
+        "codigosistema":  60,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-05",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  145,
+        "lote":  4,
+        "cama":  4
+    },
+    {
+        "codigosistema":  61,
+        "codSemilla":  9,
+        "fechasiembra":  "2021-11-08",
+        "semana1":  "49",
+        "abonoPrimera":  0.15,
+        "numeroPlantasSembradas":  244,
+        "lote":  0,
+        "cama":  0
+    },
+    {
+        "codigosistema":  62,
+        "codSemilla":  10,
+        "fechasiembra":  "2021-11-01",
+        "semana1":  "48",
+        "abonoPrimera":  0.008,
+        "numeroPlantasSembradas":  210,
+        "lote":  1,
+        "cama":  1
+    },
+    {
+        "codigosistema":  63,
+        "codSemilla":  11,
+        "fechasiembra":  "2021-11-09",
+        "semana1":  "49",
+        "abonoPrimera":  0.08,
+        "numeroPlantasSembradas":  255,
+        "lote":  1,
+        "cama":  2
+    },
+    {
+        "codigosistema":  65,
+        "codSemilla":  10,
+        "fechasiembra":  "2021-11-15",
+        "semana1":  "50",
+        "abonoPrimera":  0.008,
+        "numeroPlantasSembradas":  100,
+        "lote":  1,
+        "cama":  2
+    }
+]

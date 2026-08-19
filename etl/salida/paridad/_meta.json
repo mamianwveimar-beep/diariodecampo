@@ -1,0 +1,61 @@
+{
+    "generado":  "2026-08-19T14:45:21",
+    "hoy":  "2026-08-19",
+    "fechaInicial":  "1900-01-01",
+    "consultas":  [
+                      {
+                          "consulta":  "ActualizarAbonamiento",
+                          "filas":  15,
+                          "columnas":  8,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cCostosActividades",
+                          "filas":  157,
+                          "columnas":  16,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cCostosInsumos",
+                          "filas":  76,
+                          "columnas":  11,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cInventarioCampo",
+                          "filas":  15,
+                          "columnas":  13,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cInventarioProductos",
+                          "filas":  10,
+                          "columnas":  10,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cosecha Consulta",
+                          "filas":  7,
+                          "columnas":  9,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cProgramacionSiembra",
+                          "filas":  4,
+                          "columnas":  12,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cProgramacionCultivosAbonamiento",
+                          "filas":  15,
+                          "columnas":  12,
+                          "error":  null
+                      },
+                      {
+                          "consulta":  "cProgramacionCultivo",
+                          "filas":  20,
+                          "columnas":  58,
+                          "error":  null
+                      }
+                  ]
+}

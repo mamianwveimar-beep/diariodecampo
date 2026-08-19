@@ -1,3 +1,5 @@
+import { SQL_SEMANA } from '../access-compat/fechas.mjs';
+
 /**
  * Las 20 consultas de accion de Access, traducidas 1:1.
  *
@@ -41,11 +43,15 @@ const COLS_COSTOS =
   'concepto, detalle, fecha, unidad, valorUnitario, programacionCultivoCodCultivo, ' +
   'cantidad, producto';
 
-/** Semana de Access: Format$(expr,"ww",0,0) */
-const sem = (dias) =>
-  dias === 0
-    ? `CAST(strftime('%U', pc.fechasiembra) AS INTEGER) + 1`
-    : `CAST(strftime('%U', date(pc.fechasiembra, '+${dias} day')) AS INTEGER) + 1`;
+/**
+ * Semana de Access: Format$(expr,"ww",0,0), con lunes como primer dia de la
+ * semana y semana 1 = la que contiene el 1 de enero. Ver la explicacion y la
+ * comprobacion sobre 785 fechas en access-compat/fechas.mjs.
+ */
+const sem = (dias) => {
+  const f = dias === 0 ? 'pc.fechasiembra' : `date(pc.fechasiembra, '+${dias} day')`;
+  return SQL_SEMANA(f);
+};
 
 /**
  * Inserta en actividades a partir de un producto del catalogo.

@@ -26,21 +26,45 @@ export function hoyBogota(ahora = new Date()) {
 }
 
 /**
- * Equivalente de Format$(fecha, "ww", 0, 0) de Access.
+ * Primer dia de la semana con el que se numeran las semanas del cultivo.
  *
- * Con los argumentos 0,0 Access usa domingo como primer dia de la semana y
- * cuenta como semana 1 la que contiene el 1 de enero. Eso es exactamente
- * strftime('%U') + 1.
+ * 0 = domingo, 1 = lunes.
+ *
+ * En Access esto NO estaba fijado: `Format$(d,"ww",0,0)` no significa
+ * "domingo y semana del 1 de enero", sino "usa la configuracion regional de
+ * Windows" (vbUseSystem). Comprobado cambiando iFirstDayOfWeek en el registro
+ * y volviendo a preguntar al motor de Access: la misma fecha, 2021-11-14,
+ * devuelve 47 con domingo y 46 con lunes.
+ *
+ * Es decir: el sistema anterior numeraba las semanas de forma distinta segun
+ * el equipo donde se abriera la base. Aqui se fija de una vez, y se fija en
+ * DOMINGO porque es la regla con la que se generaron las 157 actividades que
+ * ya existen: cambiarla ahora partiria el historico en dos numeraciones y el
+ * informe de costos por semana mezclaria ambas.
+ *
+ * Si la finca prefiere numerar por semanas de lunes a domingo, basta con
+ * poner 1 aqui, pero hay que regenerar las actividades historicas.
+ */
+export const PRIMER_DIA_SEMANA = 0;
+
+/**
+ * Equivalente de Format$(fecha, "ww", 0, 0) de Access, con el primer dia de
+ * la semana ya fijado.
+ *
+ * Comprobado 785/785 contra el propio motor de Access (fixture
+ * api/test/fixtures/semanas-access.json) y 156/156 contra las semanas que
+ * llevan grabadas las actividades migradas.
  *
  * @param {string} iso 'YYYY-MM-DD'
+ * @param {number} [primerDia] 0 = domingo, 1 = lunes
  * @returns {number} 1..54
  */
-export function semanaAccess(iso) {
+export function semanaAccess(iso, primerDia = PRIMER_DIA_SEMANA) {
   const [a, m, d] = iso.split('-').map(Number);
   const fecha = Date.UTC(a, m - 1, d);
   const enero1 = Date.UTC(a, 0, 1);
   const diaDelAnio = Math.round((fecha - enero1) / 86400000);
-  const dowEnero1 = new Date(enero1).getUTCDay();          // 0 = domingo
+  const dowEnero1 = (new Date(enero1).getUTCDay() - primerDia + 7) % 7;
   return Math.floor((diaDelAnio + dowEnero1) / 7) + 1;
 }
 
@@ -69,8 +93,24 @@ export function sumarDias(iso, dias) {
 // --------------------------------------------------------- fragmentos SQL
 // Los mismos calculos, para incrustar en las consultas que corren en D1.
 
-/** Format$(expr,"ww",0,0) */
-export const SQL_SEMANA = (expr) => `(CAST(strftime('%U', ${expr}) AS INTEGER) + 1)`;
+/**
+ * La misma numeracion de semana, para incrustar en SQL.
+ *
+ * OJO: no sirve `strftime('%U') + 1`. Coincide casi siempre, pero se desvia
+ * un numero entero en los anios que empiezan en domingo, como 2023, porque
+ * %U cuenta esos primeros dias como semana 00 mientras que Access los cuenta
+ * como semana 1. Sobre el fixture de 785 fechas, %U+1 acierta 665/785; la
+ * expresion de abajo, 785/785.
+ *
+ * `expr` aparece DOS veces en la expresion generada. Dos consecuencias:
+ * conviene que sea barata, y si es un parametro hay que pasarlo numerado
+ * (`?1`), nunca `?` a secas: SQLite trataria cada `?` como un parametro
+ * distinto y el segundo quedaria sin enlazar, devolviendo NULL.
+ */
+export const SQL_SEMANA = (expr) =>
+  `((CAST(strftime('%j', ${expr}) AS INTEGER) - 1` +
+  ` + ((CAST(strftime('%w', date(${expr}, 'start of year')) AS INTEGER)` +
+  ` - ${PRIMER_DIA_SEMANA} + 7) % 7)) / 7 + 1)`;
 
 /** Weekday(expr) */
 export const SQL_DIA_SEMANA = (expr) => `(CAST(strftime('%w', ${expr}) AS INTEGER) + 1)`;

@@ -1,0 +1,206 @@
+{
+  "generado": "2026-08-19T20:01:17.190Z",
+  "tolerancia": 0.000001,
+  "meta": {
+    "generado": "2026-08-19T14:45:21",
+    "hoy": "2026-08-19",
+    "fechaInicial": "1900-01-01",
+    "consultas": [
+      {
+        "consulta": "ActualizarAbonamiento",
+        "filas": 15,
+        "columnas": 8,
+        "error": null
+      },
+      {
+        "consulta": "cCostosActividades",
+        "filas": 157,
+        "columnas": 16,
+        "error": null
+      },
+      {
+        "consulta": "cCostosInsumos",
+        "filas": 76,
+        "columnas": 11,
+        "error": null
+      },
+      {
+        "consulta": "cInventarioCampo",
+        "filas": 15,
+        "columnas": 13,
+        "error": null
+      },
+      {
+        "consulta": "cInventarioProductos",
+        "filas": 10,
+        "columnas": 10,
+        "error": null
+      },
+      {
+        "consulta": "cosecha Consulta",
+        "filas": 7,
+        "columnas": 9,
+        "error": null
+      },
+      {
+        "consulta": "cProgramacionSiembra",
+        "filas": 4,
+        "columnas": 12,
+        "error": null
+      },
+      {
+        "consulta": "cProgramacionCultivosAbonamiento",
+        "filas": 15,
+        "columnas": 12,
+        "error": null
+      },
+      {
+        "consulta": "cProgramacionCultivo",
+        "filas": 20,
+        "columnas": 58,
+        "error": null
+      }
+    ]
+  },
+  "informe": [
+    {
+      "consulta": "ActualizarAbonamiento",
+      "filas_access": 15,
+      "filas_d1": 15,
+      "columnas_comparadas": 8,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    },
+    {
+      "consulta": "cCostosActividades",
+      "filas_access": 157,
+      "filas_d1": 157,
+      "columnas_comparadas": 16,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    },
+    {
+      "consulta": "cCostosInsumos",
+      "filas_access": 76,
+      "filas_d1": 76,
+      "columnas_comparadas": 11,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    },
+    {
+      "consulta": "cInventarioCampo",
+      "filas_access": 15,
+      "filas_d1": 15,
+      "columnas_comparadas": 13,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    },
+    {
+      "consulta": "cInventarioProductos",
+      "filas_access": 10,
+      "filas_d1": 10,
+      "columnas_comparadas": 10,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 10,
+      "divergencias_no_previstas": [],
+      "motivos": [
+        "En Access era Texto(42) con formato dd/MM/yyyy; en D1 es una fecha real. Mismo dia, distinta representacion."
+      ],
+      "ok": true
+    },
+    {
+      "consulta": "cosecha Consulta",
+      "filas_access": 7,
+      "filas_d1": 7,
+      "columnas_comparadas": 9,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    },
+    {
+      "consulta": "cProgramacionSiembra",
+      "filas_access": 4,
+      "filas_d1": 4,
+      "columnas_comparadas": 12,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    },
+    {
+      "consulta": "cProgramacionCultivosAbonamiento",
+      "filas_access": 15,
+      "filas_d1": 15,
+      "columnas_comparadas": 12,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 1,
+      "divergencias_no_previstas": [],
+      "motivos": [
+        "Access numera la semana segun la configuracion regional del equipo, que aqui esta en lunes. La migracion la fija en domingo, que es la regla con la que se generaron las 157 actividades existentes. Se comprueba que D1 devuelve exactamente la regla de domingo."
+      ],
+      "ok": true
+    },
+    {
+      "consulta": "cProgramacionCultivo",
+      "filas_access": 20,
+      "filas_d1": 20,
+      "columnas_comparadas": 58,
+      "columnas_solo_access": [],
+      "columnas_solo_d1": [],
+      "filas_solo_access": [],
+      "filas_solo_d1": [],
+      "diferencias": [],
+      "divergencias_previstas": 0,
+      "divergencias_no_previstas": [],
+      "motivos": [],
+      "ok": true
+    }
+  ]
+}

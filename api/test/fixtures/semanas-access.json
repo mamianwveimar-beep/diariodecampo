@@ -1,0 +1,5497 @@
+[
+    {
+        "d":  "2021-01-01",
+        "sistema":  1,
+        "dom_ene1":  1,
+        "lun_ene1":  1,
+        "lun_4dias":  53
+    },
+    {
+        "d":  "2021-01-02",
+        "sistema":  1,
+        "dom_ene1":  1,
+        "lun_ene1":  1,
+        "lun_4dias":  53
+    },
+    {
+        "d":  "2021-01-03",
+        "sistema":  1,
+        "dom_ene1":  2,
+        "lun_ene1":  1,
+        "lun_4dias":  53
+    },
+    {
+        "d":  "2021-01-04",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-05",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-06",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-07",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-08",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-09",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-10",
+        "sistema":  2,
+        "dom_ene1":  3,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2021-01-11",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2021-01-12",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2021-01-13",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2021-01-14",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2021-01-15",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2021-01-21",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2021-01-22",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2021-01-23",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2021-01-24",
+        "sistema":  4,
+        "dom_ene1":  5,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2021-01-25",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-01-26",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-01-27",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-01-28",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-01-29",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-01-30",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-01-31",
+        "sistema":  5,
+        "dom_ene1":  6,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2021-02-01",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-02",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-03",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-04",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-05",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-06",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-07",
+        "sistema":  6,
+        "dom_ene1":  7,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2021-02-08",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-09",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-10",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-11",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-12",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-13",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-14",
+        "sistema":  7,
+        "dom_ene1":  8,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2021-02-15",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-16",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-17",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-18",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-19",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-20",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-21",
+        "sistema":  8,
+        "dom_ene1":  9,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2021-02-22",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-02-23",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-02-24",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-02-25",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-02-26",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-02-27",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-02-28",
+        "sistema":  9,
+        "dom_ene1":  10,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2021-03-01",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-02",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-03",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-04",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-05",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-06",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-07",
+        "sistema":  10,
+        "dom_ene1":  11,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2021-03-08",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-09",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-10",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-11",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-12",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-13",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-14",
+        "sistema":  11,
+        "dom_ene1":  12,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2021-03-15",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-16",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-17",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-18",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-19",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-20",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-21",
+        "sistema":  12,
+        "dom_ene1":  13,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2021-03-22",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2021-03-23",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2021-03-24",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2021-03-25",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2021-03-26",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2021-04-01",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2021-04-02",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2021-04-03",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2021-04-04",
+        "sistema":  14,
+        "dom_ene1":  15,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2021-04-05",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-06",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-07",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-08",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-09",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-10",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-11",
+        "sistema":  15,
+        "dom_ene1":  16,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2021-04-12",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-13",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-14",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-15",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-16",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-17",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-18",
+        "sistema":  16,
+        "dom_ene1":  17,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2021-04-19",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-20",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-21",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-22",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-23",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-24",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-25",
+        "sistema":  17,
+        "dom_ene1":  18,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2021-04-26",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-04-27",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-04-28",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-04-29",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-04-30",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-05-01",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-05-02",
+        "sistema":  18,
+        "dom_ene1":  19,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2021-05-03",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-04",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-05",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-06",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-07",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-08",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-09",
+        "sistema":  19,
+        "dom_ene1":  20,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2021-05-10",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2021-05-11",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2021-05-12",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2021-05-13",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2021-05-14",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2021-05-15",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2021-05-21",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2021-05-22",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2021-05-23",
+        "sistema":  21,
+        "dom_ene1":  22,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2021-05-24",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-05-25",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-05-26",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-05-27",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-05-28",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-05-29",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-05-30",
+        "sistema":  22,
+        "dom_ene1":  23,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2021-06-05",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2021-06-06",
+        "sistema":  23,
+        "dom_ene1":  24,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2021-06-07",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-08",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-09",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-10",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-11",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-12",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-13",
+        "sistema":  24,
+        "dom_ene1":  25,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2021-06-14",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-15",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-16",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-17",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-18",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-19",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-20",
+        "sistema":  25,
+        "dom_ene1":  26,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2021-06-21",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-22",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-23",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-24",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-25",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-26",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-27",
+        "sistema":  26,
+        "dom_ene1":  27,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2021-06-28",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-06-29",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-06-30",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-07-01",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-07-02",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-07-03",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-07-04",
+        "sistema":  27,
+        "dom_ene1":  28,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2021-07-05",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-06",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-07",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-08",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-09",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-10",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-11",
+        "sistema":  28,
+        "dom_ene1":  29,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2021-07-12",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-13",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-14",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-15",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-16",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-17",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-18",
+        "sistema":  29,
+        "dom_ene1":  30,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2021-07-19",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2021-07-25",
+        "sistema":  30,
+        "dom_ene1":  31,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2021-07-26",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-07-27",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-07-28",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-07-29",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-07-30",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-07-31",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-08-01",
+        "sistema":  31,
+        "dom_ene1":  32,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2021-08-02",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2021-08-03",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2021-08-09",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-10",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-11",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-12",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-13",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-14",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-15",
+        "sistema":  33,
+        "dom_ene1":  34,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2021-08-16",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-17",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-18",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-19",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-20",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-21",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-22",
+        "sistema":  34,
+        "dom_ene1":  35,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2021-08-23",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-24",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-25",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-26",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-27",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-28",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-29",
+        "sistema":  35,
+        "dom_ene1":  36,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2021-08-30",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-08-31",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-09-01",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-09-02",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-09-03",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-09-04",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-09-05",
+        "sistema":  36,
+        "dom_ene1":  37,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2021-09-06",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-07",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-08",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-09",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-10",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-11",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-12",
+        "sistema":  37,
+        "dom_ene1":  38,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2021-09-13",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-14",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-15",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-16",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-17",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-18",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-19",
+        "sistema":  38,
+        "dom_ene1":  39,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2021-09-20",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-21",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-22",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-23",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-24",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-25",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-26",
+        "sistema":  39,
+        "dom_ene1":  40,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2021-09-27",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-09-28",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-09-29",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-09-30",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-10-01",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-10-02",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-10-03",
+        "sistema":  40,
+        "dom_ene1":  41,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2021-10-04",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-05",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-06",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-07",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-08",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-09",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-10",
+        "sistema":  41,
+        "dom_ene1":  42,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2021-10-11",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2021-10-12",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2021-10-18",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-19",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-20",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-21",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-22",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-23",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-24",
+        "sistema":  43,
+        "dom_ene1":  44,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2021-10-25",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-10-26",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-10-27",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-10-28",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-10-29",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-10-30",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-10-31",
+        "sistema":  44,
+        "dom_ene1":  45,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2021-11-01",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-02",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-03",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-04",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-05",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-06",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-07",
+        "sistema":  45,
+        "dom_ene1":  46,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2021-11-08",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-09",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-10",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-11",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-12",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-13",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-14",
+        "sistema":  46,
+        "dom_ene1":  47,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2021-11-15",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-16",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-17",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-18",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-19",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-20",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-21",
+        "sistema":  47,
+        "dom_ene1":  48,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2021-11-22",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-23",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-24",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-25",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-26",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-27",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-28",
+        "sistema":  48,
+        "dom_ene1":  49,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2021-11-29",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2021-11-30",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2021-12-01",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2021-12-07",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2021-12-08",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2021-12-09",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2021-12-10",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2021-12-11",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2021-12-12",
+        "sistema":  50,
+        "dom_ene1":  51,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2021-12-13",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-14",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-15",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-16",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-17",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-18",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-19",
+        "sistema":  51,
+        "dom_ene1":  52,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2021-12-20",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2021-12-21",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2021-12-27",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2021-12-28",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2021-12-29",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2021-12-30",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2021-12-31",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-01-01",
+        "sistema":  1,
+        "dom_ene1":  1,
+        "lun_ene1":  1,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-01-02",
+        "sistema":  1,
+        "dom_ene1":  2,
+        "lun_ene1":  1,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-01-03",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-04",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-05",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-06",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-07",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-08",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-09",
+        "sistema":  2,
+        "dom_ene1":  3,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2022-01-10",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-11",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-12",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-13",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-14",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-15",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-16",
+        "sistema":  3,
+        "dom_ene1":  4,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2022-01-17",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-18",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-19",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-20",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-21",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-22",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-23",
+        "sistema":  4,
+        "dom_ene1":  5,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2022-01-24",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-25",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-26",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-27",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-28",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-29",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-30",
+        "sistema":  5,
+        "dom_ene1":  6,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2022-01-31",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-01",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-02",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-03",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-04",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-05",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-06",
+        "sistema":  6,
+        "dom_ene1":  7,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2022-02-07",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-08",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-09",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-10",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-11",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-12",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-13",
+        "sistema":  7,
+        "dom_ene1":  8,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2022-02-14",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-15",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-16",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-17",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-18",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-19",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-20",
+        "sistema":  8,
+        "dom_ene1":  9,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2022-02-21",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2022-02-22",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2022-02-23",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2022-02-24",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2022-03-02",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2022-03-03",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2022-03-04",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2022-03-05",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2022-03-06",
+        "sistema":  10,
+        "dom_ene1":  11,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2022-03-07",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-08",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-09",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-10",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-11",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-12",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-13",
+        "sistema":  11,
+        "dom_ene1":  12,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2022-03-14",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-15",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-16",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-17",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-18",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-19",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-20",
+        "sistema":  12,
+        "dom_ene1":  13,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2022-03-21",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-22",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-23",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-24",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-25",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-26",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-27",
+        "sistema":  13,
+        "dom_ene1":  14,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2022-03-28",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-03-29",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-03-30",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-03-31",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-04-01",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-04-02",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-04-03",
+        "sistema":  14,
+        "dom_ene1":  15,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2022-04-04",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-05",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-06",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-07",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-08",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-09",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-10",
+        "sistema":  15,
+        "dom_ene1":  16,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2022-04-11",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-12",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-13",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-14",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-15",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-16",
+        "sistema":  16,
+        "dom_ene1":  16,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-17",
+        "sistema":  16,
+        "dom_ene1":  17,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2022-04-18",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-19",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-20",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-21",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-22",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-23",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-24",
+        "sistema":  17,
+        "dom_ene1":  18,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2022-04-25",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2022-04-26",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2022-04-27",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2022-04-28",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2022-04-29",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2022-04-30",
+        "sistema":  18,
+        "dom_ene1":  18,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2022-05-06",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2022-05-07",
+        "sistema":  19,
+        "dom_ene1":  19,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2022-05-08",
+        "sistema":  19,
+        "dom_ene1":  20,
+        "lun_ene1":  19,
+        "lun_4dias":  18
+    },
+    {
+        "d":  "2022-05-09",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-10",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-11",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-12",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-13",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-14",
+        "sistema":  20,
+        "dom_ene1":  20,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-15",
+        "sistema":  20,
+        "dom_ene1":  21,
+        "lun_ene1":  20,
+        "lun_4dias":  19
+    },
+    {
+        "d":  "2022-05-16",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-17",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-18",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-19",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-20",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-21",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-22",
+        "sistema":  21,
+        "dom_ene1":  22,
+        "lun_ene1":  21,
+        "lun_4dias":  20
+    },
+    {
+        "d":  "2022-05-23",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-24",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-25",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-26",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-27",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-28",
+        "sistema":  22,
+        "dom_ene1":  22,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-29",
+        "sistema":  22,
+        "dom_ene1":  23,
+        "lun_ene1":  22,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2022-05-30",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-05-31",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-06-01",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-06-02",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-06-03",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-06-04",
+        "sistema":  23,
+        "dom_ene1":  23,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-06-05",
+        "sistema":  23,
+        "dom_ene1":  24,
+        "lun_ene1":  23,
+        "lun_4dias":  22
+    },
+    {
+        "d":  "2022-06-06",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-07",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-08",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-09",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-10",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-11",
+        "sistema":  24,
+        "dom_ene1":  24,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-12",
+        "sistema":  24,
+        "dom_ene1":  25,
+        "lun_ene1":  24,
+        "lun_4dias":  23
+    },
+    {
+        "d":  "2022-06-13",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-14",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-15",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-16",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-17",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-18",
+        "sistema":  25,
+        "dom_ene1":  25,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-19",
+        "sistema":  25,
+        "dom_ene1":  26,
+        "lun_ene1":  25,
+        "lun_4dias":  24
+    },
+    {
+        "d":  "2022-06-20",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-21",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-22",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-23",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-24",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-25",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-26",
+        "sistema":  26,
+        "dom_ene1":  27,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2022-06-27",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-06-28",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-06-29",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-06-30",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-07-01",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-07-02",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-07-03",
+        "sistema":  27,
+        "dom_ene1":  28,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2022-07-04",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2022-07-05",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2022-07-06",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2022-07-07",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2022-07-08",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2022-07-09",
+        "sistema":  28,
+        "dom_ene1":  28,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2022-07-15",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2022-07-16",
+        "sistema":  29,
+        "dom_ene1":  29,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2022-07-17",
+        "sistema":  29,
+        "dom_ene1":  30,
+        "lun_ene1":  29,
+        "lun_4dias":  28
+    },
+    {
+        "d":  "2022-07-18",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-19",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-20",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-21",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-22",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-23",
+        "sistema":  30,
+        "dom_ene1":  30,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-24",
+        "sistema":  30,
+        "dom_ene1":  31,
+        "lun_ene1":  30,
+        "lun_4dias":  29
+    },
+    {
+        "d":  "2022-07-25",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-07-26",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-07-27",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-07-28",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-07-29",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-07-30",
+        "sistema":  31,
+        "dom_ene1":  31,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-07-31",
+        "sistema":  31,
+        "dom_ene1":  32,
+        "lun_ene1":  31,
+        "lun_4dias":  30
+    },
+    {
+        "d":  "2022-08-01",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-02",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-03",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-04",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-05",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-06",
+        "sistema":  32,
+        "dom_ene1":  32,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-07",
+        "sistema":  32,
+        "dom_ene1":  33,
+        "lun_ene1":  32,
+        "lun_4dias":  31
+    },
+    {
+        "d":  "2022-08-08",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-09",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-10",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-11",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-12",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-13",
+        "sistema":  33,
+        "dom_ene1":  33,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-14",
+        "sistema":  33,
+        "dom_ene1":  34,
+        "lun_ene1":  33,
+        "lun_4dias":  32
+    },
+    {
+        "d":  "2022-08-15",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-16",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-17",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-18",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-19",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-20",
+        "sistema":  34,
+        "dom_ene1":  34,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-21",
+        "sistema":  34,
+        "dom_ene1":  35,
+        "lun_ene1":  34,
+        "lun_4dias":  33
+    },
+    {
+        "d":  "2022-08-22",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-23",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-24",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-25",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-26",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-27",
+        "sistema":  35,
+        "dom_ene1":  35,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-28",
+        "sistema":  35,
+        "dom_ene1":  36,
+        "lun_ene1":  35,
+        "lun_4dias":  34
+    },
+    {
+        "d":  "2022-08-29",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-08-30",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-08-31",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-09-01",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-09-02",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-09-03",
+        "sistema":  36,
+        "dom_ene1":  36,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-09-04",
+        "sistema":  36,
+        "dom_ene1":  37,
+        "lun_ene1":  36,
+        "lun_4dias":  35
+    },
+    {
+        "d":  "2022-09-05",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-06",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-07",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-08",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-09",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-10",
+        "sistema":  37,
+        "dom_ene1":  37,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-11",
+        "sistema":  37,
+        "dom_ene1":  38,
+        "lun_ene1":  37,
+        "lun_4dias":  36
+    },
+    {
+        "d":  "2022-09-12",
+        "sistema":  38,
+        "dom_ene1":  38,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2022-09-18",
+        "sistema":  38,
+        "dom_ene1":  39,
+        "lun_ene1":  38,
+        "lun_4dias":  37
+    },
+    {
+        "d":  "2022-09-19",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-20",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-21",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-22",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-23",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-24",
+        "sistema":  39,
+        "dom_ene1":  39,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-25",
+        "sistema":  39,
+        "dom_ene1":  40,
+        "lun_ene1":  39,
+        "lun_4dias":  38
+    },
+    {
+        "d":  "2022-09-26",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-09-27",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-09-28",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-09-29",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-09-30",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-10-01",
+        "sistema":  40,
+        "dom_ene1":  40,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-10-02",
+        "sistema":  40,
+        "dom_ene1":  41,
+        "lun_ene1":  40,
+        "lun_4dias":  39
+    },
+    {
+        "d":  "2022-10-03",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-04",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-05",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-06",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-07",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-08",
+        "sistema":  41,
+        "dom_ene1":  41,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-09",
+        "sistema":  41,
+        "dom_ene1":  42,
+        "lun_ene1":  41,
+        "lun_4dias":  40
+    },
+    {
+        "d":  "2022-10-10",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-11",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-12",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-13",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-14",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-15",
+        "sistema":  42,
+        "dom_ene1":  42,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-16",
+        "sistema":  42,
+        "dom_ene1":  43,
+        "lun_ene1":  42,
+        "lun_4dias":  41
+    },
+    {
+        "d":  "2022-10-17",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-18",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-19",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-20",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-21",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-22",
+        "sistema":  43,
+        "dom_ene1":  43,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-23",
+        "sistema":  43,
+        "dom_ene1":  44,
+        "lun_ene1":  43,
+        "lun_4dias":  42
+    },
+    {
+        "d":  "2022-10-24",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-25",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-26",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-27",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-28",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-29",
+        "sistema":  44,
+        "dom_ene1":  44,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-30",
+        "sistema":  44,
+        "dom_ene1":  45,
+        "lun_ene1":  44,
+        "lun_4dias":  43
+    },
+    {
+        "d":  "2022-10-31",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-01",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-02",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-03",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-04",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-05",
+        "sistema":  45,
+        "dom_ene1":  45,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-06",
+        "sistema":  45,
+        "dom_ene1":  46,
+        "lun_ene1":  45,
+        "lun_4dias":  44
+    },
+    {
+        "d":  "2022-11-07",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-08",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-09",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-10",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-11",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-12",
+        "sistema":  46,
+        "dom_ene1":  46,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-13",
+        "sistema":  46,
+        "dom_ene1":  47,
+        "lun_ene1":  46,
+        "lun_4dias":  45
+    },
+    {
+        "d":  "2022-11-14",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-15",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-16",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-17",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-18",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-19",
+        "sistema":  47,
+        "dom_ene1":  47,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-20",
+        "sistema":  47,
+        "dom_ene1":  48,
+        "lun_ene1":  47,
+        "lun_4dias":  46
+    },
+    {
+        "d":  "2022-11-21",
+        "sistema":  48,
+        "dom_ene1":  48,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2022-11-27",
+        "sistema":  48,
+        "dom_ene1":  49,
+        "lun_ene1":  48,
+        "lun_4dias":  47
+    },
+    {
+        "d":  "2022-11-28",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-11-29",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-11-30",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-12-01",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-12-02",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-12-03",
+        "sistema":  49,
+        "dom_ene1":  49,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-12-04",
+        "sistema":  49,
+        "dom_ene1":  50,
+        "lun_ene1":  49,
+        "lun_4dias":  48
+    },
+    {
+        "d":  "2022-12-05",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-06",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-07",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-08",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-09",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-10",
+        "sistema":  50,
+        "dom_ene1":  50,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-11",
+        "sistema":  50,
+        "dom_ene1":  51,
+        "lun_ene1":  50,
+        "lun_4dias":  49
+    },
+    {
+        "d":  "2022-12-12",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-13",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-14",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-15",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-16",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-17",
+        "sistema":  51,
+        "dom_ene1":  51,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-18",
+        "sistema":  51,
+        "dom_ene1":  52,
+        "lun_ene1":  51,
+        "lun_4dias":  50
+    },
+    {
+        "d":  "2022-12-19",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-20",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-21",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-22",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-23",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-24",
+        "sistema":  52,
+        "dom_ene1":  52,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-25",
+        "sistema":  52,
+        "dom_ene1":  53,
+        "lun_ene1":  52,
+        "lun_4dias":  51
+    },
+    {
+        "d":  "2022-12-26",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-12-27",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-12-28",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-12-29",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-12-30",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2022-12-31",
+        "sistema":  53,
+        "dom_ene1":  53,
+        "lun_ene1":  53,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2023-01-01",
+        "sistema":  1,
+        "dom_ene1":  1,
+        "lun_ene1":  1,
+        "lun_4dias":  52
+    },
+    {
+        "d":  "2023-01-02",
+        "sistema":  2,
+        "dom_ene1":  1,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-03",
+        "sistema":  2,
+        "dom_ene1":  1,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-04",
+        "sistema":  2,
+        "dom_ene1":  1,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-05",
+        "sistema":  2,
+        "dom_ene1":  1,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-06",
+        "sistema":  2,
+        "dom_ene1":  1,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-07",
+        "sistema":  2,
+        "dom_ene1":  1,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-08",
+        "sistema":  2,
+        "dom_ene1":  2,
+        "lun_ene1":  2,
+        "lun_4dias":  1
+    },
+    {
+        "d":  "2023-01-09",
+        "sistema":  3,
+        "dom_ene1":  2,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-10",
+        "sistema":  3,
+        "dom_ene1":  2,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-11",
+        "sistema":  3,
+        "dom_ene1":  2,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-12",
+        "sistema":  3,
+        "dom_ene1":  2,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-13",
+        "sistema":  3,
+        "dom_ene1":  2,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-14",
+        "sistema":  3,
+        "dom_ene1":  2,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-15",
+        "sistema":  3,
+        "dom_ene1":  3,
+        "lun_ene1":  3,
+        "lun_4dias":  2
+    },
+    {
+        "d":  "2023-01-16",
+        "sistema":  4,
+        "dom_ene1":  3,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-17",
+        "sistema":  4,
+        "dom_ene1":  3,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-18",
+        "sistema":  4,
+        "dom_ene1":  3,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-19",
+        "sistema":  4,
+        "dom_ene1":  3,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-20",
+        "sistema":  4,
+        "dom_ene1":  3,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-21",
+        "sistema":  4,
+        "dom_ene1":  3,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-22",
+        "sistema":  4,
+        "dom_ene1":  4,
+        "lun_ene1":  4,
+        "lun_4dias":  3
+    },
+    {
+        "d":  "2023-01-23",
+        "sistema":  5,
+        "dom_ene1":  4,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-24",
+        "sistema":  5,
+        "dom_ene1":  4,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-25",
+        "sistema":  5,
+        "dom_ene1":  4,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-26",
+        "sistema":  5,
+        "dom_ene1":  4,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-27",
+        "sistema":  5,
+        "dom_ene1":  4,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-28",
+        "sistema":  5,
+        "dom_ene1":  4,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-29",
+        "sistema":  5,
+        "dom_ene1":  5,
+        "lun_ene1":  5,
+        "lun_4dias":  4
+    },
+    {
+        "d":  "2023-01-30",
+        "sistema":  6,
+        "dom_ene1":  5,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-01-31",
+        "sistema":  6,
+        "dom_ene1":  5,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-02-01",
+        "sistema":  6,
+        "dom_ene1":  5,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-02-02",
+        "sistema":  6,
+        "dom_ene1":  5,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-02-03",
+        "sistema":  6,
+        "dom_ene1":  5,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-02-04",
+        "sistema":  6,
+        "dom_ene1":  5,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-02-05",
+        "sistema":  6,
+        "dom_ene1":  6,
+        "lun_ene1":  6,
+        "lun_4dias":  5
+    },
+    {
+        "d":  "2023-02-06",
+        "sistema":  7,
+        "dom_ene1":  6,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-07",
+        "sistema":  7,
+        "dom_ene1":  6,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-08",
+        "sistema":  7,
+        "dom_ene1":  6,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-09",
+        "sistema":  7,
+        "dom_ene1":  6,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-10",
+        "sistema":  7,
+        "dom_ene1":  6,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-11",
+        "sistema":  7,
+        "dom_ene1":  6,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-12",
+        "sistema":  7,
+        "dom_ene1":  7,
+        "lun_ene1":  7,
+        "lun_4dias":  6
+    },
+    {
+        "d":  "2023-02-13",
+        "sistema":  8,
+        "dom_ene1":  7,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-14",
+        "sistema":  8,
+        "dom_ene1":  7,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-15",
+        "sistema":  8,
+        "dom_ene1":  7,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-16",
+        "sistema":  8,
+        "dom_ene1":  7,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-17",
+        "sistema":  8,
+        "dom_ene1":  7,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-18",
+        "sistema":  8,
+        "dom_ene1":  7,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-19",
+        "sistema":  8,
+        "dom_ene1":  8,
+        "lun_ene1":  8,
+        "lun_4dias":  7
+    },
+    {
+        "d":  "2023-02-20",
+        "sistema":  9,
+        "dom_ene1":  8,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-21",
+        "sistema":  9,
+        "dom_ene1":  8,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-22",
+        "sistema":  9,
+        "dom_ene1":  8,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-23",
+        "sistema":  9,
+        "dom_ene1":  8,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-24",
+        "sistema":  9,
+        "dom_ene1":  8,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-25",
+        "sistema":  9,
+        "dom_ene1":  8,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-26",
+        "sistema":  9,
+        "dom_ene1":  9,
+        "lun_ene1":  9,
+        "lun_4dias":  8
+    },
+    {
+        "d":  "2023-02-27",
+        "sistema":  10,
+        "dom_ene1":  9,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-02-28",
+        "sistema":  10,
+        "dom_ene1":  9,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-03-01",
+        "sistema":  10,
+        "dom_ene1":  9,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-03-02",
+        "sistema":  10,
+        "dom_ene1":  9,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-03-03",
+        "sistema":  10,
+        "dom_ene1":  9,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-03-04",
+        "sistema":  10,
+        "dom_ene1":  9,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-03-05",
+        "sistema":  10,
+        "dom_ene1":  10,
+        "lun_ene1":  10,
+        "lun_4dias":  9
+    },
+    {
+        "d":  "2023-03-06",
+        "sistema":  11,
+        "dom_ene1":  10,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-07",
+        "sistema":  11,
+        "dom_ene1":  10,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-08",
+        "sistema":  11,
+        "dom_ene1":  10,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-09",
+        "sistema":  11,
+        "dom_ene1":  10,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-10",
+        "sistema":  11,
+        "dom_ene1":  10,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-11",
+        "sistema":  11,
+        "dom_ene1":  10,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-12",
+        "sistema":  11,
+        "dom_ene1":  11,
+        "lun_ene1":  11,
+        "lun_4dias":  10
+    },
+    {
+        "d":  "2023-03-13",
+        "sistema":  12,
+        "dom_ene1":  11,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-14",
+        "sistema":  12,
+        "dom_ene1":  11,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-15",
+        "sistema":  12,
+        "dom_ene1":  11,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-16",
+        "sistema":  12,
+        "dom_ene1":  11,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-17",
+        "sistema":  12,
+        "dom_ene1":  11,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-18",
+        "sistema":  12,
+        "dom_ene1":  11,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-19",
+        "sistema":  12,
+        "dom_ene1":  12,
+        "lun_ene1":  12,
+        "lun_4dias":  11
+    },
+    {
+        "d":  "2023-03-20",
+        "sistema":  13,
+        "dom_ene1":  12,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-21",
+        "sistema":  13,
+        "dom_ene1":  12,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-22",
+        "sistema":  13,
+        "dom_ene1":  12,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-23",
+        "sistema":  13,
+        "dom_ene1":  12,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-24",
+        "sistema":  13,
+        "dom_ene1":  12,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-25",
+        "sistema":  13,
+        "dom_ene1":  12,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-26",
+        "sistema":  13,
+        "dom_ene1":  13,
+        "lun_ene1":  13,
+        "lun_4dias":  12
+    },
+    {
+        "d":  "2023-03-27",
+        "sistema":  14,
+        "dom_ene1":  13,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-03-28",
+        "sistema":  14,
+        "dom_ene1":  13,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-03-29",
+        "sistema":  14,
+        "dom_ene1":  13,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-03-30",
+        "sistema":  14,
+        "dom_ene1":  13,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-03-31",
+        "sistema":  14,
+        "dom_ene1":  13,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-04-01",
+        "sistema":  14,
+        "dom_ene1":  13,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-04-02",
+        "sistema":  14,
+        "dom_ene1":  14,
+        "lun_ene1":  14,
+        "lun_4dias":  13
+    },
+    {
+        "d":  "2023-04-03",
+        "sistema":  15,
+        "dom_ene1":  14,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-04",
+        "sistema":  15,
+        "dom_ene1":  14,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-05",
+        "sistema":  15,
+        "dom_ene1":  14,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-06",
+        "sistema":  15,
+        "dom_ene1":  14,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-07",
+        "sistema":  15,
+        "dom_ene1":  14,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-08",
+        "sistema":  15,
+        "dom_ene1":  14,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-09",
+        "sistema":  15,
+        "dom_ene1":  15,
+        "lun_ene1":  15,
+        "lun_4dias":  14
+    },
+    {
+        "d":  "2023-04-10",
+        "sistema":  16,
+        "dom_ene1":  15,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2023-04-11",
+        "sistema":  16,
+        "dom_ene1":  15,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2023-04-12",
+        "sistema":  16,
+        "dom_ene1":  15,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2023-04-13",
+        "sistema":  16,
+        "dom_ene1":  15,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2023-04-14",
+        "sistema":  16,
+        "dom_ene1":  15,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2023-04-15",
+        "sistema":  16,
+        "dom_ene1":  15,
+        "lun_ene1":  16,
+        "lun_4dias":  15
+    },
+    {
+        "d":  "2023-04-21",
+        "sistema":  17,
+        "dom_ene1":  16,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2023-04-22",
+        "sistema":  17,
+        "dom_ene1":  16,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2023-04-23",
+        "sistema":  17,
+        "dom_ene1":  17,
+        "lun_ene1":  17,
+        "lun_4dias":  16
+    },
+    {
+        "d":  "2023-04-24",
+        "sistema":  18,
+        "dom_ene1":  17,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2023-04-25",
+        "sistema":  18,
+        "dom_ene1":  17,
+        "lun_ene1":  18,
+        "lun_4dias":  17
+    },
+    {
+        "d":  "2023-06-25",
+        "sistema":  26,
+        "dom_ene1":  26,
+        "lun_ene1":  26,
+        "lun_4dias":  25
+    },
+    {
+        "d":  "2023-06-26",
+        "sistema":  27,
+        "dom_ene1":  26,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-06-27",
+        "sistema":  27,
+        "dom_ene1":  26,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-06-28",
+        "sistema":  27,
+        "dom_ene1":  26,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-06-29",
+        "sistema":  27,
+        "dom_ene1":  26,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-06-30",
+        "sistema":  27,
+        "dom_ene1":  26,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-07-01",
+        "sistema":  27,
+        "dom_ene1":  26,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-07-02",
+        "sistema":  27,
+        "dom_ene1":  27,
+        "lun_ene1":  27,
+        "lun_4dias":  26
+    },
+    {
+        "d":  "2023-07-03",
+        "sistema":  28,
+        "dom_ene1":  27,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2023-07-04",
+        "sistema":  28,
+        "dom_ene1":  27,
+        "lun_ene1":  28,
+        "lun_4dias":  27
+    },
+    {
+        "d":  "2024-05-20",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2024-05-21",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2024-05-22",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2024-05-23",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  21
+    },
+    {
+        "d":  "2024-05-24",
+        "sistema":  21,
+        "dom_ene1":  21,
+        "lun_ene1":  21,
+        "lun_4dias":  21
+    }
+]

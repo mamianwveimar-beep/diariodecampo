@@ -1,3 +1,5 @@
+import { SQL_SEMANA } from '../access-compat/fechas.mjs';
+
 /**
  * Las dos consultas SELECT de Access que no pueden ser vistas de SQL porque
  * dependen de Date(), y una de ellas ademas de un parametro que Access pedia
@@ -18,11 +20,11 @@ export const SQL_PROGRAMACION_ABONAMIENTO = `
 SELECT pc.codigosistema,
        pc.codSemilla,
        pc.fechasiembra,
-       CAST(strftime('%U', ?1) AS INTEGER) + 1                                     AS semanaActual,
-       CAST(julianday(?1) - julianday(pc.fechasiembra) AS INTEGER)                 AS "#dias",
-       CAST(strftime('%U', date(pc.fechasiembra, '+25 day')) AS INTEGER) + 1       AS semana1,
-       CAST(strftime('%U', date(pc.fechasiembra, '+50 day')) AS INTEGER) + 1       AS semana2,
-       CAST(strftime('%U', date(pc.fechasiembra, '+75 day')) AS INTEGER) + 1       AS semana3,
+       ${SQL_SEMANA('?1')}                                          AS semanaActual,
+       CAST(julianday(?1) - julianday(pc.fechasiembra) AS INTEGER)  AS "#dias",
+       ${SQL_SEMANA("date(pc.fechasiembra, '+25 day')")}            AS semana1,
+       ${SQL_SEMANA("date(pc.fechasiembra, '+50 day')")}            AS semana2,
+       ${SQL_SEMANA("date(pc.fechasiembra, '+75 day')")}            AS semana3,
        s.abonoPrimera,
        s.abonoSegunda,
        s.abonoTercera,

@@ -1,0 +1,58 @@
+[
+    {
+        "semilla":  "cebolla",
+        "variedad":  "puerro",
+        "Pedido":  50,
+        "cantidakgTiempoCosecha":  214.28571428571428,
+        "FrecuanciaSiembra":  15,
+        "numeroLote":  2.3333333333333335,
+        "areaLote":  53.571428571428569,
+        "numeroPlantasLote":  446.42857142857144,
+        "TotalArea":  125,
+        "metrosLinealesLote":  44.642857142857146,
+        "TotalMetrosLineales":  104.16666666666669,
+        "cantidadPeriodoSiembra":  50
+    },
+    {
+        "semilla":  "brocoli",
+        "variedad":  null,
+        "Pedido":  5,
+        "cantidakgTiempoCosecha":  5.7142857142857135,
+        "FrecuanciaSiembra":  8,
+        "numeroLote":  8.75,
+        "areaLote":  1.3605442176870746,
+        "numeroPlantasLote":  8.5034013605442151,
+        "TotalArea":  11.904761904761902,
+        "metrosLinealesLote":  0.90702947845804971,
+        "TotalMetrosLineales":  7.936507936507935,
+        "cantidadPeriodoSiembra":  5
+    },
+    {
+        "semilla":  "lechuga",
+        "variedad":  "crespa",
+        "Pedido":  100,
+        "cantidakgTiempoCosecha":  114.28571428571428,
+        "FrecuanciaSiembra":  8,
+        "numeroLote":  6.25,
+        "areaLote":  60.150375939849624,
+        "numeroPlantasLote":  962.406015037594,
+        "TotalArea":  375.93984962406017,
+        "metrosLinealesLote":  50.125313283208023,
+        "TotalMetrosLineales":  313.28320802005015,
+        "cantidadPeriodoSiembra":  100
+    },
+    {
+        "semilla":  "frijol",
+        "variedad":  "rochela",
+        "Pedido":  10,
+        "cantidakgTiempoCosecha":  21.428571428571427,
+        "FrecuanciaSiembra":  30,
+        "numeroLote":  6.6,
+        "areaLote":  26.785714285714281,
+        "numeroPlantasLote":  0.014880952380952378,
+        "TotalArea":  176.78571428571425,
+        "metrosLinealesLote":  22.321428571428569,
+        "TotalMetrosLineales":  147.32142857142856,
+        "cantidadPeriodoSiembra":  10
+    }
+]

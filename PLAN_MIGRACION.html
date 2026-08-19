@@ -175,7 +175,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
   <div class="meta small">
     <span><span class="eyebrow">Origen</span> &nbsp;Access 2016 · 7,5 MB · 13 tablas útiles</span>
     <span><span class="eyebrow">Destino</span> &nbsp;Angular · Workers · D1 · R2</span>
-    <span><span class="eyebrow">Estado</span> &nbsp;Fases 0–6 implementadas y verificadas</span>
+    <span><span class="eyebrow">Estado</span> &nbsp;Fases 0–7 hechas · la 8 preparada</span>
   </div>
 </header>
 
@@ -349,8 +349,8 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
       <tbody>
         <tr>
           <td><code>Format$(d,"ww",0,0)</code><br><span class="small">semana del año</span></td>
-          <td><code>CAST(strftime('%U',d) AS INTEGER) + 1</code></td>
-          <td><span class="chip ok">verificado</span> Contrastado contra las 157 filas de <code>actividades</code>: <strong>156 coinciden</strong> con los desfases documentados (0, 8, 15, 25, 50, 65, 75 días). La única excluida es la fila manual <code>Actividad = 'otros'</code>.</td>
+          <td class="small">Aritmética sobre <code>strftime('%j')</code> y el día en que cayó el 1 de enero. Ver <code>SQL_SEMANA</code> en <code>access-compat/fechas.mjs</code>.</td>
+          <td><span class="chip rompe">la trampa gorda</span> Los argumentos <code>0,0</code> <strong>no</strong> significan «domingo y semana del 1 de enero», sino «usa la configuración regional de Windows». O sea: <strong>Access numeraba las semanas distinto según el equipo donde se abriera la base.</strong> Comprobado cambiando <code>iFirstDayOfWeek</code> en el registro: la fecha 2021-11-14 devuelve <strong>47</strong> con domingo y <strong>46</strong> con lunes. La migración lo fija en domingo, que es con lo que se generaron las 157 actividades existentes (156/156 encajan; con lunes solo 142/156). Y no vale <code>strftime('%U')+1</code>: falla en los años que empiezan en domingo, como 2023 — acierta 665 de 785 fechas frente a 785 de 785 de la expresión definitiva.</td>
         </tr>
         <tr>
           <td><code>Weekday(d)</code><br><span class="small">1 = domingo … 7 = sábado</span></td>
@@ -575,7 +575,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
     </div>
 
     <div class="phase">
-      <div class="idx"><b>7</b>Paridad<br>2 días</div>
+      <div class="idx"><b>7</b>Paridad<br><span class="chip ok">hecha</span></div>
       <div class="body">
         <h3>Aceptación contra el sistema actual</h3>
         <ul>
@@ -583,12 +583,12 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
           <li>Validar la tolerancia en decimales: <code>actividades.total</code> viene de un <em>Single</em> de Access y arrastra ruido de coma flotante (<code>30,000001907…</code>). El comparador usa tolerancia relativa de 1e−6.</li>
           <li>Revisión de las 75 filas en cuarentena con quien conoce la finca: decidir qué se recupera, qué se corrige a mano y qué se descarta.</li>
         </ul>
-        <div class="accept"><b>Criterio de aceptación</b>Informe de paridad firmado, con las diferencias residuales explicadas una por una.</div>
+        <div class="accept"><b>Cumplido en la parte automática</b>Las 9 consultas SELECT se ejecutan en el motor de Access y se comparan fila a fila y columna a columna contra D1: <strong>0 diferencias</strong>, incluidas las 58 columnas del informe de trazabilidad. Las 11 divergencias que quedan son deliberadas y cada una se verifica activamente. El respaldo se ha restaurado de principio a fin y la base sale idéntica. Lo que falta es tu revisión de las 74 filas en cuarentena y de las cifras de los informes.</div>
       </div>
     </div>
 
     <div class="phase">
-      <div class="idx"><b>8</b>Nube<br>1 día</div>
+      <div class="idx"><b>8</b>Nube<br><span class="chip degrada">preparada</span></div>
       <div class="body">
         <h3>De local a Cloudflare</h3>
         <ul>
@@ -597,7 +597,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
           <li>Autenticación: hoy no hay ninguna. En la nube <strong>es obligatoria</strong> — Cloudflare Access es lo más rápido para una finca con pocos usuarios.</li>
           <li>Copias de seguridad programadas de D1 y ensayo de restauración.</li>
         </ul>
-        <div class="accept"><b>Criterio de aceptación</b>La aplicación responde en su dominio, con autenticación activa y una restauración de copia probada de principio a fin.</div>
+        <div class="accept"><b>Preparada, no ejecutada</b>Necesita una cuenta de Cloudflare y decidir quién entra. Los pasos, las comprobaciones y el guion de respaldo están en <code>docs/DESPLIEGUE.md</code>; la restauración ya se ensayó en local y la base sale idéntica.</div>
       </div>
     </div>
 
@@ -617,6 +617,7 @@ footer{padding:44px 0 0; color:var(--ink-3); font-size:.84rem; border-top:2px so
     <li><strong>El jornal de 8.807 pesos y el costo de 1,46.</strong> Están incrustados desde 2021. ¿Siguen vigentes? Se mantienen tal cual según lo decidido, pero conviene saber si están desfasados.</li>
     <li><strong>Dos cultivos con la ficha editada después de generar sus actividades.</strong> El 45 pasó de 200 a 150 plantas y el 46 cambió de fecha de siembra, pero sus actividades históricas conservan los valores viejos. ¿Se regeneran esas actividades con los datos actuales o se respeta lo registrado en su día?</li>
     <li><strong>Fecha de corte.</strong> ¿Se sigue usando Access durante la migración? Si es así, la fase 3 se repite al final con los datos frescos, lo cual está previsto y cuesta poco.</li>
+    <li><strong>Con qué día empieza la semana.</strong> Access no lo tenía decidido: lo tomaba de la configuración de Windows, así que la misma base numeraba distinto en dos equipos. Ahora está fijado en domingo para no partir el histórico en dos numeraciones. Si en la finca cuentan las semanas de lunes a domingo, se cambia una constante y se regeneran las actividades.</li>
     <li><strong>Usuarios.</strong> Access no tiene autenticación. Para la fase 8 hace falta saber cuántas personas entran y si necesitan permisos distintos.</li>
   </ul>
 </section>
