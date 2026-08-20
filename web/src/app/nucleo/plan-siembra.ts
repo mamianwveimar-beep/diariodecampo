@@ -35,22 +35,24 @@ interface EntradaPlan {
   > | null;
   cantidadFija?: number;
   unidadFija?: string;
-  costoMinuto?: number;
   tipo: 'sol' | 'liq' | 'bio' | 'min';
   /** Cuando falta, la fila siempre entra (como PreparacionTerreno o Siembra). */
   si?: (o: Orden) => boolean;
 }
 
-const COSTO_MINUTO = 1.46;
+// El costo por minuto de las labores ('min') ya no es una constante fija
+// aqui: calcularPrograma lo recibe como parametro, con el mismo valor que
+// costoMinuto en parametrosCostos, para no desincronizarse cuando alguien lo
+// cambia desde Configuracion de costos.
 // ids del catalogo de productos, los mismos CONSTANTES de consultas-accion.mjs
 const PRODUCTO_ABONO_LIQUIDO = 2, PRODUCTO_ABONO_SOLIDO = 3, PRODUCTO_ABONO_LIQUIDO_2 = 4,
       PRODUCTO_BASILUS = 5, PRODUCTO_CAL_DOLOMITA = 998;
 
 const PLAN: EntradaPlan[] = [
   { actividad: 'PreparacionTerreno', productoId: null, detalleFijo: 'PreparacionTerreno',
-    dias: 0, campoCantidad: null, cantidadFija: 1.5, unidadFija: 'Min', costoMinuto: COSTO_MINUTO, tipo: 'min' },
+    dias: 0, campoCantidad: null, cantidadFija: 1.5, unidadFija: 'Min', tipo: 'min' },
   { actividad: 'Siembra', productoId: null, detalleFijo: 'Siembra',
-    dias: 0, campoCantidad: null, cantidadFija: 1.3, unidadFija: 'Min', costoMinuto: COSTO_MINUTO, tipo: 'min' },
+    dias: 0, campoCantidad: null, cantidadFija: 1.3, unidadFija: 'Min', tipo: 'min' },
   { actividad: 'AbonoSiembra', productoId: PRODUCTO_ABONO_SOLIDO,
     dias: 0, campoCantidad: 'abonoSiembra', tipo: 'sol', si: (o) => (o.abonoSiembra ?? 0) > 0 },
   { actividad: 'CalDolomita', productoId: PRODUCTO_CAL_DOLOMITA,
@@ -64,13 +66,13 @@ const PLAN: EntradaPlan[] = [
   { actividad: 'AbonoSolido', productoId: PRODUCTO_ABONO_SOLIDO,
     dias: 25, campoCantidad: 'abonoPrimera', tipo: 'sol' },
   { actividad: 'Deshierbe', productoId: null, detalleFijo: 'PrimerDeshierbe',
-    dias: 25, campoCantidad: null, cantidadFija: 1.2, unidadFija: 'Min', costoMinuto: COSTO_MINUTO, tipo: 'min' },
+    dias: 25, campoCantidad: null, cantidadFija: 1.2, unidadFija: 'Min', tipo: 'min' },
   { actividad: 'AbonoLiquido', productoId: PRODUCTO_ABONO_LIQUIDO_2,
     dias: 50, campoCantidad: 'abonoLiquido', tipo: 'liq', si: (o) => (o.ciclo ?? 0) > 50 },
   { actividad: 'AbonoSolido', productoId: PRODUCTO_ABONO_SOLIDO,
     dias: 50, campoCantidad: 'abonoSegunda', tipo: 'sol', si: (o) => (o.abonoSegunda ?? 0) > 0 },
   { actividad: 'Deshierbe', productoId: null, detalleFijo: 'SegundoDeshierbe',
-    dias: 50, campoCantidad: null, cantidadFija: 1.2, unidadFija: 'Min', costoMinuto: COSTO_MINUTO, tipo: 'min',
+    dias: 50, campoCantidad: null, cantidadFija: 1.2, unidadFija: 'Min', tipo: 'min',
     si: (o) => (o.ciclo ?? 0) > 50 },
   { actividad: 'ProteccionVegetal', productoId: PRODUCTO_BASILUS,
     dias: 50, campoCantidad: 'abonoLiquido', tipo: 'bio', si: (o) => (o.Aplicacion1 ?? 0) >= 1 },
@@ -105,8 +107,13 @@ export interface FilaPrograma {
 /**
  * La temporada completa para `plantas` unidades, agrupable por semana en la
  * pantalla. `productos` es el catalogo ya cargado (GET /api/tablas/productos).
+ * `costoMinuto` es el vigente en parametrosCostos (ver Configuracion de
+ * costos); por defecto usa el valor con el que arranco el sistema en 2021,
+ * para quien todavia no cargue parametrosCostos en vivo.
  */
-export function calcularPrograma(o: Orden, plantas: number, productos: Producto[]): FilaPrograma[] {
+export function calcularPrograma(
+  o: Orden, plantas: number, productos: Producto[], costoMinuto = 1.46,
+): FilaPrograma[] {
   if (!plantas) return [];
   const producto = (id: number) => productos.find((p) => p.id === id);
 
@@ -114,7 +121,7 @@ export function calcularPrograma(o: Orden, plantas: number, productos: Producto[
     const p = e.productoId != null ? producto(e.productoId) : null;
     const cantidad = e.campoCantidad ? (o[e.campoCantidad] ?? 0) : (e.cantidadFija ?? 0);
     const unidad = p ? (p.unidad ?? '') : (e.unidadFija ?? '');
-    const costoUnitario = p ? (p.valorUnidad ?? 0) : (e.costoMinuto ?? 0);
+    const costoUnitario = p ? (p.valorUnidad ?? 0) : (e.tipo === 'min' ? costoMinuto : 0);
     const total = +(cantidad * plantas).toFixed(3);
     const fecha = sumarDias(o.fechasiembra, e.dias);
     // los litros pesan como kilos, que es la aproximacion con la que se carga

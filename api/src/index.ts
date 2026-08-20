@@ -8,7 +8,7 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { TABLAS, VISTAS, columnasEscribibles, columnasAlta } from './repos/tablas.mjs';
-import { CONSULTAS_ACCION, LOTES, porNombre, sqlPorCultivo } from './queries/consultas-accion.mjs';
+import { CONSULTAS_ACCION, CONSTANTES, LOTES, porNombre, sqlPorCultivo, construirConsultasAccion } from './queries/consultas-accion.mjs';
 import { SQL_PROGRAMACION_ABONAMIENTO, SQL_PROGRAMACION_CULTIVO } from './queries/vistas-parametrizadas.mjs';
 import { hoyBogota, semanaAccess } from './access-compat/fechas.mjs';
 
@@ -197,6 +197,17 @@ app.get('/api/informes/trazabilidad', async (c) => {
 });
 
 // ----------------------------------------- consultas de accion (procesos)
+/**
+ * El jornal y el costo por minuto vigentes ahora mismo. Viven en la unica
+ * fila de parametrosCostos; si por lo que sea no existe (base de datos sin
+ * migrar), se cae a los valores que traia Access desde 2021.
+ */
+async function parametrosActuales(env: Env) {
+  const fila = await env.DB.prepare('SELECT jornalHora, costoMinuto FROM parametrosCostos WHERE id = 1')
+    .first<{ jornalHora: number; costoMinuto: number }>();
+  return fila ?? { jornalHora: CONSTANTES.JORNAL_HORA, costoMinuto: CONSTANTES.COSTO_MINUTO };
+}
+
 app.get('/api/procesos', (c) => {
   // programacionCompleta es de uso interno: lo dispara /api/ordenes/:codigo
   // para un solo cultivo. Es la union de los otros tres lotes menos
@@ -211,7 +222,8 @@ app.get('/api/procesos', (c) => {
 
 /** Ejecuta una consulta de accion y dice cuantas filas entraron. */
 async function ejecutarProceso(env: Env, nombre: string) {
-  const consulta = porNombre(nombre);
+  const { jornalHora, costoMinuto } = await parametrosActuales(env);
+  const consulta = porNombre(construirConsultasAccion(jornalHora, costoMinuto), nombre);
   if (!consulta) return null;
   const antes = await env.DB.prepare(`SELECT COUNT(*) AS n FROM ${consulta.destino}`).first<{ n: number }>();
   await env.DB.prepare(consulta.sql).run();
@@ -457,9 +469,11 @@ ON CONFLICT DO UPDATE SET
   // el resto de la temporada queda PROGRAMADA, con fechaRegistro en NULL:
   // existe para poder registrarla cuando llegue su semana, pero nadie ha
   // dicho todavia que se haya hecho.
+  const { jornalHora, costoMinuto } = await parametrosActuales(c.env);
+  const consultasVivas = construirConsultasAccion(jornalHora, costoMinuto);
   await c.env.DB.batch(
     LOTES.programacionCompleta.map((n) =>
-      c.env.DB.prepare(sqlPorCultivo(porNombre(n)!)).bind(codigo))
+      c.env.DB.prepare(sqlPorCultivo(porNombre(consultasVivas, n)!)).bind(codigo))
   );
 
   return c.json({
@@ -476,8 +490,10 @@ ON CONFLICT DO UPDATE SET
 
 // -------------------------------------------------------------- cosechas
 // El costo en tiempo de cosechar sigue el mismo patron que PreparacionTerreno,
-// Siembra y Deshierbe: un jornal por minuto, no por producto.
-const COSTO_MINUTO_COSECHA = 1.46;
+// Siembra y Deshierbe: un jornal por minuto, no por producto. El valor sale
+// de parametrosActuales(), no de una constante: cambiar el jornal en
+// Configuracion de costos debe afectar tambien a la cosecha de aqui en
+// adelante.
 
 /**
  * Recalcula, desde cero, la actividad "Cosecha" de un cultivo para la semana
@@ -529,6 +545,7 @@ SELECT fechaCosecha, peso, numeroPlantasCosechadas, minutosTrabajo, responsable
     .bind(codigo).first<{ n: number }>();
   const faltan = (cultivo.numeroPlantasSembradas ?? 0) - (totalCosechadoHistorico?.n ?? 0);
   const detalle = faltan <= 0 ? 'Cosecha total' : 'Cosecha parcial';
+  const { costoMinuto } = await parametrosActuales(env);
 
   await env.DB.prepare(`
 INSERT INTO actividades (codigoSistema, codsemilla, fechaSiembra, semanaAbono, Actividad,
@@ -542,7 +559,7 @@ ON CONFLICT DO UPDATE SET
   responsable   = excluded.responsable,
   fechaRegistro = excluded.fechaRegistro`)
     .bind(codigo, cultivo.codSemilla, cultivo.fechasiembra, semana, cantidadAbono, plantas,
-          detalle, COSTO_MINUTO_COSECHA, responsable, fechaCosecha)
+          detalle, costoMinuto, responsable, fechaCosecha)
     .run();
 }
 

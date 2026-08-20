@@ -48,6 +48,9 @@ export const routes: Routes = [
   { path: 'cuarentena', title: 'Cuarentena · Diario de campo',
     loadComponent: () => import('./paginas/cuarentena').then((m) => m.Cuarentena) },
 
+  { path: 'configuracion-costos', title: 'Configuración de costos · Diario de campo',
+    loadComponent: () => import('./paginas/configuracion-costos').then((m) => m.ConfiguracionCostos) },
+
   // pantallas de mantenimiento, todas sobre el mismo componente
   { path: 'semillas',  title: 'Semillas · Diario de campo',  component: Maestro, data: { clave: 'semillas' } },
   { path: 'productos', title: 'Productos · Diario de campo', component: Maestro, data: { clave: 'productos' } },

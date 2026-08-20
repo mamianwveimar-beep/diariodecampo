@@ -101,7 +101,7 @@ node etl/08-actualizar-fechas.mjs aplicar             # trae el histórico a la 
 | Ruta | Qué hace |
 |---|---|
 | `GET /api/salud` | Estado y fecha de hoy en hora de Colombia |
-| `GET /api/tablas` | Las 12 tablas expuestas |
+| `GET /api/tablas` | Las 13 tablas expuestas |
 | `GET /api/tablas/:tabla` | Listado con `limite`, `desde` y `cultivo` |
 | `GET·POST·PUT·DELETE /api/tablas/:tabla/:id` | Alta, consulta, edición y borrado |
 | `GET /api/vistas/:nombre` | Las 7 vistas traducidas de Access |
@@ -143,6 +143,7 @@ ser objetos aparte y viven dentro de su pantalla contenedora.
 | Pedidos | `pedido`, `detallePedido Subformulario` |
 | Empleados | — (Access no tenía formulario) |
 | Informes | los 6 informes |
+| Configuración de costos | — (nueva) |
 | Cuarentena | — (nueva) |
 
 Cinco de esas pantallas (semillas, productos, clientes, empleados y almacén)
@@ -388,8 +389,9 @@ de esa tabla, no una fuente aparte.
 Sigue el mismo patrón que `PreparacionTerreno`, `Siembra` y `Deshierbe`: cobra por
 tiempo, no por producto. `cantidadAbono` son los minutos **por planta**,
 `numeroPlantas` las cosechadas, y el `total` generado (`cantidadAbono × numeroPlantas`)
-vuelve a dar los minutos reales que costó. El costo es 1,46 $/minuto, la misma
-constante que ya usan esas tres.
+vuelve a dar los minutos reales que costó. El costo por minuto es el vigente en
+`parametrosCostos` (ver [Configuración de costos](#configuración-de-costos)),
+el mismo que usan esas tres.
 
 **Se recalcula desde cero en cada alta o baja**, sumando TODAS las cosechas de
 ese cultivo que caen en esa semana, en vez de ir acumulando número a número.
@@ -410,6 +412,37 @@ Por eso el registro no pasa por el CRUD genérico: `guardarCosecha()` llama a
 `POST /api/cosechas`, no a `api.crear('cosecha', …)`. El endpoint genérico sigue
 existiendo para el resto de tablas; este es el que además recalcula la
 actividad, siguiendo el mismo criterio que `/api/ordenes/:codigo`.
+
+### Configuración de costos
+
+El jornal (8.807 $) y el costo por minuto (1,46 $) llevaban escritos a mano
+dentro de las 20 consultas de acción desde 2021. Ahora viven en
+`parametrosCostos`, una tabla de una sola fila (`CHECK (id = 1)`), y esta
+pantalla —**Configuración de costos**— es la única forma de corregirlos: un
+campo, el jornal por hora, y ya. El costo por minuto no se pide: se calcula
+solo (`jornalHora / 60`, un jornal de 8 horas) y se guarda ya resuelto, tal
+como lo esperan las consultas.
+
+El cambio pasa por el CRUD genérico (`PUT /api/tablas/parametrosCostos/1`) y
+es de verdad, no cosmético: `api/src/queries/consultas-accion.mjs` dejó de
+tener el jornal como constante de módulo y pasó a
+`construirConsultasAccion(jornalHora, costoMinuto)`, una función que arma las
+22 consultas con los valores que se le pasen. `ejecutarProceso`, la
+generación de la temporada al registrar una orden de siembra y la actividad
+`Cosecha` leen `parametrosCostos` en cada llamada y construyen sus consultas
+con el valor vigente en ese momento. `CONSULTAS_ACCION` sigue existiendo,
+construida con los valores por defecto, para quien no necesita un valor en
+vivo: la prueba de paridad contra Access y el catálogo descriptivo de
+`GET /api/procesos`.
+
+**El cambio no es retroactivo.** Afecta a lo que se calcule de ahí en
+adelante —la advertencia de la pantalla lo dice tal cual—, nunca reescribe el
+`costo` ya guardado en una actividad existente: no hay ninguna ruta que
+recorra `actividades` para recalcularlas con el jornal nuevo. La vista previa
+de **Programación de la temporada**, en Orden de siembra, sigue el mismo
+criterio: `calcularPrograma()` recibe el `costoMinuto` vigente como parámetro
+en vez de traerlo incrustado, para no desincronizarse de lo que el backend
+genera de verdad.
 
 ## Decisiones que conviene conocer
 

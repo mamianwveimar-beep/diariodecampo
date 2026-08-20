@@ -2,7 +2,7 @@ import { Component, computed, inject, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Api } from '../nucleo/api';
-import type { CostoActividad, Cultivo, Orden, Producto } from '../nucleo/tipos';
+import type { CostoActividad, Cultivo, Orden, ParametrosCostos, Producto } from '../nucleo/tipos';
 import { calcularPrograma, type FilaPrograma } from '../nucleo/plan-siembra';
 import { semanaAccess } from '../nucleo/fechas';
 
@@ -594,6 +594,8 @@ export class OrdenSiembra implements OnInit {
   cultivos = signal<Cultivo[]>([]);
   generadas = signal<CostoActividad[]>([]);
   productos = signal<Producto[]>([]);
+  /** Vigente en parametrosCostos; ver Configuracion de costos. */
+  costoMinuto = signal(1.46);
   semanaActiva = signal<number | null>(null);
   /**
    * Solo lo que el operario escribio a mano, por nombre de actividad. Se
@@ -707,7 +709,7 @@ export class OrdenSiembra implements OnInit {
   programa = computed<FilaPrograma[]>(() => {
     const o = this.orden();
     if (!o) return [];
-    return calcularPrograma(o, this.real() ?? 0, this.productos());
+    return calcularPrograma(o, this.real() ?? 0, this.productos(), this.costoMinuto());
   });
 
   // en orden de aparicion, que ya viene cronologico: ordenar por el numero
@@ -835,14 +837,16 @@ export class OrdenSiembra implements OnInit {
         this.pendientes.set(await this.api.ordenesPendientes());
         return;
       }
-      const [o, cultivos, productos] = await Promise.all([
+      const [o, cultivos, productos, parametros] = await Promise.all([
         this.api.orden(c),
         this.api.listar<Cultivo>('programacionCultivos', 2000),
         this.api.listar<Producto>('productos', 200),
+        this.api.obtener<ParametrosCostos>('parametrosCostos', 1),
       ]);
       this.orden.set(o);
       this.cultivos.set(cultivos);
       this.productos.set(productos);
+      this.costoMinuto.set(parametros.costoMinuto);
       // los cuatro campos arrancan con lo que ya tenia la programacion
       this.lote.set(o.lote);
       this.cama.set(o.cama);

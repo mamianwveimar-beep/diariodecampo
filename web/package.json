@@ -14,7 +14,8 @@
     "humo:gestion": "node humo-gestion.mjs",
     "humo:seguimiento": "node humo-seguimiento.mjs",
     "humo:panel": "node humo-panel.mjs",
-    "humo:cosecha": "node humo-cosecha.mjs"
+    "humo:cosecha": "node humo-cosecha.mjs",
+    "humo:configuracion": "node humo-configuracion.mjs"
   },
   "private": true,
   "packageManager": "npm@11.12.1",

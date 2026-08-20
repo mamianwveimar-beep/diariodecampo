@@ -244,6 +244,17 @@ export interface Adjunto {
   bytes: number;
 }
 
+/**
+ * La unica fila de configuracion de costos laborales. costoMinuto se deriva
+ * de jornalHora (jornalHora / 60) y se guarda ya calculado: las 22 consultas
+ * de accion lo usan tal cual, sin recalcularlo en SQL.
+ */
+export interface ParametrosCostos {
+  id: number;
+  jornalHora: number;
+  costoMinuto: number;
+}
+
 export interface FilaCuarentena {
   id: number;
   tabla_origen: string;

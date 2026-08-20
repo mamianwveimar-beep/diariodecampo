@@ -37,6 +37,7 @@ import { Api } from './nucleo/api';
           <div class="nav-grupo eyebrow">Gestion</div>
           <a routerLink="/empleados" routerLinkActive="activo">Empleados</a>
           <a routerLink="/informes" routerLinkActive="activo">Informes</a>
+          <a routerLink="/configuracion-costos" routerLinkActive="activo">Configuración de costos</a>
           <a routerLink="/resumen" routerLinkActive="activo">Resumen acumulado</a>
           <a routerLink="/cuarentena" routerLinkActive="activo">Cuarentena</a>
         </nav>
