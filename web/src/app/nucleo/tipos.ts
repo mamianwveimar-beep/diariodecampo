@@ -145,6 +145,9 @@ export interface Orden extends Cultivo {
   marcoSiembra: number | null;
 }
 
+/** Los tres estados que el operario puede dar a una labor en campo. */
+export type EstadoActividad = 'pendiente' | 'realizado' | 'cancelado';
+
 export interface Actividad {
   id: number;
   codigoSistema: number;
@@ -164,6 +167,8 @@ export interface Actividad {
   unidad: string | null;
   /** NULL = programada sin registrar en campo; con fecha = el operario la registro. */
   fechaRegistro: string | null;
+  /** Que dijo el operario: NULL (aun nada), pendiente, realizado o cancelado. */
+  estado: EstadoActividad | null;
 }
 
 export interface Cosecha {
@@ -176,6 +181,8 @@ export interface Cosecha {
   remision: string | null;
   factura: string | null;
   observacion: string | null;
+  responsable: string | null;
+  minutosTrabajo: number | null;
 }
 
 export interface Movimiento {

@@ -10,7 +10,11 @@
     "humo": "node humo.mjs",
     "humo:siembra": "node humo-siembra.mjs",
     "humo:orden": "node humo-orden.mjs",
-    "humo:actividad": "node humo-actividad.mjs"
+    "humo:actividad": "node humo-actividad.mjs",
+    "humo:gestion": "node humo-gestion.mjs",
+    "humo:seguimiento": "node humo-seguimiento.mjs",
+    "humo:panel": "node humo-panel.mjs",
+    "humo:cosecha": "node humo-cosecha.mjs"
   },
   "private": true,
   "packageManager": "npm@11.12.1",

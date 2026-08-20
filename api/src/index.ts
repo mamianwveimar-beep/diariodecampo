@@ -10,7 +10,7 @@ import { cors } from 'hono/cors';
 import { TABLAS, VISTAS, columnasEscribibles, columnasAlta } from './repos/tablas.mjs';
 import { CONSULTAS_ACCION, LOTES, porNombre, sqlPorCultivo } from './queries/consultas-accion.mjs';
 import { SQL_PROGRAMACION_ABONAMIENTO, SQL_PROGRAMACION_CULTIVO } from './queries/vistas-parametrizadas.mjs';
-import { hoyBogota } from './access-compat/fechas.mjs';
+import { hoyBogota, semanaAccess } from './access-compat/fechas.mjs';
 
 export interface Env {
   DB: D1Database;
@@ -54,6 +54,13 @@ function comoErrorDeCliente(e: unknown): { error: string; codigo: 409 | 400 } {
   throw e;
 }
 
+/** Cada tabla apunta al cultivo con un nombre distinto, herencia de Access. */
+const COLUMNA_CULTIVO: Record<string, string> = {
+  actividades: 'codigoSistema',
+  costosInsumos: 'programacionCultivoCodCultivo',
+  inventarioProductos: 'codigoSistemaProgramacion',
+};
+
 // --------------------------------------------------------------- salud
 app.get('/api/salud', async (c) => {
   const { results } = await c.env.DB.prepare(
@@ -72,9 +79,27 @@ app.get('/api/tablas/:tabla', async (c) => {
 
   const limite = Math.min(Number(c.req.query('limite') ?? 500), 2000);
   const desde = Number(c.req.query('desde') ?? 0);
-  const { results } = await c.env.DB
-    .prepare(`SELECT * FROM ${tabla} ORDER BY ${meta.pk} LIMIT ?1 OFFSET ?2`)
-    .bind(limite, desde).all();
+
+  // ?cultivo= acota a las filas de un cultivo, para no traerse la tabla entera
+  // al navegador. Solo vale en las tres tablas que cuelgan de
+  // programacionCultivos, y el nombre de la columna sale de COLUMNA_CULTIVO,
+  // nunca de lo que mande el cliente: es una lista blanca, no una cadena que
+  // se concatene en el SQL.
+  const cultivo = c.req.query('cultivo');
+  const columna = COLUMNA_CULTIVO[tabla];
+  if (cultivo != null && !columna) {
+    return c.json({ error: `La tabla ${tabla} no cuelga de un cultivo.` }, 400);
+  }
+  if (cultivo != null && !/^[0-9]+$/.test(cultivo)) {
+    return c.json({ error: 'El parametro cultivo tiene que ser un numero.' }, 400);
+  }
+
+  const sql = `SELECT * FROM ${tabla} ${cultivo != null ? `WHERE ${columna} = ?3` : ''} ` +
+              `ORDER BY ${meta.pk} LIMIT ?1 OFFSET ?2`;
+  const sentencia = c.env.DB.prepare(sql);
+  const { results } = await (cultivo != null
+    ? sentencia.bind(limite, desde, Number(cultivo))
+    : sentencia.bind(limite, desde)).all();
   return c.json(results);
 });
 
@@ -271,15 +296,8 @@ SELECT pc.*,
 FROM programacionCultivos pc
      INNER JOIN infoSemilla s ON s.Id = pc.codSemilla`;
 
-/** Cada tabla apunta al cultivo con un nombre distinto, herencia de Access. */
 /** Centinela de productos para las novedades sin producto de catalogo. */
 const PRODUCTO_OTRO_INSUMO = 997;
-
-const COLUMNA_CULTIVO: Record<string, string> = {
-  actividades: 'codigoSistema',
-  costosInsumos: 'programacionCultivoCodCultivo',
-  inventarioProductos: 'codigoSistemaProgramacion',
-};
 
 async function contarDe(env: Env, tabla: string, codigo: number): Promise<number> {
   const r = await env.DB
@@ -454,6 +472,121 @@ ON CONFLICT DO UPDATE SET
       costosInsumos: (await contarDe(c.env, 'costosInsumos', codigo)) - antes.costosInsumos,
     },
   });
+});
+
+// -------------------------------------------------------------- cosechas
+// El costo en tiempo de cosechar sigue el mismo patron que PreparacionTerreno,
+// Siembra y Deshierbe: un jornal por minuto, no por producto.
+const COSTO_MINUTO_COSECHA = 1.46;
+
+/**
+ * Recalcula, desde cero, la actividad "Cosecha" de un cultivo para la semana
+ * de una fecha de cosecha dada.
+ *
+ * Se recalcula sumando TODAS las filas de \`cosecha\` de ese cultivo que caen
+ * en esa semana, en vez de ir acumulando numero a numero en cada alta o baja:
+ * asi no hay manera de que un borrado deje el acumulado desincronizado, que
+ * es el motivo mas comun de que un total "que se va sumando" acabe mal.
+ *
+ * Si tras el recalculo no queda ninguna cosecha en esa semana, la actividad
+ * se borra: no tiene sentido dejar una fila de "Cosecha" con cero plantas.
+ */
+async function recalcularActividadCosecha(env: Env, codigo: number, fechaCosecha: string) {
+  const cultivo = await env.DB
+    .prepare('SELECT codSemilla, fechasiembra, numeroPlantasSembradas FROM programacionCultivos WHERE codigosistema = ?1')
+    .bind(codigo).first<{ codSemilla: number; fechasiembra: string; numeroPlantasSembradas: number | null }>();
+  if (!cultivo) return;
+
+  const semana = semanaAccess(fechaCosecha);
+
+  // el rango de fechas que cae en esa semana, para agregar solo esas filas
+  const { results: cosechas } = await env.DB.prepare(`
+SELECT fechaCosecha, peso, numeroPlantasCosechadas, minutosTrabajo, responsable
+  FROM cosecha WHERE codigosistema = ?1 AND fechaCosecha IS NOT NULL`).bind(codigo).all<{
+    fechaCosecha: string; peso: number | null; numeroPlantasCosechadas: number | null;
+    minutosTrabajo: number | null; responsable: string | null;
+  }>();
+  const deEstaSemana = cosechas.filter((h) => semanaAccess(h.fechaCosecha) === semana);
+
+  if (!deEstaSemana.length) {
+    await env.DB.prepare(
+      `DELETE FROM actividades WHERE codigoSistema = ?1 AND semanaAbono = ?2 AND Actividad = 'Cosecha'`
+    ).bind(codigo, semana).run();
+    return;
+  }
+
+  const plantas = deEstaSemana.reduce((a, h) => a + (h.numeroPlantasCosechadas ?? 0), 0);
+  const minutos = deEstaSemana.reduce((a, h) => a + (h.minutosTrabajo ?? 0), 0);
+  // el ultimo responsable que registro esa semana, por poner algo con sentido
+  // cuando varias personas cosecharon en la misma semana
+  const responsable = [...deEstaSemana].reverse().find((h) => h.responsable)?.responsable ?? null;
+  // cantidadAbono es minutos POR PLANTA: total (columna GENERATED) sale como
+  // cantidadAbono * numeroPlantas, y asi vuelve a dar los minutos reales
+  const cantidadAbono = plantas > 0 ? minutos / plantas : 0;
+
+  const totalCosechadoHistorico = await env.DB
+    .prepare('SELECT COALESCE(SUM(numeroPlantasCosechadas), 0) AS n FROM cosecha WHERE codigosistema = ?1')
+    .bind(codigo).first<{ n: number }>();
+  const faltan = (cultivo.numeroPlantasSembradas ?? 0) - (totalCosechadoHistorico?.n ?? 0);
+  const detalle = faltan <= 0 ? 'Cosecha total' : 'Cosecha parcial';
+
+  await env.DB.prepare(`
+INSERT INTO actividades (codigoSistema, codsemilla, fechaSiembra, semanaAbono, Actividad,
+                         cantidadAbono, numeroPlantas, detalle, unidad, costo, responsable,
+                         estado, fechaRegistro)
+VALUES (?1, ?2, ?3, ?4, 'Cosecha', ?5, ?6, ?7, 'Min', ?8, ?9, 'realizado', ?10)
+ON CONFLICT DO UPDATE SET
+  cantidadAbono = excluded.cantidadAbono,
+  numeroPlantas = excluded.numeroPlantas,
+  detalle       = excluded.detalle,
+  responsable   = excluded.responsable,
+  fechaRegistro = excluded.fechaRegistro`)
+    .bind(codigo, cultivo.codSemilla, cultivo.fechasiembra, semana, cantidadAbono, plantas,
+          detalle, COSTO_MINUTO_COSECHA, responsable, fechaCosecha)
+    .run();
+}
+
+app.post('/api/cosechas', async (c) => {
+  const cuerpo = await c.req.json<Partial<{
+    codigosistema: number; fechaCosecha: string; peso: number; pesoPromedio: number | null;
+    numeroPlantasCosechadas: number | null; remision: string | null; factura: string | null;
+    observacion: string | null; responsable: string | null; minutosTrabajo: number | null;
+  }>>();
+
+  if (!cuerpo.codigosistema || !cuerpo.fechaCosecha || cuerpo.peso == null) {
+    return c.json({ error: 'Hacen falta el cultivo, la fecha y el peso.' }, 400);
+  }
+
+  let fila;
+  try {
+    fila = await c.env.DB.prepare(`
+INSERT INTO cosecha (codigosistema, fechaCosecha, peso, pesoPromedio, numeroPlantasCosechadas,
+                     remision, factura, observacion, responsable, minutosTrabajo)
+VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) RETURNING *`)
+      .bind(cuerpo.codigosistema, cuerpo.fechaCosecha, cuerpo.peso, cuerpo.pesoPromedio ?? null,
+            cuerpo.numeroPlantasCosechadas ?? null, cuerpo.remision ?? null, cuerpo.factura ?? null,
+            cuerpo.observacion ?? null, cuerpo.responsable ?? null, cuerpo.minutosTrabajo ?? null)
+      .first();
+  } catch (e) {
+    const { error, codigo } = comoErrorDeCliente(e);
+    return c.json({ error }, codigo);
+  }
+
+  await recalcularActividadCosecha(c.env, cuerpo.codigosistema, cuerpo.fechaCosecha);
+  return c.json(fila, 201);
+});
+
+app.delete('/api/cosechas/:id', async (c) => {
+  const fila = await c.env.DB
+    .prepare('SELECT codigosistema, fechaCosecha FROM cosecha WHERE Id = ?1')
+    .bind(c.req.param('id')).first<{ codigosistema: number | null; fechaCosecha: string | null }>();
+  if (!fila) return c.json(noEncontrado('esa cosecha'), 404);
+
+  await c.env.DB.prepare('DELETE FROM cosecha WHERE Id = ?1').bind(c.req.param('id')).run();
+  if (fila.codigosistema && fila.fechaCosecha) {
+    await recalcularActividadCosecha(c.env, fila.codigosistema, fila.fechaCosecha);
+  }
+  return c.json({ borradas: 1 });
 });
 
 app.notFound((c) => c.json({ error: 'Esa direccion no existe en la API.' }, 404));

@@ -60,6 +60,12 @@ SELECT a.id,
        a.cama,
        a.detalle,
        a.responsable,
+       -- NUEVA, no estaba en la consulta de Access: sin ella los informes de
+       -- costos no pueden decir si la labor llega a hacerse. El comparador de
+       -- paridad solo contrasta las columnas COMUNES y falla por las que
+       -- faltan en D1, no por las que sobran, asi que anadirla no rompe la
+       -- comparacion contra el origen.
+       a.estado,
        a.costo * a.total AS GTotal
 FROM actividades a;
 

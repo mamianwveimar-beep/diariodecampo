@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diario de Campo — Presentación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F5F6F2; --surface:#FFFFFF; --surface-2:#EDEFE9;
+  --ink:#171E1A; --ink-2:#4A554E; --ink-3:#79837B;
+  --rule:#D9DED4; --rule-strong:#B7C0B2;
+  --accent:#10627C; --accent-soft:#E1EEF4;
+  --ochre:#A8701A; --ochre-soft:#F6EDDC;
+  --oxide:#9C3823; --oxide-soft:#F7E6E2;
+  --moss:#3D7350; --moss-soft:#E2EEE5;
+  --measure:70ch; --wide:1180px;
+  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#131714; --surface:#1A201B; --surface-2:#232A24;
+    --ink:#E7EBE3; --ink-2:#A9B2A9; --ink-3:#7D867E;
+    --rule:#2C332D; --rule-strong:#414940;
+    --accent:#5FB8D6; --accent-soft:#12313C;
+    --ochre:#DCA555; --ochre-soft:#382C17;
+    --oxide:#DD8069; --oxide-soft:#39211B;
+    --moss:#74B588; --moss-soft:#1B3324;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#131714; --surface:#1A201B; --surface-2:#232A24;
+  --ink:#E7EBE3; --ink-2:#A9B2A9; --ink-3:#7D867E;
+  --rule:#2C332D; --rule-strong:#414940;
+  --accent:#5FB8D6; --accent-soft:#12313C;
+  --ochre:#DCA555; --ochre-soft:#382C17;
+  --oxide:#DD8069; --oxide-soft:#39211B;
+  --moss:#74B588; --moss-soft:#1B3324;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--f-body); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:var(--wide); margin:0 auto; padding:0 28px 120px}
+.col{max-width:var(--measure)}
+.wide{max-width:100%}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--f-display); font-weight:600; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.5rem,6vw,4rem); line-height:1.02; letter-spacing:-.022em}
+h2{font-size:clamp(1.6rem,3.2vw,2.1rem); line-height:1.12; letter-spacing:-.014em}
+h3{font-size:1.19rem; line-height:1.25; letter-spacing:-.008em}
+h4{font-size:1rem; font-family:var(--f-body); font-weight:600; letter-spacing:-.002em}
+p{margin:0}
+a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+strong{font-weight:600}
+code,.mono{font-family:var(--f-mono); font-size:.87em; font-variant-ligatures:none}
+code{background:var(--surface-2); padding:.1em .34em; border-radius:3px; color:var(--ink)}
+.eyebrow{
+  font-family:var(--f-mono); font-size:.72rem; font-weight:500;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);
+}
+.lede{font-family:var(--f-display); font-size:1.28rem; line-height:1.5; color:var(--ink-2)}
+.small{font-size:.88rem; color:var(--ink-2)}
+
+/* ---------- structure ---------- */
+header.masthead{
+  padding:80px 0 44px; border-bottom:2px solid var(--rule-strong);
+  display:flex; flex-direction:column; gap:22px;
+}
+.masthead .meta{display:flex; flex-wrap:wrap; gap:10px 26px}
+section{
+  padding:56px 0; border-bottom:1px solid var(--rule);
+  display:flex; flex-direction:column; gap:26px;
+}
+section:last-of-type{border-bottom:none}
+.sec-head{display:flex; flex-direction:column; gap:9px}
+.stack{display:flex; flex-direction:column; gap:16px}
+.stack-lg{display:flex; flex-direction:column; gap:32px}
+
+/* ---------- verdict ---------- */
+.verdict{
+  background:var(--surface); border:1px solid var(--rule);
+  border-left:4px solid var(--accent); border-radius:3px;
+  padding:26px 30px; display:flex; flex-direction:column; gap:14px;
+}
+.verdict h3{color:var(--accent)}
+
+/* ---------- key figures ---------- */
+.figures{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+  gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden;
+}
+.fig{background:var(--surface); padding:18px 20px; display:flex; flex-direction:column; gap:5px}
+.fig .n{font-family:var(--f-display); font-size:2rem; line-height:1; font-variant-numeric:tabular-nums}
+.fig .l{font-size:.79rem; color:var(--ink-2); line-height:1.35}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:3px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.895rem; min-width:600px}
+th,td{text-align:left; padding:11px 15px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:var(--f-mono); font-size:.71rem; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); background:var(--surface-2);
+  border-bottom:1px solid var(--rule-strong); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums; font-family:var(--f-mono); font-size:.82rem}
+td .mono,td code{white-space:nowrap}
+caption{caption-side:bottom; padding:10px 15px; font-size:.8rem; color:var(--ink-3); text-align:left}
+
+/* ---------- chips ---------- */
+.chip{
+  display:inline-block; font-family:var(--f-mono); font-size:.68rem; font-weight:500;
+  letter-spacing:.07em; text-transform:uppercase; padding:2px 7px; border-radius:2px; white-space:nowrap;
+}
+.chip.ok{background:var(--moss-soft); color:var(--moss)}
+.chip.info{background:var(--accent-soft); color:var(--accent)}
+.chip.warn{background:var(--ochre-soft); color:var(--ochre)}
+.chip.danger{background:var(--oxide-soft); color:var(--oxide)}
+
+/* ---------- misc ---------- */
+ul.plain{margin:0; padding-left:1.15em; display:flex; flex-direction:column; gap:8px}
+.note{border-left:3px solid var(--ochre); background:var(--ochre-soft); padding:14px 18px; border-radius:0 3px 3px 0; font-size:.92rem}
+.note.q{border-color:var(--accent); background:var(--accent-soft)}
+.two{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px}
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:3px; padding:20px 22px; display:flex; flex-direction:column; gap:10px}
+.card h4{margin:0; color:var(--accent)}
+.role-badge{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--f-mono); font-size:.72rem; font-weight:500;
+  letter-spacing:.07em; text-transform:uppercase;
+  padding:4px 10px; border-radius:3px; margin-bottom:8px;
+}
+.role-operario{background:var(--moss-soft); color:var(--moss)}
+.role-admin{background:var(--accent-soft); color:var(--accent)}
+.role-decisor{background:var(--ochre-soft); color:var(--ochre)}
+footer{
+  padding:44px 0 0; color:var(--ink-3); font-size:.84rem;
+  border-top:2px solid var(--rule-strong); margin-top:56px;
+  display:flex; flex-wrap:wrap; gap:10px 26px; justify-content:space-between;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+@media print{
+  body{background:#fff; color:#000}
+  section{page-break-inside:avoid; border-bottom:2px solid #ccc}
+  .no-print{display:none!important}
+  .page{padding:0; max-width:100%}
+}
+@media (max-width:640px){
+  .page{padding:0 18px 80px}
+  .masthead .meta{flex-direction:column; gap:8px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ============================================================ -->
+<!-- PORTADA -->
+<!-- ============================================================ -->
+<header class="masthead">
+  <div class="eyebrow">Presentación</div>
+  <h1>Diario de Campo</h1>
+  <p class="lede col">
+    Del archivo de Access a la gestión agrícola moderna.<br>
+    Migración verificada · paridad documentada contra el sistema actual.
+  </p>
+  <div class="meta small">
+    <span><span class="eyebrow">Origen</span> &nbsp;Microsoft Access 2016</span>
+    <span><span class="eyebrow">Destino</span> &nbsp;Aplicación web Angular + Cloudflare</span>
+    <span><span class="eyebrow">Datos</span> &nbsp;354 filas · 13 tablas</span>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- 1. EL PROBLEMA HOY -->
+<!-- ============================================================ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">1 / 6</div>
+    <h2>El problema hoy: Microsoft Access</h2>
+  </div>
+
+  <div class="verdict col">
+    <h3>Una herramienta que llegó a su límite</h3>
+    <p>
+      Access resolvió durante años, pero su arquitectura impide crecer. Cada
+      limitación se convierte en costo operativo: tiempo perdido, errores
+      repetidos y dependencia de una sola persona que entiende el sistema.
+    </p>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h4>Acceso y disponibilidad</h4>
+      <ul class="plain">
+        <li>Solo accesible desde equipos con Windows y Access instalados</li>
+        <li>Copias locales frágiles; un disco duro falla y se pierde el histórico</li>
+        <li>Compartir datos es manual: exportar, enviar, reimportar</li>
+        <li>No funciona desde el móvil en campo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Lógica invisible y riesgosa</h4>
+      <ul class="plain">
+        <li>20 consultas de acción y macros encerradas en VBA</li>
+        <li>Nadie sabe con certeza qué hace cada fórmula sin abrir el código</li>
+        <li>Un cambio involuntario rompe los informes sin aviso</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Datos con inconsistencias heredadas</h4>
+      <ul class="plain">
+        <li>12 actividades con fecha de cultivo desfasada</li>
+        <li>9 líneas de pedido apuntando a semillas que ya no existen</li>
+        <li>10 movimientos de inventario sin cultivo asociado</li>
+        <li>Sin trazabilidad de quién cambió qué y cuándo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Sin respaldos automatizados</h4>
+      <ul class="plain">
+        <li>Las copias dependen de que alguien las haga a mano</li>
+        <li>No hay historial de versiones ni punto de restauración</li>
+        <li>Un error de usuario puede dejar la base inconsistente sin vuelta atrás</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. QUÉ CAMBIA -->
+<!-- ============================================================ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">2 / 6</div>
+    <h2>Qué cambia: la nueva aplicación</h2>
+  </div>
+
+  <div class="verdict col">
+    <h3>Misma lógica, cero reentrenamiento, cero reingeniería</h3>
+    <p>
+      La aplicación conserva la lógica agrícola tal como opera hoy. Los 14
+      formularios de Access se consolidan en <strong>11 pantallas unificadas</strong>
+      más <strong>5 pantallas nuevas</strong> que no existían, pensadas para
+      el flujo real de trabajo en campo.
+    </p>
+  </div>
+
+  <div class="figures wide">
+    <div class="fig"><span class="n">11</span><span class="l">pantallas unificadas</span></div>
+    <div class="fig"><span class="n">5</span><span class="l">pantallas nuevas</span></div>
+    <div class="fig"><span class="n">6</span><span class="l">informes exportables a PDF</span></div>
+    <div class="fig"><span class="n">0</span><span class="l">dependencias locales</span></div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h4>Acceso universal</h4>
+      <ul class="plain">
+        <li>Funciona en cualquier navegador: computadora, tableta o móvil</li>
+        <li>Operario en campo registra desde la cama, sin volver a oficina</li>
+        <li>Administración consulta en tiempo real desde cualquier lugar</li>
+        <li>No hay instalación ni actualizaciones por equipo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Panel de control vivo</h4>
+      <ul class="plain">
+        <li>Métricas contra la fecha actual: faltante de cosecha, labores de la semana</li>
+        <li>Plazos en relativo: «en 11 días», no «2021-11-14»</li>
+        <li>Gráficas de distribución de cultivos y productividad</li>
+        <li>Resumen acumulado histórico siempre disponible</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Informes nativos</h4>
+      <ul class="plain">
+        <li>6 informes: trazabilidad, programación de abonamiento, costos y más</li>
+        <li>Exportación a PDF con un clic, sin software adicional</li>
+        <li>Filtros dinámicos por fecha, cultivo y semana</li>
+        <li>Impresión optimizada con reglas <code>@media print</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Datos en la nube</h4>
+      <ul class="plain">
+        <li>Alojados en Cloudflare: mismos estándares que usan bancos y gobiernos</li>
+        <li>Acceso desde cualquier dispositivo sin VPN ni configuraciones</li>
+        <li>Escalable: crece con la finca sin reingeniería</li>
+        <li>Costo cero en el volumen actual: plan gratuito de Cloudflare</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. BENEFICIOS POR ROL -->
+<!-- ============================================================ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">3 / 6</div>
+    <h2>Beneficios por rol</h2>
+  </div>
+
+  <p class="small">
+    Cada pantalla está diseñada para el momento y la persona que la usa.
+    No es lo mismo registrar una siembra en lote que consultar costos de un cultivo.
+  </p>
+
+  <!-- Operario -->
+  <div class="card">
+    <div class="role-badge role-operario">Operario en campo</div>
+    <h4>Registro rápido y sin errores</h4>
+    <div class="two">
+      <div>
+        <p><strong>Registrar siembra por lotes</strong></p>
+        <ul class="plain">
+          <li>Fecha y factura una sola vez; variedades en filas</li>
+          <li>El área se calcula sola: plantas × marco de siembra</li>
+          <li>Lote y cama se heredan automáticamente</li>
+          <li>Si una línea falla, las demás se guardan igual</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Órdenes de siembra</strong></p>
+        <ul class="plain">
+          <li>Lista de lo pendiente del día: lo que nadie ha registrado todavía</li>
+          <li>El operario solo edita 4 campos: lote, cama, cantidad real y motivo de merma</li>
+          <li>Guardado automático sin botón: al marcar, se guarda</li>
+          <li>Trazabilidad: quién sembró, cuándo y cuánto realmente entró</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Seguimiento en campo</strong></p>
+        <ul class="plain">
+          <li>Tarjetas grandes por semana, pensadas para el móvil</li>
+          <li>Tres estados: pendiente / realizado / cancelado</li>
+          <li>Sin botón de guardar: marcar y listo</li>
+          <li>No crea ni borra nada; solo registra lo que pasó</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Alta de actividades por lotes</strong></p>
+        <ul class="plain">
+          <li>Cabecera: fecha, tipo de labor, insumo</li>
+          <li>Líneas por cama: repite la cabecera una sola vez</li>
+          <li>Hereda semilla, fecha de siembra, plantas y lote del cultivo</li>
+          <li>Ideal para abonadas, deshierbes y labores recurrentes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Administración -->
+  <div class="card">
+    <div class="role-badge role-admin">Administración</div>
+    <h4>Control total sin pérdidas</h4>
+    <div class="two">
+      <div>
+        <p><strong>Gestión centralizada</strong></p>
+        <ul class="plain">
+          <li>Cultivos, semillas, productos, clientes y empleados en un solo lugar</li>
+          <li>Consultas y costos filtrados por cultivo: búsqueda por código, semilla, lote o cama</li>
+          <li>Editar y borrar en 3 clics: mismo formulario para alta y edición</li>
+          <li>Inventario y movimientos integrados, sin hojas aparte</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Cuarentena visible</strong></p>
+        <ul class="plain">
+          <li>Datos rechazados por validación no se descartan</li>
+          <li>Se muestra la regla incumplida y el valor original</li>
+          <li>Decisiones conscientes: aceptar o corregir, nunca perder información</li>
+          <li>Sin silencios: lo que no encaja se ve y se explica</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Informes y trazabilidad</strong></p>
+        <ul class="plain">
+          <li>Trazabilidad completa por cultivo y fecha</li>
+          <li>Programación de abonamiento con cantidades y costos</li>
+          <li>Exportación a PDF nativa del navegador</li>
+          <li>Filtros dinámicos: por semana, cultivo o rango de fechas</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Gestión de errores clara</strong></p>
+        <ul class="plain">
+          <li>Restricciones violadas devuelven mensaje legible</li>
+          <li>No más «Http failure response» sin explicación</li>
+          <li>Duplicados y valores inválidos se prevén antes de guardar</li>
+          <li>Registro de cambios por usuario y fecha</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toma de decisiones -->
+  <div class="card">
+    <div class="role-badge role-decisor">Toma de decisiones</div>
+    <h4>Información oportuna para decidir</h4>
+    <div class="two">
+      <div>
+        <p><strong>Panel de control</strong></p>
+        <ul class="plain">
+          <li>Días exactos hasta cada cosecha</li>
+          <li>Labores pendientes y completadas de la semana en curso</li>
+          <li>Peso planificado vs. real por cultivo</li>
+          <li>Alertas visuales: lo que vence pronto aparece primero</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Resumen acumulado</strong></p>
+        <ul class="plain">
+          <li>Kilos totales por cultivo y temporada</li>
+          <li>Costo acumulado de mano de obra y abonos</li>
+          <li>Rendimiento por cama y por lote</li>
+          <li>Histórico completo sin filtros ni límites</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. GARANTÍAS DE MIGRACIÓN -->
+<!-- ============================================================ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">4 / 6</div>
+    <h2>Garantías de migración</h2>
+  </div>
+
+  <div class="verdict col">
+    <h3>No es una migración a ciegas</h3>
+    <p>
+      Cada dato, cada fórmula y cada informe se comparó contra el sistema
+      original. La migración no se entrega hasta que los números coinciden.
+    </p>
+  </div>
+
+  <div class="figures wide">
+    <div class="fig"><span class="n">22</span><span class="l">consultas de acción verificadas</span></div>
+    <div class="fig"><span class="n">9</span><span class="l">vistas SELECT contrastadas</span></div>
+    <div class="fig"><span class="n">58</span><span class="l">columnas en trazabilidad</span></div>
+    <div class="fig"><span class="n">2</span><span class="l">vistas en revisión final</span></div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h4>Paridad verificada</h4>
+      <ul class="plain">
+        <li>Las 22 consultas de acción se ejecutaron en Access y en la nueva base; coinciden fila a fila</li>
+        <li>7 de las 9 vistas SELECT coinciden exactamente con el motor de Access original</li>
+        <li>2 vistas (<code>cProgramacionCultivo</code> y <code>cProgramacionCultivosAbonamiento</code>) presentan diferencias identificadas y documentadas; están en revisión final</li>
+        <li>4 columnas calculadas se preservaron como <code>GENERATED</code> en SQLite: mismo resultado, misma fórmula</li>
+        <li>La numeración de semanas se fijó en domingo: regla consistente, no dependiente del equipo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Datos limpios y trazables</h4>
+      <ul class="plain">
+        <li>Carga con reconciliación automática: totales de control por tabla</li>
+        <li>Cuarentena: lo que no pasa una validación se aísla con la regla y el valor original</li>
+        <li>Respaldo y restauración probados de principio a fin: la base sale idéntica</li>
+        <li>Errores de restricción responden con código 400 y mensaje claro, no con un 500 mudo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Lo que cambia a propósito</h4>
+      <ul class="plain">
+        <li>Numeración de semanas: antes dependía de la configuración del equipo; ahora fija en domingo</li>
+        <li>Siembra y actividad: ahora se distinguen cantidades planificadas y sembradas reales</li>
+        <li>Dos consultas nuevas de abonamiento (semilla y cal dolomita) que Access tenía pero nunca ejecutaba</li>
+        <li>Sin valores inventados: campos vacíos se quedan vacíos, no se rellenan con ceros</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Soporte y evidencia</h4>
+      <ul class="plain">
+        <li><code>docs/paridad/</code> contiene la comparación completa: tablas, vistas y consultas</li>
+        <li>Pruebas automatizadas: equivalencia de fechas, paridad de consultas, humo en 12 pantallas</li>
+        <li>Repositorio versionado: cada cambio queda documentado y reversible</li>
+        <li>Sin dependencia de Access ni proveedores OLEDB una vez migrado</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. BENEFICIOS TÉCNICOS -->
+<!-- ============================================================ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">5 / 6</div>
+    <h2>Beneficios técnicos y de operación</h2>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h4>Infraestructura moderna</h4>
+      <ul class="plain">
+        <li>Backend en Cloudflare Workers: respuesta en milisegundos desde cualquier punto del planeta</li>
+        <li>Base de datos D1: SQLite con respaldo automático y time travel de 30 días</li>
+        <li>Archivos adjuntos en R2: las 8 fotos cargadas desde la nube, sin rutas locales</li>
+        <li>Frontend Angular: SPA (página única) sin recargas, fluido en conexiones lentas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Costo cero en el volumen actual</h4>
+      <ul class="plain">
+        <li>354 filas y 1,4 MB de adjuntos caben holgadamente en el plan gratuito</li>
+        <li>Sin servidores que mantener, sin licencias, sin actualizaciones forzadas</li>
+        <li>Escalable: crece con la finca sin cambiar arquitectura</li>
+        <li>Pago por uso solo si se superan umbrales que esta finca no alcanzará en años</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Seguridad y respaldos</h4>
+      <ul class="plain">
+        <li>Datos encriptados en tránsito y en reposo</li>
+        <li>Respaldo automatizado: un comando genera una copia restaurable</li>
+        <li>Time travel de D1: volver a cualquier punto de los últimos 30 días</li>
+        <li>Sin acceso local sensible: el navegador no guarda datos críticos en caché</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Mantenibilidad</h4>
+      <ul class="plain">
+        <li>Código abierto y versionado: cada cambio queda documentado</li>
+        <li>Separación de responsabilidades: API, lógica agrícola e interfaz son módulos independientes</li>
+        <li>Pruebas automatizadas en cada entrega: humo, paridad y respaldos</li>
+        <li>Sin dependencia de personas: cualquier desarrollador puede continuar el trabajo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6. PRÓXIMOS PASOS -->
+<!-- ============================================================ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">6 / 6</div>
+    <h2>Próximos pasos</h2>
+  </div>
+
+  <div class="verdict col">
+    <h3>Del piloto a producción en semanas</h3>
+    <p>
+      La aplicación está construida y verificada. Lo que resta es exponerla
+      a los usuarios reales y cerrar el corte con Access.
+    </p>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <div class="eyebrow">Paso 1</div>
+      <h4>Aprobación del corte de fecha</h4>
+      <p>Definir cuándo se deja de usar Access. A partir de esa fecha, la nueva aplicación es la única fuente de verdad.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Paso 2</div>
+      <h4>Despliegue en Cloudflare</h4>
+      <p>Migración de la base local a D1 en la nube, carga de adjuntos a R2 y publicación del Worker y el frontend.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Paso 3</div>
+      <h4>Activación de acceso</h4>
+      <p>Configuración de Cloudflare Access: inicio de sesión por correo electrónico, sin código adicional. Cada usuario entra con su cuenta.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Paso 4</div>
+      <h4>Capacitación breve</h4>
+      <p>Sesión práctica de 2 horas con operarios: las 3 pantallas nuevas (siembra, orden, seguimiento) y el flujo de guardado automático.</p>
+    </div>
+  </div>
+
+  <div class="note q col">
+    <strong>¿Por qué 4 pasos?</strong>
+    Porque la aplicación ya está hecha. No hay desarrollo pendiente: solo exponerla,
+    protegerla y acompañar a los usuarios en el cambio. El tiempo estimado es de
+    <strong>1 a 2 semanas</strong> desde la aprobación del corte.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+  <span>Diario de Campo · Migración verificada</span>
+  <span>Paridad 1:1 · Acceso universal · Cero costo inicial</span>
+</footer>
+
+</div>
+</body>
+</html>

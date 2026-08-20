@@ -73,6 +73,10 @@ cd ../web
 npm run humo          # recorre las 12 pantallas con un navegador real
 npm run humo:siembra  # rellena y guarda un alta de siembra por lotes
 npm run humo:actividad # alta por lotes de labores, con una línea que falla a propósito
+npm run humo:gestion  # gestión por cultivo: filtro contra el servidor, editar y borrar
+npm run humo:seguimiento # el operario marca estados y se guardan sin pulsar nada
+npm run humo:cosecha  # registrar una cosecha genera y acumula su actividad
+npm run humo:panel    # cada cifra del panel, contrastada contra la API
 npm run humo:orden    # registra una orden y compara la vista previa por semana
                        # contra lo que el backend deja guardado de verdad
 ```
@@ -88,6 +92,8 @@ fase 7:
 powershell -File etl/05-volcar-consultas-access.ps1   # ejecuta las 9 consultas en Access
 node etl/06-comparar-paridad.mjs                      # compara fila a fila con D1
 node etl/07-respaldo.mjs ensayo                       # respalda, restaura y compara
+node etl/08-actualizar-fechas.mjs                     # ensayo: dice qué movería
+node etl/08-actualizar-fechas.mjs aplicar             # trae el histórico a la temporada actual
 ```
 
 ## La API
@@ -96,7 +102,7 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 |---|---|
 | `GET /api/salud` | Estado y fecha de hoy en hora de Colombia |
 | `GET /api/tablas` | Las 12 tablas expuestas |
-| `GET /api/tablas/:tabla` | Listado con `limite` y `desde` |
+| `GET /api/tablas/:tabla` | Listado con `limite`, `desde` y `cultivo` |
 | `GET·POST·PUT·DELETE /api/tablas/:tabla/:id` | Alta, consulta, edición y borrado |
 | `GET /api/vistas/:nombre` | Las 7 vistas traducidas de Access |
 | `GET /api/informes/trazabilidad?fechaInicial=` | `cProgramacionCultivo` |
@@ -104,6 +110,8 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 | `GET /api/ordenes/pendientes` | Siembras que nadie ha registrado en campo |
 | `GET /api/ordenes/:codigo` | Una orden, con la ficha de su semilla resuelta |
 | `POST /api/ordenes/:codigo` | Registra la siembra y programa la temporada del cultivo |
+| `POST /api/cosechas` | Registra una cosecha y deja al día la actividad «Cosecha» de esa semana |
+| `DELETE /api/cosechas/:id` | Borra una cosecha y recalcula (o quita) esa actividad |
 | `GET /api/procesos` | Catálogo de las 22 consultas de acción |
 | `POST /api/procesos/:nombre` | Ejecuta una; devuelve cuántas filas entraron |
 | `POST /api/procesos/lote/:lote` | Ejecuta un lote, como las macros de Access |
@@ -113,17 +121,19 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 
 ## La interfaz
 
-Los 14 formularios de Access se consolidan en 11 pantallas, más cuatro nuevas:
+Los 14 formularios de Access se consolidan en 11 pantallas, más cinco nuevas:
 el alta de siembra por lotes, el alta de actividades por lotes, la orden de
-siembra y la cuarentena. Los tres subformularios dejan de
+siembra, el seguimiento en campo y la cuarentena. Los tres subformularios dejan de
 ser objetos aparte y viven dentro de su pantalla contenedora.
 
 | Pantalla | Sustituye a |
 |---|---|
-| Inicio | `InicioDiarioCampo` |
+| Panel | `InicioDiarioCampo` (rehecho: ahora mira al presente) |
+| Resumen acumulado | — (lo que era Inicio: totales históricos) |
 | Registrar siembra | — (nueva: alta por lotes) |
 | Órdenes de siembra | — (nueva: el registro del operario en campo) |
 | Registrar actividades | — (nueva: alta por lotes de labores) |
+| Seguimiento en campo | — (nueva: el operario marca lo que va haciendo) |
 | Siembras y cosechas | `Frm_Siembra`, `SubFrm_Siembra`, `Frm_Datos`, `Frm_DatosCosecha` |
 | Actividades y costos | `Frm_Costos`, `SubFrm_Costos`, `Frm_DatosCostos`, `Macro3` |
 | Semillas | `frmInfoSemilla` |
@@ -278,6 +288,128 @@ El guardado va línea a línea: si una falla, las demás entran igual y la falli
 se queda en pantalla, editable y con su motivo. El caso típico es repetir el
 mismo cultivo dos veces en la misma jornada, que choca contra
 `ux_actividades_access`; la pantalla lo avisa antes de intentarlo.
+
+### Gestión de actividades por cultivo
+
+**Actividades y costos** no solo lista: es donde se corrige lo ya registrado.
+El filtro maestro es un buscador de cultivo —por código, semilla, lote o cama—,
+y al elegir uno **la pantalla vuelve a pedir al servidor** con
+`GET /api/tablas/actividades?cultivo=N` en vez de descargar la tabla entera y
+descartar casi todo en el navegador. Con 260 filas la diferencia ya se nota; con
+miles es la pantalla usable o no.
+
+El parámetro `cultivo` solo vale en las tres tablas que cuelgan de
+`programacionCultivos`, y el nombre de la columna sale de una lista blanca en el
+código, nunca de lo que mande el cliente: es un filtro, no una cadena que se
+concatene en el SQL.
+
+Los demás filtros —actividad, semana, rango de fechas— refinan en el cliente
+sobre lo ya traído, que con un cultivo elegido son unas pocas decenas de filas.
+La tabla se pagina de 25 en 25, y `GTotal` se calcula en el cliente con la misma
+fórmula que la vista (`costo * total`), porque `cCostosActividades` no acepta
+filtro y traerla entera era justo lo que se quería evitar.
+
+**Editar y borrar están a tres clics**: Editar abre el mismo formulario que usa
+el alta —un solo sitio que mantener—, se corrige el campo y se guarda. Y
+«Nueva actividad» arranca con el cultivo que estés mirando ya puesto.
+
+### Seguimiento en campo
+
+La pantalla que el operario abre con el móvil delante de la cama. Elige el
+cultivo, ve las labores **ya programadas** de una semana como tarjetas grandes,
+y marca en cada una quién la hizo y en qué quedó. No crea ni borra nada: para
+eso están «Registrar actividades» y «Actividades y costos».
+
+**No hay botón de guardar, a propósito.** Marcar un estado dispara un `PUT`
+sobre esa única labor y la tarjeta lo confirma con un «Guardado ✓» que se retira
+solo. En campo un botón de guardar se olvida, y la jornada se anota a medias.
+
+Los tres estados viven en `actividades.estado`, columna nueva:
+
+- `NULL` — programada, nadie se ha pronunciado. Es como queda el histórico
+  migrado, porque Access no preguntaba nada de esto.
+- `pendiente` · `realizado` · `cancelado` — lo que dijo el operario.
+
+Va de la mano de `fechaRegistro`: **estado es el qué, fechaRegistro el cuándo**.
+Cancelar también sella la fecha, porque decidir que algo no se hace es
+pronunciarse igual que hacerlo.
+
+**Las semanas se ordenan por cronología, no por número.** Un cultivo sembrado en
+octubre va de la semana 40 a la 52 y sigue en la 2 y la 3 del año siguiente;
+ordenar por el número ponía esas dos las primeras. Se ancla en la semana de la
+siembra y se cuenta hacia delante.
+
+### El panel, y por qué los datos son de este año
+
+Los datos migrados son de 2021. Sirven para demostrar la paridad con Access,
+pero no para trabajar: ningún cultivo está próximo a cosecha, ninguna labor cae
+en la semana en curso y el panel sale vacío. `etl/08-actualizar-fechas.mjs` los
+trae a la temporada actual.
+
+**Desplaza por semanas enteras, no por días sueltos**, para que cada fecha
+conserve su día de la semana: de eso depende toda la numeración de semanas del
+sistema. Y `semanaAbono` no se recalcula desde cero —haría falta la fecha de la
+labor, que no se guarda— sino conservando su distancia en semanas hasta la
+siembra, que es justo lo que esa columna significa.
+
+**Toca solo la base viva de wrangler.** No toca `origen/`, ni `etl/salida/`, ni
+`db/local/`, que es sobre la que trabajan `npm run paridad` y
+`etl/06-comparar-paridad.mjs`. Esa separación es lo que deja intacta la
+evidencia de paridad; volver a correr `node etl/03-cargar.mjs` devuelve db/local
+a 2021 sin enterarse de esto. Solo mueve lo anterior al corte, así que
+reejecutarlo no acumula desplazamientos.
+
+Al aplicarlo salió a la luz que **12 actividades ya tenían un `fechaSiembra`
+distinto al de su cultivo en el propio Access**: la columna esta desnormalizada
+y allí no había clave foránea que lo impidiera. El script no lo arregla —no le
+corresponde— pero comprueba que no aparezcan descuadres nuevos.
+
+**Panel de la finca** sustituye al antiguo resumen como pantalla de entrada.
+Aquél contaba acumulados históricos —kilos totales, filas en cuarentena— que no
+dicen nada sobre qué hay que hacer hoy; sigue disponible en `/resumen`. El panel
+mide todo contra la fecha actual: cuánto falta para cada cosecha y qué labores
+caen en la semana en curso, con plazos en relativo («en 11 días») y sin años a
+la vista.
+
+Las dos gráficas van en **SVG a mano, sin librería**. Meter ApexCharts o Chart.js
+sumaría más peso que toda la aplicación junta para dibujar un anillo y ocho
+barras, en una pantalla que se consulta desde el móvil en campo; además así
+salen bien por impresora con las reglas `@media print` que ya existen.
+
+### La cosecha también es una actividad
+
+Registrar una cosecha —desde el botón «Cosechas» en Siembras— genera o pone al
+día una actividad `Cosecha` en `actividades`, la semana de la `fechaCosecha`. No
+encaja en el molde de las demás: esas registran un insumo aplicado (dosis por
+planta, costo por unidad); cosechar es lo contrario, un resultado (kilos,
+plantas), y ya tenía su propia tabla. La actividad derivada es una proyección
+de esa tabla, no una fuente aparte.
+
+Sigue el mismo patrón que `PreparacionTerreno`, `Siembra` y `Deshierbe`: cobra por
+tiempo, no por producto. `cantidadAbono` son los minutos **por planta**,
+`numeroPlantas` las cosechadas, y el `total` generado (`cantidadAbono × numeroPlantas`)
+vuelve a dar los minutos reales que costó. El costo es 1,46 $/minuto, la misma
+constante que ya usan esas tres.
+
+**Se recalcula desde cero en cada alta o baja**, sumando TODAS las cosechas de
+ese cultivo que caen en esa semana, en vez de ir acumulando número a número.
+Así un borrado no puede dejar el acumulado desincronizado, que es el motivo más
+común de que un total "que se va sumando" acabe mal. Dos cosechas parciales la
+misma semana se funden en una sola actividad; si no queda ninguna cosecha esa
+semana, la actividad se borra —no tiene sentido una fila «Cosecha» en cero.
+
+**El detalle dice «Cosecha total» o «Cosecha parcial»**, calculado, no fijo:
+compara lo cosechado acumulado de todo el cultivo contra lo sembrado, el mismo
+cálculo que ya alimenta la columna «Faltan» en Siembras.
+
+Para esto, `cosecha` ganó dos columnas que no existían: `responsable` y
+`minutosTrabajo`. Sin ellas no había de dónde sacarlos. Con varias cosechas la
+misma semana, el responsable que queda en la actividad es el de la más reciente.
+
+Por eso el registro no pasa por el CRUD genérico: `guardarCosecha()` llama a
+`POST /api/cosechas`, no a `api.crear('cosecha', …)`. El endpoint genérico sigue
+existiendo para el resto de tablas; este es el que además recalcula la
+actividad, siguiendo el mismo criterio que `/api/ordenes/:codigo`.
 
 ## Decisiones que conviene conocer
 

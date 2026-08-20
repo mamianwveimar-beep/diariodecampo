@@ -62,13 +62,16 @@ export const TABLAS = {
       'Actividad', 'cantidadAbono', 'lote', 'cama', 'numeroPlantas', 'total',
       'detalle', 'responsable', 'costo', 'unidad',
       // orden de siembra: NULL = programada sin registrar; con fecha = registrada
-      'fechaRegistro'],
+      'fechaRegistro',
+      // seguimiento en campo: pendiente | realizado | cancelado
+      'estado'],
     generadas: ['total'],
   },
   cosecha: {
     pk: 'Id', autonumerica: true,
     columnas: ['Id', 'codigosistema', 'fechaCosecha', 'peso', 'pesoPromedio',
-      'numeroPlantasCosechadas', 'remision', 'factura', 'observacion'],
+      'numeroPlantasCosechadas', 'remision', 'factura', 'observacion',
+      'responsable', 'minutosTrabajo'],
     generadas: [],
   },
   costosInsumos: {
@@ -94,6 +97,13 @@ export const TABLAS = {
     pk: 'Id', autonumerica: true,
     columnas: ['Id', 'IdPedido', 'IdSemilla', 'Cantidad', 'ValorUnitario', 'SubTotal'],
     generadas: ['SubTotal'],
+  },
+  parametrosCostos: {
+    // pk fija, autonumerica:false: nunca se da de alta una fila nueva, solo
+    // se corrige la unica que existe (id=1) con PUT /api/tablas/parametrosCostos/1
+    pk: 'id', autonumerica: false,
+    columnas: ['id', 'jornalHora', 'costoMinuto'],
+    generadas: [],
   },
 };
 

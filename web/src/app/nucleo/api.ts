@@ -36,6 +36,17 @@ export class Api {
     ));
   }
 
+  /**
+   * Las filas de una tabla que cuelgan de un cultivo. Evita traerse la tabla
+   * entera al navegador cuando solo interesa uno: con miles de actividades
+   * registradas, la diferencia es la pantalla usable o no.
+   */
+  listarDeCultivo<R>(tabla: string, cultivo: number, limite = 2000): Promise<R[]> {
+    return this.pedir(firstValueFrom(
+      this.http.get<R[]>(`${BASE}/tablas/${tabla}`, { params: { cultivo, limite } })
+    ));
+  }
+
   obtener<R>(tabla: string, id: string | number): Promise<R> {
     return this.pedir(firstValueFrom(this.http.get<R>(`${BASE}/tablas/${tabla}/${id}`)));
   }
@@ -100,6 +111,21 @@ export class Api {
                 semanaRegistrada: number | null; registradas: number;
                 generadas: { actividades: number; costosInsumos: number } }> {
     return this.pedir(firstValueFrom(this.http.post<any>(`${BASE}/ordenes/${codigo}`, cuerpo)));
+  }
+
+  // ---------------------------------------------------------- cosechas
+  /**
+   * Registra una cosecha y, con ella, deja al dia la actividad "Cosecha" de
+   * esa semana (minutos trabajados, plantas, y si quedo total o parcial).
+   * Por eso no es api.crear('cosecha', ...): esa es la version generica, sin
+   * la logica de la actividad derivada.
+   */
+  crearCosecha(cuerpo: Partial<T.Cosecha> & { codigosistema: number; fechaCosecha: string; peso: number }): Promise<T.Cosecha> {
+    return this.pedir(firstValueFrom(this.http.post<T.Cosecha>(`${BASE}/cosechas`, cuerpo)));
+  }
+
+  borrarCosecha(id: number): Promise<{ borradas: number }> {
+    return this.pedir(firstValueFrom(this.http.delete<{ borradas: number }>(`${BASE}/cosechas/${id}`)));
   }
 
   // ---------------------------------------------------------- procesos

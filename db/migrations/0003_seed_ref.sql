@@ -40,3 +40,9 @@ VALUES (997, 'OI', 'Otro insumo', NULL, 0, NULL,
 -- El contador de autonumeracion queda en 999 y el siguiente producto nuevo
 -- saldria con id 1000. El ETL lo devuelve al maximo real (paso 3 de
 -- etl/03-cargar.mjs), porque solo entonces existen ya las filas 2..7.
+
+-- Jornal y costo por minuto tal como estaban escritos en las consultas de
+-- Access desde 2021. Arrancar con los mismos valores es lo que hace que
+-- activar esta tabla no cambie ni un peso hasta que alguien la edite a
+-- proposito desde Configuracion de costos.
+INSERT INTO parametrosCostos (id, jornalHora, costoMinuto) VALUES (1, 8807, 1.46);

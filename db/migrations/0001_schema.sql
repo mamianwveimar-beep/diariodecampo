@@ -198,7 +198,16 @@ CREATE TABLE actividades (
   --   fila con fecha   -> el operario la registro, con sus cantidades reales
   -- Access no distinguia ninguno de los tres: alli existir era haberse hecho.
   -- Por eso el historico migrado queda en NULL, que es lo unico cierto.
-  fechaRegistro TEXT    CHECK (fechaRegistro IS NULL OR fechaRegistro GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')
+  fechaRegistro TEXT    CHECK (fechaRegistro IS NULL OR fechaRegistro GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),
+  -- NUEVO (seguimiento en campo): que dijo el operario de esta labor.
+  --   NULL        programada, nadie se ha pronunciado todavia
+  --   pendiente   la vio y sigue sin hacerse
+  --   realizado   se hizo
+  --   cancelado   se decidio no hacerla
+  -- Va de la mano de fechaRegistro, que dice CUANDO se pronuncio: estado es
+  -- el que, fechaRegistro el cuando. El historico migrado queda en NULL
+  -- porque Access no preguntaba nada de esto.
+  estado        TEXT    CHECK (estado IS NULL OR estado IN ('pendiente','realizado','cancelado'))
 );
 CREATE UNIQUE INDEX ux_actividades_access
   ON actividades(codigoSistema, codsemilla, fechaSiembra, semanaAbono, Actividad);
@@ -215,7 +224,12 @@ CREATE TABLE cosecha (
   numeroPlantasCosechadas INTEGER,
   remision                TEXT CHECK (remision IS NULL OR length(remision) <= 255),
   factura                 TEXT CHECK (factura IS NULL OR length(factura) <= 255),
-  observacion             TEXT CHECK (observacion IS NULL OR length(observacion) <= 255)
+  observacion             TEXT CHECK (observacion IS NULL OR length(observacion) <= 255),
+  -- NUEVO: quien cosecho y cuanto tardo. Hacen falta para generar la
+  -- actividad "Cosecha" (ver POST /api/cosechas): sin esto no hay de donde
+  -- sacar su responsable ni su costo en tiempo.
+  responsable             TEXT CHECK (responsable IS NULL OR length(responsable) <= 255),
+  minutosTrabajo          REAL
 );
 CREATE INDEX ix_cosecha_codigosistema ON cosecha(codigosistema);
 
@@ -326,3 +340,18 @@ CREATE TABLE _cuarentena (
   creado_en    TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ','now'))
 );
 CREATE INDEX ix_cuarentena_tabla ON _cuarentena(tabla_origen);
+
+-- ------------------------------------------------------- parametrosCostos
+-- NUEVO: Access no tenia ninguna tabla de parametros; el jornal (8807) y el
+-- costo por minuto (1.46) estaban escritos a mano dentro de las 20 consultas
+-- de accion. Esta es esa fila -literalmente una sola-, para que se puedan
+-- corregir sin tocar codigo. El CHECK id=1 impide que exista una segunda: no
+-- es una tabla de muchos parametros, son dos valores unicos.
+-- Cambiarlos NO reescribe lo ya generado: solo afecta a las actividades que
+-- se calculen de aqui en adelante, igual que el resto del sistema nunca
+-- reescribe el pasado en silencio.
+CREATE TABLE parametrosCostos (
+  id          INTEGER NOT NULL PRIMARY KEY CHECK (id = 1),
+  jornalHora  INTEGER NOT NULL CHECK (jornalHora > 0),
+  costoMinuto REAL    NOT NULL CHECK (costoMinuto > 0)
+);

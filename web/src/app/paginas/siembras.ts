@@ -2,7 +2,7 @@ import { Component, computed, inject, input, signal, OnInit } from '@angular/cor
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Api } from '../nucleo/api';
-import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
+import type { Cultivo, Semilla, Cosecha, Empleado, InventarioCampo } from '../nucleo/tipos';
 
 /**
  * Siembras: sustituye a Frm_Siembra + SubFrm_Siembra + Frm_Datos +
@@ -56,7 +56,8 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
           <tr>
             <th>Codigo</th><th>Semilla</th><th>Siembra</th><th>Factura</th>
             <th class="num">Plantas</th><th>Lote</th><th>Cama</th>
-            <th class="num">Kilos</th><th>Activo</th><th></th>
+            <th class="num">Cosechadas</th><th class="num">Faltan</th><th class="num">Kilos</th>
+            <th>Activo</th><th></th>
           </tr>
         </thead>
         <tbody>
@@ -69,7 +70,9 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
               <td class="num">{{ c.numeroPlantasSembradas }}</td>
               <td>{{ c.lote ?? '—' }}</td>
               <td>{{ c.cama ?? '—' }}</td>
-              <td class="num">{{ c.kilosCosechados }}</td>
+              <td class="num">{{ cosechadoDe(c)?.SumaDenumeroPlantasCosechadas ?? '—' }}</td>
+              <td class="num">{{ faltanDe(c) ?? '—' }}</td>
+              <td class="num">{{ cosechadoDe(c)?.kilosCosechados ?? '—' }}</td>
               <td><span class="etiqueta" [class.si]="c.activo === 1" [class.no]="c.activo !== 1">
                 {{ c.activo === 1 ? 'Si' : 'No' }}</span></td>
               <td class="acciones">
@@ -79,7 +82,7 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
               </td>
             </tr>
           } @empty {
-            <tr><td colspan="10" class="vacio">Ninguna siembra coincide con el filtro.</td></tr>
+            <tr><td colspan="12" class="vacio">Ninguna siembra coincide con el filtro.</td></tr>
           }
         </tbody>
       </table>
@@ -158,7 +161,8 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
             <table>
               <thead>
                 <tr><th>Fecha</th><th class="num">Peso (kg)</th><th class="num">Peso medio</th>
-                    <th class="num">Plantas</th><th>Remision</th><th>Factura</th><th></th></tr>
+                    <th class="num">Plantas</th><th>Responsable</th><th class="num">Minutos</th>
+                    <th>Remision</th><th>Factura</th><th></th></tr>
               </thead>
               <tbody>
                 @for (h of cosechas(); track h.Id) {
@@ -167,6 +171,8 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
                     <td class="num">{{ h.peso }}</td>
                     <td class="num">{{ h.pesoPromedio ?? '—' }}</td>
                     <td class="num">{{ h.numeroPlantasCosechadas ?? '—' }}</td>
+                    <td>{{ h.responsable ?? '—' }}</td>
+                    <td class="num">{{ h.minutosTrabajo ?? '—' }}</td>
                     <td>{{ h.remision ?? '—' }}</td>
                     <td>{{ h.factura ?? '—' }}</td>
                     <td class="acciones">
@@ -174,7 +180,7 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
                     </td>
                   </tr>
                 } @empty {
-                  <tr><td colspan="7" class="vacio">Este cultivo aun no tiene cosechas.</td></tr>
+                  <tr><td colspan="9" class="vacio">Este cultivo aun no tiene cosechas.</td></tr>
                 }
               </tbody>
               @if (cosechas().length) {
@@ -184,7 +190,7 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
                     <td class="num">{{ totalPeso() }}</td>
                     <td></td>
                     <td class="num">{{ totalPlantas() }}</td>
-                    <td colspan="3"></td>
+                    <td colspan="5"></td>
                   </tr>
                 </tfoot>
               }
@@ -192,6 +198,10 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
           </div>
 
           <h3 style="margin-top:20px">Registrar una cosecha</h3>
+          <p class="small">
+            Con el responsable y los minutos que tardó, esta cosecha queda también como
+            actividad «Cosecha» de la semana, con su costo en tiempo.
+          </p>
           <form class="formulario" style="margin-top:10px">
             <label>Fecha *<input type="date" [ngModel]="nueva().fechaCosecha"
                    (ngModelChange)="cambiarCosecha('fechaCosecha', $event)" name="fc" required /></label>
@@ -201,6 +211,15 @@ import type { Cultivo, Semilla, Cosecha } from '../nucleo/tipos';
                    (ngModelChange)="cambiarCosecha('pesoPromedio', $event)" name="pp" /></label>
             <label>Plantas cosechadas<input type="number" [ngModel]="nueva().numeroPlantasCosechadas"
                    (ngModelChange)="cambiarCosecha('numeroPlantasCosechadas', $event)" name="npc" /></label>
+            <label>Responsable
+              <input [ngModel]="nueva().responsable" (ngModelChange)="cambiarCosecha('responsable', $event)"
+                     name="respCosecha" maxlength="255" list="responsables-cosecha" />
+              <datalist id="responsables-cosecha">
+                @for (e of empleados(); track e.id) { <option [value]="e.nombre + ' ' + e.apellido"></option> }
+              </datalist>
+            </label>
+            <label>Minutos que tardó<input type="number" step="1" min="0" [ngModel]="nueva().minutosTrabajo"
+                   (ngModelChange)="cambiarCosecha('minutosTrabajo', $event)" name="minCosecha" /></label>
             <label>Remision<input [ngModel]="nueva().remision"
                    (ngModelChange)="cambiarCosecha('remision', $event)" name="rem" /></label>
             <label>Factura<input [ngModel]="nueva().factura"
@@ -227,6 +246,9 @@ export class Siembras implements OnInit {
   cultivos = signal<Cultivo[]>([]);
   semillas = signal<Semilla[]>([]);
   cosechas = signal<Cosecha[]>([]);
+  /** Lo cosechado de verdad, agregado desde la tabla `cosecha` por cInventarioCampo. */
+  inventario = signal<InventarioCampo[]>([]);
+  empleados = signal<Empleado[]>([]);
 
   desde = signal('');
   hasta = signal('');
@@ -255,6 +277,28 @@ export class Siembras implements OnInit {
     );
   });
 
+  /**
+   * Lo cosechado de un cultivo, tal como lo agrega cInventarioCampo desde la
+   * tabla cosecha real. NO es programacionCultivos.kilosCosechados: ese campo
+   * nunca se actualiza al registrar una cosecha (guardarCosecha solo inserta
+   * en `cosecha`), asi que se quedaba siempre en 0 aunque hubiera cosechas
+   * de verdad.
+   *
+   * null distingue "todavia no se ha cosechado nada" de "se cosecho cero":
+   * la vista deja SumaDenumeroPlantasCosechadas en NULL cuando no hay ninguna
+   * fila en cosecha para ese cultivo.
+   */
+  cosechadoDe(c: Cultivo): InventarioCampo | undefined {
+    return this.inventario().find((i) => i.codigosistema === c.codigosistema);
+  }
+
+  /** Lo que falta por cosechar. Sin cosechas registradas, no hay nada que restar. */
+  faltanDe(c: Cultivo): number | null {
+    const inv = this.cosechadoDe(c);
+    if (!inv || inv.SumaDenumeroPlantasCosechadas == null) return null;
+    return (c.numeroPlantasSembradas ?? 0) - inv.SumaDenumeroPlantasCosechadas;
+  }
+
   totalPeso = () =>
     this.cosechas().reduce((a, c) => a + (c.peso ?? 0), 0).toLocaleString('es-CO', { maximumFractionDigits: 2 });
   totalPlantas = () => this.cosechas().reduce((a, c) => a + (c.numeroPlantasCosechadas ?? 0), 0);
@@ -264,12 +308,16 @@ export class Siembras implements OnInit {
     const pedido = this.cultivo();
     if (pedido) { this.codigoFiltro.set(Number(pedido)); this.soloActivos.set(false); }
 
-    const [cultivos, semillas] = await Promise.all([
+    const [cultivos, semillas, inventario, empleados] = await Promise.all([
       this.api.listar<Cultivo>('programacionCultivos'),
       this.api.listar<Semilla>('infoSemilla'),
+      this.api.vista<InventarioCampo>('cInventarioCampo'),
+      this.api.listar<Empleado>('empleados'),
     ]);
     this.cultivos.set(cultivos);
     this.semillas.set(semillas);
+    this.inventario.set(inventario);
+    this.empleados.set(empleados);
   }
 
   nombreSemilla(id: number): string {
@@ -366,10 +414,13 @@ export class Siembras implements OnInit {
       return;
     }
     try {
-      await this.api.crear<Cosecha>('cosecha', { ...n, codigosistema: c.codigosistema });
+      // crearCosecha, no api.crear: ademas de guardar la fila, deja al dia
+      // la actividad "Cosecha" de esa semana (ver api/src/index.ts)
+      await this.api.crearCosecha({ ...n, codigosistema: c.codigosistema, fechaCosecha: n.fechaCosecha, peso: n.peso });
       this.nueva.set({ codigosistema: c.codigosistema });
       this.errorCosecha.set(null);
       await this.verCosechas(c);
+      await this.recargarInventario();
       this.avisar('Cosecha registrada.');
     } catch (e: any) {
       this.errorCosecha.set(e?.error?.error ?? 'No se pudo registrar la cosecha.');
@@ -378,9 +429,16 @@ export class Siembras implements OnInit {
 
   async borrarCosecha(h: Cosecha) {
     if (!confirm('Se va a borrar esta cosecha. Esta accion no se puede deshacer.')) return;
-    await this.api.borrar('cosecha', h.Id);
+    // borrarCosecha, no api.borrar: recalcula (o quita) la actividad "Cosecha"
+    // de esa semana tras el borrado
+    await this.api.borrarCosecha(h.Id);
     const c = this.cultivoCosechas();
     if (c) await this.verCosechas(c);
+    await this.recargarInventario();
+  }
+
+  private async recargarInventario() {
+    this.inventario.set(await this.api.vista<InventarioCampo>('cInventarioCampo'));
   }
 
   private avisar(texto: string) {

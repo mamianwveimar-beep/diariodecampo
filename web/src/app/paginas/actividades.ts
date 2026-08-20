@@ -1,7 +1,10 @@
 import { Component, computed, inject, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Api } from '../nucleo/api';
-import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from '../nucleo/tipos';
+import { Buscador, type OpcionBuscador } from '../compartido/buscador';
+import type {
+  Actividad, CostoActividad, Cultivo, EstadoActividad, Semilla, Proceso, ResultadoProceso,
+} from '../nucleo/tipos';
 
 /**
  * Actividades y costos: sustituye a Frm_Costos + SubFrm_Costos +
@@ -14,7 +17,18 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
  */
 @Component({
   selector: 'dc-actividades',
-  imports: [FormsModule],
+  imports: [FormsModule, Buscador],
+  styles: `
+    .marca-estado {
+      display: inline-block; font-family: var(--f-mono); font-size: .68rem;
+      font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+      background: var(--surface-2); color: var(--ink-3);
+    }
+    .marca-estado[data-e="realizado"] { background: var(--moss-soft); color: var(--moss); }
+    .marca-estado[data-e="pendiente"] { background: var(--ochre-soft); color: var(--ochre); }
+    .marca-estado[data-e="cancelado"] { background: var(--oxide-soft); color: var(--oxide); }
+  `,
   template: `
     <div class="cabecera">
       <div class="fila">
@@ -91,13 +105,12 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
 
     <!-- --------------------------------------------------------- listado -->
     <div class="barra">
-      <label>Cultivo
-        <select [ngModel]="cultivoFiltro()" (ngModelChange)="cultivoFiltro.set($event)">
-          <option [ngValue]="null">Todos</option>
-          @for (c of cultivos(); track c.codigosistema) {
-            <option [ngValue]="c.codigosistema">{{ c.codigosistema }} · {{ c.fechasiembra }}</option>
-          }
-        </select>
+      <label style="min-width:270px">Cultivo
+        <dc-buscador
+          [opciones]="opcionesCultivo()"
+          [valor]="cultivoFiltro()"
+          (valorChange)="elegirCultivo($event)"
+          marcador="Todos los cultivos" />
       </label>
       <label>Actividad
         <select [ngModel]="tipoFiltro()" (ngModelChange)="tipoFiltro.set($event)">
@@ -107,13 +120,28 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
       </label>
       <label>Semana<input type="number" [ngModel]="semanaFiltro()"
              (ngModelChange)="semanaFiltro.set($event)" placeholder="p. ej. 44" /></label>
+      <label>Estado
+        <select [ngModel]="estadoFiltro()" (ngModelChange)="estadoFiltro.set($event)">
+          <option [ngValue]="null">Todos</option>
+          @for (e of estadosPosibles; track e.valor) {
+            <option [ngValue]="e.valor">{{ e.texto }}</option>
+          }
+        </select>
+      </label>
       <label>Siembra desde<input type="date" [ngModel]="desdeFiltro()"
              (ngModelChange)="desdeFiltro.set($event || null)" /></label>
       <label>Siembra hasta<input type="date" [ngModel]="hastaFiltro()"
              (ngModelChange)="hastaFiltro.set($event || null)" /></label>
       <button (click)="limpiar()">Limpiar</button>
-      <span class="small">{{ filtradas().length }} de {{ actividades().length }} · coste total
-        {{ costeTotal() }}</span>
+      <span class="small">
+        @if (filtradas().length) {
+          {{ desde() + 1 }}–{{ hasta() }} de {{ filtradas().length }}
+        } @else { 0 }
+        @if (filtradas().length !== actividades().length) {
+          (de {{ actividades().length }} cargadas)
+        }
+        · coste total {{ costeTotal() }}
+      </span>
       @if (rangoInvertido()) {
         <span class="small" style="color:var(--ochre)">
           La fecha «desde» es posterior a la «hasta», por eso no sale nada.
@@ -126,37 +154,53 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
         <thead>
           <tr>
             <th class="num">Cultivo</th><th>Semilla</th><th>Siembra</th><th class="num">Semana</th>
-            <th>Actividad</th><th>Detalle</th><th class="num">Cantidad</th><th>Unidad</th>
+            <th>Actividad</th><th style="min-width:118px">Estado</th>
+            <th>Detalle</th><th class="num">Cantidad</th><th>Unidad</th>
             <th class="num">Plantas</th><th class="num">Total</th><th class="num">Coste unit.</th>
-            <th class="num">Coste</th><th></th>
+            <th class="num">Coste</th><th style="min-width:150px">Responsable</th><th></th>
           </tr>
         </thead>
         <tbody>
-          @for (a of filtradas(); track a.id) {
+          @for (a of pagina(); track a.id) {
             <tr>
               <td class="num">{{ a.codigoSistema }}</td>
               <td>{{ nombreSemilla(a.codsemilla) }}</td>
               <td>{{ a.fechaSiembra }}</td>
               <td class="num">{{ a.semanaAbono }}</td>
               <td>{{ a.Actividad }}</td>
+              <td>
+                <span class="marca-estado" [attr.data-e]="a.estado ?? 'sinregistrar'">
+                  {{ textoEstado(a.estado) }}
+                </span>
+              </td>
               <td>{{ a.detalle ?? '—' }}</td>
-              <td class="num">{{ a.cantidadAbono }}</td>
+              <td class="num">{{ redondearCantidad(a.cantidadAbono) }}</td>
               <td>{{ a.unidad ?? '—' }}</td>
               <td class="num">{{ a.numeroPlantas }}</td>
               <td class="num">{{ redondear(a.total) }}</td>
               <td class="num">{{ a.costo }}</td>
               <td class="num">{{ redondear(a.GTotal) }}</td>
+              <td>{{ a.responsable || '—' }}</td>
               <td class="acciones">
                 <button class="menudo" (click)="abrirEdicion(a)">Editar</button>
                 <button class="menudo peligro" (click)="borrar(a)">Borrar</button>
               </td>
             </tr>
           } @empty {
-            <tr><td colspan="13" class="vacio">Ninguna actividad coincide con el filtro.</td></tr>
+            <tr><td colspan="15" class="vacio">Ninguna actividad coincide con el filtro.</td></tr>
           }
         </tbody>
       </table>
     </div>
+
+    @if (totalPaginas() > 1) {
+      <div class="barra" style="margin-top:14px; align-items:center">
+        <button (click)="irA(numeroPagina() - 1)" [disabled]="numeroPagina() === 0">‹ Anterior</button>
+        <span class="small">Página {{ numeroPagina() + 1 }} de {{ totalPaginas() }}</span>
+        <button (click)="irA(numeroPagina() + 1)"
+                [disabled]="numeroPagina() >= totalPaginas() - 1">Siguiente ›</button>
+      </div>
+    }
 
     <!-- ---------------------------------------------------- alta y edicion -->
     @if (editando(); as f) {
@@ -209,6 +253,14 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
               <input [ngModel]="f.responsable" (ngModelChange)="cambiar('responsable', $event)"
                      name="res" maxlength="255" />
             </label>
+            <label>Estado
+              <select [ngModel]="f.estado" (ngModelChange)="cambiar('estado', $event)" name="est">
+                <option [ngValue]="null">Sin registrar</option>
+                @for (e of estadosPosibles; track e.valor) {
+                  <option [ngValue]="e.valor">{{ e.texto }}</option>
+                }
+              </select>
+            </label>
           </form>
           @if (errorForm(); as e) { <p class="aviso error" style="margin-top:14px">{{ e }}</p> }
           <div class="acciones-form">
@@ -233,6 +285,9 @@ export class Actividades implements OnInit {
   panelProcesos = signal(false);
   ocupado = signal(false);
   cultivoFiltro = signal<number | null>(null);
+  estadoFiltro = signal<EstadoActividad | null>(null);
+  numeroPagina = signal(0);
+  readonly porPagina = 25;
   tipoFiltro = signal<string | null>(null);
   semanaFiltro = signal<number | null>(null);
   desdeFiltro = signal<string | null>(null);
@@ -245,6 +300,34 @@ export class Actividades implements OnInit {
 
   tipos = computed(() => [...new Set(this.actividades().map((a) => a.Actividad))].sort());
 
+  readonly estadosPosibles: { valor: EstadoActividad; texto: string }[] = [
+    { valor: 'pendiente', texto: 'Pendiente' },
+    { valor: 'realizado', texto: 'Realizado' },
+    { valor: 'cancelado', texto: 'Cancelado' },
+  ];
+
+  /**
+   * NULL no es lo mismo que "pendiente": significa que la labor esta
+   * programada y nadie se ha pronunciado todavia. Las dos quieren decir que no
+   * se ha hecho, pero solo una dice que alguien la miro.
+   */
+  textoEstado = (e: EstadoActividad | null) =>
+    this.estadosPosibles.find((x) => x.valor === e)?.texto ?? 'Sin registrar';
+
+  /** El maestro: se busca por codigo, semilla, lote o cama, no por una lista. */
+  opcionesCultivo = computed<OpcionBuscador[]>(() =>
+    this.cultivos().map((c) => ({
+      valor: c.codigosistema,
+      texto: `${c.codigosistema} · ${this.nombreSemilla(c.codSemilla)}`,
+      detalle: `sembrado ${c.fechasiembra} · lote ${c.lote ?? '—'} · cama ${c.cama ?? '—'}`,
+    }))
+  );
+
+  totalPaginas = computed(() => Math.ceil(this.filtradas().length / this.porPagina) || 1);
+  desde = computed(() => this.numeroPagina() * this.porPagina);
+  hasta = computed(() => Math.min(this.desde() + this.porPagina, this.filtradas().length));
+  pagina = computed(() => this.filtradas().slice(this.desde(), this.hasta()));
+
   /**
    * El rango va sobre fechaSiembra, que es la unica fecha que lleva la fila:
    * la semana de abonamiento se cuenta a partir de ella. Las fechas son ISO
@@ -252,11 +335,13 @@ export class Actividades implements OnInit {
    * construir un Date por fila.
    */
   filtradas = computed(() => {
-    const c = this.cultivoFiltro(), t = this.tipoFiltro(), s = this.semanaFiltro();
+    // el cultivo NO se filtra aqui: ya viene acotado del servidor
+    const t = this.tipoFiltro(), s = this.semanaFiltro();
     const desde = this.desdeFiltro(), hasta = this.hastaFiltro();
+    const est = this.estadoFiltro();
     return this.actividades().filter((a) =>
-      (c == null || a.codigoSistema === c) &&
       (t == null || a.Actividad === t) &&
+      (est == null || a.estado === est) &&
       (s == null || Number(s) === a.semanaAbono) &&
       (!desde || a.fechaSiembra >= desde) &&
       (!hasta || a.fechaSiembra <= hasta)
@@ -276,18 +361,38 @@ export class Actividades implements OnInit {
   redondear = (v: number | null) =>
     v == null ? '—' : v.toLocaleString('es-CO', { maximumFractionDigits: 2 });
 
+  /**
+   * La cantidad es una dosis por planta, casi siempre menor que 1 (0,008 Kg,
+   * 0,03 Litro), asi que con 2 decimales como el resto de columnas se
+   * perderia la dosis real. Pero sin tope se ve como
+   * 0.4166666666666667 (division 15/36 de una cosecha acumulada): se recorta
+   * a 4 decimales, y toLocaleString ya quita los ceros que sobran.
+   */
+  redondearCantidad = (v: number | null) =>
+    v == null ? '—' : v.toLocaleString('es-CO', { maximumFractionDigits: 4 });
+
   async ngOnInit() {
-    const [act, cul, sem, proc] = await Promise.all([
-      this.api.vista<CostoActividad>('cCostosActividades'),
-      this.api.listar<Cultivo>('programacionCultivos'),
+    const [cul, sem, proc] = await Promise.all([
+      this.api.listar<Cultivo>('programacionCultivos', 2000),
       this.api.listar<Semilla>('infoSemilla'),
       this.api.procesos(),
     ]);
-    this.actividades.set(act);
     this.cultivos.set(cul);
     this.semillas.set(sem);
     this.procesos.set(proc.consultas);
     this.lotes.set(Object.keys(proc.lotes));
+    await this.recargar();
+  }
+
+  /** Elegir cultivo recarga desde el servidor, no filtra lo ya cargado. */
+  async elegirCultivo(codigo: string | number | null) {
+    this.cultivoFiltro.set(codigo == null ? null : Number(codigo));
+    this.numeroPagina.set(0);
+    await this.recargar();
+  }
+
+  irA(n: number) {
+    this.numeroPagina.set(Math.max(0, Math.min(n, this.totalPaginas() - 1)));
   }
 
   nombreSemilla(id: number): string {
@@ -305,12 +410,15 @@ export class Actividades implements OnInit {
     return nombres[l] ?? l;
   }
 
-  limpiar() {
-    this.cultivoFiltro.set(null);
+  async limpiar() {
     this.tipoFiltro.set(null);
+    this.estadoFiltro.set(null);
     this.semanaFiltro.set(null);
     this.desdeFiltro.set(null);
     this.hastaFiltro.set(null);
+    // quitar el cultivo obliga a volver a pedir: el filtro es del servidor
+    if (this.cultivoFiltro() != null) await this.elegirCultivo(null);
+    else this.numeroPagina.set(0);
   }
 
   async lanzarLote(lote: string) {
@@ -339,8 +447,26 @@ export class Actividades implements OnInit {
     } finally { this.ocupado.set(false); }
   }
 
+  /**
+   * Trae las actividades del cultivo elegido, o las primeras 2000 si no hay
+   * ninguno. Se pide a /api/tablas/actividades y no a la vista
+   * cCostosActividades porque la vista no acepta filtro: sin el habria que
+   * traerse la tabla entera al navegador para luego descartar casi todo.
+   *
+   * Lo unico que aporta la vista es GTotal, que es literalmente costo * total,
+   * asi que se calcula aqui con la misma formula.
+   */
   private async recargar() {
-    this.actividades.set(await this.api.vista<CostoActividad>('cCostosActividades'));
+    const cultivo = this.cultivoFiltro();
+    const filas = cultivo == null
+      ? await this.api.listar<Actividad>('actividades', 2000)
+      : await this.api.listarDeCultivo<Actividad>('actividades', cultivo);
+    this.actividades.set(filas.map((a) => ({
+      ...a,
+      GTotal: (a.costo ?? 0) * (a.total ?? 0),
+    })));
+    // si la pagina en la que estabas ya no existe, se vuelve a la primera
+    if (this.numeroPagina() >= this.totalPaginas()) this.numeroPagina.set(0);
   }
 
   abrirNuevo() {
@@ -349,8 +475,12 @@ export class Actividades implements OnInit {
     this.editando.set({
       codigoSistema: null, codsemilla: null, fechaSiembra: '', semanaAbono: null,
       Actividad: '', cantidadAbono: null, lote: null, cama: null, numeroPlantas: null,
-      detalle: null, responsable: null, costo: null, unidad: null,
+      detalle: null, responsable: null, costo: null, unidad: null, estado: null,
     });
+    // si estas mirando un cultivo, el alta empieza en ese: es lo que estabas
+    // gestionando, y ahorra volver a buscarlo en el desplegable del formulario
+    const c = this.cultivoFiltro();
+    if (c != null) this.alCambiarCultivo(c);
   }
 
   abrirEdicion(a: CostoActividad) {
@@ -388,7 +518,7 @@ export class Actividades implements OnInit {
       codigoSistema: f.codigoSistema, codsemilla: f.codsemilla, fechaSiembra: f.fechaSiembra,
       semanaAbono: f.semanaAbono, Actividad: f.Actividad, cantidadAbono: f.cantidadAbono,
       lote: f.lote, cama: f.cama, numeroPlantas: f.numeroPlantas, detalle: f.detalle,
-      responsable: f.responsable, costo: f.costo, unidad: f.unidad,
+      responsable: f.responsable, costo: f.costo, unidad: f.unidad, estado: f.estado ?? null,
     };
     try {
       if (this.esNuevo()) {

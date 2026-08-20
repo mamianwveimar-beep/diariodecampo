@@ -17,6 +17,9 @@ import { SQL_SEMANA } from '../access-compat/fechas.mjs';
  * Los valores incrustados (ids de producto 2/3/4/5, jornal 8807, costo 1.46,
  * desfases en dias) se mantienen tal cual estaban en Access, agrupados en
  * CONSTANTES para que sacarlos a una tabla de parametros sea un cambio local.
+ * Ese cambio local ya se hizo: JORNAL_HORA y COSTO_MINUTO ahora viven en
+ * parametrosCostos, y construirConsultasAccion() es lo que deja el resto de
+ * este fichero igual, sustituyendo esos dos valores por los que se le pasen.
  */
 
 /** Valores que Access llevaba escritos dentro de las consultas. */
@@ -27,15 +30,13 @@ export const CONSTANTES = {
   PRODUCTO_BASILUS: 5,            // Basilus
   PRODUCTO_CAL_DOLOMITA: 998,     // fila de referencia creada en la migracion
   PRODUCTO_MANO_DE_OBRA: 999,     // fila de referencia creada en la migracion
-  JORNAL_HORA: 8807,              // pesos/hora en las consultas IngresoCostos*
-  COSTO_MINUTO: 1.46,             // pesos/minuto en las labores de campo
+  JORNAL_HORA: 8807,              // valor por defecto: ver parametrosCostos
+  COSTO_MINUTO: 1.46,             // valor por defecto: ver parametrosCostos
   MIN_PREPARACION_TERRENO: 1.5,
   MIN_SIEMBRA: 1.3,
   MIN_DESHIERBE: 1.2,
   MINUTOS_POR_HORA: 60,
 };
-
-const C = CONSTANTES;
 
 // Columnas de destino, en el mismo orden que usaba Access.
 const COLS_ACTIVIDADES =
@@ -57,11 +58,31 @@ const sem = (dias) => {
 };
 
 /**
- * Inserta en actividades a partir de un producto del catalogo.
- * Reproduce el patron comun de IngresoAbono* e IngresoProtecion*.
+ * Construye las 22 consultas de accion con el jornal y el costo por minuto
+ * vigentes. Los demas valores (ids de producto, minutos por labor) son fijos
+ * y no cambian de una llamada a otra.
+ *
+ * Se reconstruye el array entero en cada llamada -en vez de, por ejemplo,
+ * mutar un JORNAL_HORA compartido- porque las consultas son texto SQL con
+ * los valores ya escritos dentro (interpolados, no parametros ligados): una
+ * vez construido un string no hay forma de "actualizarlo", asi que la unica
+ * manera de que un cambio de jornal se refleje es generar el texto de nuevo.
+ *
+ * @param {number} [jornalHora] pesos por hora en las consultas IngresoCostos*
+ * @param {number} [costoMinuto] pesos por minuto en las labores de campo
  */
-function actividadDesdeProducto({ actividad, dias, campoCantidad, productoId, filtro }) {
-  return `
+export function construirConsultasAccion(
+  jornalHora = CONSTANTES.JORNAL_HORA,
+  costoMinuto = CONSTANTES.COSTO_MINUTO,
+) {
+  const C = { ...CONSTANTES, JORNAL_HORA: jornalHora, COSTO_MINUTO: costoMinuto };
+
+  /**
+   * Inserta en actividades a partir de un producto del catalogo.
+   * Reproduce el patron comun de IngresoAbono* e IngresoProtecion*.
+   */
+  function actividadDesdeProducto({ actividad, dias, campoCantidad, productoId, filtro }) {
+    return `
 INSERT INTO actividades (${COLS_ACTIVIDADES})
 SELECT pc.codigosistema,
        pc.codSemilla,
@@ -79,14 +100,14 @@ FROM productos p, infoSemilla s
      INNER JOIN programacionCultivos pc ON s.Id = pc.codSemilla
 WHERE p.id = ${productoId}${filtro ? `\n  AND ${filtro}` : ''}
 ON CONFLICT DO NOTHING`;
-}
+  }
 
-/**
- * Inserta en actividades una labor de campo con cantidad y costo fijos.
- * Reproduce IngresoPreparacionTerreno, IngresoSiembra y los deshierbes.
- */
-function actividadDeLabor({ actividad, detalle, dias, minutos, filtro }) {
-  return `
+  /**
+   * Inserta en actividades una labor de campo con cantidad y costo fijos.
+   * Reproduce IngresoPreparacionTerreno, IngresoSiembra y los deshierbes.
+   */
+  function actividadDeLabor({ actividad, detalle, dias, minutos, filtro }) {
+    return `
 INSERT INTO actividades (${COLS_ACTIVIDADES})
 SELECT pc.codigosistema,
        pc.codSemilla,
@@ -104,14 +125,14 @@ FROM infoSemilla s
      INNER JOIN programacionCultivos pc ON s.Id = pc.codSemilla
 WHERE ${filtro ?? 'true'}
 ON CONFLICT DO NOTHING`;
-}
+  }
 
-/**
- * Inserta un costo de mano de obra en costosInsumos.
- * Reproduce las cuatro consultas IngresoCostos*.
- */
-function costoManoDeObra({ concepto, factorMinutos }) {
-  return `
+  /**
+   * Inserta un costo de mano de obra en costosInsumos.
+   * Reproduce las cuatro consultas IngresoCostos*.
+   */
+  function costoManoDeObra({ concepto, factorMinutos }) {
+    return `
 INSERT INTO costosInsumos (${COLS_COSTOS})
 SELECT '${concepto}',
        '${concepto}',
@@ -124,212 +145,212 @@ SELECT '${concepto}',
 FROM programacionCultivos pc
 WHERE true
 ON CONFLICT DO NOTHING`;
-}
+  }
 
-/** @type {{nombre: string, destino: string, descripcion: string, sql: string, origenAccess: string}[]} */
-export const CONSULTAS_ACCION = [
-  // ------------------------------------------------- abono liquido (4)
-  {
-    nombre: 'IngresoAbonoLiquido1Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Primera aplicacion de abono liquido, 8 dias tras la siembra.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoLiquido', dias: 8, campoCantidad: 'abonoLiquido',
-      productoId: C.PRODUCTO_ABONO_LIQUIDO,
-    }),
-    origenAccess:
-      'INSERT INTO actividades (...) SELECT ... "AbonoLiquido", Format$(([fechasiembra]+8),"ww",0,0), ' +
-      'infoSemilla.abonoLiquido, ... WHERE productos.id=2',
-  },
-  {
-    nombre: 'IngresoAbonoLiquido2Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Segunda aplicacion de abono liquido, 15 dias tras la siembra.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoLiquido', dias: 15, campoCantidad: 'abonoLiquido',
-      productoId: C.PRODUCTO_ABONO_LIQUIDO,
-    }),
-    origenAccess: '... Format$(([fechasiembra]+15),"ww",0,0) ... WHERE productos.id=2',
-  },
-  {
-    nombre: 'IngresoAbonoLiquido3Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Tercera aplicacion, 50 dias. Solo para ciclos de mas de 50 dias.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoLiquido', dias: 50, campoCantidad: 'abonoLiquido',
-      productoId: C.PRODUCTO_ABONO_LIQUIDO_2, filtro: 's.ciclo > 50',
-    }),
-    origenAccess: '... WHERE productos.id=4 AND infoSemilla.ciclo>50',
-  },
-  {
-    nombre: 'IngresoAbonoLiquido4Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Cuarta aplicacion, 65 dias. Solo para ciclos de mas de 65 dias.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoLiquido', dias: 65, campoCantidad: 'abonoLiquido',
-      productoId: C.PRODUCTO_ABONO_LIQUIDO_2, filtro: 's.ciclo > 65',
-    }),
-    origenAccess: '... WHERE productos.id=4 AND infoSemilla.ciclo>65',
-  },
+  /** @type {{nombre: string, destino: string, descripcion: string, sql: string, origenAccess: string}[]} */
+  const consultas = [
+    // ------------------------------------------------- abono liquido (4)
+    {
+      nombre: 'IngresoAbonoLiquido1Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Primera aplicacion de abono liquido, 8 dias tras la siembra.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoLiquido', dias: 8, campoCantidad: 'abonoLiquido',
+        productoId: C.PRODUCTO_ABONO_LIQUIDO,
+      }),
+      origenAccess:
+        'INSERT INTO actividades (...) SELECT ... "AbonoLiquido", Format$(([fechasiembra]+8),"ww",0,0), ' +
+        'infoSemilla.abonoLiquido, ... WHERE productos.id=2',
+    },
+    {
+      nombre: 'IngresoAbonoLiquido2Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Segunda aplicacion de abono liquido, 15 dias tras la siembra.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoLiquido', dias: 15, campoCantidad: 'abonoLiquido',
+        productoId: C.PRODUCTO_ABONO_LIQUIDO,
+      }),
+      origenAccess: '... Format$(([fechasiembra]+15),"ww",0,0) ... WHERE productos.id=2',
+    },
+    {
+      nombre: 'IngresoAbonoLiquido3Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Tercera aplicacion, 50 dias. Solo para ciclos de mas de 50 dias.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoLiquido', dias: 50, campoCantidad: 'abonoLiquido',
+        productoId: C.PRODUCTO_ABONO_LIQUIDO_2, filtro: 's.ciclo > 50',
+      }),
+      origenAccess: '... WHERE productos.id=4 AND infoSemilla.ciclo>50',
+    },
+    {
+      nombre: 'IngresoAbonoLiquido4Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Cuarta aplicacion, 65 dias. Solo para ciclos de mas de 65 dias.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoLiquido', dias: 65, campoCantidad: 'abonoLiquido',
+        productoId: C.PRODUCTO_ABONO_LIQUIDO_2, filtro: 's.ciclo > 65',
+      }),
+      origenAccess: '... WHERE productos.id=4 AND infoSemilla.ciclo>65',
+    },
 
-  // ------------------------------------- el dia de la siembra (2, nuevas)
-  // infoSemilla traia abonoSiembra y calDolomita desde 2021, pero ninguna
-  // consulta de Access generaba una actividad con ellos: abonoSiembra solo
-  // entraba en la suma de actualizarCostosAbonamiento y calDolomita no se
-  // usaba en ninguna parte. Son los dos insumos que se aplican al sembrar,
-  // asi que aqui pasan a generar su labor como cualquier otro abonamiento.
-  // Un valor en 0 o vacio significa que esa semilla no lo usa, igual que
-  // abonoSegunda y abonoTercera.
-  {
-    nombre: 'IngresoAbonoSiembra',
-    destino: 'actividades',
-    descripcion: 'Abono aplicado al sembrar, la semana de la siembra. Solo si abonoSiembra > 0.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoSiembra', dias: 0, campoCantidad: 'abonoSiembra',
-      productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoSiembra > 0',
-    }),
-    origenAccess: 'NUEVA: Access nunca genero esta actividad.',
-  },
-  {
-    nombre: 'IngresoCalDolomita',
-    destino: 'actividades',
-    descripcion: 'Encalado con cal dolomita al sembrar. Solo si calDolomita > 0.',
-    sql: actividadDesdeProducto({
-      actividad: 'CalDolomita', dias: 0, campoCantidad: 'calDolomita',
-      productoId: C.PRODUCTO_CAL_DOLOMITA, filtro: 's.calDolomita > 0',
-    }),
-    origenAccess: 'NUEVA: Access nunca genero esta actividad.',
-  },
+    // ------------------------------------- el dia de la siembra (2, nuevas)
+    // infoSemilla traia abonoSiembra y calDolomita desde 2021, pero ninguna
+    // consulta de Access generaba una actividad con ellos: abonoSiembra solo
+    // entraba en la suma de actualizarCostosAbonamiento y calDolomita no se
+    // usaba en ninguna parte. Son los dos insumos que se aplican al sembrar,
+    // asi que aqui pasan a generar su labor como cualquier otro abonamiento.
+    // Un valor en 0 o vacio significa que esa semilla no lo usa, igual que
+    // abonoSegunda y abonoTercera.
+    {
+      nombre: 'IngresoAbonoSiembra',
+      destino: 'actividades',
+      descripcion: 'Abono aplicado al sembrar, la semana de la siembra. Solo si abonoSiembra > 0.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoSiembra', dias: 0, campoCantidad: 'abonoSiembra',
+        productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoSiembra > 0',
+      }),
+      origenAccess: 'NUEVA: Access nunca genero esta actividad.',
+    },
+    {
+      nombre: 'IngresoCalDolomita',
+      destino: 'actividades',
+      descripcion: 'Encalado con cal dolomita al sembrar. Solo si calDolomita > 0.',
+      sql: actividadDesdeProducto({
+        actividad: 'CalDolomita', dias: 0, campoCantidad: 'calDolomita',
+        productoId: C.PRODUCTO_CAL_DOLOMITA, filtro: 's.calDolomita > 0',
+      }),
+      origenAccess: 'NUEVA: Access nunca genero esta actividad.',
+    },
 
-  // -------------------------------------------------- abono solido (3)
-  {
-    nombre: 'IngresoAbonoSolido1Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Primer abonamiento solido, 25 dias tras la siembra.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoSolido', dias: 25, campoCantidad: 'abonoPrimera',
-      productoId: C.PRODUCTO_ABONO_SOLIDO,
-    }),
-    origenAccess: '... infoSemilla.abonoPrimera ... WHERE productos.id=3',
-  },
-  {
-    nombre: 'IngresoAbonoSolido2Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Segundo abonamiento solido, 50 dias. Solo si abonoSegunda > 0.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoSolido', dias: 50, campoCantidad: 'abonoSegunda',
-      productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoSegunda > 0',
-    }),
-    origenAccess: '... WHERE infoSemilla.abonoSegunda>0 AND productos.id=3',
-  },
-  {
-    nombre: 'IngresoAbonoSolido3Aplicacion',
-    destino: 'actividades',
-    descripcion: 'Tercer abonamiento solido, 75 dias. Solo si abonoTercera > 0.',
-    sql: actividadDesdeProducto({
-      actividad: 'AbonoSolido', dias: 75, campoCantidad: 'abonoTercera',
-      productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoTercera > 0',
-    }),
-    origenAccess: '... WHERE infoSemilla.abonoTercera>0 AND productos.id=3',
-  },
+    // -------------------------------------------------- abono solido (3)
+    {
+      nombre: 'IngresoAbonoSolido1Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Primer abonamiento solido, 25 dias tras la siembra.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoSolido', dias: 25, campoCantidad: 'abonoPrimera',
+        productoId: C.PRODUCTO_ABONO_SOLIDO,
+      }),
+      origenAccess: '... infoSemilla.abonoPrimera ... WHERE productos.id=3',
+    },
+    {
+      nombre: 'IngresoAbonoSolido2Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Segundo abonamiento solido, 50 dias. Solo si abonoSegunda > 0.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoSolido', dias: 50, campoCantidad: 'abonoSegunda',
+        productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoSegunda > 0',
+      }),
+      origenAccess: '... WHERE infoSemilla.abonoSegunda>0 AND productos.id=3',
+    },
+    {
+      nombre: 'IngresoAbonoSolido3Aplicacion',
+      destino: 'actividades',
+      descripcion: 'Tercer abonamiento solido, 75 dias. Solo si abonoTercera > 0.',
+      sql: actividadDesdeProducto({
+        actividad: 'AbonoSolido', dias: 75, campoCantidad: 'abonoTercera',
+        productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoTercera > 0',
+      }),
+      origenAccess: '... WHERE infoSemilla.abonoTercera>0 AND productos.id=3',
+    },
 
-  // ------------------------------------------------ labores de campo (6)
-  {
-    nombre: 'IngresoPreparacionTerreno',
-    destino: 'actividades',
-    descripcion: 'Preparacion del terreno, la semana de la siembra.',
-    sql: actividadDeLabor({
-      actividad: 'PreparacionTerreno', detalle: 'PreparacionTerreno',
-      dias: 0, minutos: C.MIN_PREPARACION_TERRENO,
-    }),
-    origenAccess: '... "PreparacionTerreno", Format$(([fechasiembra]),"ww",0,0), 1.5, ..., 1.46, "Min"',
-  },
-  {
-    nombre: 'IngresoSiembra',
-    destino: 'actividades',
-    descripcion: 'Siembra, la semana de la siembra.',
-    sql: actividadDeLabor({
-      actividad: 'Siembra', detalle: 'Siembra', dias: 0, minutos: C.MIN_SIEMBRA,
-    }),
-    origenAccess: '... "Siembra", Format$(([fechasiembra]),"ww",0,0), 1.3, ..., 1.46, "Min"',
-  },
-  {
-    nombre: 'IngresoPrimerDeshierbe',
-    destino: 'actividades',
-    descripcion: 'Primer deshierbe, 25 dias tras la siembra.',
-    sql: actividadDeLabor({
-      actividad: 'Deshierbe', detalle: 'PrimerDeshierbe',
-      dias: 25, minutos: C.MIN_DESHIERBE,
-    }),
-    origenAccess: '... "Deshierbe", Format$(([fechasiembra]+25),"ww",0,0), 1.2, "PrimerDeshierbe"',
-  },
-  {
-    nombre: 'IngresoSegundoDeshierbe',
-    destino: 'actividades',
-    descripcion: 'Segundo deshierbe, 50 dias. Solo para ciclos de mas de 50 dias.',
-    sql: actividadDeLabor({
-      actividad: 'Deshierbe', detalle: 'SegundoDeshierbe',
-      dias: 50, minutos: C.MIN_DESHIERBE, filtro: 's.ciclo > 50',
-    }),
-    origenAccess: '... "SegundoDeshierbe" ... WHERE infoSemilla.ciclo>50',
-  },
-  {
-    nombre: 'IngresoProtecionBasilus',
-    destino: 'actividades',
-    descripcion: 'Proteccion vegetal con Basilus, la semana de la siembra.',
-    sql: actividadDesdeProducto({
-      actividad: 'ProteccionVegetal', dias: 0, campoCantidad: 'abonoLiquido',
-      productoId: C.PRODUCTO_BASILUS, filtro: 's.Aplicacion1 > 1',
-    }),
-    origenAccess: '... WHERE productos.id=5 AND infoSemilla.Aplicacion1>1',
-  },
-  {
-    nombre: 'IngresoProtecionBasilus2',
-    destino: 'actividades',
-    descripcion: 'Segunda proteccion con Basilus, 50 dias tras la siembra.',
-    sql: actividadDesdeProducto({
-      actividad: 'ProteccionVegetal', dias: 50, campoCantidad: 'abonoLiquido',
-      productoId: C.PRODUCTO_BASILUS, filtro: 's.Aplicacion1 >= 1',
-    }),
-    origenAccess: '... WHERE productos.id=5 AND infoSemilla.Aplicacion1>=1',
-  },
+    // ------------------------------------------------ labores de campo (6)
+    {
+      nombre: 'IngresoPreparacionTerreno',
+      destino: 'actividades',
+      descripcion: 'Preparacion del terreno, la semana de la siembra.',
+      sql: actividadDeLabor({
+        actividad: 'PreparacionTerreno', detalle: 'PreparacionTerreno',
+        dias: 0, minutos: C.MIN_PREPARACION_TERRENO,
+      }),
+      origenAccess: '... "PreparacionTerreno", Format$(([fechasiembra]),"ww",0,0), 1.5, ..., 1.46, "Min"',
+    },
+    {
+      nombre: 'IngresoSiembra',
+      destino: 'actividades',
+      descripcion: 'Siembra, la semana de la siembra.',
+      sql: actividadDeLabor({
+        actividad: 'Siembra', detalle: 'Siembra', dias: 0, minutos: C.MIN_SIEMBRA,
+      }),
+      origenAccess: '... "Siembra", Format$(([fechasiembra]),"ww",0,0), 1.3, ..., 1.46, "Min"',
+    },
+    {
+      nombre: 'IngresoPrimerDeshierbe',
+      destino: 'actividades',
+      descripcion: 'Primer deshierbe, 25 dias tras la siembra.',
+      sql: actividadDeLabor({
+        actividad: 'Deshierbe', detalle: 'PrimerDeshierbe',
+        dias: 25, minutos: C.MIN_DESHIERBE,
+      }),
+      origenAccess: '... "Deshierbe", Format$(([fechasiembra]+25),"ww",0,0), 1.2, "PrimerDeshierbe"',
+    },
+    {
+      nombre: 'IngresoSegundoDeshierbe',
+      destino: 'actividades',
+      descripcion: 'Segundo deshierbe, 50 dias. Solo para ciclos de mas de 50 dias.',
+      sql: actividadDeLabor({
+        actividad: 'Deshierbe', detalle: 'SegundoDeshierbe',
+        dias: 50, minutos: C.MIN_DESHIERBE, filtro: 's.ciclo > 50',
+      }),
+      origenAccess: '... "SegundoDeshierbe" ... WHERE infoSemilla.ciclo>50',
+    },
+    {
+      nombre: 'IngresoProtecionBasilus',
+      destino: 'actividades',
+      descripcion: 'Proteccion vegetal con Basilus, la semana de la siembra.',
+      sql: actividadDesdeProducto({
+        actividad: 'ProteccionVegetal', dias: 0, campoCantidad: 'abonoLiquido',
+        productoId: C.PRODUCTO_BASILUS, filtro: 's.Aplicacion1 > 1',
+      }),
+      origenAccess: '... WHERE productos.id=5 AND infoSemilla.Aplicacion1>1',
+    },
+    {
+      nombre: 'IngresoProtecionBasilus2',
+      destino: 'actividades',
+      descripcion: 'Segunda proteccion con Basilus, 50 dias tras la siembra.',
+      sql: actividadDesdeProducto({
+        actividad: 'ProteccionVegetal', dias: 50, campoCantidad: 'abonoLiquido',
+        productoId: C.PRODUCTO_BASILUS, filtro: 's.Aplicacion1 >= 1',
+      }),
+      origenAccess: '... WHERE productos.id=5 AND infoSemilla.Aplicacion1>=1',
+    },
 
-  // ------------------------------------- costos de mano de obra (4)
-  {
-    nombre: 'IngresoCostosPreparacionTerreno',
-    destino: 'costosInsumos',
-    descripcion: 'Costo de mano de obra de la preparacion: 1 minuto por planta.',
-    sql: costoManoDeObra({ concepto: 'Preparacion Terreno', factorMinutos: 1 }),
-    origenAccess: '... "hora", 8807, ..., [numeroPlantasSembradas]/60, 999',
-  },
-  {
-    nombre: 'IngresoCostosSiembra',
-    destino: 'costosInsumos',
-    descripcion: 'Costo de mano de obra de la siembra: 1,5 minutos por planta.',
-    sql: costoManoDeObra({ concepto: 'Siembra', factorMinutos: 1.5 }),
-    origenAccess: '... ([numeroPlantasSembradas]*1.5)/60, 999',
-  },
-  {
-    nombre: 'IngresoCostosDeshierbe',
-    destino: 'costosInsumos',
-    descripcion: 'Costo de mano de obra del deshierbe: 2 minutos por planta.',
-    sql: costoManoDeObra({ concepto: 'Deshierbe', factorMinutos: 2 }),
-    origenAccess: '... ([numeroPlantasSembradas]*2)/60, 999',
-  },
-  {
-    nombre: 'IngresoCostosCobertura',
-    destino: 'costosInsumos',
-    descripcion: 'Costo de mano de obra de la cobertura: 1 minuto por planta.',
-    sql: costoManoDeObra({ concepto: 'Cobertura', factorMinutos: 1 }),
-    origenAccess: '... [numeroPlantasSembradas]/60, 999',
-  },
+    // ------------------------------------- costos de mano de obra (4)
+    {
+      nombre: 'IngresoCostosPreparacionTerreno',
+      destino: 'costosInsumos',
+      descripcion: 'Costo de mano de obra de la preparacion: 1 minuto por planta.',
+      sql: costoManoDeObra({ concepto: 'Preparacion Terreno', factorMinutos: 1 }),
+      origenAccess: '... "hora", 8807, ..., [numeroPlantasSembradas]/60, 999',
+    },
+    {
+      nombre: 'IngresoCostosSiembra',
+      destino: 'costosInsumos',
+      descripcion: 'Costo de mano de obra de la siembra: 1,5 minutos por planta.',
+      sql: costoManoDeObra({ concepto: 'Siembra', factorMinutos: 1.5 }),
+      origenAccess: '... ([numeroPlantasSembradas]*1.5)/60, 999',
+    },
+    {
+      nombre: 'IngresoCostosDeshierbe',
+      destino: 'costosInsumos',
+      descripcion: 'Costo de mano de obra del deshierbe: 2 minutos por planta.',
+      sql: costoManoDeObra({ concepto: 'Deshierbe', factorMinutos: 2 }),
+      origenAccess: '... ([numeroPlantasSembradas]*2)/60, 999',
+    },
+    {
+      nombre: 'IngresoCostosCobertura',
+      destino: 'costosInsumos',
+      descripcion: 'Costo de mano de obra de la cobertura: 1 minuto por planta.',
+      sql: costoManoDeObra({ concepto: 'Cobertura', factorMinutos: 1 }),
+      origenAccess: '... [numeroPlantasSembradas]/60, 999',
+    },
 
-  // ----------------------------------- costos de abonamiento (2)
-  {
-    nombre: 'actualizarCostosAbonamiento',
-    destino: 'costosInsumos',
-    descripcion: 'Costo del abono solido: suma de las cuatro dosis por planta.',
-    sql: `
+    // ----------------------------------- costos de abonamiento (2)
+    {
+      nombre: 'actualizarCostosAbonamiento',
+      destino: 'costosInsumos',
+      descripcion: 'Costo del abono solido: suma de las cuatro dosis por planta.',
+      sql: `
 INSERT INTO costosInsumos (programacionCultivoCodCultivo, concepto, detalle, fecha,
                            unidad, cantidad, valorUnitario, producto)
 SELECT pc.codigosistema,
@@ -345,15 +366,15 @@ FROM productos p, infoSemilla s
      INNER JOIN programacionCultivos pc ON s.Id = pc.codSemilla
 WHERE p.id = ${C.PRODUCTO_ABONO_SOLIDO}
 ON CONFLICT DO NOTHING`,
-    origenAccess:
-      '(([infoSemilla]![abonoSiembra]+[abonoPrimera]+[abonoSegunda]+[abonoTercera])' +
-      '*[programacionCultivos]![numeroPlantasSembradas]) ... WHERE productos.id=3',
-  },
-  {
-    nombre: 'actualizarCostosAbonamientoLiquido',
-    destino: 'costosInsumos',
-    descripcion: 'Costo del abono liquido: una dosis cada 15 dias de ciclo.',
-    sql: `
+      origenAccess:
+        '(([infoSemilla]![abonoSiembra]+[abonoPrimera]+[abonoSegunda]+[abonoTercera])' +
+        '*[programacionCultivos]![numeroPlantasSembradas]) ... WHERE productos.id=3',
+    },
+    {
+      nombre: 'actualizarCostosAbonamientoLiquido',
+      destino: 'costosInsumos',
+      descripcion: 'Costo del abono liquido: una dosis cada 15 dias de ciclo.',
+      sql: `
 INSERT INTO costosInsumos (programacionCultivoCodCultivo, concepto, detalle, fecha,
                            unidad, cantidad, valorUnitario, producto)
 SELECT pc.codigosistema,
@@ -368,18 +389,18 @@ FROM productos p, infoSemilla s
      INNER JOIN programacionCultivos pc ON s.Id = pc.codSemilla
 WHERE p.id = ${C.PRODUCTO_ABONO_LIQUIDO_2}
 ON CONFLICT DO NOTHING`,
-    origenAccess:
-      '[abonoLiquido]*([ciclo]/15)*[numeroPlantasSembradas] ... WHERE productos.id=4',
-  },
+      origenAccess:
+        '[abonoLiquido]*([ciclo]/15)*[numeroPlantasSembradas] ... WHERE productos.id=4',
+    },
 
-  // ------------------------------------------ salida de inventario (1)
-  {
-    nombre: 'salidaAbono',
-    destino: 'inventarioProductos',
-    descripcion: 'Descarga del abono solido consumido, en kilos.',
-    // Sin ON CONFLICT: inventarioProductos no tiene indice unico, igual que en
-    // Access. Reejecutar duplica los movimientos, tal cual pasa hoy.
-    sql: `
+    // ------------------------------------------ salida de inventario (1)
+    {
+      nombre: 'salidaAbono',
+      destino: 'inventarioProductos',
+      descripcion: 'Descarga del abono solido consumido, en kilos.',
+      // Sin ON CONFLICT: inventarioProductos no tiene indice unico, igual que en
+      // Access. Reejecutar duplica los movimientos, tal cual pasa hoy.
+      sql: `
 INSERT INTO inventarioProductos (concepto, fecha, salida, producto, codigoSistemaProgramacion)
 SELECT 'Abonamiento',
        pc.fechasiembra,
@@ -390,11 +411,27 @@ SELECT 'Abonamiento',
 FROM productos p, infoSemilla s
      INNER JOIN programacionCultivos pc ON s.Id = pc.codSemilla
 WHERE p.id = ${C.PRODUCTO_ABONO_SOLIDO}`,
-    origenAccess:
-      '(([abonoSiembra]+[abonoPrimera]+[abonoSegunda]+[abonoTercera])' +
-      '*[numeroPlantasSembradas]/1000) ... WHERE productos.id=3',
-  },
-];
+      origenAccess:
+        '(([abonoSiembra]+[abonoPrimera]+[abonoSegunda]+[abonoTercera])' +
+        '*[numeroPlantasSembradas]/1000) ... WHERE productos.id=3',
+    },
+  ];
+
+  return consultas;
+}
+
+/**
+ * El catalogo con los valores por defecto (los mismos con los que arranca
+ * parametrosCostos). Sigue existiendo para quien no necesita valores en
+ * vivo: la prueba de paridad contra Access, y el catalogo descriptivo de
+ * GET /api/procesos, cuyo texto no depende del jornal ni del costo.
+ *
+ * Lo que SI ejecuta dinero de verdad (los procesos manuales y la
+ * programacion automatica al registrar una orden de siembra) llama a
+ * construirConsultasAccion() con los valores que haya en ese momento en
+ * parametrosCostos -ver api/src/index.ts-, no a esta constante.
+ */
+export const CONSULTAS_ACCION = construirConsultasAccion();
 
 /** Lotes tal como los agrupaban las macros de Access. */
 export const LOTES = {
@@ -466,4 +503,10 @@ export function sqlPorCultivo(consulta) {
     : sql + predicado;
 }
 
-export const porNombre = (nombre) => CONSULTAS_ACCION.find((c) => c.nombre === nombre);
+/**
+ * Busca por nombre dentro de un catalogo de consultas. Recibe el catalogo
+ * como argumento -en vez de cerrar sobre CONSULTAS_ACCION- para que sirva
+ * igual con el catalogo por defecto que con uno construido con parametros
+ * en vivo.
+ */
+export const porNombre = (consultas, nombre) => consultas.find((c) => c.nombre === nombre);

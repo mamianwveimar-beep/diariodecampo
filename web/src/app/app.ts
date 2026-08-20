@@ -14,7 +14,7 @@ import { Api } from './nucleo/api';
         </div>
 
         <nav class="nav">
-          <a routerLink="/inicio" routerLinkActive="activo">Inicio</a>
+          <a routerLink="/inicio" routerLinkActive="activo">Panel</a>
 
           <div class="nav-grupo eyebrow">Produccion</div>
           <a routerLink="/siembras" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Siembras y cosechas</a>
@@ -23,6 +23,7 @@ import { Api } from './nucleo/api';
           <a routerLink="/actividades" routerLinkActive="activo"
              [routerLinkActiveOptions]="{ exact: true }">Actividades y costos</a>
           <a routerLink="/actividades/nueva" routerLinkActive="activo">Registrar actividades</a>
+          <a routerLink="/seguimiento" routerLinkActive="activo">Seguimiento en campo</a>
           <a routerLink="/semillas" routerLinkActive="activo">Semillas</a>
 
           <div class="nav-grupo eyebrow">Almacen</div>
@@ -36,6 +37,7 @@ import { Api } from './nucleo/api';
           <div class="nav-grupo eyebrow">Gestion</div>
           <a routerLink="/empleados" routerLinkActive="activo">Empleados</a>
           <a routerLink="/informes" routerLinkActive="activo">Informes</a>
+          <a routerLink="/resumen" routerLinkActive="activo">Resumen acumulado</a>
           <a routerLink="/cuarentena" routerLinkActive="activo">Cuarentena</a>
         </nav>
       </aside>

@@ -10,7 +10,12 @@ import { Maestro } from './compartido/maestro';
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'inicio' },
 
-  { path: 'inicio', title: 'Inicio · Diario de campo',
+  { path: 'inicio', title: 'Panel · Diario de campo',
+    loadComponent: () => import('./paginas/panel').then((m) => m.Panel) },
+
+  // el resumen anterior sigue accesible: cuenta acumulados historicos que el
+  // panel no repite (kilos totales, filas en cuarentena de la migracion)
+  { path: 'resumen', title: 'Resumen de la finca · Diario de campo',
     loadComponent: () => import('./paginas/inicio').then((m) => m.Inicio) },
 
   { path: 'siembras', title: 'Siembras · Diario de campo',
@@ -30,6 +35,9 @@ export const routes: Routes = [
 
   { path: 'actividades/nueva', title: 'Registrar actividades · Diario de campo',
     loadComponent: () => import('./paginas/actividad-lote').then((m) => m.ActividadLote) },
+
+  { path: 'seguimiento', title: 'Seguimiento en campo · Diario de campo',
+    loadComponent: () => import('./paginas/seguimiento-campo').then((m) => m.SeguimientoCampo) },
 
   { path: 'pedidos', title: 'Pedidos · Diario de campo',
     loadComponent: () => import('./paginas/pedidos').then((m) => m.Pedidos) },

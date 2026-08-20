@@ -14,18 +14,39 @@ const BASE = process.env.BASE ?? 'http://localhost:4200';
 const CAPTURAS = new URL('./capturas/', import.meta.url).pathname.replace(/^\//, '');
 mkdirSync(CAPTURAS, { recursive: true });
 
-/** [ruta, que tiene que aparecer, cuantas filas de tabla como minimo] */
+/**
+ * Cuanto hay de verdad en la base. Se pregunta a la API en vez de dar por
+ * supuesto el tamaño del seed: la base viva es de trabajo y su volumen cambia
+ * segun lo que se registre o se borre, y un numero fijo aqui obliga a tocar
+ * la prueba cada vez que eso pasa.
+ */
+const cuantas = async (tabla) =>
+  (await (await fetch(`${BASE}/api/tablas/${tabla}?limite=2000`)).json()).length;
+
+const CULTIVOS = await cuantas('programacionCultivos');
+const LABORES = await cuantas('actividades');
+
+/**
+ * [ruta, que tiene que aparecer, cuantas filas de tabla como minimo]
+ *
+ * El minimo detecta una pantalla que se queda en blanco o que pierde filas por
+ * el camino, no afirma cuantos datos hay. Las comprobaciones exactas viven en
+ * las pruebas por funcionalidad, que ya usan la API como oraculo.
+ */
 const PANTALLAS = [
-  ['/inicio', 'Resumen de la finca', 15],
-  ['/siembras', 'Siembras', 15],
-  ['/actividades', 'Actividades y costos', 20],
+  ['/inicio', 'Panel de la finca', 0],
+  ['/resumen', 'Resumen de la finca', CULTIVOS],
+  ['/siembras', 'Siembras', CULTIVOS],
+  // pagina de 25; con menos labores se muestran todas
+  ['/actividades', 'Actividades y costos', Math.min(LABORES, 25)],
   ['/semillas', 'Semillas', 4],
   ['/almacen', 'Almacen', 10],
   ['/productos', 'Productos', 7],
   ['/clientes', 'Clientes', 2],
   ['/empleados', 'Empleados', 2],
   ['/pedidos', 'Pedidos', 5],
-  ['/informes', 'Inventario de campo', 15],
+  // cInventarioCampo saca una fila por cultivo activo
+  ['/informes', 'Inventario de campo', await cuantas('programacionCultivos')],
   ['/cuarentena', 'Cuarentena de la migracion', 74],
 ];
 

@@ -61,6 +61,7 @@ const INFORMES: InformeDef[] = [
       { campo: 'total', titulo: 'Total', num: true, suma: true, decimales: 2 },
       { campo: 'costo', titulo: 'Coste unit.', num: true },
       { campo: 'GTotal', titulo: 'Coste', num: true, suma: true, decimales: 0 },
+      { campo: 'estado', titulo: 'Estado' },
     ],
   },
   {
@@ -80,6 +81,7 @@ const INFORMES: InformeDef[] = [
       { campo: 'total', titulo: 'Total', num: true, suma: true, decimales: 2 },
       { campo: 'costo', titulo: 'Coste unit.', num: true },
       { campo: 'GTotal', titulo: 'Coste', num: true, suma: true, decimales: 0 },
+      { campo: 'estado', titulo: 'Estado' },
     ],
   },
   {
