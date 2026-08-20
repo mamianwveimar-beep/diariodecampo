@@ -1,5 +1,5 @@
 {
-  "generado": "2026-08-19T21:06:56.317Z",
+  "generado": "2026-08-20T00:52:02.840Z",
   "ejecucion": [
     {
       "consulta": "IngresoAbonoLiquido1Aplicacion",
@@ -23,6 +23,18 @@
       "consulta": "IngresoAbonoLiquido4Aplicacion",
       "destino": "actividades",
       "insertadas": 13,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoAbonoSiembra",
+      "destino": "actividades",
+      "insertadas": 15,
+      "omitidas": 0
+    },
+    {
+      "consulta": "IngresoCalDolomita",
+      "destino": "actividades",
+      "insertadas": 12,
       "omitidas": 0
     },
     {
@@ -125,8 +137,8 @@
   "formula": [
     {
       "tabla": "actividades",
-      "esperadas": 171,
-      "reales": 171,
+      "esperadas": 198,
+      "reales": 198,
       "fallos": []
     },
     {
@@ -151,6 +163,14 @@
     },
     {
       "consulta": "IngresoAbonoLiquido4Aplicacion",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoAbonoSiembra",
+      "insertadas_2a_vez": 0
+    },
+    {
+      "consulta": "IngresoCalDolomita",
       "insertadas_2a_vez": 0
     },
     {
@@ -218,7 +238,7 @@
     {
       "tabla": "actividades",
       "en_access": 157,
-      "regeneradas": 171,
+      "regeneradas": 198,
       "coincidentes": 145,
       "solo_en_access": [
         "46|8|2021-10-30|48|AbonoSolido",
@@ -243,6 +263,33 @@
         "63|11|2021-11-09|53|AbonoLiquido",
         "46|8|2021-10-01|50|AbonoLiquido",
         "63|11|2021-11-09|3|AbonoLiquido",
+        "45|9|2021-10-25|44|AbonoSiembra",
+        "46|8|2021-10-01|40|AbonoSiembra",
+        "47|8|2021-10-31|45|AbonoSiembra",
+        "51|8|2021-11-05|45|AbonoSiembra",
+        "52|9|2021-11-05|45|AbonoSiembra",
+        "53|8|2021-11-05|45|AbonoSiembra",
+        "54|9|2021-11-05|45|AbonoSiembra",
+        "56|9|2021-11-05|45|AbonoSiembra",
+        "57|9|2021-11-05|45|AbonoSiembra",
+        "59|9|2021-11-05|45|AbonoSiembra",
+        "60|9|2021-11-05|45|AbonoSiembra",
+        "61|9|2021-11-08|46|AbonoSiembra",
+        "62|10|2021-11-01|45|AbonoSiembra",
+        "63|11|2021-11-09|46|AbonoSiembra",
+        "65|10|2021-11-15|47|AbonoSiembra",
+        "45|9|2021-10-25|44|CalDolomita",
+        "46|8|2021-10-01|40|CalDolomita",
+        "47|8|2021-10-31|45|CalDolomita",
+        "51|8|2021-11-05|45|CalDolomita",
+        "52|9|2021-11-05|45|CalDolomita",
+        "53|8|2021-11-05|45|CalDolomita",
+        "54|9|2021-11-05|45|CalDolomita",
+        "56|9|2021-11-05|45|CalDolomita",
+        "57|9|2021-11-05|45|CalDolomita",
+        "59|9|2021-11-05|45|CalDolomita",
+        "60|9|2021-11-05|45|CalDolomita",
+        "61|9|2021-11-08|46|CalDolomita",
         "46|8|2021-10-01|44|AbonoSolido",
         "63|11|2021-11-09|49|AbonoSolido",
         "65|10|2021-11-15|50|AbonoSolido",

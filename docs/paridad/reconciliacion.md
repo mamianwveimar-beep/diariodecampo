@@ -1,6 +1,6 @@
 # Reconciliacion de la carga
 
-Generado: 2026-08-19T20:50:36.630Z
+Generado: 2026-08-20T00:51:55.317Z
 
 ## Filas por tabla
 
@@ -16,7 +16,7 @@ Generado: 2026-08-19T20:50:36.630Z
 | `clientes` | 2 | 2 | si | - |
 | `empleados` | 2 | 2 | si | 2500000 |
 | `infoSemilla` | 4 | 4 | si | 289 |
-| `productos` | 7 | 7 | si | 26807 |
+| `productos` | 8 | 8 | si | 26807 |
 | `ciudad` | 5 | 5 | si | - |
 | `adjuntos` | 8 | 8 | si | 1426352 |
 

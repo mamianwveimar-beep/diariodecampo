@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Paridad de las 20 consultas de accion.
+ * Paridad de las 22 consultas de accion (20 de Access y 2 nuevas).
  *
  * No compara contra la foto historica de Access, porque esa foto se genero
  * en 2021 con valores de origen que despues se editaron (ver el bloque 3:
@@ -117,6 +117,8 @@ const ORACULO = {
   IngresoAbonoLiquido2Aplicacion: () => desdeProducto('AbonoLiquido', 15, 'abonoLiquido', C.PRODUCTO_ABONO_LIQUIDO),
   IngresoAbonoLiquido3Aplicacion: () => desdeProducto('AbonoLiquido', 50, 'abonoLiquido', C.PRODUCTO_ABONO_LIQUIDO_2, (s) => s.ciclo > 50),
   IngresoAbonoLiquido4Aplicacion: () => desdeProducto('AbonoLiquido', 65, 'abonoLiquido', C.PRODUCTO_ABONO_LIQUIDO_2, (s) => s.ciclo > 65),
+  IngresoAbonoSiembra: () => desdeProducto('AbonoSiembra', 0, 'abonoSiembra', C.PRODUCTO_ABONO_SOLIDO, (s) => s.abonoSiembra > 0),
+  IngresoCalDolomita: () => desdeProducto('CalDolomita', 0, 'calDolomita', C.PRODUCTO_CAL_DOLOMITA, (s) => s.calDolomita > 0),
   IngresoAbonoSolido1Aplicacion: () => desdeProducto('AbonoSolido', 25, 'abonoPrimera', C.PRODUCTO_ABONO_SOLIDO),
   IngresoAbonoSolido2Aplicacion: () => desdeProducto('AbonoSolido', 50, 'abonoSegunda', C.PRODUCTO_ABONO_SOLIDO, (s) => s.abonoSegunda > 0),
   IngresoAbonoSolido3Aplicacion: () => desdeProducto('AbonoSolido', 75, 'abonoTercera', C.PRODUCTO_ABONO_SOLIDO, (s) => s.abonoTercera > 0),
@@ -257,4 +259,4 @@ rmSync(PRUEBA_DB);
 const errores = formula.reduce((a, f) => a + f.fallos.length, 0) + noIdempotentes.length;
 console.log(`\n  informe: docs/paridad/consultas-accion.json`);
 if (errores > 0) { console.error(`\n[ERROR] ${errores} fallo(s) de traduccion`); process.exit(1); }
-console.log('\n[ok] las 20 consultas reproducen la formula de Access y son idempotentes');
+console.log('\n[ok] las 22 consultas reproducen su formula y son idempotentes');

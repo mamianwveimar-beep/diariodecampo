@@ -67,7 +67,7 @@ con tener los dos procesos en marcha.
 ```bash
 cd api
 npm test         # equivalencias de fecha de Access sobre SQLite
-npm run paridad  # las 20 consultas de acción frente a un oráculo independiente
+npm run paridad  # las 22 consultas de acción frente a un oráculo independiente
 
 cd ../web
 npm run humo          # recorre las 12 pantallas con un navegador real
@@ -98,7 +98,7 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 | `GET /api/vistas/:nombre` | Las 7 vistas traducidas de Access |
 | `GET /api/informes/trazabilidad?fechaInicial=` | `cProgramacionCultivo` |
 | `GET /api/informes/programacion-abonamiento` | `cProgramacionCultivosAbonamiento` |
-| `GET /api/procesos` | Catálogo de las 20 consultas de acción |
+| `GET /api/procesos` | Catálogo de las 22 consultas de acción |
 | `POST /api/procesos/:nombre` | Ejecuta una; devuelve cuántas filas entraron |
 | `POST /api/procesos/lote/:lote` | Ejecuta un lote, como las macros de Access |
 | `GET /api/adjuntos/:tabla/:registroId` | Adjuntos de un registro |
@@ -187,6 +187,18 @@ Detalles que conviene conocer:
   cuántas filas se omitieron.
 - **Nada se descarta en silencio en la carga:** lo que no pasa una validación
   queda en `_cuarentena` con la regla incumplida y el valor original.
+- **Se añaden dos consultas de acción que Access no tenía**, y son la única
+  divergencia deliberada en la generación de actividades: `IngresoAbonoSiembra`
+  y `IngresoCalDolomita`. `infoSemilla` guardaba `abonoSiembra` y `calDolomita`
+  desde 2021, pero ninguna consulta generaba una labor con ellos: `abonoSiembra`
+  solo entraba en la suma de `actualizarCostosAbonamiento`, y `calDolomita` no se
+  usaba en ninguna parte. Son los dos insumos que se aplican al sembrar, así que
+  ahora generan su actividad como cualquier otro abonamiento. **Un valor en 0 o
+  vacío significa que esa semilla no lo usa** y queda fuera sola, igual que
+  `abonoSegunda` y `abonoTercera`: de ahí que la dolomita solo salga para cebolla
+  y brócoli. La comparación de las 9 vistas contra Access sigue en 0 diferencias
+  porque estas consultas solo producen filas cuando se ejecutan; la foto migrada
+  no se toca.
 - **`lote` y `cama` son texto, no número**, en `programacionCultivos` y en
   `actividades`. En Access eran `Double`, pero en la práctica son códigos de
   identificación del terreno, no cantidades, y pueden llevar letras (`A1`,
@@ -203,7 +215,7 @@ Detalles que conviene conocer:
 |---|---|
 | `reconciliacion.md` | Filas y sumas de control, Access frente a D1, tabla por tabla |
 | `vistas.md` | Las 9 consultas SELECT ejecutadas en el motor de Access y comparadas fila a fila. 58 columnas en trazabilidad, 0 diferencias |
-| `consultas-accion.json` | Las 20 consultas de acción frente a una reimplementación independiente |
+| `consultas-accion.json` | Las 22 consultas de acción frente a una reimplementación independiente |
 
 Las divergencias que quedan son **deliberadas y verificadas una a una**: la
 fecha del almacén (texto en Access, fecha real aquí) y la numeración de semana
@@ -220,8 +232,13 @@ Está detallado al final del plan.
    cero, así que su coste de abonamiento sale nulo. Access hacía lo mismo.
 4. Si siguen vigentes el **jornal de 8.807 pesos** y el **costo de 1,46** por
    minuto, incrustados desde 2021.
-5. **Con qué día empieza la semana.** Está fijado en domingo para no partir el
+5. **El precio de la cal dolomita.** El origen nunca lo registró: no había
+   producto, ni costo, ni movimiento de almacén. La migración crea
+   `productos.998` con `valorUnidad = 0` a propósito, así que las actividades
+   `CalDolomita` salen con coste 0 —visible— en vez de con un precio inventado.
+   En cuanto se le ponga precio en la pantalla de Productos, el coste sale solo.
+6. **Con qué día empieza la semana.** Está fijado en domingo para no partir el
    histórico, pero si la finca cuenta las semanas de lunes a domingo, se
    cambia `PRIMER_DIA_SEMANA` a 1 y se regeneran las actividades.
-6. **Usuarios y permisos** para el despliegue en la nube. Hoy no hay ninguna
+7. **Usuarios y permisos** para el despliegue en la nube. Hoy no hay ninguna
    autenticación: ver [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md).

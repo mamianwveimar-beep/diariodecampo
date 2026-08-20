@@ -7,9 +7,10 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
  * Actividades y costos: sustituye a Frm_Costos + SubFrm_Costos +
  * Frm_DatosCostos de Access, y al boton que llamaba a Macro3.
  *
- * Los procesos son las 20 consultas de accion traducidas. Cada una dice
- * cuantas filas inserto; las repetidas se descartan por el indice UNIQUE,
- * igual que hacia Access, pero aqui se ve.
+ * Los procesos son las 22 consultas de accion: las 20 traducidas de Access y
+ * las 2 anadidas para abonoSiembra y calDolomita. Cada una dice cuantas filas
+ * inserto; las repetidas se descartan por el indice UNIQUE, igual que hacia
+ * Access, pero aqui se ve.
  */
 @Component({
   selector: 'dc-actividades',

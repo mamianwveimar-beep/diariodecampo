@@ -1,10 +1,12 @@
 import { SQL_SEMANA } from '../access-compat/fechas.mjs';
 
 /**
- * Las 20 consultas de accion de Access, traducidas 1:1.
+ * Las 20 consultas de accion de Access, traducidas 1:1, mas 2 anadidas aqui.
  *
  * Cada entrada lleva el SQL original de Access en `origenAccess` para poder
- * auditar la traduccion sin abrir el .accdb.
+ * auditar la traduccion sin abrir el .accdb. Las dos nuevas lo marcan como
+ * NUEVA: no existen en el origen, y son la unica divergencia deliberada de
+ * esta tabla frente a Access (ver README).
  *
  * Sobre ON CONFLICT DO NOTHING: en Access, actividades y costosInsumos tenian
  * clave primaria compuesta, asi que al reejecutar una consulta las filas
@@ -23,6 +25,7 @@ export const CONSTANTES = {
   PRODUCTO_ABONO_SOLIDO: 3,       // abono solido 1
   PRODUCTO_ABONO_LIQUIDO_2: 4,    // multimineral 2
   PRODUCTO_BASILUS: 5,            // Basilus
+  PRODUCTO_CAL_DOLOMITA: 998,     // fila de referencia creada en la migracion
   PRODUCTO_MANO_DE_OBRA: 999,     // fila de referencia creada en la migracion
   JORNAL_HORA: 8807,              // pesos/hora en las consultas IngresoCostos*
   COSTO_MINUTO: 1.46,             // pesos/minuto en las labores de campo
@@ -167,6 +170,35 @@ export const CONSULTAS_ACCION = [
       productoId: C.PRODUCTO_ABONO_LIQUIDO_2, filtro: 's.ciclo > 65',
     }),
     origenAccess: '... WHERE productos.id=4 AND infoSemilla.ciclo>65',
+  },
+
+  // ------------------------------------- el dia de la siembra (2, nuevas)
+  // infoSemilla traia abonoSiembra y calDolomita desde 2021, pero ninguna
+  // consulta de Access generaba una actividad con ellos: abonoSiembra solo
+  // entraba en la suma de actualizarCostosAbonamiento y calDolomita no se
+  // usaba en ninguna parte. Son los dos insumos que se aplican al sembrar,
+  // asi que aqui pasan a generar su labor como cualquier otro abonamiento.
+  // Un valor en 0 o vacio significa que esa semilla no lo usa, igual que
+  // abonoSegunda y abonoTercera.
+  {
+    nombre: 'IngresoAbonoSiembra',
+    destino: 'actividades',
+    descripcion: 'Abono aplicado al sembrar, la semana de la siembra. Solo si abonoSiembra > 0.',
+    sql: actividadDesdeProducto({
+      actividad: 'AbonoSiembra', dias: 0, campoCantidad: 'abonoSiembra',
+      productoId: C.PRODUCTO_ABONO_SOLIDO, filtro: 's.abonoSiembra > 0',
+    }),
+    origenAccess: 'NUEVA: Access nunca genero esta actividad.',
+  },
+  {
+    nombre: 'IngresoCalDolomita',
+    destino: 'actividades',
+    descripcion: 'Encalado con cal dolomita al sembrar. Solo si calDolomita > 0.',
+    sql: actividadDesdeProducto({
+      actividad: 'CalDolomita', dias: 0, campoCantidad: 'calDolomita',
+      productoId: C.PRODUCTO_CAL_DOLOMITA, filtro: 's.calDolomita > 0',
+    }),
+    origenAccess: 'NUEVA: Access nunca genero esta actividad.',
   },
 
   // -------------------------------------------------- abono solido (3)
@@ -369,6 +401,7 @@ export const LOTES = {
   abonamiento: ['actualizarCostosAbonamiento', 'actualizarCostosAbonamientoLiquido'],
   actividades: [
     'IngresoPreparacionTerreno', 'IngresoSiembra',
+    'IngresoAbonoSiembra', 'IngresoCalDolomita',
     'IngresoAbonoSolido1Aplicacion', 'IngresoAbonoSolido2Aplicacion', 'IngresoAbonoSolido3Aplicacion',
     'IngresoAbonoLiquido1Aplicacion', 'IngresoAbonoLiquido2Aplicacion',
     'IngresoAbonoLiquido3Aplicacion', 'IngresoAbonoLiquido4Aplicacion',
