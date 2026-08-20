@@ -72,6 +72,7 @@ npm run paridad  # las 22 consultas de acción frente a un oráculo independient
 cd ../web
 npm run humo          # recorre las 12 pantallas con un navegador real
 npm run humo:siembra  # rellena y guarda un alta de siembra por lotes
+npm run humo:orden    # registra una orden de siembra como el operario
 ```
 
 Las dos primeras se apoyan en `db/local/diariodecampo.db`, así que hay que
@@ -98,6 +99,9 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 | `GET /api/vistas/:nombre` | Las 7 vistas traducidas de Access |
 | `GET /api/informes/trazabilidad?fechaInicial=` | `cProgramacionCultivo` |
 | `GET /api/informes/programacion-abonamiento` | `cProgramacionCultivosAbonamiento` |
+| `GET /api/ordenes/pendientes` | Siembras que nadie ha registrado en campo |
+| `GET /api/ordenes/:codigo` | Una orden, con la ficha de su semilla resuelta |
+| `POST /api/ordenes/:codigo` | Registra la siembra y programa la temporada del cultivo |
 | `GET /api/procesos` | Catálogo de las 22 consultas de acción |
 | `POST /api/procesos/:nombre` | Ejecuta una; devuelve cuántas filas entraron |
 | `POST /api/procesos/lote/:lote` | Ejecuta un lote, como las macros de Access |
@@ -107,14 +111,15 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 
 ## La interfaz
 
-Los 14 formularios de Access se consolidan en 11 pantallas, más dos nuevas:
-el alta de siembra por lotes y la cuarentena. Los tres subformularios dejan de
+Los 14 formularios de Access se consolidan en 11 pantallas, más tres nuevas:
+el alta de siembra por lotes, la orden de siembra y la cuarentena. Los tres subformularios dejan de
 ser objetos aparte y viven dentro de su pantalla contenedora.
 
 | Pantalla | Sustituye a |
 |---|---|
 | Inicio | `InicioDiarioCampo` |
 | Registrar siembra | — (nueva: alta por lotes) |
+| Órdenes de siembra | — (nueva: el registro del operario en campo) |
 | Siembras y cosechas | `Frm_Siembra`, `SubFrm_Siembra`, `Frm_Datos`, `Frm_DatosCosecha` |
 | Actividades y costos | `Frm_Costos`, `SubFrm_Costos`, `Frm_DatosCostos`, `Macro3` |
 | Semillas | `frmInfoSemilla` |
@@ -160,6 +165,33 @@ Detalles que conviene conocer:
 - Si una línea falla al guardar, las demás se guardan igual y la fallida se
   queda en pantalla con el motivo.
 
+### Orden de siembra
+
+Programar una siembra y ejecutarla son dos momentos distintos, y hasta ahora
+el sistema solo conocía el primero. **Órdenes de siembra** es la pantalla del
+operario: lista las siembras que nadie ha registrado todavía en campo y, al
+elegir una, deja anotar lo que de verdad pasó.
+
+Lo que la ordena es el permiso, y es toda su idea visual: **el operario solo
+puede tocar cuatro cosas** —lote, cama, cantidad real sembrada y el motivo de
+la merma—, y lo demás se marca como cerrado con la etiqueta de quién lo pone.
+Los insumos del día de siembra y el peso que hay que cargar al campo salen de
+la ficha de la semilla y se recalculan con las plantas reales.
+
+- El **motivo de la merma es obligatorio** cuando lo sembrado no llega a lo
+  planificado. El botón se bloquea y dice por qué; el backend lo rechaza
+  igualmente, así que la regla no depende de la pantalla.
+- Al guardar, **queda programada la temporada completa de ese cultivo**: las 21
+  consultas idempotentes acotadas a él con `sqlPorCultivo()`. Ya no hace falta
+  pulsar «Generar programación».
+- La programación se calcula sobre las **plantas reales**, no las planificadas,
+  y el área se recalcula igual. Las actividades que ya existieran se ponen al
+  día con la cantidad, el lote y la cama que registró el operario.
+- `salidaAbono` queda **fuera** de ese lote: es la única consulta sin
+  `ON CONFLICT`, y repetirla duplicaría el movimiento de almacén.
+- `fechaRegistroSiembra` a NULL es lo que mantiene una siembra en la lista.
+  Registrar dos veces devuelve un 409, no un duplicado.
+
 ## Decisiones que conviene conocer
 
 - **Los nombres de Access se conservan tal cual**, incluidas sus incoherencias
@@ -187,6 +219,13 @@ Detalles que conviene conocer:
   cuántas filas se omitieron.
 - **Nada se descarta en silencio en la carga:** lo que no pasa una validación
   queda en `_cuarentena` con la regla incumplida y el valor original.
+- **Lo planificado y lo sembrado son dos columnas distintas.** Access solo
+  tenía `numeroPlantasSembradas`, así que no había forma de saber si una siembra
+  había salido corta. **Registrar siembra** escribe las dos con el mismo valor
+  y la orden del operario las separa: `numeroPlantasSembradas` pasa a ser lo que
+  de verdad entró y `numeroPlantasPlanificadas` se queda como estaba. El histórico
+  migrado las tiene en NULL —no se sabe y no se inventa—, y para esas siembras
+  la pantalla compara contra lo que llevaran anotado, y lo dice.
 - **Se añaden dos consultas de acción que Access no tenía**, y son la única
   divergencia deliberada en la generación de actividades: `IngresoAbonoSiembra`
   y `IngresoCalDolomita`. `infoSemilla` guardaba `abonoSiembra` y `calDolomita`

@@ -117,6 +117,28 @@ export interface Cultivo {
   observaciones: string | null;
   kilosCosechados: number | null;
   activo: number;
+  /** Lo que se preveia sembrar. NULL en lo migrado: Access no lo distinguia. */
+  numeroPlantasPlanificadas: number | null;
+  plantulasDanadas: number | null;
+  motivoMerma: string | null;
+  /** Cuando el operario registro la siembra. NULL = pendiente de registrar. */
+  fechaRegistroSiembra: string | null;
+}
+
+/**
+ * Un cultivo con la ficha de su semilla ya resuelta, tal como lo devuelve
+ * /api/ordenes. Es lo que necesita la pantalla del operario para calcular
+ * los insumos sin tener que pedir la semilla aparte.
+ */
+export interface Orden extends Cultivo {
+  semilla: string | null;
+  variedad: string | null;
+  ciclo: number | null;
+  abonoSiembra: number | null;
+  calDolomita: number | null;
+  abonoLiquido: number | null;
+  /** m2 por planta: infoSemilla.area o entrePlanta x entreSurcos. */
+  marcoSiembra: number | null;
 }
 
 export interface Actividad {

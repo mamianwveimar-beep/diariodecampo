@@ -19,6 +19,12 @@ export const routes: Routes = [
   { path: 'siembras/nueva', title: 'Registrar siembra · Diario de campo',
     loadComponent: () => import('./paginas/siembra-lote').then((m) => m.SiembraLote) },
 
+  { path: 'orden', title: 'Órdenes de siembra · Diario de campo',
+    loadComponent: () => import('./paginas/orden-siembra').then((m) => m.OrdenSiembra) },
+
+  { path: 'orden/:codigo', title: 'Orden de siembra · Diario de campo',
+    loadComponent: () => import('./paginas/orden-siembra').then((m) => m.OrdenSiembra) },
+
   { path: 'actividades', title: 'Actividades y costos · Diario de campo',
     loadComponent: () => import('./paginas/actividades').then((m) => m.Actividades) },
 

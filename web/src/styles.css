@@ -216,8 +216,24 @@ input:invalid { border-color: var(--oxide); }
 
 @media (max-width: 860px) {
   .app { grid-template-columns: 1fr; }
-  .lateral { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
   .principal { padding: 22px 18px 70px; }
+
+  /* En un movil la barra vertical se comia la primera pantalla entera antes
+     de llegar al contenido, que es justo lo que necesita el operario en
+     campo. Pasa a ser una tira horizontal que se desliza. */
+  .lateral {
+    position: sticky; top: 0; z-index: 40; height: auto;
+    border-right: none; border-bottom: 1px solid var(--rule);
+    padding: 10px 12px; gap: 10px;
+    flex-direction: row; align-items: center;
+    overflow-x: auto; overflow-y: hidden;
+  }
+  .lateral .marca { flex: none; padding: 0 4px 0 0; }
+  .lateral .marca .eyebrow { display: none; }
+  .lateral .marca .n { font-size: .95rem; white-space: nowrap; }
+  .nav { flex-direction: row; gap: 4px; }
+  .nav-grupo { display: none; }
+  .nav a { white-space: nowrap; padding: 7px 12px; }
 }
 
 @media print {

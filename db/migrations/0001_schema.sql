@@ -154,7 +154,15 @@ CREATE TABLE programacionCultivos (
   numeroPlantasPlanificadas INTEGER,
   -- NUEVO: plantulas que no llegaron a sembrarse por venir danadas. Es lo que
   -- explica la diferencia entre lo planificado y lo sembrado.
-  plantulasDanadas          INTEGER
+  plantulasDanadas          INTEGER,
+  -- NUEVO: por que hubo merma. Es obligatorio en la pantalla del operario
+  -- cuando lo sembrado no llega a lo planificado, y va aparte de
+  -- observaciones, que es el campo libre de quien planifica.
+  motivoMerma               TEXT    CHECK (motivoMerma IS NULL OR length(motivoMerma) <= 255),
+  -- NUEVO: cuando el operario registro la ejecucion en campo. NULL significa
+  -- que la siembra sigue pendiente de registrar, y es lo que alimenta su
+  -- lista de trabajo.
+  fechaRegistroSiembra      TEXT    CHECK (fechaRegistroSiembra IS NULL OR fechaRegistroSiembra GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')
 );
 CREATE INDEX ix_programacionCultivos_codSemilla ON programacionCultivos(codSemilla);
 

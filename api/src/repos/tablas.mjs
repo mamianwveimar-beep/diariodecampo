@@ -50,7 +50,9 @@ export const TABLAS = {
     columnas: ['codigosistema', 'codSemilla', 'areaCultivada', 'fechasiembra', 'factura',
       'fechaRealCosecha', 'fechafinal', 'numeroPlantasSembradas', 'numeroPlantasCosechadas',
       'lote', 'cama', 'tipoAbono', 'cantidadAbono0', 'codigoSemillero', 'observaciones',
-      'kilosCosechados', 'activo'],
+      'kilosCosechados', 'activo',
+      // orden de siembra: lo que registra el operario en campo
+      'numeroPlantasPlanificadas', 'plantulasDanadas', 'motivoMerma', 'fechaRegistroSiembra'],
     generadas: [],
     booleanas: ['activo'],
   },

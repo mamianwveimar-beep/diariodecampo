@@ -74,6 +74,25 @@ export class Api {
     ));
   }
 
+  // -------------------------------------------------- orden de siembra
+  /** Siembras programadas que nadie ha registrado todavia en campo. */
+  ordenesPendientes(): Promise<T.Orden[]> {
+    return this.pedir(firstValueFrom(this.http.get<T.Orden[]>(`${BASE}/ordenes/pendientes`)));
+  }
+
+  orden(codigo: number): Promise<T.Orden> {
+    return this.pedir(firstValueFrom(this.http.get<T.Orden>(`${BASE}/ordenes/${codigo}`)));
+  }
+
+  /** Guarda lo que paso en campo y deja programada la temporada del cultivo. */
+  registrarOrden(codigo: number, cuerpo: {
+    lote: string | null; cama: string | null; numeroPlantasSembradas: number;
+    plantulasDanadas: number | null; motivoMerma: string | null;
+  }): Promise<{ cultivo: T.Cultivo; merma: number;
+                generadas: { actividades: number; costosInsumos: number } }> {
+    return this.pedir(firstValueFrom(this.http.post<any>(`${BASE}/ordenes/${codigo}`, cuerpo)));
+  }
+
   // ---------------------------------------------------------- procesos
   procesos(): Promise<{ consultas: T.Proceso[]; lotes: Record<string, string[]> }> {
     return this.pedir(firstValueFrom(this.http.get<any>(`${BASE}/procesos`)));

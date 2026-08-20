@@ -402,7 +402,14 @@ export class SiembraLote implements OnInit {
             codSemilla: l.codSemilla!,
             fechasiembra: this.fecha(),
             factura: this.factura() || null,
+            // al programar, lo planificado y lo sembrado son lo mismo. Los dos
+            // se separan cuando el operario registra la orden en campo: alli
+            // numeroPlantasSembradas pasa a ser lo que de verdad entro, y
+            // numeroPlantasPlanificadas se queda como estaba para poder
+            // comparar. Escribir los dos ahora evita que los informes que ya
+            // existen vean un nulo.
             numeroPlantasSembradas: l.numeroPlantasSembradas!,
+            numeroPlantasPlanificadas: l.numeroPlantasSembradas!,
             lote: l.lote,
             cama: l.cama,
             areaCultivada: l.areaCultivada ?? 0,

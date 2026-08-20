@@ -8,7 +8,7 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { TABLAS, VISTAS, columnasEscribibles, columnasAlta } from './repos/tablas.mjs';
-import { CONSULTAS_ACCION, LOTES, porNombre } from './queries/consultas-accion.mjs';
+import { CONSULTAS_ACCION, LOTES, porNombre, sqlPorCultivo } from './queries/consultas-accion.mjs';
 import { SQL_PROGRAMACION_ABONAMIENTO, SQL_PROGRAMACION_CULTIVO } from './queries/vistas-parametrizadas.mjs';
 import { hoyBogota } from './access-compat/fechas.mjs';
 
@@ -130,10 +130,17 @@ app.get('/api/informes/trazabilidad', async (c) => {
 });
 
 // ----------------------------------------- consultas de accion (procesos)
-app.get('/api/procesos', (c) => c.json({
-  consultas: CONSULTAS_ACCION.map(({ nombre, destino, descripcion }) => ({ nombre, destino, descripcion })),
-  lotes: LOTES,
-}));
+app.get('/api/procesos', (c) => {
+  // programacionCompleta es de uso interno: lo dispara /api/ordenes/:codigo
+  // para un solo cultivo. Es la union de los otros tres lotes menos
+  // salidaAbono, asi que ofrecerlo aqui solo duplicaria los botones de
+  // arriba, pero ejecutandose sobre TODOS los cultivos a la vez.
+  const { programacionCompleta, ...lotesParaLaPantalla } = LOTES;
+  return c.json({
+    consultas: CONSULTAS_ACCION.map(({ nombre, destino, descripcion }) => ({ nombre, destino, descripcion })),
+    lotes: lotesParaLaPantalla,
+  });
+});
 
 /** Ejecuta una consulta de accion y dice cuantas filas entraron. */
 async function ejecutarProceso(env: Env, nombre: string) {
@@ -201,6 +208,129 @@ app.get('/api/cuarentena', async (c) => {
   const { results } = await c.env.DB
     .prepare('SELECT * FROM _cuarentena ORDER BY tabla_origen, regla, id').all();
   return c.json(results);
+});
+
+// ------------------------------------------------------ orden de siembra
+// Lo que el operario registra en campo. Solo puede tocar cuatro cosas —lote,
+// cama, cantidad real sembrada y motivo de la merma—; el resto lo calcula el
+// sistema a partir de la ficha de la semilla.
+
+/** El cultivo con la ficha de su semilla ya resuelta: es lo que pinta la pantalla. */
+const SQL_ORDEN = `
+SELECT pc.*,
+       s.semilla, s.variedad, s.ciclo,
+       s.abonoSiembra, s.calDolomita, s.abonoLiquido,
+       COALESCE(s.area, s.entrePlanta * s.entreSurcos) AS marcoSiembra
+FROM programacionCultivos pc
+     INNER JOIN infoSemilla s ON s.Id = pc.codSemilla`;
+
+/** Cada tabla apunta al cultivo con un nombre distinto, herencia de Access. */
+const COLUMNA_CULTIVO: Record<string, string> = {
+  actividades: 'codigoSistema',
+  costosInsumos: 'programacionCultivoCodCultivo',
+  inventarioProductos: 'codigoSistemaProgramacion',
+};
+
+async function contarDe(env: Env, tabla: string, codigo: number): Promise<number> {
+  const r = await env.DB
+    .prepare(`SELECT COUNT(*) AS n FROM ${tabla} WHERE ${COLUMNA_CULTIVO[tabla]} = ?1`)
+    .bind(codigo).first<{ n: number }>();
+  return r?.n ?? 0;
+}
+
+// El orden importa: "pendientes" tambien encajaria con ":codigo", y Hono
+// resuelve por orden de registro.
+app.get('/api/ordenes/pendientes', async (c) => {
+  const { results } = await c.env.DB.prepare(`${SQL_ORDEN}
+WHERE pc.fechaRegistroSiembra IS NULL AND pc.activo = 1
+ORDER BY pc.fechasiembra DESC, pc.codigosistema DESC
+LIMIT 200`).all();
+  return c.json(results);
+});
+
+app.get('/api/ordenes/:codigo', async (c) => {
+  const fila = await c.env.DB.prepare(`${SQL_ORDEN}\nWHERE pc.codigosistema = ?1`)
+    .bind(c.req.param('codigo')).first();
+  return fila ? c.json(fila) : c.json(noEncontrado('esa orden de siembra'), 404);
+});
+
+/**
+ * Guarda lo que paso de verdad en campo y deja programada la temporada.
+ *
+ * El area y la programacion se recalculan desde la cantidad REAL sembrada, no
+ * desde la planificada: es justo el motivo de que el operario la registre.
+ */
+app.post('/api/ordenes/:codigo', async (c) => {
+  const codigo = Number(c.req.param('codigo'));
+  const cuerpo = await c.req.json<{
+    lote?: string | null; cama?: string | null;
+    numeroPlantasSembradas?: number; plantulasDanadas?: number | null;
+    motivoMerma?: string | null;
+  }>();
+
+  const cultivo = await c.env.DB.prepare(`${SQL_ORDEN}\nWHERE pc.codigosistema = ?1`)
+    .bind(codigo).first<Record<string, any>>();
+  if (!cultivo) return c.json(noEncontrado('esa orden de siembra'), 404);
+  if (cultivo.fechaRegistroSiembra) {
+    return c.json({ error: `Esta siembra ya se registro el ${cultivo.fechaRegistroSiembra}.` }, 409);
+  }
+
+  const sembradas = Number(cuerpo.numeroPlantasSembradas);
+  if (!Number.isFinite(sembradas) || sembradas < 0) {
+    return c.json({ error: 'La cantidad real sembrada tiene que ser un numero de cero o mas.' }, 400);
+  }
+
+  // el motivo solo es obligatorio cuando falta algo frente a lo planificado
+  const planificadas: number | null = cultivo.numeroPlantasPlanificadas;
+  const merma = planificadas == null ? 0 : planificadas - sembradas;
+  const motivo = (cuerpo.motivoMerma ?? '').trim();
+  if (merma > 0 && motivo.length < 5) {
+    return c.json({
+      error: `Faltan ${merma} plantas frente a lo planificado: hay que explicar por que.`,
+    }, 400);
+  }
+
+  const marco: number | null = cultivo.marcoSiembra;
+  const area = marco ? Number((sembradas * marco).toFixed(2)) : cultivo.areaCultivada;
+  const lote = cuerpo.lote ?? null;
+  const cama = cuerpo.cama ?? null;
+
+  const antes = {
+    actividades: await contarDe(c.env, 'actividades', codigo),
+    costosInsumos: await contarDe(c.env, 'costosInsumos', codigo),
+  };
+
+  const actualizado = await c.env.DB.prepare(`
+UPDATE programacionCultivos
+   SET lote = ?1, cama = ?2, numeroPlantasSembradas = ?3, plantulasDanadas = ?4,
+       motivoMerma = ?5, areaCultivada = ?6, fechaRegistroSiembra = ?7
+ WHERE codigosistema = ?8
+RETURNING *`)
+    .bind(lote, cama, sembradas, cuerpo.plantulasDanadas ?? null,
+          motivo || null, area, hoyBogota(), codigo)
+    .first();
+
+  // actividades lleva copiados el numero de plantas, el lote y la cama del
+  // cultivo. Si cambia lo sembrado, las filas que ya existan tienen que
+  // seguirlo o su coste queda calculado sobre una cantidad que ya no es real.
+  await c.env.DB.prepare(
+    'UPDATE actividades SET numeroPlantas = ?1, lote = ?2, cama = ?3 WHERE codigoSistema = ?4'
+  ).bind(sembradas, lote, cama, codigo).run();
+
+  // y se genera lo que falte, SOLO para este cultivo
+  await c.env.DB.batch(
+    LOTES.programacionCompleta.map((n) =>
+      c.env.DB.prepare(sqlPorCultivo(porNombre(n)!)).bind(codigo))
+  );
+
+  return c.json({
+    cultivo: actualizado,
+    merma,
+    generadas: {
+      actividades: (await contarDe(c.env, 'actividades', codigo)) - antes.actividades,
+      costosInsumos: (await contarDe(c.env, 'costosInsumos', codigo)) - antes.costosInsumos,
+    },
+  });
 });
 
 app.notFound((c) => c.json({ error: 'Esa direccion no existe en la API.' }, 404));

@@ -413,6 +413,57 @@ export const LOTES = {
     'IngresoCostosDeshierbe', 'IngresoCostosCobertura',
   ],
   inventario: ['salidaAbono'],
+
+  // Lo que se genera solo al registrar una siembra en campo. Es la union de
+  // los tres lotes anteriores MENOS salidaAbono, que es la unica consulta sin
+  // ON CONFLICT: reejecutarla duplica el movimiento de almacen, asi que no
+  // puede colgar de una accion que el operario puede repetir.
+  programacionCompleta: [
+    'IngresoPreparacionTerreno', 'IngresoSiembra',
+    'IngresoAbonoSiembra', 'IngresoCalDolomita',
+    'IngresoAbonoSolido1Aplicacion', 'IngresoAbonoSolido2Aplicacion', 'IngresoAbonoSolido3Aplicacion',
+    'IngresoAbonoLiquido1Aplicacion', 'IngresoAbonoLiquido2Aplicacion',
+    'IngresoAbonoLiquido3Aplicacion', 'IngresoAbonoLiquido4Aplicacion',
+    'IngresoPrimerDeshierbe', 'IngresoSegundoDeshierbe',
+    'IngresoProtecionBasilus', 'IngresoProtecionBasilus2',
+    'IngresoCostosPreparacionTerreno', 'IngresoCostosSiembra',
+    'IngresoCostosDeshierbe', 'IngresoCostosCobertura',
+    'actualizarCostosAbonamiento', 'actualizarCostosAbonamientoLiquido',
+  ],
 };
+
+/**
+ * La misma consulta, acotada a un cultivo.
+ *
+ * Todas las consultas comparten la forma `... INNER JOIN programacionCultivos pc
+ * ... WHERE <cond> [ON CONFLICT DO NOTHING]`, asi que acotar es anadir un
+ * predicado mas sobre pc. Se comprueba la forma antes de tocarla y se falla
+ * ruidosamente si algun dia deja de cumplirse, en vez de devolver un SQL que
+ * ignore el cultivo en silencio y programe la finca entera.
+ *
+ * El parametro va numerado (?1) a proposito: SQL_SEMANA repite su expresion,
+ * y un `?` suelto se enlazaria mal.
+ *
+ * @param {{nombre: string, sql: string}} consulta
+ * @returns {string}
+ */
+export function sqlPorCultivo(consulta) {
+  const { nombre, sql } = consulta;
+  // unas llegan a programacionCultivos por INNER JOIN y otras por FROM
+  // directo; lo que importa es que este el alias pc y haya un WHERE al que
+  // encadenar el predicado.
+  const tieneAlias = sql.includes('programacionCultivos pc');
+  const tieneWhere = sql.includes('\nWHERE ');
+  if (!tieneAlias || !tieneWhere) {
+    throw new Error(
+      'No se puede acotar ' + nombre + ' a un cultivo: ya no tiene el alias pc ' +
+      'sobre programacionCultivos y el WHERE que esta funcion da por supuestos.'
+    );
+  }
+  const predicado = '\n  AND pc.codigosistema = ?1';
+  return sql.includes('\nON CONFLICT')
+    ? sql.replace('\nON CONFLICT', predicado + '\nON CONFLICT')
+    : sql + predicado;
+}
 
 export const porNombre = (nombre) => CONSULTAS_ACCION.find((c) => c.nombre === nombre);
