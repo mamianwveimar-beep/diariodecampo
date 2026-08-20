@@ -1,6 +1,6 @@
 # Paridad de las consultas SELECT
 
-Generado: 2026-08-20T01:10:16.155Z
+Generado: 2026-08-20T10:27:01.384Z
 Tolerancia numerica: 0.000001 relativa.
 Access ejecutado con fecha 2026-08-19 y fechaInicial 1900-01-01.
 
@@ -13,8 +13,8 @@ Access ejecutado con fecha 2026-08-19 y fechaInicial 1900-01-01.
 | `cInventarioProductos` | 10 | 10 | 10 | 0 | 10 | igual |
 | `cosecha Consulta` | 7 | 7 | 9 | 0 | 0 | igual |
 | `cProgramacionSiembra` | 4 | 4 | 12 | 0 | 0 | igual |
-| `cProgramacionCultivosAbonamiento` | 15 | 15 | 12 | 0 | 1 | igual |
-| `cProgramacionCultivo` | 20 | 20 | 58 | 0 | 0 | igual |
+| `cProgramacionCultivosAbonamiento` | 15 | 15 | 12 | 15 | 1 | REVISAR |
+| `cProgramacionCultivo` | 20 | 20 | 58 | 17 | 0 | REVISAR |
 
 ## Divergencias deliberadas
 

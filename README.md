@@ -72,7 +72,9 @@ npm run paridad  # las 22 consultas de acción frente a un oráculo independient
 cd ../web
 npm run humo          # recorre las 12 pantallas con un navegador real
 npm run humo:siembra  # rellena y guarda un alta de siembra por lotes
-npm run humo:orden    # registra una orden de siembra como el operario
+npm run humo:actividad # alta por lotes de labores, con una línea que falla a propósito
+npm run humo:orden    # registra una orden y compara la vista previa por semana
+                       # contra lo que el backend deja guardado de verdad
 ```
 
 Las dos primeras se apoyan en `db/local/diariodecampo.db`, así que hay que
@@ -111,8 +113,9 @@ node etl/07-respaldo.mjs ensayo                       # respalda, restaura y com
 
 ## La interfaz
 
-Los 14 formularios de Access se consolidan en 11 pantallas, más tres nuevas:
-el alta de siembra por lotes, la orden de siembra y la cuarentena. Los tres subformularios dejan de
+Los 14 formularios de Access se consolidan en 11 pantallas, más cuatro nuevas:
+el alta de siembra por lotes, el alta de actividades por lotes, la orden de
+siembra y la cuarentena. Los tres subformularios dejan de
 ser objetos aparte y viven dentro de su pantalla contenedora.
 
 | Pantalla | Sustituye a |
@@ -120,6 +123,7 @@ ser objetos aparte y viven dentro de su pantalla contenedora.
 | Inicio | `InicioDiarioCampo` |
 | Registrar siembra | — (nueva: alta por lotes) |
 | Órdenes de siembra | — (nueva: el registro del operario en campo) |
+| Registrar actividades | — (nueva: alta por lotes de labores) |
 | Siembras y cosechas | `Frm_Siembra`, `SubFrm_Siembra`, `Frm_Datos`, `Frm_DatosCosecha` |
 | Actividades y costos | `Frm_Costos`, `SubFrm_Costos`, `Frm_DatosCostos`, `Macro3` |
 | Semillas | `frmInfoSemilla` |
@@ -192,6 +196,89 @@ la ficha de la semilla y se recalculan con las plantas reales.
 - `fechaRegistroSiembra` a NULL es lo que mantiene una siembra en la lista.
   Registrar dos veces devuelve un 409, no un duplicado.
 
+La tarjeta **Programación de la temporada** muestra, por semana, lo que se va
+a generar —actividades, cantidades y el peso de esa semana—, con pestañas como
+las de Actividades y costos. **La semana de la siembra es editable**: son las
+labores que el operario acaba de ejecutar, así que puede corregir la cantidad
+y el costo reales si no coinciden con lo calculado, y el pie recalcula el peso
+y el costo de la semana en vivo. Las demás semanas son previsualización de solo
+lectura, y la etiqueta de la tarjeta lo dice según la que estés viendo.
+
+Al guardar, **solo la semana de la siembra viaja en el POST y solo esa queda
+registrada** (`actividades.fechaRegistro` con fecha). El resto de la temporada
+se programa igual pero con `fechaRegistro` en NULL: existe para registrarse
+cuando llegue su semana, pero nadie ha dicho todavía que se haya hecho. Son
+tres estados y los tres significan algo distinto —fila inexistente, fila sin
+registrar, fila registrada—, donde Access solo tenía uno.
+
+Dentro de esa semana hay un botón **Agregar actividad adicional**, para las
+novedades que no salen de ninguna ficha: una preparación extra por suelo
+húmedo, un Basilus por hallazgo de plaga. Esas filas traen los cinco campos
+abiertos —actividad, detalle, cantidad, unidad y costo— y suman al peso y al
+costo de la semana en cuanto se escriben.
+
+**Una novedad se guarda dos veces, y a propósito**: como labor en
+`actividades` y además como línea propia en `costosInsumos`, porque también
+cuesta dinero. Las de la ficha no abren línea de costo: sus costos ya los
+generan `actualizarCostosAbonamiento` y las `IngresoCostos*`, y duplicarlos
+inflaría el coste del cultivo.
+
+Como `costosInsumos.producto` es `NOT NULL` con clave foránea y el detalle es
+texto libre, el backend intenta primero casar ese detalle con un
+`nombreProducto` del catálogo —así una novedad de «Basilus» queda enlazada al
+producto real— y solo cuando no encaja usa `productos.997` («Otro insumo»), la
+tercera fila de referencia junto a la cal dolomita y la mano de obra.
+
+**Solo `Kg` y `Litro` suman al peso** que se carga al campo. El minutaje de
+mano de obra cuesta pero no se lleva al hombro, y como la unidad de una
+novedad la escribe el operario, la regla mira la unidad y no el tipo de labor.
+
+Dos detalles más. Las filas del operario se insertan **antes**
+que la generación automática, así que las que ésta produciría para esa misma
+semana chocan contra `ux_actividades_access` y se descartan solas: lo escrito a
+mano gana sobre lo calculado sin tratarlo aparte. Y como `actividades.total` es
+una columna GENERATED, lo que se envía no es el total que se ve sino la tasa
+por planta y el costo unitario, despejados de lo que escribió el operario.
+
+Las filas todavía no existen en la base cuando se ven -el backend las crea
+recién al guardar-, así que la previsualización la calcula
+`web/src/app/nucleo/plan-siembra.ts` en el propio navegador, replicando los
+mismos días de desfase y condiciones de `consultas-accion.mjs`. Guardar sigue
+programando el resto de la temporada; lo que cambia es qué queda registrado.
+
+Esa duplicación de lógica —el calendario vive escrito dos veces, una en SQL
+y otra en TypeScript— es una decisión consciente, no un descuido: no hay forma
+de previsualizar sin ejecutar sin repetir la fórmula en alguna parte, y
+repetirla en un módulo puro y comentado es más simple que exponer un endpoint
+de "simulación" que ande generando y deshaciendo filas reales. El riesgo que
+abre -que las dos copias se desincronicen- lo cierra `humo-orden.mjs`: compara,
+semana a semana, lo que la pantalla predijo contra lo que el backend dejó
+guardado de verdad para esa misma siembra.
+
+### Alta de actividades por lotes
+
+**Registrar actividades** es la hermana de «Registrar siembra» y comparte su
+forma: una cabecera con la fecha, el tipo de labor y el insumo, y una línea por
+cada cama a la que se le hace. Sirve para las labores recurrentes —la segunda
+abonada, el abono líquido, un deshierbe— sin repetir la cabecera en cada fila.
+
+La diferencia con la siembra es de dónde salen los datos: allí la línea **crea**
+el cultivo, aquí lo **elige**, y de él hereda semilla, fecha de siembra, plantas,
+lote y cama. Por eso lo que se hereda de la línea anterior es la dosis y el
+responsable, no la cama: la cama ya viene dada por el cultivo.
+
+Dos campos del esquema se confunden con facilidad, y confundirlos rompe el
+índice único y los informes:
+
+- `fechaSiembra` es la del **cultivo**, no la de la labor. Sale de cada línea.
+- `semanaAbono` es la semana de la **labor**, calculada de la fecha de la
+  cabecera con la misma regla de domingo que usa el backend.
+
+El guardado va línea a línea: si una falla, las demás entran igual y la fallida
+se queda en pantalla, editable y con su motivo. El caso típico es repetir el
+mismo cultivo dos veces en la misma jornada, que choca contra
+`ux_actividades_access`; la pantalla lo avisa antes de intentarlo.
+
 ## Decisiones que conviene conocer
 
 - **Los nombres de Access se conservan tal cual**, incluidas sus incoherencias
@@ -214,6 +301,12 @@ la ficha de la semilla y se recalculan con las plantas reales.
 - **Cuatro columnas son `GENERATED`** porque en Access eran campos calculados:
   `actividades.total`, `costosInsumos.valorTotal`, `inventarioProductos.saldo`
   y `detallePedido.SubTotal`. Se leen pero no se escriben.
+- **Los choques de restricción son 409, no 500.** El CRUD genérico traduce los
+  errores de SQLite (`UNIQUE`, `FOREIGN KEY`, `CHECK`, `NOT NULL`) a una respuesta
+  con cuerpo legible. Antes salían como un 500 mudo y la pantalla solo podía
+  enseñar «Http failure response», que no le dice nada a nadie. Lo que no es una
+  restricción se vuelve a lanzar y sigue siendo un 500, para no disfrazar un
+  fallo de verdad.
 - **Las consultas de acción usan `ON CONFLICT DO NOTHING`**, que reproduce el
   descarte silencioso de Access ante la clave compuesta, pero informando de
   cuántas filas se omitieron.

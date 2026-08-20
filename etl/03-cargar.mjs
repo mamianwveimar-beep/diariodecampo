@@ -153,8 +153,9 @@ insertar('productos', productos, [
   'id', 'codigoProducto', 'nombreProducto', 'cantidadMax', 'CantidadMin', 'prevedor',
   'registro', 'marca', 'valorUnidad', 'unidad', 'cantidad', 'observacion',
 ]);
-// 998 (cal dolomita) y 999 (mano de obra) se crean en 0003_seed_ref.sql
-const idsProducto = new Set([...productos.map((p) => p.id), 998, 999]);
+// 997 (otro insumo), 998 (cal dolomita) y 999 (mano de obra) se crean en
+// 0003_seed_ref.sql
+const idsProducto = new Set([...productos.map((p) => p.id), 997, 998, 999]);
 
 // -- infoSemilla ----------------------------------------------------------
 const infoSemilla = tabla('infoSemilla').map((s) => ({ ...s, Activo: bool(s.Activo) }));
@@ -279,8 +280,8 @@ insertar('_cuarentena', cuarentena, [
 
 // ------------------------------------------- 3. contador de autonumeracion
 // productos.999 dejo la secuencia en 999; se devuelve al maximo real.
-db.exec(`UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM productos WHERE id NOT IN (998, 999)) WHERE name = 'productos';`);
-seed.push(`UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM productos WHERE id NOT IN (998, 999)) WHERE name = 'productos';`);
+db.exec(`UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM productos WHERE id NOT IN (997, 998, 999)) WHERE name = 'productos';`);
+seed.push(`UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM productos WHERE id NOT IN (997, 998, 999)) WHERE name = 'productos';`);
 
 // ------------------------------------------------ 4. integridad referencial
 const violaciones = db.prepare('PRAGMA foreign_key_check').all();
@@ -356,7 +357,7 @@ const origen = Object.fromEntries(
    'detallePedido', 'pedido', 'clientes', 'empleados', 'infoSemilla', 'productos', 'ciudad']
     .map((t) => [t, tabla(t).length])
 );
-origen.productos += 2;                       // las filas 998 (cal dolomita) y 999 (mano de obra)
+origen.productos += 3;                       // las filas 997, 998 y 999 de referencia
 origen.adjuntos = adjuntos.length;
 
 const recon = destino.map((d) => ({

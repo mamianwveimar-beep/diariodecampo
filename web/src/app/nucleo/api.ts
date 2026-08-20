@@ -88,7 +88,16 @@ export class Api {
   registrarOrden(codigo: number, cuerpo: {
     lote: string | null; cama: string | null; numeroPlantasSembradas: number;
     plantulasDanadas: number | null; motivoMerma: string | null;
+    /** La semana que se registra: la de la siembra, con sus labores del dia. */
+    semana: number | null;
+    actividades: {
+      Actividad: string; detalle: string | null; unidad: string | null;
+      cantidadAbono: number; costo: number;
+      /** Novedad anadida a mano: ademas de la labor, abre linea en costosInsumos. */
+      esAdicional: boolean;
+    }[];
   }): Promise<{ cultivo: T.Cultivo; merma: number;
+                semanaRegistrada: number | null; registradas: number;
                 generadas: { actividades: number; costosInsumos: number } }> {
     return this.pedir(firstValueFrom(this.http.post<any>(`${BASE}/ordenes/${codigo}`, cuerpo)));
   }

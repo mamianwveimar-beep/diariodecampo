@@ -326,7 +326,12 @@ export class SiembraLote implements OnInit {
    */
   private actualizar(clave: number, cambios: Partial<Linea>) {
     this.lineas.update((ls) =>
-      ls.map((x) => (x.clave === clave ? { ...x, ...cambios, error: undefined } : x))
+      // error: undefined va ANTES del spread a proposito. Cualquier edicion
+      // limpia el error de la linea, pero si cambios trae uno explicito ese
+      // gana: al reves, guardar marcaba la linea como fallida y acto seguido
+      // borraba el motivo, asi que el aviso prometia una explicacion que no
+      // llegaba a pintarse nunca.
+      ls.map((x) => (x.clave === clave ? { ...x, error: undefined, ...cambios } : x))
     );
   }
 

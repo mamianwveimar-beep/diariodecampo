@@ -60,7 +60,9 @@ export const TABLAS = {
     pk: 'id', autonumerica: true,
     columnas: ['id', 'codigoSistema', 'codsemilla', 'fechaSiembra', 'semanaAbono',
       'Actividad', 'cantidadAbono', 'lote', 'cama', 'numeroPlantas', 'total',
-      'detalle', 'responsable', 'costo', 'unidad'],
+      'detalle', 'responsable', 'costo', 'unidad',
+      // orden de siembra: NULL = programada sin registrar; con fecha = registrada
+      'fechaRegistro'],
     generadas: ['total'],
   },
   cosecha: {

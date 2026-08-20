@@ -100,22 +100,15 @@ try {
   await pagina.goto(`${BASE}/orden/${codigo}`, { waitUntil: 'networkidle' });
   await pagina.waitForSelector('.tarjeta.tuyo');
 
-  // --------------------------------------------------- solo 4 editables
+  // ----------------------------------------------- lo cerrado esta cerrado
+  // Lo editable vive en dos sitios y en ninguno mas: la tarjeta del operario
+  // (lote, cama, cantidad, motivo) y la semana de siembra de la programacion.
+  // Todo lo que la pantalla marca como cerrado no debe tener ni un control.
   const dentro = await pagina.locator('.tarjeta.tuyo input, .tarjeta.tuyo textarea').count();
-  const fuera = await pagina.locator('.tarjeta:not(.tuyo) input, .tarjeta:not(.tuyo) textarea, .tarjeta:not(.tuyo) select').count();
-  comprobar(fuera === 0, `ningún campo editable fuera de la tarjeta del operario (${fuera})`);
+  const enCerradas = await pagina.locator(
+    '.tarjeta.cerrada input, .tarjeta.cerrada textarea, .tarjeta.cerrada select').count();
+  comprobar(enCerradas === 0, `ningún control en las tarjetas marcadas como cerradas (${enCerradas})`);
   comprobar(dentro >= 3, `la tarjeta del operario trae sus campos (${dentro} visibles antes de la merma)`);
-
-  // ------------------------------------- los insumos salen de la ficha
-  const textoInsumos = await pagina.textContent('body');
-  comprobar(textoInsumos.includes('Abono en siembra'), 'muestra el abono en siembra de la ficha');
-  comprobar(textoInsumos.includes('Cal dolomita'), 'muestra la cal dolomita');
-  comprobar(textoInsumos.includes('Basilus'), 'muestra el Basilus contra el trozador');
-
-  const pesoInicial = await pagina.textContent('.carga .v');
-  // 400 x (0,2 + 0,001 + 0,03) = 92,4
-  comprobar(pesoInicial.replace(',', '.').includes('92.4'),
-    `el peso a llevar sale de la ficha: ${pesoInicial.trim()}`);
 
   // ------------------------------------------------ la merma se exige
   const cantidad = pagina.locator('.paso input');
@@ -131,10 +124,131 @@ try {
   comprobar((await pagina.textContent('.impedimento')).includes('motivo'),
     'y dice por qué está bloqueado');
 
-  // los insumos siguen a la cantidad real, no a la planificada
-  const pesoReal = await pagina.textContent('.carga .v');
-  comprobar(pesoReal.replace(',', '.').includes('87.8'),
-    `el peso se recalcula con las 380 reales: ${pesoReal.trim()}`);
+  // ------------------------------------- pestañas de semana: vista previa
+  // Las filas de la temporada todavia NO existen en la base -se generan
+  // recien al guardar-, asi que esto es una prediccion calculada en el
+  // navegador (web/src/app/nucleo/plan-siembra.ts). La comprobacion real es
+  // mas abajo: comparar esta prediccion contra lo que el backend deja
+  // guardado de verdad, para la misma siembra.
+  const pestanas = pagina.locator('.pestanas-semana button');
+  const nSemanas = await pestanas.count();
+  comprobar(nSemanas > 1, `la vista previa ofrece ${nSemanas} pestañas de semana`);
+  comprobar(await pestanas.first().evaluate((b) => b.classList.contains('activa')),
+    'arranca con la primera semana activa');
+
+  const previstoPorSemana = {};
+  for (let i = 0; i < nSemanas; i++) {
+    await pestanas.nth(i).click();
+    await pagina.waitForTimeout(120);
+    const etiqueta = (await pestanas.nth(i).textContent()).trim();
+    const semana = Number(etiqueta.replace('Semana ', ''));
+    comprobar(await pestanas.nth(i).evaluate((b) => b.classList.contains('activa')),
+      `la pestaña ${etiqueta} queda marcada activa al pulsarla`);
+    const actividades = await pagina.locator('.pestanas-semana ~ .tabla-caja tbody td:first-child').allTextContents();
+    previstoPorSemana[semana] = actividades.slice().sort();
+    comprobar(actividades.length > 0, `«${etiqueta}» muestra ${actividades.length} fila(s)`);
+  }
+  // volver a la primera pestaña antes de seguir
+  await pestanas.first().click();
+  await pagina.waitForTimeout(120);
+
+  // el pie se lee por clase, no por posicion (ver el comentario de pie())
+  // por clase y no por posicion: las columnas cambian entre la tabla editable
+  // y la de solo lectura, y nth-child se rompia en silencio al moverlas
+  const pie = (cual) => pagina.textContent(`.pestanas-semana ~ .tabla-caja tfoot td.${cual}`);
+  const numero = (t) => Number((t ?? '').replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.'));
+
+  const pesoUnaSemana = await pie('peso');
+  comprobar(/\d/.test(pesoUnaSemana ?? ''), `el peso de la semana activa se recalcula: ${(pesoUnaSemana ?? '').trim()}`);
+
+  // ------------------------------- la semana de la siembra es editable
+  // Es la unica que el operario ya ejecuto, asi que puede corregir lo que de
+  // verdad aplico. Las demas semanas son solo previsualizacion.
+  const celdas = pagina.locator('.pestanas-semana ~ .tabla-caja tbody input');
+  comprobar(await celdas.count() > 0,
+    `la semana de la siembra trae ${await celdas.count()} celdas editables`);
+
+  await pestanas.nth(1).click();
+  await pagina.waitForTimeout(150);
+  comprobar(await pagina.locator('.pestanas-semana ~ .tabla-caja tbody input').count() === 0,
+    'las semanas futuras siguen siendo de solo lectura');
+  await pestanas.first().click();
+  await pagina.waitForTimeout(150);
+
+  // corregir una cantidad y ver que el pie se recalcula solo
+  const pesoAntes = numero(await pie('peso'));
+  const costoAntes = numero(await pie('costo'));
+  const primera = celdas.first();
+  const valorOriginal = numero(await primera.inputValue());
+  await primera.fill(String(valorOriginal + 10));
+  await primera.blur();
+  await pagina.waitForTimeout(250);
+
+  comprobar(Math.abs(numero(await pie('peso')) - (pesoAntes + 10)) < 0.2,
+    `corregir una cantidad recalcula el peso: ${pesoAntes} → ${numero(await pie('peso'))} kg`);
+  comprobar(numero(await pie('costo')) > costoAntes,
+    `y el costo de la semana sube con ella: ${costoAntes} → ${numero(await pie('costo'))}`);
+  comprobar((await pagina.textContent('body')).includes('valores escritos a mano'),
+    'avisa de que hay valores escritos a mano');
+
+  await pagina.getByRole('button', { name: 'Volver a lo calculado' }).click();
+  await pagina.waitForTimeout(250);
+  comprobar(Math.abs(numero(await pie('peso')) - pesoAntes) < 0.2,
+    'y se puede volver a los valores calculados');
+
+  // dejar una correccion puesta: mas abajo se comprueba que es la que se guarda
+  const actividadCorregida = (await pagina.locator('.pestanas-semana ~ .tabla-caja tbody tr')
+    .first().locator('td').first().textContent()).trim();
+  const cantidadCorregida = valorOriginal + 10;
+  await primera.fill(String(cantidadCorregida));
+  await primera.blur();
+  await pagina.waitForTimeout(250);
+
+  // ------------------------------- novedades anadidas a mano en campo
+  const NOVEDAD = { actividad: 'ProteccionExtra', detalle: 'Basilus', unidad: 'Litro',
+                    cantidad: 3, costo: 15000 };
+  const pesoSinNovedad = numero(await pie('peso'));
+  const costoSinNovedad = numero(await pie('costo'));
+
+  await pagina.getByRole('button', { name: /Agregar actividad adicional/ }).click();
+  await pagina.waitForTimeout(200);
+  const fila = pagina.locator('.pestanas-semana ~ .tabla-caja tbody tr.adicional').last();
+  comprobar(await fila.count() === 1, 'el botón inserta una fila vacía y editable');
+  comprobar(Math.abs(numero(await pie('peso')) - pesoSinNovedad) < 0.01,
+    'una fila vacía todavía no altera los totales');
+
+  const celda = (i) => fila.locator('td').nth(i).locator('input');
+  await celda(0).fill(NOVEDAD.actividad);
+  await celda(1).fill(NOVEDAD.detalle);
+  await celda(2).fill(String(NOVEDAD.cantidad));
+  await celda(3).fill(NOVEDAD.unidad);
+  await celda(4).fill(String(NOVEDAD.costo));
+  await celda(4).blur();
+  await pagina.waitForTimeout(250);
+
+  comprobar(Math.abs(numero(await pie('peso')) - (pesoSinNovedad + NOVEDAD.cantidad)) < 0.2,
+    `la novedad suma al peso por ser Litro: ${pesoSinNovedad} → ${numero(await pie('peso'))} kg`);
+  comprobar(Math.abs(numero(await pie('costo')) - (costoSinNovedad + NOVEDAD.costo)) < 1,
+    `y suma al costo de la semana: ${costoSinNovedad} → ${numero(await pie('costo'))}`);
+
+  // una novedad en minutos no debe pesar, solo costar
+  await pagina.getByRole('button', { name: /Agregar actividad adicional/ }).click();
+  await pagina.waitForTimeout(200);
+  const enMinutos = pagina.locator('.pestanas-semana ~ .tabla-caja tbody tr.adicional').last();
+  const pesoAntesMin = numero(await pie('peso'));
+  await enMinutos.locator('td').nth(0).locator('input').fill('DeshierbeExtra');
+  await enMinutos.locator('td').nth(2).locator('input').fill('50');
+  await enMinutos.locator('td').nth(3).locator('input').fill('Min');
+  await enMinutos.locator('td').nth(3).locator('input').blur();
+  await pagina.waitForTimeout(250);
+  comprobar(Math.abs(numero(await pie('peso')) - pesoAntesMin) < 0.01,
+    `una novedad en «Min» no suma al peso: sigue en ${numero(await pie('peso'))} kg`);
+
+  // y se puede quitar
+  await enMinutos.getByRole('button', { name: /Quitar/ }).click();
+  await pagina.waitForTimeout(200);
+  comprobar(await pagina.locator('.pestanas-semana ~ .tabla-caja tbody tr.adicional').count() === 1,
+    'la novedad se puede quitar antes de guardar');
 
   // ------------------------------------------------------- se registra
   await pagina.locator('textarea').fill('Veinte plántulas llegaron con el cepellón partido.');
@@ -172,6 +286,67 @@ try {
   const tipos = [...new Set(mias.map((a) => a.Actividad))];
   comprobar(tipos.includes('AbonoSiembra') && tipos.includes('CalDolomita'),
     `incluye las labores del día de siembra: ${tipos.sort().join(', ')}`);
+
+  // ------------------- la vista previa del navegador contra lo real guardado
+  // Es la comprobacion que cierra el riesgo de que plan-siembra.ts (TS, en el
+  // navegador) se desincronice de consultas-accion.mjs (el SQL real): si
+  // alguien cambia un dia de desfase en uno y no en el otro, esto lo detecta.
+  const realPorSemana = {};
+  // Sin las novedades que esta misma prueba anadio a mano: lo que se compara
+  // es que el CALENDARIO CALCULADO coincida, y una novedad no sale de ningun
+  // calculo, asi que por definicion no esta en la previsualizacion.
+  for (const a of mias.filter((x) => x.Actividad !== NOVEDAD.actividad)) {
+    (realPorSemana[a.semanaAbono] ??= []).push(a.Actividad);
+  }
+  for (const k in realPorSemana) realPorSemana[k].sort();
+
+  const semanasPrevistas = Object.keys(previstoPorSemana).map(Number).sort((a, b) => a - b);
+  const semanasReales = Object.keys(realPorSemana).map(Number).sort((a, b) => a - b);
+  comprobar(JSON.stringify(semanasPrevistas) === JSON.stringify(semanasReales),
+    `las mismas semanas: previsto ${semanasPrevistas.join(',')} · real ${semanasReales.join(',')}`);
+
+  let coincideTodo = true;
+  for (const s of semanasPrevistas) {
+    const previstas = previstoPorSemana[s] ?? [];
+    const reales = realPorSemana[s] ?? [];
+    if (JSON.stringify(previstas) !== JSON.stringify(reales)) {
+      coincideTodo = false;
+      console.log(`    semana ${s}: previsto [${previstas}] · real [${reales}]`);
+    }
+  }
+  comprobar(coincideTodo, 'la vista previa del navegador coincide, semana a semana, con lo que el backend guardó');
+
+  // ---------------- la correccion del operario gana sobre lo calculado
+  const corregida = mias.find((a) => a.Actividad === actividadCorregida);
+  comprobar(corregida && Math.abs(corregida.total - cantidadCorregida) < 0.2,
+    `«${actividadCorregida}» se guardó con lo escrito a mano: ${corregida?.total} (se escribió ${cantidadCorregida})`);
+
+  // --------- solo la semana de la siembra queda registrada; el resto, programada
+  const { cuerpo: todasLasFilas } = await api("/tablas/actividades?limite=2000");
+  const delCultivo = todasLasFilas.filter((a) => a.codigoSistema === codigo);
+  const registradas = delCultivo.filter((a) => a.fechaRegistro);
+  const programadas = delCultivo.filter((a) => !a.fechaRegistro);
+  const semanaSiembra = Math.min(...registradas.map((a) => a.semanaAbono));
+  comprobar(registradas.length > 0 && registradas.every((a) => a.semanaAbono === semanaSiembra),
+    `solo la semana ${semanaSiembra} queda registrada (${registradas.length} labores con fechaRegistro)`);
+  comprobar(programadas.length > 0 && programadas.every((a) => !a.fechaRegistro),
+    `las otras ${programadas.length} quedan programadas, sin registrar`);
+
+  // ------------------- la novedad queda como labor Y con su linea de costo
+  const laNovedad = delCultivo.find((a) => a.Actividad === NOVEDAD.actividad);
+  comprobar(!!laNovedad && !!laNovedad.fechaRegistro,
+    `la novedad «${NOVEDAD.actividad}» se guardó como labor registrada`);
+  comprobar(laNovedad && Math.abs(laNovedad.total - NOVEDAD.cantidad) < 0.2,
+    `con la cantidad escrita: ${laNovedad?.total} ${laNovedad?.unidad}`);
+
+  const { cuerpo: costos } = await api('/tablas/costosInsumos?limite=2000');
+  const costoNovedad = costos.filter((x) => x.programacionCultivoCodCultivo === codigo)
+    .find((x) => x.concepto === NOVEDAD.actividad);
+  comprobar(!!costoNovedad, 'y además abrió su línea en costosInsumos');
+  comprobar(costoNovedad && Math.abs(costoNovedad.valorTotal - NOVEDAD.costo) < 1,
+    `con el costo que escribió el operario: ${costoNovedad?.valorTotal}`);
+  comprobar(costoNovedad && costoNovedad.producto === 5,
+    `y enlazada al producto real, porque el detalle era «${NOVEDAD.detalle}»: producto=${costoNovedad?.producto}`);
 } finally {
   await navegador.close();
   // limpiar: al borrar el cultivo se van sus actividades y costos en cascada

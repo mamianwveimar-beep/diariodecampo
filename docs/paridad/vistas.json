@@ -1,5 +1,5 @@
 {
-  "generado": "2026-08-20T01:10:16.154Z",
+  "generado": "2026-08-20T10:27:01.383Z",
   "tolerancia": 0.000001,
   "meta": {
     "generado": "2026-08-19T14:45:21",
@@ -179,13 +179,104 @@
       "columnas_solo_d1": [],
       "filas_solo_access": [],
       "filas_solo_d1": [],
-      "diferencias": [],
+      "diferencias": [
+        {
+          "fila": "45",
+          "columna": "#dias",
+          "access": 1759,
+          "d1": 1760
+        },
+        {
+          "fila": "46",
+          "columna": "#dias",
+          "access": 1783,
+          "d1": 1784
+        },
+        {
+          "fila": "47",
+          "columna": "#dias",
+          "access": 1753,
+          "d1": 1754
+        },
+        {
+          "fila": "51",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "52",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "53",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "54",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "56",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "57",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "59",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "60",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "61",
+          "columna": "#dias",
+          "access": 1745,
+          "d1": 1746
+        },
+        {
+          "fila": "62",
+          "columna": "#dias",
+          "access": 1752,
+          "d1": 1753
+        },
+        {
+          "fila": "63",
+          "columna": "#dias",
+          "access": 1744,
+          "d1": 1745
+        },
+        {
+          "fila": "65",
+          "columna": "#dias",
+          "access": 1738,
+          "d1": 1739
+        }
+      ],
       "divergencias_previstas": 1,
       "divergencias_no_previstas": [],
       "motivos": [
         "Access numera la semana segun la configuracion regional del equipo, que aqui esta en lunes. La migracion la fija en domingo, que es la regla con la que se generaron las 157 actividades existentes. Se comprueba que D1 devuelve exactamente la regla de domingo."
       ],
-      "ok": true
+      "ok": false
     },
     {
       "consulta": "cProgramacionCultivo",
@@ -196,11 +287,114 @@
       "columnas_solo_d1": [],
       "filas_solo_access": [],
       "filas_solo_d1": [],
-      "diferencias": [],
+      "diferencias": [
+        {
+          "fila": "46|2021-11-11|2",
+          "columna": "#dias",
+          "access": 1783,
+          "d1": 1784
+        },
+        {
+          "fila": "45|2021-11-16|2",
+          "columna": "#dias",
+          "access": 1759,
+          "d1": 1760
+        },
+        {
+          "fila": "45|2021-11-16|1",
+          "columna": "#dias",
+          "access": 1759,
+          "d1": 1760
+        },
+        {
+          "fila": "45|2021-11-14|4",
+          "columna": "#dias",
+          "access": 1759,
+          "d1": 1760
+        },
+        {
+          "fila": "47||",
+          "columna": "#dias",
+          "access": 1753,
+          "d1": 1754
+        },
+        {
+          "fila": "62||",
+          "columna": "#dias",
+          "access": 1752,
+          "d1": 1753
+        },
+        {
+          "fila": "53||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "52||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "54||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "56||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "57||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "59||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "60||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "51||",
+          "columna": "#dias",
+          "access": 1748,
+          "d1": 1749
+        },
+        {
+          "fila": "61||",
+          "columna": "#dias",
+          "access": 1745,
+          "d1": 1746
+        },
+        {
+          "fila": "63||",
+          "columna": "#dias",
+          "access": 1744,
+          "d1": 1745
+        },
+        {
+          "fila": "65||",
+          "columna": "#dias",
+          "access": 1738,
+          "d1": 1739
+        }
+      ],
       "divergencias_previstas": 0,
       "divergencias_no_previstas": [],
       "motivos": [],
-      "ok": true
+      "ok": false
     }
   ]
 }

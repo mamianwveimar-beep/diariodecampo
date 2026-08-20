@@ -1,5 +1,5 @@
 {
-  "generado": "2026-08-20T01:03:41.519Z",
+  "generado": "2026-08-20T10:47:24.634Z",
   "tablas": [
     {
       "tabla": "actividades",
@@ -73,8 +73,8 @@
     },
     {
       "tabla": "productos",
-      "filas_origen": 8,
-      "filas_destino": 8,
+      "filas_origen": 9,
+      "filas_destino": 9,
       "coincide": true,
       "suma_control": 26807
     },

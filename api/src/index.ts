@@ -22,6 +22,38 @@ app.use('/api/*', cors());
 
 const noEncontrado = (que: string) => ({ error: `No existe ${que}.` });
 
+/**
+ * Traduce los choques de restriccion de SQLite a una respuesta que el cliente
+ * pueda entender y mostrar.
+ *
+ * Sin esto, una clave repetida sale como un 500 sin cuerpo util: la pantalla
+ * no puede decir que paso y el operario solo ve "Http failure response". Un
+ * choque de restriccion lo provoca lo que se envio, asi que es 409 o 400, no
+ * un fallo del servidor.
+ *
+ * Lo que no sea una restriccion se vuelve a lanzar tal cual: un error de
+ * verdad tiene que seguir siendo un 500 y no quedar disfrazado.
+ */
+function comoErrorDeCliente(e: unknown): { error: string; codigo: 409 | 400 } {
+  const texto = e instanceof Error ? e.message : String(e);
+  if (/UNIQUE constraint failed/i.test(texto)) {
+    const campos = texto.split(':').slice(1).join(':').trim();
+    return { error: `Ya existe un registro con esos mismos valores (${campos}).`, codigo: 409 };
+  }
+  if (/FOREIGN KEY constraint failed/i.test(texto)) {
+    return { error: 'Alguna referencia apunta a un registro que no existe.', codigo: 409 };
+  }
+  if (/CHECK constraint failed/i.test(texto)) {
+    const regla = texto.split(':').slice(1).join(':').trim();
+    return { error: `Un valor no cumple las reglas de la tabla (${regla}).`, codigo: 400 };
+  }
+  if (/NOT NULL constraint failed/i.test(texto)) {
+    const campo = texto.split(':').slice(1).join(':').trim();
+    return { error: `Falta un campo obligatorio (${campo}).`, codigo: 400 };
+  }
+  throw e;
+}
+
 // --------------------------------------------------------------- salud
 app.get('/api/salud', async (c) => {
   const { results } = await c.env.DB.prepare(
@@ -68,8 +100,13 @@ app.post('/api/tablas/:tabla', async (c) => {
 
   const sql = `INSERT INTO ${tabla} (${cols.join(', ')}) ` +
               `VALUES (${cols.map((_, i) => `?${i + 1}`).join(', ')}) RETURNING *`;
-  const fila = await c.env.DB.prepare(sql).bind(...cols.map((x) => cuerpo[x] ?? null)).first();
-  return c.json(fila, 201);
+  try {
+    const fila = await c.env.DB.prepare(sql).bind(...cols.map((x) => cuerpo[x] ?? null)).first();
+    return c.json(fila, 201);
+  } catch (e) {
+    const { error, codigo } = comoErrorDeCliente(e);
+    return c.json({ error }, codigo);
+  }
 });
 
 app.put('/api/tablas/:tabla/:id', async (c) => {
@@ -83,9 +120,14 @@ app.put('/api/tablas/:tabla/:id', async (c) => {
 
   const sql = `UPDATE ${tabla} SET ${cols.map((x, i) => `${x} = ?${i + 1}`).join(', ')} ` +
               `WHERE ${meta.pk} = ?${cols.length + 1} RETURNING *`;
-  const fila = await c.env.DB.prepare(sql)
-    .bind(...cols.map((x) => cuerpo[x] ?? null), c.req.param('id')).first();
-  return fila ? c.json(fila) : c.json(noEncontrado('ese registro'), 404);
+  try {
+    const fila = await c.env.DB.prepare(sql)
+      .bind(...cols.map((x) => cuerpo[x] ?? null), c.req.param('id')).first();
+    return fila ? c.json(fila) : c.json(noEncontrado('ese registro'), 404);
+  } catch (e) {
+    const { error, codigo } = comoErrorDeCliente(e);
+    return c.json({ error }, codigo);
+  }
 });
 
 app.delete('/api/tablas/:tabla/:id', async (c) => {
@@ -216,15 +258,23 @@ app.get('/api/cuarentena', async (c) => {
 // sistema a partir de la ficha de la semilla.
 
 /** El cultivo con la ficha de su semilla ya resuelta: es lo que pinta la pantalla. */
+// Incluye todos los campos que usan las 15 consultas de actividades de
+// LOTES.programacionCompleta, para que la pantalla del operario pueda
+// mostrar una vista previa de la temporada completa antes de guardar, sin
+// tener que adivinar ni volver a pedir la semilla aparte.
 const SQL_ORDEN = `
 SELECT pc.*,
        s.semilla, s.variedad, s.ciclo,
        s.abonoSiembra, s.calDolomita, s.abonoLiquido,
+       s.abonoPrimera, s.abonoSegunda, s.abonoTercera, s.Aplicacion1,
        COALESCE(s.area, s.entrePlanta * s.entreSurcos) AS marcoSiembra
 FROM programacionCultivos pc
      INNER JOIN infoSemilla s ON s.Id = pc.codSemilla`;
 
 /** Cada tabla apunta al cultivo con un nombre distinto, herencia de Access. */
+/** Centinela de productos para las novedades sin producto de catalogo. */
+const PRODUCTO_OTRO_INSUMO = 997;
+
 const COLUMNA_CULTIVO: Record<string, string> = {
   actividades: 'codigoSistema',
   costosInsumos: 'programacionCultivoCodCultivo',
@@ -266,6 +316,15 @@ app.post('/api/ordenes/:codigo', async (c) => {
     lote?: string | null; cama?: string | null;
     numeroPlantasSembradas?: number; plantulasDanadas?: number | null;
     motivoMerma?: string | null;
+    /** Semana que el operario esta registrando: la de la siembra. */
+    semana?: number;
+    /** Solo las labores de esa semana, con las cantidades reales aplicadas. */
+    actividades?: {
+      Actividad: string; detalle?: string | null; unidad?: string | null;
+      cantidadAbono?: number; costo?: number;
+      /** La anadio el operario a mano: es una novedad, no sale de la ficha. */
+      esAdicional?: boolean;
+    }[];
   }>();
 
   const cultivo = await c.env.DB.prepare(`${SQL_ORDEN}\nWHERE pc.codigosistema = ?1`)
@@ -317,7 +376,69 @@ RETURNING *`)
     'UPDATE actividades SET numeroPlantas = ?1, lote = ?2, cama = ?3 WHERE codigoSistema = ?4'
   ).bind(sembradas, lote, cama, codigo).run();
 
-  // y se genera lo que falte, SOLO para este cultivo
+  // Las labores de la semana que el operario acaba de registrar van PRIMERO,
+  // con sus cantidades reales y fechaRegistro sellada. Despues corre la
+  // generacion: sus filas de esa misma semana chocan contra
+  // ux_actividades_access y se descartan solas, asi que lo que escribio el
+  // operario gana sobre lo calculado sin necesidad de tratarlo aparte.
+  const semana = Number(cuerpo.semana);
+  const registradas = Number.isFinite(semana) ? (cuerpo.actividades ?? []) : [];
+  if (registradas.length) {
+    await c.env.DB.batch(registradas.map((a) => c.env.DB.prepare(`
+INSERT INTO actividades (codigoSistema, codsemilla, fechaSiembra, semanaAbono, Actividad,
+                         cantidadAbono, lote, cama, numeroPlantas, detalle, unidad, costo,
+                         fechaRegistro)
+VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)
+ON CONFLICT DO UPDATE SET
+  cantidadAbono = excluded.cantidadAbono,
+  costo         = excluded.costo,
+  detalle       = excluded.detalle,
+  unidad        = excluded.unidad,
+  fechaRegistro = excluded.fechaRegistro`)
+      .bind(codigo, cultivo.codSemilla, cultivo.fechasiembra, semana, a.Actividad,
+            Number(a.cantidadAbono) || 0, lote, cama, sembradas,
+            a.detalle ?? null, a.unidad ?? null, Number(a.costo) || 0, hoyBogota())));
+  }
+
+  // Las novedades que el operario anadio a mano tambien cuestan dinero, asi
+  // que ademas de la labor se les abre su linea en costosInsumos. Las de la
+  // ficha no: sus costos ya los generan actualizarCostosAbonamiento y las
+  // IngresoCostos*, y duplicarlos aqui inflaria el coste del cultivo.
+  const adicionales = registradas.filter((a) => a.esAdicional && a.Actividad?.trim());
+  if (adicionales.length) {
+    // El detalle es texto libre, pero muchas veces nombra un producto real.
+    // Se intenta casar por nombre y solo se cae al centinela 997 cuando no
+    // encaja con ninguno, para no perder el enlace cuando si existe.
+    const { results: catalogo } = await c.env.DB
+      .prepare('SELECT id, nombreProducto FROM productos').all<{ id: number; nombreProducto: string | null }>();
+    const porNombreProducto = new Map(
+      catalogo.filter((p) => p.nombreProducto)
+        .map((p) => [p.nombreProducto!.trim().toLowerCase(), p.id])
+    );
+
+    await c.env.DB.batch(adicionales.map((a) => {
+      const detalle = (a.detalle ?? '').trim() || a.Actividad.trim();
+      const producto = porNombreProducto.get(detalle.toLowerCase()) ?? PRODUCTO_OTRO_INSUMO;
+      // en actividades la cantidad se guarda por planta; aqui interesa el total
+      const cantidadTotal = (Number(a.cantidadAbono) || 0) * sembradas;
+      return c.env.DB.prepare(`
+INSERT INTO costosInsumos (concepto, detalle, fecha, unidad, cantidad, producto,
+                           valorUnitario, observaciones, programacionCultivoCodCultivo)
+VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+ON CONFLICT DO UPDATE SET
+  cantidad      = excluded.cantidad,
+  valorUnitario = excluded.valorUnitario,
+  unidad        = excluded.unidad,
+  fecha         = excluded.fecha`)
+        .bind(a.Actividad.trim().slice(0, 100), detalle.slice(0, 255), hoyBogota(),
+              a.unidad ?? null, cantidadTotal, producto, Number(a.costo) || 0,
+              `Novedad registrada en campo, semana ${semana}.`, codigo);
+    }));
+  }
+
+  // el resto de la temporada queda PROGRAMADA, con fechaRegistro en NULL:
+  // existe para poder registrarla cuando llegue su semana, pero nadie ha
+  // dicho todavia que se haya hecho.
   await c.env.DB.batch(
     LOTES.programacionCompleta.map((n) =>
       c.env.DB.prepare(sqlPorCultivo(porNombre(n)!)).bind(codigo))
@@ -326,6 +447,8 @@ RETURNING *`)
   return c.json({
     cultivo: actualizado,
     merma,
+    semanaRegistrada: registradas.length ? semana : null,
+    registradas: registradas.length,
     generadas: {
       actividades: (await contarDe(c.env, 'actividades', codigo)) - antes.actividades,
       costosInsumos: (await contarDe(c.env, 'costosInsumos', codigo)) - antes.costosInsumos,

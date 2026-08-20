@@ -28,6 +28,9 @@ export const routes: Routes = [
   { path: 'actividades', title: 'Actividades y costos · Diario de campo',
     loadComponent: () => import('./paginas/actividades').then((m) => m.Actividades) },
 
+  { path: 'actividades/nueva', title: 'Registrar actividades · Diario de campo',
+    loadComponent: () => import('./paginas/actividad-lote').then((m) => m.ActividadLote) },
+
   { path: 'pedidos', title: 'Pedidos · Diario de campo',
     loadComponent: () => import('./paginas/pedidos').then((m) => m.Pedidos) },
 

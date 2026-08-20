@@ -141,6 +141,22 @@ tfoot td { font-weight: 600; background: var(--surface-2); border-top: 1px solid
 
 .vacio { padding: 40px 20px; text-align: center; color: var(--ink-3); font-size: .9rem; }
 
+/* Tablas editables: celdas que llevan un input dentro. Nace en la orden de
+   siembra, pero no tiene nada de particular, asi que vive aqui. */
+td .celda {
+  min-height: 38px; padding: 4px 8px; text-align: right; font-size: .86rem;
+  font-family: var(--f-mono); font-variant-numeric: tabular-nums; min-width: 84px;
+}
+td .celda.txt { text-align: left; font-family: var(--f-body); min-width: 110px; }
+td .celda.txt.corta { min-width: 64px; }
+
+/* .fija mantiene la primera columna a la vista mientras el resto se desplaza,
+   que es lo que hace usable una tabla ancha en un movil. */
+.tabla-caja.fija :is(th, td):first-child {
+  position: sticky; left: 0; z-index: 1; background: var(--surface);
+}
+.tabla-caja.fija thead th:first-child { background: var(--surface-2); }
+
 /* ---------------------------------------------------------- controles */
 button, .boton {
   font-family: var(--f-body); font-size: .875rem; font-weight: 500;

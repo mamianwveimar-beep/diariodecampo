@@ -190,7 +190,15 @@ CREATE TABLE actividades (
   detalle       TEXT    CHECK (detalle IS NULL OR length(detalle) <= 50),
   responsable   TEXT    CHECK (responsable IS NULL OR length(responsable) <= 255),
   costo         REAL    DEFAULT 0,
-  unidad        TEXT    CHECK (unidad IS NULL OR length(unidad) <= 20)
+  unidad        TEXT    CHECK (unidad IS NULL OR length(unidad) <= 20),
+  -- NUEVO (orden de siembra): cuando el operario registro ESTA labor en campo.
+  -- Tres estados a proposito:
+  --   fila inexistente -> ni programada ni registrada
+  --   fila con NULL    -> programada por las consultas de accion, sin ejecutar
+  --   fila con fecha   -> el operario la registro, con sus cantidades reales
+  -- Access no distinguia ninguno de los tres: alli existir era haberse hecho.
+  -- Por eso el historico migrado queda en NULL, que es lo unico cierto.
+  fechaRegistro TEXT    CHECK (fechaRegistro IS NULL OR fechaRegistro GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')
 );
 CREATE UNIQUE INDEX ux_actividades_access
   ON actividades(codigoSistema, codsemilla, fechaSiembra, semanaAbono, Actividad);

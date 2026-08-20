@@ -9,7 +9,8 @@
     "test": "ng test",
     "humo": "node humo.mjs",
     "humo:siembra": "node humo-siembra.mjs",
-    "humo:orden": "node humo-orden.mjs"
+    "humo:orden": "node humo-orden.mjs",
+    "humo:actividad": "node humo-actividad.mjs"
   },
   "private": true,
   "packageManager": "npm@11.12.1",

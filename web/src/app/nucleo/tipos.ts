@@ -137,6 +137,10 @@ export interface Orden extends Cultivo {
   abonoSiembra: number | null;
   calDolomita: number | null;
   abonoLiquido: number | null;
+  abonoPrimera: number | null;
+  abonoSegunda: number | null;
+  abonoTercera: number | null;
+  Aplicacion1: number | null;
   /** m2 por planta: infoSemilla.area o entrePlanta x entreSurcos. */
   marcoSiembra: number | null;
 }
@@ -158,6 +162,8 @@ export interface Actividad {
   responsable: string | null;
   costo: number | null;
   unidad: string | null;
+  /** NULL = programada sin registrar en campo; con fecha = el operario la registro. */
+  fechaRegistro: string | null;
 }
 
 export interface Cosecha {

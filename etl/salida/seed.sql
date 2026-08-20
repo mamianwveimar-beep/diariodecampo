@@ -388,4 +388,4 @@ INSERT INTO _cuarentena (tabla_origen, pk_origen, regla, columna, valor, accion,
 INSERT INTO _cuarentena (tabla_origen, pk_origen, regla, columna, valor, accion, detalle_json) VALUES ('detallePedido', '19', 'fk_semilla_inexistente', 'IdSemilla', '16', 'conservada_sin_fk', '{"motivo":"infoSemilla solo conserva los Id 8, 9, 10 y 11","pedido":4}');
 INSERT INTO _cuarentena (tabla_origen, pk_origen, regla, columna, valor, accion, detalle_json) VALUES ('detallePedido', '20', 'fk_semilla_inexistente', 'IdSemilla', '15', 'conservada_sin_fk', '{"motivo":"infoSemilla solo conserva los Id 8, 9, 10 y 11","pedido":4}');
 INSERT INTO _cuarentena (tabla_origen, pk_origen, regla, columna, valor, accion, detalle_json) VALUES ('detallePedido', '21', 'fk_semilla_inexistente', 'IdSemilla', '1', 'conservada_sin_fk', '{"motivo":"infoSemilla solo conserva los Id 8, 9, 10 y 11","pedido":4}');
-UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM productos WHERE id NOT IN (998, 999)) WHERE name = 'productos';
+UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM productos WHERE id NOT IN (997, 998, 999)) WHERE name = 'productos';

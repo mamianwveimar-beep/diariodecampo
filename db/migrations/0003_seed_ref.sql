@@ -25,6 +25,18 @@ VALUES (998, 'CD', 'cal dolomita', 'Kg', 0, NULL,
         'Fila de referencia creada en la migracion. Falta ponerle el precio: '
         || 'mientras valorUnidad sea 0, la actividad CalDolomita sale con coste 0.');
 
+-- Las actividades que el operario anade a mano en la orden de siembra son
+-- novedades imprevistas (una preparacion extra por suelo humedo, un Basilus
+-- por hallazgo de plaga) y su detalle es texto libre. costosInsumos.producto
+-- es NOT NULL con clave foranea, asi que hace falta un destino para las que
+-- no corresponden a ningun producto del catalogo. El backend intenta primero
+-- casar el detalle con nombreProducto; solo cuando no encaja usa esta fila.
+INSERT INTO productos (id, codigoProducto, nombreProducto, unidad, valorUnidad,
+                       cantidad, observacion)
+VALUES (997, 'OI', 'Otro insumo', NULL, 0, NULL,
+        'Fila de referencia creada en la migracion. Recoge los costos de '
+        || 'actividades anadidas a mano que no corresponden a un producto del catalogo.');
+
 -- El contador de autonumeracion queda en 999 y el siguiente producto nuevo
 -- saldria con id 1000. El ETL lo devuelve al maximo real (paso 3 de
 -- etl/03-cargar.mjs), porque solo entonces existen ya las filas 2..7.
