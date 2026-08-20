@@ -106,9 +106,18 @@ import type { CostoActividad, Cultivo, Semilla, Proceso, ResultadoProceso } from
       </label>
       <label>Semana<input type="number" [ngModel]="semanaFiltro()"
              (ngModelChange)="semanaFiltro.set($event)" placeholder="p. ej. 44" /></label>
+      <label>Siembra desde<input type="date" [ngModel]="desdeFiltro()"
+             (ngModelChange)="desdeFiltro.set($event || null)" /></label>
+      <label>Siembra hasta<input type="date" [ngModel]="hastaFiltro()"
+             (ngModelChange)="hastaFiltro.set($event || null)" /></label>
       <button (click)="limpiar()">Limpiar</button>
       <span class="small">{{ filtradas().length }} de {{ actividades().length }} · coste total
         {{ costeTotal() }}</span>
+      @if (rangoInvertido()) {
+        <span class="small" style="color:var(--ochre)">
+          La fecha «desde» es posterior a la «hasta», por eso no sale nada.
+        </span>
+      }
     </div>
 
     <div class="tabla-caja">
@@ -225,6 +234,8 @@ export class Actividades implements OnInit {
   cultivoFiltro = signal<number | null>(null);
   tipoFiltro = signal<string | null>(null);
   semanaFiltro = signal<number | null>(null);
+  desdeFiltro = signal<string | null>(null);
+  hastaFiltro = signal<string | null>(null);
 
   editando = signal<any | null>(null);
   esNuevo = signal(false);
@@ -233,13 +244,28 @@ export class Actividades implements OnInit {
 
   tipos = computed(() => [...new Set(this.actividades().map((a) => a.Actividad))].sort());
 
+  /**
+   * El rango va sobre fechaSiembra, que es la unica fecha que lleva la fila:
+   * la semana de abonamiento se cuenta a partir de ella. Las fechas son ISO
+   * 'YYYY-MM-DD', asi que comparar como texto ya ordena bien y no hace falta
+   * construir un Date por fila.
+   */
   filtradas = computed(() => {
     const c = this.cultivoFiltro(), t = this.tipoFiltro(), s = this.semanaFiltro();
+    const desde = this.desdeFiltro(), hasta = this.hastaFiltro();
     return this.actividades().filter((a) =>
       (c == null || a.codigoSistema === c) &&
       (t == null || a.Actividad === t) &&
-      (s == null || Number(s) === a.semanaAbono)
+      (s == null || Number(s) === a.semanaAbono) &&
+      (!desde || a.fechaSiembra >= desde) &&
+      (!hasta || a.fechaSiembra <= hasta)
     );
+  });
+
+  /** Un rango al reves da cero filas sin motivo visible; conviene decirlo. */
+  rangoInvertido = computed(() => {
+    const d = this.desdeFiltro(), h = this.hastaFiltro();
+    return Boolean(d && h && d > h);
   });
 
   costeTotal = () =>
@@ -278,7 +304,13 @@ export class Actividades implements OnInit {
     return nombres[l] ?? l;
   }
 
-  limpiar() { this.cultivoFiltro.set(null); this.tipoFiltro.set(null); this.semanaFiltro.set(null); }
+  limpiar() {
+    this.cultivoFiltro.set(null);
+    this.tipoFiltro.set(null);
+    this.semanaFiltro.set(null);
+    this.desdeFiltro.set(null);
+    this.hastaFiltro.set(null);
+  }
 
   async lanzarLote(lote: string) {
     this.ocupado.set(true);

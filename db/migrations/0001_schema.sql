@@ -146,7 +146,15 @@ CREATE TABLE programacionCultivos (
   codigoSemillero         TEXT    CHECK (codigoSemillero IS NULL OR length(codigoSemillero) <= 50),
   observaciones           TEXT    CHECK (observaciones IS NULL OR length(observaciones) <= 255),
   kilosCosechados         REAL    DEFAULT 0,
-  activo                  INTEGER NOT NULL DEFAULT 1 CHECK (activo IN (0,1))
+  activo                  INTEGER NOT NULL DEFAULT 1 CHECK (activo IN (0,1)),
+  -- NUEVO (orden de siembra): lo que se PLANIFICO sembrar, frente a
+  -- numeroPlantasSembradas, que es lo que de verdad entro a la cama. Access no
+  -- distinguia las dos cosas, asi que el historico queda en NULL: no se sabe y
+  -- no se inventa. Lo rellena "Registrar siembra" al programar.
+  numeroPlantasPlanificadas INTEGER,
+  -- NUEVO: plantulas que no llegaron a sembrarse por venir danadas. Es lo que
+  -- explica la diferencia entre lo planificado y lo sembrado.
+  plantulasDanadas          INTEGER
 );
 CREATE INDEX ix_programacionCultivos_codSemilla ON programacionCultivos(codSemilla);
 
